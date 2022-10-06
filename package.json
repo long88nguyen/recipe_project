@@ -10,17 +10,26 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "axios": "^0.21.4",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "node-sass": "^7.0.3",
+        "postcss": "^8.1.14",
+        "sass-loader": "^13.0.2",
+        "toast": "^0.5.4"
     },
     "dependencies": {
         "ant-design-vue": "^3.2.12",
+        "bootstrap-icons": "^1.9.1",
         "bootstrap-vue": "^2.22.0",
         "bootstrap-vue-3": "^0.3.0",
-        "vue": "^3.2.36",
+        "js-cookie": "^2.2.1",
+        "moment": "^2.25.3",
+        "v-toaster": "^1.0.3",
+        "vue": "^3.2.39",
         "vue-loader": "^17.0.0",
-        "vue-router": "^4.0.13"
+        "vue-router": "^4.0.13",
+        "vue-toasted": "^1.1.28",
+        "vuex": "^4.0.2"
     }
 }

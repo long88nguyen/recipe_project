@@ -1,21 +1,13 @@
-<template>
-    <div id="app">
-      <component :is="layout" v-if="layout" />
-    </div>
+  <template>
+        <router-view></router-view>
   </template>
 
   <script>
+    import AuthLayout from "./commons/AuthLayout.vue"
   export default {
     el: "#app",
     components: {
-    },
-    computed: {
-      /**
-       * Set the application layout.
-       */
-      layout() {
-        return this.$route.meta.layout;
-      }
+        AuthLayout
     },
     data: function() {
       return {

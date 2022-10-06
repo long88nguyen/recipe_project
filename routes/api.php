@@ -18,3 +18,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('test-api', [\App\Http\Controllers\Api\TestApiController::class,'index']);
+Route::post('test-api', [\App\Http\Controllers\Api\TestApiController::class,'store']);
+Route::put('test-api/{id}', [\App\Http\Controllers\Api\TestApiController::class,'update']);
+Route::get('test-api/{id}', [\App\Http\Controllers\Api\TestApiController::class,'show']);
+Route::delete('test-api/{id}', [\App\Http\Controllers\Api\TestApiController::class,'delete']);
+
+
+Route::post('/login',[\App\Http\Controllers\Api\AuthController::class,'login']);
+Route::post('/register',[\App\Http\Controllers\Api\AuthController::class,'register']);
+
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::post('logout',[\App\Http\Controllers\Api\AuthController::class,'logout']);
+});
