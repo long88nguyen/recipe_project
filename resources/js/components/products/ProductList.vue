@@ -5,7 +5,9 @@
         <a-breadcrumb-item><router-link to="/products">Products</router-link></a-breadcrumb-item>
         </a-breadcrumb>
     </div>
-    <div class="table-product"></div>
+    <div class="table-product">
+        list
+    </div>
   </template>
 
   <script>

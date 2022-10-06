@@ -1,7 +1,9 @@
 require('./bootstrap');
 
+import Vue from 'vue'
 import { createApp } from "vue"
 import AppVue from "./AppVue.vue"
+import store from "./store";
 
 import BootstrapVue3 from 'bootstrap-vue-3'
 
@@ -20,6 +22,8 @@ app.component('app-vue',AppVue)
 app.use(BootstrapVue3)
 
 app.use(Antd)
+
+app.use(store)
 
 app.use(router)
 

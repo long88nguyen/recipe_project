@@ -1,34 +1,31 @@
 <template>
-    <div class="body-content" :class="{ active:isActive}">
-        <router-view></router-view>
+    <div class="body_layout" :class="{active:isActive}">
+        <router-view ></router-view>
     </div>
 </template>
 
 <script>
 export default {
-    data()
-   {
-       return{
-          isActive:true,
-       }
-   },
+    props:{
+        isActive:{
+            type:Boolean
+        }
+    }
 }
 </script>
 
 <style>
-.body-content {
-  margin-top:60px ;
-  position: absolute;
-  width: calc(100% - 78px);
-  left:78px;
-  transition: all 0.5s ease;
-  overflow: hidden;
-  background-color: #f1f1f1;
-  height: 100%;
-}
-.active
+.body_layout
 {
-    width: calc(100%-240px);
-    left: 240px;
+    width: calc(100% - 78px);
+    margin-left:78px;
+    height: 2000px;
+    transition: all 0.5s ease;
+}
+.body_layout.active {
+    width: calc(100% - 240px);
+    margin-left: 240px;
+    height: 2000px;
+
 }
 </style>

@@ -7,7 +7,7 @@
                    CodingLab
                </div>
            </div>
-           <i class="bx bx-menu" id="btn" v-on:click="ToggleNavbar" ></i>
+           <i class="bx bx-menu" id="btn" v-on:click="$emit('ToggleNavbar')" ></i>
        </div>
        <ul class="nav_list">
            <li>
@@ -15,7 +15,11 @@
                   <input type="text" name="" placeholder="Search..">
            </li>
            <li>
-               <router-link to="/categories"  active-class="active-router" class="router-class">
+               <router-link to="/categories" class="router-class"
+               :class="
+                  url.includes('categories') ? 'active-router' : ''
+                "
+               >
                    <i class='bx bxs-user-circle'></i>
                    <span class="links_name">Categories</span>
                </router-link>
@@ -42,7 +46,7 @@
                        </div>
                    </div>
                </div>
-               <i class="bx bx-log-out" id="log_out">
+               <i class="bx bx-log-out log_out_button" id="log_out" @click="$emit('logout')">
 
                </i>
            </div>
@@ -56,24 +60,32 @@ export default {
    data()
    {
        return{
-          isActive:true,
-          scrollPosition:null,
+        url:""
        }
+   },
+   props:{
+        isActive:{
+            type:Boolean
+        },
    },
    methods:{
-       ToggleNavbar()
-       {
-           this.isActive = !this.isActive
-       },
-       updateScroll()
-       {
-       this.scrollPosition = window.scrollY
-       }
+
    },
-   mounted() {
-       window.addEventListener('scroll', this.updateScroll);
-   }
-   }
+   created()
+   {
+    let url = this.$route.path;
+    this.url=url;
+   },
+   watch: {
+    $route(to) {
+      let item = document.querySelector("a[href='" + to.path + "']");
+      if (item) {
+        item.classList.toggle("c-active");
+        this.url = to.path;
+      }
+     },
+    }
+}
 </script>
 
 <style scoped>
@@ -157,7 +169,7 @@ export default {
        position: relative;
        height: 50px;
        width: 100%;
-       margin:0 5px;
+       margin:5px 5px;
        list-style: none;
        line-height: 50px;
    }
@@ -228,6 +240,11 @@ export default {
        bottom: 0;
        left: 0;
        width: 100%;
+   }
+
+   .log_out_button:hover
+   {
+    cursor: pointer;
    }
 
    .sidebar .profile_content .profile{
@@ -359,4 +376,4 @@ export default {
        background: none;
    }
 </style>
-0
+

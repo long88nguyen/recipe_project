@@ -1,29 +1,55 @@
 <template>
-    <Navbar/>
-    <Header></Header>
-    <Body>
+    <Navbar
+        :isActive="isActive"
+        @ToggleNavbar = "ToggleNavbar"
+        @logout = "logout"
+    />
+    <Header
+    :isActive="isActive"
+    >
+
+    </Header>
+    <Body
+        :isActive="isActive"
+    >
     </Body>
+
 </template>
 
-  <script>
-  import Navbar from "./Navbar";
-  import Header from "./Header";
-  import Body from "./Body";
-//   import UserLoading from "./Loading";
-//   import { mapState } from "vuex";
+<script>
+import Navbar from "./Navbar";
+import Header from "./Header"
+import Body from "./Body.vue";
 
-  export default {
+export default {
     name: "AuthLayout",
     components: {
-      Navbar,
-      Header,
-      Body
+        Navbar,
+        Body,
+        Header
+    },
+    data()
+    {
+        return {
+            isActive:true,
+        }
+    },
+    methods:{
+        ToggleNavbar()
+        {
+            this.isActive=!this.isActive
+        },
+        logout()
+        {
+            console.log(123);
+        }
     },
 
     computed: {
     }
-  };
-  </script>
+};
+</script>
 
-  <style lang="scss" scoped>
-  </style>
+<style>
+
+</style>

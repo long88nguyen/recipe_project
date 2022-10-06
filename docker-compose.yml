@@ -4,30 +4,30 @@ services:
     build:
       context: ./
       dockerfile: docker/Dockerfile
-    container_name: trainingapp
+    container_name: recipe_app
     restart: unless-stopped
     volumes:
       - ./:/var/www/html
     networks:
-      - training_net
+      - recipe_net
 
   db:
     image: mysql:5.7
-    container_name: trainingdb
+    container_name: recipe_db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: travel_booking_db
+      MYSQL_DATABASE: recipe_db
       MYSQL_ROOT_PASSWORD: 123456
     volumes:
       - ./docker/mysql:/etc/mysql/conf.d
     ports:
       - 3311:3306
     networks:
-      - training_net
+      - recipe_net
 
   nginx:
     image: nginx:alpine
-    container_name: trainingnginx
+    container_name: recipe_nginx
     restart: unless-stopped
     ports:
       - 8087:80
@@ -38,8 +38,8 @@ services:
       - ./:/var/www/html
       - ./docker/nginx:/etc/nginx/conf.d/
     networks:
-      - training_net
+      - recipe_net
 
 networks:
-  training_net:
+  recipe_net:
     driver: bridge
