@@ -47,7 +47,7 @@ __webpack_require__.r(__webpack_exports__);
     getCategoryById: function getCategoryById() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/test-api/".concat(this.$route.params.id)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://localhost:8000/api/test-api/".concat(this.$route.params.id)).then(function (res) {
         _this.category = res.data.data;
       });
     },
@@ -57,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
       var formData = new FormData();
       formData.append('name', this.category.name);
       formData.append('image', this.category.image);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/test-api/".concat(this.$route.params.id), formData).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://localhost:8000/api/test-api/".concat(this.$route.params.id), formData).then(function (res) {
         _this2.$router.push({
           name: 'category-list'
         });

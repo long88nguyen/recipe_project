@@ -18,7 +18,7 @@ export const mutations = {
 
 export const actions = {
     async getListCategory({ commit }) {
-        const response = await axios.get("http://localhost:8000/api/test-api");
+        const response = await axios.get("https://localhost:8000/api/test-api");
 
         commit(types.CATEGORY.FETCH_CATEGORY_LIST, response.data);
       },
