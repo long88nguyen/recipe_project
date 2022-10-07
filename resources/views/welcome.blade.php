@@ -18,6 +18,6 @@
         <app-vue></app-vue>
     </div>
 
-    <script src="{{ secure_assets('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
