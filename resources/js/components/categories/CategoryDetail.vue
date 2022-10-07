@@ -13,6 +13,14 @@
                         <label>Name</label>
                         <input type="text" class="form-control" v-model="category.name">
                     </div>
+
+                    <div class="form-group">
+                        <input type="file" @change ="onChange" >
+                    </div>
+                    <img v-bind:src="imagePreview" width="100" height="100" v-show="showPreview" v-if="showPreview"/>
+                    <img :src="`/uploads/${ category.image }`" alt="" v-else>
+
+
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>
         </div>
@@ -27,7 +35,12 @@ import axios from 'axios';
     data()
     {
         return{
-            category:{}
+            category:{
+                name:null,
+                image:null
+            },
+            imagePreview: null,
+            showPreview: false,
         }
     },
     created()
@@ -35,6 +48,25 @@ import axios from 'axios';
         this.getCategoryById();
     },
     methods:{
+        onChange(e)
+        {
+           this.category.image = e.target.files[0];
+           let reader  = new FileReader();
+
+            reader.addEventListener("load", function () {
+            this.showPreview = true;
+            this.imagePreview = reader.result;
+            }.bind(this), false);
+
+            if( this.category.image ){
+
+        if ( /\.(jpe?g|png|gif)$/i.test( this.category.image.name ) ) {
+
+            console.log("here");
+            reader.readAsDataURL( this.category.image );
+        }
+    }
+        },
         getCategoryById(){
             axios.get(`http://localhost:8087/api/test-api/${this.$route.params.id}`)
                 .then((res) => {
@@ -42,7 +74,11 @@ import axios from 'axios';
                 });
         },
         updateProduct(){
-            axios.put(`http://localhost:8087/api/test-api/${this.$route.params.id}`,this.category)
+            let formData = new FormData();
+
+            formData.append('name', this.category.name);
+            formData.append('image', this.category.image);
+            axios.post(`http://localhost:8087/api/test-api/${this.$route.params.id}`,formData)
                 .then((res) => {
                     this.$router.push({name:'category-list'});
                 })
@@ -51,7 +87,7 @@ import axios from 'axios';
  }
  </script>
 
- <style>
+ <style lang="scss">
  .breadcumb-field
      {
          background: white;
@@ -63,6 +99,9 @@ import axios from 'axios';
          margin:10px ;
          background: white;
          height: 80vh;
+         img{
+            width:100px;
+         }
 
      }
  </style>

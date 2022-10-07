@@ -18,8 +18,8 @@ class StoreCategoryService extends CategoryService
      * @param $request
      * @return mixed
      */
-    public function store($data)
+    public function store($request)
     {
-        return $this->repository->store($data);
+        return $this->repository->store($request);
     }
 }

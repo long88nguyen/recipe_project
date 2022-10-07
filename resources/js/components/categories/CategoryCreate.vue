@@ -61,10 +61,10 @@ import axios from 'axios';
         },
         addCategory()
         {
+
             let formData = new FormData();
             formData.append('name', this.category.name);
             formData.append('image', this.category.image);
-
             axios.post('http://localhost:8087/api/test-api',formData)
             .then(response => (
                 this.$router.push({path : "/categories"})

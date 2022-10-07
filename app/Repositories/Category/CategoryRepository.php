@@ -13,11 +13,11 @@ interface CategoryRepository extends RepositoryInterface
 {
     public function index();
 
-    public function store($data);
+    public function store($request);
 
     public function show($id);
 
-    public function updateCategory($id,$data);
+    public function updateCategory($id,$request);
 
     public function delete($id);
 }

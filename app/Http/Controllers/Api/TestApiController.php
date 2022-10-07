@@ -10,6 +10,7 @@ use App\Services\Category\StoreCategoryService;
 use App\Services\Category\UpdateCategoryService;
 use App\Services\Category\GetCategoryByIdService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\Category;
 
 
@@ -37,21 +38,15 @@ class TestApiController extends ApiController
 
     public function store(Request $request)
     {
-        $data = $request->all();
-        if($request->file('image'))
-        {
-            $image=$request->file('image');
-            $name =  time().".".$image->getClientOriginalName();
-            $image->move(public_path('uploads'),$name);
-            $data['image'] = $name;
-        }
-        $result =  $this->storeCategoryService->store($data);
+
+        $result =  $this->storeCategoryService->store($request);
         return $this->sendSuccess($result);
     }
 
     public function update(Request $request,$id)
     {
-        $result =  $this->updateCategoryService->updateCategory($id,$request->all());
+
+        $result =  $this->updateCategoryService->updateCategory($id, $request);
         return $this->sendSuccess($result);
     }
 
