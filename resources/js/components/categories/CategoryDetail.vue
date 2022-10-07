@@ -68,7 +68,7 @@ import axios from 'axios';
     }
         },
         getCategoryById(){
-            axios.get(`http://localhost:8087/api/test-api/${this.$route.params.id}`)
+            axios.get(`http://localhost:8000/api/test-api/${this.$route.params.id}`)
                 .then((res) => {
                     this.category = res.data.data
                 });
@@ -78,7 +78,7 @@ import axios from 'axios';
 
             formData.append('name', this.category.name);
             formData.append('image', this.category.image);
-            axios.post(`http://localhost:8087/api/test-api/${this.$route.params.id}`,formData)
+            axios.post(`http://localhost:8000/api/test-api/${this.$route.params.id}`,formData)
                 .then((res) => {
                     this.$router.push({name:'category-list'});
                 })

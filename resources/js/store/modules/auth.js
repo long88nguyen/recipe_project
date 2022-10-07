@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import * as types from "../mutation-types";
 // import api from "@/api/api";
-const api = "http://localhost:8087/api"
+const api = "http://localhost:8000/api"
 
 export const state = {
   token: Cookies.get("access_token"),
