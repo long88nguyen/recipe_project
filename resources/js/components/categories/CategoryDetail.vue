@@ -68,7 +68,7 @@ import axios from 'axios';
     }
         },
         getCategoryById(){
-            axios.get(`https://localhost:8000/api/test-api/${this.$route.params.id}`)
+            axios.get(`https://heroku5012.herokuapp.com/api/test-api/${this.$route.params.id}`)
                 .then((res) => {
                     this.category = res.data.data
                 });
@@ -78,7 +78,7 @@ import axios from 'axios';
 
             formData.append('name', this.category.name);
             formData.append('image', this.category.image);
-            axios.post(`https://localhost:8000/api/test-api/${this.$route.params.id}`,formData)
+            axios.post(`https://heroku5012.herokuapp.com/api/test-api/${this.$route.params.id}`,formData)
                 .then((res) => {
                     this.$router.push({name:'category-list'});
                 })

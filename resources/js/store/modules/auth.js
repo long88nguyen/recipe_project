@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import * as types from "../mutation-types";
 // import api from "@/api/api";
-const api = "https://localhost:8000/api"
+const api = "https://heroku5012.herokuapp.com/api"
 
 export const state = {
   token: Cookies.get("access_token"),

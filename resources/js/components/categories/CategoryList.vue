@@ -67,14 +67,14 @@ export default {
         {
 
             axios
-            .get('https://localhost:8000/api/test-api')
+            .get('https://heroku5012.herokuapp.com/api/test-api')
             .then(response => {
                 this.categories = response.data.data
             });
         },
         deleteCategory(id)
         {
-            axios.delete(`https://localhost:8000/api/test-api/${id}` )
+            axios.delete(`https://heroku5012.herokuapp.com/api/test-api/${id}` )
                  .then(response => {
                     let i = this.categories.map(data => data.id ).indexOf(id);
                     this.categories.splice(i, 1);

@@ -47,7 +47,7 @@ __webpack_require__.r(__webpack_exports__);
       var formData = new FormData();
       formData.append('name', this.category.name);
       formData.append('image', this.category.image);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://localhost:8000/api/test-api', formData).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://heroku5012.herokuapp.com/api/test-api', formData).then(function (response) {
         return _this.$router.push({
           path: "/categories"
         });
