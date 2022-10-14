@@ -12,8 +12,9 @@
         "laravel/passport": "*",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "lcobucci/jwt": "3.3.3",
         "prettus/l5-repository": "^2.8",
-        "tymon/jwt-auth": "^1.0.2"
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
