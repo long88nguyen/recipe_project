@@ -7,7 +7,6 @@ import store from "./store";
 
 import BootstrapVue3 from 'bootstrap-vue-3'
 
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -24,8 +23,6 @@ app.component('app-vue',AppVue)
 app.use(BootstrapVue3)
 
 app.use(Antd)
-
-app.use(FontAwesomeIcon)
 
 app.use(store)
 
