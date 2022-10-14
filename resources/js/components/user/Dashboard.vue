@@ -31,10 +31,10 @@
 
             <a-col :xxl="2" :xl="2" :lg="3" :md="3" :xs="3">
                 <div class="nav-account">
-                    <img src="../../uploads/avatar.png" alt="">
+                    <img src="../../uploads/avatar.png" alt="" @click="toggleProfile">
                     <span> hello </span>
-                    <div class="nav-account-menu">
-                        <h3>Someone Famous <br> <span>Website designer</span></h3>
+                    <div class="nav-account-menu" :class="{activce:isActiveVisible}">
+                       
                         <ul>
                             <li><i class="fa-solid fa-address-card"></i><a href="">My Profile</a></li>
                             <li><i class="fa-solid fa-pen-to-square"></i><a href="">Edit profile</a></li>
@@ -54,19 +54,30 @@
             </a-col>
         </a-row>
     </nav>
+    <Product></Product>
 </template>
 
 <script>
+
+import Product from "./Product.vue"
 export default {
+    components:{
+      Product
+    },
     data()
     {
         return {
-
+          isActiveVisible : false
         }
     },
     methods:
     {
+      toggleProfile()
+      {
 
+        this.isActiveVisible = !this.isActiveVisible;
+        console.log(this.isActiveVisible);
+      }
     }
 }
 </script>
@@ -82,11 +93,13 @@ export default {
 }
 
 body{
-    background: gray;
+    background: #EAECEE;
 }
 
 nav {
+  z-index: 1;
   position: fixed;
+  top:0;
   background: white;
   box-shadow: 0 0 5px 0 gray;
   height: 80px;
@@ -192,13 +205,14 @@ nav {
     }
     .nav-account-menu{
         position:absolute;
-        top:80px;
-        padding:10px 10px;
-        background: black;
+        top:72px;
+        background: #2E4053;
         width: 200px;
         box-sizing: 0 5px 25px rgba(0,0,0,0.1);
         border-radius: 15px;
-        transition:0.5s;
+        max-height: 0;
+        transition: max-height 0.5s;
+        overflow: hidden;
         h3
         {
             widows: 100%;
@@ -224,8 +238,15 @@ nav {
                 display: flex;
                 align-items: center;
                 i{
-                    color:white;
-                    margin-right:10px;
+                  color: white;
+                    margin-right: 10px;
+                    display: flex;
+                    width: 30px;
+                    height: 30px;
+                    justify-content: center;
+                    background: red;
+                    align-items: center;
+                    border-radius: 50%;
                 }
                 a{
                     display: inline-block;
@@ -234,19 +255,22 @@ nav {
                     font-weight: bold;
                     transition:0.5s;
                 }
+                a:hover{
+                  transition: 0.4s;
+                  border-bottom:3px solid white;
+                }
             }
+            li:first-child{
+              border-top: none;
+            }
+
         }
     }
-    .nav-account-menu::before
+    .activce
     {
-        content:" ";
-        position:absolute;
-        top:-9px;
-        right: 105px;
-        width:30px;
-        height: 30px;
-        background: black;
-        transform: rotate(45deg);
+      max-height:300px;
+      padding:10px;
+      transition:0.5s;
     }
 
   }
@@ -265,6 +289,7 @@ nav {
     }
   }
 }
+
 
 @media (max-width: 1220px) {
   nav {
@@ -297,6 +322,38 @@ nav {
         }
       }
     }
+    .nav-account{
+      .nav-account-menu{
+        width: 170px;
+        ul
+        {
+          li
+          {
+            i{
+
+               font-size: 13px;
+               display: flex;
+                width: 25px;
+                height: 25px;
+                justify-content: center;
+                background: red;
+                align-items: center;
+                border-radius: 50%;
+
+            }
+            a{
+                font-weight: 400;
+                font-size: 13px;
+
+            }
+            a:hover{
+              transition: 0.4s;
+              border-bottom:3px solid white;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -306,7 +363,7 @@ nav {
       display: block;
     }
 
-    ul {
+    .nav_menu-list ul {
       display: none;
     }
   }
@@ -344,6 +401,41 @@ nav {
         span{
             display: none;
         }
+        .nav-account-menu{
+        width: 130px;
+        border-radius: 10px;
+        ul
+        {
+          padding-left:0;
+          li
+          {
+            padding-top:5px;
+            display: flex;
+            i{
+                margin-right:5px;
+               font-size: 10px;
+               display: flex;
+                width: 20px;
+                height: 20px;
+                justify-content: center;
+                background: red;
+                align-items: center;
+                border-radius: 50%;
+
+            }
+            a{
+                font-weight: 300;
+                transition:0.5s;
+            font-size: 10px;
+
+            }
+            a:hover{
+              transition: 0.4s;
+              border-bottom:3px solid white;
+            }
+          }
+        }
+      }
     }
   }
 }
