@@ -45,6 +45,10 @@ const routes =
                     component:import("../components/products/ProductCreate.vue")
                 }
             ]
+        },
+        {
+            path:'/dashboard',
+            component:import("../components/user/Dashboard.vue")
         }
     ]
 
