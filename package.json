@@ -16,7 +16,7 @@
         "@vue/compiler-sfc": "^3.2.21",
         "axios": "^0.21.4",
         "laravel-mix": "^6.0.6",
-        "lint": "^0.7.0",
+        "lint": "^1.1.2",
         "lodash": "^4.17.19",
         "node-sass": "^7.0.3",
         "postcss": "^8.1.14",
@@ -26,8 +26,6 @@
         "vue-template-compiler": "^2.7.10"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^6.2.0",
-        "@fortawesome/vue-fontawesome": "^3.0.1",
         "ant-design-vue": "^3.2.12",
         "bootstrap-icons": "^1.9.1",
         "bootstrap-vue": "^2.22.0",
