@@ -47,9 +47,33 @@ const routes =
             ]
         },
         {
-            path:'/dashboard',
-            component:import("../components/user/Dashboard.vue")
-        }
+            path:'/',
+            component:import("../components/user/Dashboard.vue"),
+            children:
+            [
+                {
+                    path:'/dashboard',
+                    component:import('../components/user/HomePage.vue')
+                },
+                {
+                    path:"/post-list",
+                    component:import('../components/user/PostList.vue')
+                },
+                {
+                    path:"/post-detail",
+                    component:import('../components/user/PostDetail.vue')
+                },
+                {
+                    path:"/profile",
+                    component:import('../components/user/Profile.vue')
+                },
+                {
+                    path:"/create-post",
+                    component:import('../components/user/CreatePost.vue')
+                }
+            ]
+        },
+       
     ]
 
 const router = createRouter({

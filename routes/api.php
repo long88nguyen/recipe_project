@@ -25,9 +25,12 @@ Route::get('test-api/{id}', [\App\Http\Controllers\Api\TestApiController::class,
 Route::delete('test-api/{id}', [\App\Http\Controllers\Api\TestApiController::class,'delete']);
 
 
+
+
 Route::post('/login',[\App\Http\Controllers\Api\AuthController::class,'login']);
 Route::post('/register',[\App\Http\Controllers\Api\AuthController::class,'register']);
 
 Route::group(['middleware' => 'auth:api'], function() {
     Route::post('logout',[\App\Http\Controllers\Api\AuthController::class,'logout']);
+    Route::get('/post-list',[\App\Http\Controllers\Api\PostController::class,'getAll']);
 });
