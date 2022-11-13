@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Rate extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','image'];
+    protected $fillable = ['post_id','member_id','number_rating'];
 }

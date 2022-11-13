@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\ErrorType;
 use App\Http\Controllers\Controller;
+use App\Models\Member;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -21,25 +25,50 @@ class AuthController extends Controller
 
     public function register(Request $request): JsonResponse
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed'
-        ]);
-        if ($validator->fails()) {
+        try{
+            DB::beginTransaction();
+            $data = $request->all();
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|string|email|unique:users',
+                'password' => 'required|string|confirmed' // password_confimation
+            ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => 'fails',
+                    'message' => $validator->errors()->first(),
+                    'errors' => $validator->errors()->toArray(),
+                ]);
+            }
+
+            $user = new User([
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password'))
+            ]);
+            $user->save();
+
+            
+            $dataMember = [
+                'user_id' => $user->id,
+                'name' => $data['name'],
+            ];
+            Member::create( $dataMember);
+
+            DB::commit();
             return response()->json([
-                'status' => 'fails',
-                'message' => $validator->errors()->first(),
-                'errors' => $validator->errors()->toArray(),
+                'status' => 'success',
             ]);
         }
-        $user = new User([
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password'))
-        ]);
-        $user->save();
-        return response()->json([
-            'status' => 'success',
-        ]);
+        catch(Exception $e)
+        {
+            DB::rollBack();
+            throw $e;
+            return [
+                'success' => false,
+                'code' => ErrorType::CODE_5000,
+                'status_code' => ErrorType::STATUS_500,
+                'message' => $e->getMessage()
+            ];
+        }
     }
 
 

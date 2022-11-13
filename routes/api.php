@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,5 +33,16 @@ Route::post('/register',[\App\Http\Controllers\Api\AuthController::class,'regist
 
 Route::group(['middleware' => 'auth:api'], function() {
     Route::post('logout',[\App\Http\Controllers\Api\AuthController::class,'logout']);
-    Route::get('/post-list',[\App\Http\Controllers\Api\PostController::class,'getAll']);
+
+    Route::group(['prefix' => 'post'], function () {
+        Route::get('/',[\App\Http\Controllers\Api\PostController::class,'getAll']);
+        Route::post('/',[\App\Http\Controllers\Api\PostController::class,'store']);
+        Route::get('/create',[\App\Http\Controllers\Api\PostController::class,'create']);
+        Route::get('/{id}/edit',[\App\Http\Controllers\Api\PostController::class,'edit']);
+        Route::post('/{id}/update',[\App\Http\Controllers\Api\PostController::class,'update']);
+        Route::delete('/{id}',[\App\Http\Controllers\Api\PostController::class,'delete']);
+        Route::post('/approval',[\App\Http\Controllers\Api\PostController::class,'approval']);
+        Route::get('/{id}/approve',[\App\Http\Controllers\Api\PostController::class,'approve']);     
+    });
+
 });
