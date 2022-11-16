@@ -5,7 +5,7 @@
         <a-row>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../../uploads/images/ckfood1.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Món gà chiên</h2>
                         <p>Món ăn làm từ gà</p>
@@ -18,7 +18,7 @@
             </a-col>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../../uploads/images/ckfood2.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Gà KFC</h2>
                         <p>Món gà ăn nhanh KFC</p>
@@ -31,7 +31,7 @@
             </a-col>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../../uploads/images/ckfood3.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Món gà sốt</h2>
                         <p>Gà sốt vang thơm ngon</p>
@@ -44,7 +44,7 @@
             </a-col>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../../uploads/images/eggfood.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Trứng chiên</h2>
                         <p>Món trứng chiên thơm ngon</p>
@@ -57,7 +57,7 @@
             </a-col>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../../uploads/images/eggfood1.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Món trứng ốp la</h2>
                         <p>Món trứng ốp la </p>
@@ -70,7 +70,7 @@
             </a-col>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../../uploads/images/meatfood1.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Thịt bò sốt</h2>
                         <p>Món thịt bò sốt vang</p>

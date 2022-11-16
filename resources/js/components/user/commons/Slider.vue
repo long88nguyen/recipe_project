@@ -6,11 +6,11 @@
           dotsClass = "slick-dots"
           autoplay>
             <div class="hello">
-              <img src="../../../uploads/images/banner2.jpg" alt="">
+              <img src="" alt="">
             </div>
-            <div class="hello"><img src="../../../uploads/images/banner3.jpg" alt=""></div>
-            <div class="hello"><img src="../../../uploads/images/banner4.jpg" alt=""></div>
-            <div class="hello"><img src="../../../uploads/images/banner5.jpg" alt=""></div>
+            <div class="hello"><img src="" alt=""></div>
+            <div class="hello"><img src="" alt=""></div>
+            <div class="hello"><img src="" alt=""></div>
           </a-carousel>
          
             <div class="new-product">

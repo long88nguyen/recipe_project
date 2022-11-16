@@ -1,7 +1,7 @@
 <template>
   <div class="footer_side">
         <h1 class="footer-title">
-            <img src="../../../uploads/images/logo_foot.png" alt="">
+            <img src="" alt="">
                 Good food
         </h1>
         <ul class="footer-network">

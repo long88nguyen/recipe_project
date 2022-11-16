@@ -5,7 +5,7 @@
             <a-col :xxl="18" :xl="18" :lg="18">
                 <div class="post_infomation">
                     <div class="post_account">
-                        <img src="../../uploads/images/avatar1.jpg" alt="">
+                        <img src="" alt="">
                         <div class="post_acount-detail">
                             <h1 class="post_account-name">
                             Long Nguyễn
@@ -19,12 +19,12 @@
                    <div class="post_detail-content"></div>
                    <div class="post_detail-img">
                     <div class="image1">            
-                       <div class="image1_1"><img src="../../uploads/images/ckfood1.jpg" alt=""></div>
-                       <div class="image1_2"><img src="../../uploads/images/ckfood2.jpg" alt=""></div>
+                       <div class="image1_1"><img src="" alt=""></div>
+                       <div class="image1_2"><img src="" alt=""></div>
                     </div>
                     <div class="image2">            
-                       <div class="image2_1"><img src="../../uploads/images/meatfood.jpg" alt=""></div>
-                       <div class="image2_2"><img src="../../uploads/images/meatfood1.jpg" alt=""></div>
+                       <div class="image2_1"><img src="" alt=""></div>
+                       <div class="image2_2"><img src="" alt=""></div>
                     </div>
                    </div>
                    <div class="post_detail-time">
@@ -85,7 +85,7 @@
                                   Cook and stir until spinach has wilted and sausage is warmed through; serve.</li>
                         </ul>
                         <div class="img_result">
-                            <img src="../../uploads/images/ckfood2.jpg" alt="">
+                            <img src="" alt="">
                         </div>
                         
                    </div>

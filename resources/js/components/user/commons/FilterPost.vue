@@ -3,43 +3,43 @@
         <div class="filter_post">
             <div class="filter_post-option">
                 <div class="filter_post-item active">
-                    <img src="../../../uploads/images/eggfood.jpg" alt="">
+                    <img src="" alt="">
                     <h5 class="filter_post-title">
                         Tất cả
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="../../../uploads/images/eggfood1.jpg" alt="">
+                    <img src="" alt="">
                     <h5 class="filter_post-title">
                         Trứng gà
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="../../../uploads/images/eggfood2.jpg" alt="">
+                    <img src="" alt="">
                     <h5 class="filter_post-title">
                         Trứng vịt
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="../../../uploads/images/ckfood1.jpg" alt="">
+                    <img src="" alt="">
                     <h5 class="filter_post-title">
                         Bò Kobe
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="../../../uploads/images/ckfood2.jpg" alt="">
+                    <img src="" alt="">
                     <h5 class="filter_post-title">
                         Cá thu
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="../../../uploads/images/ckfood3.jpg" alt="">
+                    <img src="" alt="">
                     <h5 class="filter_post-title">
                         Thịt gà
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="../../../uploads/images/meatfood.jpg" alt="">
+                    <img src="" alt="">
                     <h5 class="filter_post-title">
                         Thịt lợn
                     </h5>

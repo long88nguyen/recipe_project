@@ -22,6 +22,16 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Post\PostRepository::class,
             \App\Repositories\Post\PostRepositoryEloquent::class
         );
+
+        $this->app->bind(
+            \App\Repositories\Rate\RateRepository::class,
+            \App\Repositories\Rate\RateRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Favourite\FavouriteRepository::class,
+            \App\Repositories\Favourite\FavouriteRepositoryEloquent::class
+        );
     }
 
     /**

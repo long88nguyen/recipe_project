@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Favourite extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['post_id','member_id','created_at','updated_at'];
 }

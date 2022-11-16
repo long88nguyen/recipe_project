@@ -41,8 +41,18 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::get('/{id}/edit',[\App\Http\Controllers\Api\PostController::class,'edit']);
         Route::post('/{id}/update',[\App\Http\Controllers\Api\PostController::class,'update']);
         Route::delete('/{id}',[\App\Http\Controllers\Api\PostController::class,'delete']);
-        Route::post('/approval',[\App\Http\Controllers\Api\PostController::class,'approval']);
-        Route::get('/{id}/approve',[\App\Http\Controllers\Api\PostController::class,'approve']);     
+        Route::post('/approval',[\App\Http\Controllers\Api\PostController::class,'listApproval']);
+        Route::post('/{id}/approve',[\App\Http\Controllers\Api\PostController::class,'approve']);     
     });
 
+    Route::get('/common',[\App\Http\Controllers\Api\CommonController::class,'common']);
+
+    Route::group(['prefix' => 'rate'], function () {
+        Route::post('/{id}',[\App\Http\Controllers\Api\RateController::class,'ratePost']);
+    });
+
+    Route::group(['prefix' => 'favourite'], function () {
+        Route::post('/{id}',[\App\Http\Controllers\Api\FavouriteController::class,'favouritePost']);
+        Route::delete('/{id}',[\App\Http\Controllers\Api\FavouriteController::class,'unfavouritePost']);
+    });
 });
