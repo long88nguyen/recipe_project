@@ -47,40 +47,32 @@
 
 <script>
 
+import { throwStatement } from '@babel/types';
 import axios from 'axios';
 
 export default {
-    data()
-    {
-        return {
-            categories:[]
-        }
-    },
+    // data()
+    // {
+    //     return {
+    //         categories:[]
+    //     }
+    // },
 
-    created()
-    {
-        this.getCategoryList();
-    }
-    ,
-    methods:{
-        getCategoryList()
-        {
-
-            axios
-            .get('http://localhost:8087/api/test-api')
-            .then(response => {
-                this.categories = response.data.data
-            });
-        },
-        deleteCategory(id)
-        {
-            axios.delete(`http://localhost:8087/api/test-api/${id}` )
-                 .then(response => {
-                    let i = this.categories.map(data => data.id ).indexOf(id);
-                    this.categories.splice(i, 1);
-                 });
-        }
-    }
+    // created()
+    // {
+    //     this.fetchDataCommon();
+    // },
+    // computed:{
+    //     ...mapGetters({
+    //         common: "common/userCommon",
+    //      }),
+    // },  
+    // methods:{
+    //    async fetchDataCommon ()
+    //    {
+    //     await this.$store.dispatch("common/getUserCommon",{});
+    //    }
+    // }
 }
 </script>
 

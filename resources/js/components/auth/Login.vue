@@ -1,36 +1,23 @@
 
 <template>
     <div>
-    <b-container>
-        <b-form @submit.prevent="login">
-
-            <b-form-group
-            id="input-group-1"
-            label="Email"
-            >
-            <b-form-input
-                id="input-1"
-                v-model="form.email"
-                type="email"
-                placeholder="Enter email"
-            ></b-form-input>
-            </b-form-group>
-
-            <b-form-group id="input-group-2" label="Password:" label-for="input-2">
-            <b-form-input
-                type="password"
-                id="input-2"
-                v-model="form.password"
-                placeholder="Password"
-            ></b-form-input>
-            </b-form-group>
-
-
-            <b-button type="submit" class="ml-2" variant="primary">Submit</b-button>
-            <b-button type="reset" variant="danger">Reset</b-button>
-      </b-form>
-    </b-container>
-
+      <div class="container">
+        <h1>Login</h1>
+        <form action="" @submit.prevent="login">
+        <div class="form-group">
+            <label for="">email</label>
+            <input type="text" class="form-control" v-model = "form.email">
+        </div>
+        <div class="form-group">
+            <label for="">password</label>
+            <input type="password" class="form-control" v-model = "form.password">
+        </div>
+        <button class="btn btn-outline-primary mt-2">
+          Login
+        </button>
+      </form>
+      </div>
+    
     </div>
   </template>
 

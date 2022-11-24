@@ -10,3 +10,7 @@ export const AUTH = {
   export const CATEGORY = {
     FETCH_CATEGORY_LIST: "FETCH_CATEGORY_LIST",
   };
+
+  export const COMMON = {
+    USER_INFO: "USER_INFO"
+  }

@@ -18,7 +18,7 @@ const routes =
             path:"/",
             component:import("../commons/AuthLayout.vue"),
             meta: {
-                requiresAuth: true
+                requiresAuth: true,
               },
             children:[
                 {
@@ -49,6 +49,9 @@ const routes =
         {
             path:'/',
             component:import("../components/user/Dashboard.vue"),
+            meta: {
+                requiresAuth: false,
+              },
             children:
             [
                 {
@@ -81,41 +84,41 @@ const router = createRouter({
     routes
 })
 
-// function globalMiddleware() {
-//     return [middlewareAuth, redirectCallback];
-//   }
+function globalMiddleware() {
+    return [middlewareAuth, redirectCallback];
+  }
 
-// function nextFactory(context, middleware, index) {
-//     const subsequentMiddleware = middleware[index];
-//     if (!subsequentMiddleware) return context.next;
+function nextFactory(context, middleware, index) {
+    const subsequentMiddleware = middleware[index];
+    if (!subsequentMiddleware) return context.next;
 
-//     return (...parameters) => {
-//       context.next(...parameters);
-//       const nextMiddleware = nextFactory(context, middleware, index + 1);
-//       subsequentMiddleware({ ...context, next: nextMiddleware });
-//     };
-//   }
+    return (...parameters) => {
+      context.next(...parameters);
+      const nextMiddleware = nextFactory(context, middleware, index + 1);
+      subsequentMiddleware({ ...context, next: nextMiddleware });
+    };
+  }
 
-//   router.beforeEach((to, from, next) => {
-//     var middleware = null;
-//     var routeMiddleware = null;
+  router.beforeEach((to, from, next) => {
+    var middleware = null;
+    var routeMiddleware = null;
 
-//     if (to.meta.middleware) {
-//       routeMiddleware = Array.isArray(to.meta.middleware)
-//         ? to.meta.middleware
-//         : [to.meta.middleware];
-//     }
-//     middleware = routeMiddleware
-//       ? globalMiddleware().concat(routeMiddleware)
-//       : globalMiddleware();
+    if (to.meta.middleware) {
+      routeMiddleware = Array.isArray(to.meta.middleware)
+        ? to.meta.middleware
+        : [to.meta.middleware];
+    }
+    middleware = routeMiddleware
+      ? globalMiddleware().concat(routeMiddleware)
+      : globalMiddleware();
 
-//     if (middleware.length > 0) {
-//       const context = { to, from, next, router };
-//       const nextMiddleware = nextFactory(context, middleware, 1);
+    if (middleware.length > 0) {
+      const context = { to, from, next, router };
+      const nextMiddleware = nextFactory(context, middleware, 1);
 
-//       return middleware[0]({ ...context, next: nextMiddleware });
-//     }
+      return middleware[0]({ ...context, next: nextMiddleware });
+    }
 
-//     return next();
-//   });
+    return next();
+  });
 export default router
