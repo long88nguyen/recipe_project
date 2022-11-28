@@ -1,7 +1,7 @@
 import { createRouter,createWebHistory } from "vue-router";
 
-import CategoryList from '../components/categories/CategoryList.vue'
-import ProductList from '../components/products/ProductList.vue'
+import CategoryList from '../components/admin/categories/CategoryList.vue'
+import ProductList from '../components/admin/products/ProductList.vue'
 import middlewareAuth from "./middleware/auth";
 import redirectCallback from './middleware/redirect-callback'
 const routes =
@@ -16,11 +16,16 @@ const routes =
         },
         {
             path:"/",
-            component:import("../commons/AuthLayout.vue"),
+            component:import("../components/admin/commons/AuthLayout.vue"),
             meta: {
                 requiresAuth: true,
               },
             children:[
+                {
+                    path:'/dashboard',
+                    component: import("../components/admin/dashboard/Dashboard.vue"),
+                    name:'Dashboard',
+                },
                 {
                     path:'/categories',
                     component: CategoryList,
@@ -28,12 +33,12 @@ const routes =
                 },
                 {
                     path:'/categories/create',
-                    component:import("../components/categories/CategoryCreate.vue"),
+                    component:import("../components/admin/categories/CategoryCreate.vue"),
                     name:'category-create'
                 },
                 {
                     path:'categories/detail/:id',
-                    component:import("../components/categories/CategoryDetail.vue"),
+                    component:import("../components/admin/categories/CategoryDetail.vue"),
                     name:'category-detail'
                 },
                 {
@@ -42,7 +47,7 @@ const routes =
                 },
                 {
                     path:'/products/create',
-                    component:import("../components/products/ProductCreate.vue")
+                    component:import("../components/admin/products/ProductCreate.vue")
                 }
             ]
         },
@@ -55,7 +60,7 @@ const routes =
             children:
             [
                 {
-                    path:'/dashboard',
+                    path:'/home',
                     component:import('../components/user/HomePage.vue')
                 },
                 {

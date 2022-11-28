@@ -6,6 +6,7 @@ use App\Models\Category;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Category\CategoryRepository;
+use Carbon\Carbon;
 
 /**
  * Class CategoryRepositoryEloquent.
@@ -32,13 +33,27 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
-    public function index()
+    public function getAll()
     {
-        return Category::orderBy('id','DESC')->get();
+        $getCategory = $this->model->orderBy('id','ASC')->get();
+        return [
+            'listCategory' =>  $getCategory
+        ];
     }
 
-    public function store($data)
+    public function store($request)
     {
+        $timeNow = now();
+        $data = [];
+        if ($image = $request->file('image')) {
+            $destinationPath = public_path('uploads/category');
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data['image'] = "$profileImage";
+        }
+        $data['name'] = $request->name;
+        $data['created_at'] = $timeNow;
+        $data['updated_at'] = $timeNow;
         return $this->model->create($data);
     }
 

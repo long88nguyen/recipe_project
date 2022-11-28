@@ -11,9 +11,9 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface CategoryRepository extends RepositoryInterface
 {
-    public function index();
+    public function getAll();
 
-    public function store($data);
+    public function store($request);
 
     public function show($id);
 

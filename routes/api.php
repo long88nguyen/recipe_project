@@ -32,8 +32,13 @@ Route::post('/login',[\App\Http\Controllers\Api\AuthController::class,'login']);
 Route::post('/register',[\App\Http\Controllers\Api\AuthController::class,'register']);
 
 Route::group(['middleware' => 'auth:api'], function() {
+    //logout
     Route::post('logout',[\App\Http\Controllers\Api\AuthController::class,'logout']);
 
+    //common
+    Route::get('/common',[\App\Http\Controllers\Api\CommonController::class,'common']);
+
+    //post
     Route::group(['prefix' => 'post'], function () {
         Route::get('/',[\App\Http\Controllers\Api\PostController::class,'getAll']);
         Route::post('/',[\App\Http\Controllers\Api\PostController::class,'store']);
@@ -45,12 +50,19 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::post('/{id}/approve',[\App\Http\Controllers\Api\PostController::class,'approve']);     
     });
 
-    Route::get('/common',[\App\Http\Controllers\Api\CommonController::class,'common']);
+    //categories
+    Route::group(['prefix' => 'category'], function () {
+        Route::get('/',[\App\Http\Controllers\Api\CategoryController::class,'getAll']);
+        Route::post('/',[\App\Http\Controllers\Api\CategoryController::class,'store']);
+    });
 
+    
+    //rate
     Route::group(['prefix' => 'rate'], function () {
         Route::post('/{id}',[\App\Http\Controllers\Api\RateController::class,'ratePost']);
     });
 
+    //favourite
     Route::group(['prefix' => 'favourite'], function () {
         Route::post('/{id}',[\App\Http\Controllers\Api\FavouriteController::class,'favouritePost']);
         Route::delete('/{id}',[\App\Http\Controllers\Api\FavouriteController::class,'unfavouritePost']);

@@ -3,7 +3,7 @@
   </template>
 
   <script>
-    import AuthLayout from "./commons/AuthLayout.vue"
+    import AuthLayout from "./components/admin/commons/AuthLayout.vue"
   export default {
     el: "#app",
     components: {

@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import * as types from "../mutation-types";
 // import api from "@/api/api";
-const api = "http://localhost:8087/api"
+const api = "http://localhost:8000/api"
 
 export const state = {
   token: Cookies.get("access_token"),
@@ -22,7 +22,8 @@ export const getters = {
 export const mutations = {
   [types.AUTH.AUTH_LOGIN](state, account) {
     state.token = account.data.access_token;
-    let cookieOptions = { expires: account.data.expires_in / 86400 }
+    state.account = account.data
+    let cookieOptions = { expires: account.data.expires_in  }
     Cookies.set("access_token", account.data.access_token, cookieOptions);
   },
 

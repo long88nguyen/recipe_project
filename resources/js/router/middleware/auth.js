@@ -15,7 +15,7 @@ export default async function auth({
         path: "/login"
       });
     } else if (token && tokenStore) {
-      // await store.dispatch("common/getUserCommon");
+      await store.dispatch("common/getUserCommon");
     }
     next();
   } else {

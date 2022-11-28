@@ -12,7 +12,9 @@ class CommonController extends ApiController
 {
     public function common()
     {
-        $memberCommon = Auth::user()->member;
-        return $this->sendSuccess($memberCommon);
+       $dataCommon = Auth::user()->member;
+       return $this->sendSuccess([
+        'member_info' => $dataCommon
+       ]);
     }
 }

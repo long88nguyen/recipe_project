@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from "../../axios";
 import * as types from "../mutation-types";
 import api from "../../api/api";
 
 export const state = {
-    categoryList:[],
+    categoryList:{},
 }
 
 export const getters = {
@@ -11,15 +11,17 @@ export const getters = {
 }
 
 export const mutations = {
-    [types.CATEGORY.FETCH_CATEGORY_LIST](state, categoryList) {
-        state.categoryList = categoryList;
+    [types.CATEGORY.FETCH_CATEGORY_LIST](state, data) {
+        state.categoryList = data.listCategory;
       },
 }
 
 export const actions = {
-    async getListCategory({ commit }) {
-        const response = await axios.get("http://localhost:8087/api/test-api");
-
-        commit(types.CATEGORY.FETCH_CATEGORY_LIST, response.data);
+    async getCategories({ commit }) {
+        const response = await axios.get(api.LIST_CATEGORY);
+        commit(types.CATEGORY.FETCH_CATEGORY_LIST, response.data.data);
       },
+    async createCategory({ commit }, params) {
+        await axios.post(api.CATEGORY_CREATE, params);
+    },
 }
