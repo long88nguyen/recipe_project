@@ -59,7 +59,10 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
 
     public function show($id)
     {
-        return $this->model->find($id);
+        $getCategoryById = $this->model->find($id);
+        return [
+            "getCategoryById" => $getCategoryById
+        ];
     }
 
     public function updateCategory($id,$data)

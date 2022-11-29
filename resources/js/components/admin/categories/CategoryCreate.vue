@@ -77,7 +77,7 @@ import axios from 'axios';
  }
  </script>
 
- <style>
+ <style scoped>
  .breadcumb-field
      {
          background: white;
@@ -88,7 +88,6 @@ import axios from 'axios';
      {
          margin:10px ;
          background: white;
-         height: 80vh;
 
      }
  </style>

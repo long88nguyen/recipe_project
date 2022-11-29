@@ -94,7 +94,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 * {
   margin: 0;
   padding: 0px;
@@ -104,11 +104,7 @@ export default {
   list-style: none;
 }
 
-body{
-  background: rgba(248,246,242,1);
-  width: 100% !important;
-  overflow: visible !important;
-}
+
 .container-layout
 {
   background: white;

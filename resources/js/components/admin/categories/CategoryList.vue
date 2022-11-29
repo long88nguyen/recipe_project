@@ -1,18 +1,20 @@
 <template>
-   <div class="breadcumb-field">
-        <a-breadcrumb>
-        <a-breadcrumb-item><router-link to="/categories">Home</router-link></a-breadcrumb-item>
-        <a-breadcrumb-item><router-link to="/categories">Categories</router-link></a-breadcrumb-item>
-        </a-breadcrumb>
-    </div>
+   
     <div class="category-product">
-        <router-link to="/categories/create">
-        <div class="btn btn-primary">
+       
+        <div class="table-wrapper">
+          <div class="breadcumb-field">
+            <a-breadcrumb>
+            <a-breadcrumb-item><router-link to="/categories">Home</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item><router-link to="/categories">Categories</router-link></a-breadcrumb-item>
+            </a-breadcrumb>
+        </div>
+          <router-link to="/categories/create">
+        <div class="btn btn-primary mb-3">
 
             <span> Thêm mới danh mục</span>
         </div>
         </router-link>
-        <div class="table-wrapper">
           <table class="content-table">
                 <thead>
                     <tr>
@@ -28,8 +30,8 @@
                         <td>{{ category.id }}</td>
                         <td>{{ category.name }}</td>
                         <td> <img :src="`uploads/category/${category.image}`" class="img-thumbnail" alt=""/></td>
-                        <td>{{ category.created_at }}</td>
-                        <td><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash"></i></td>
+                        <td>{{ dateFormat(category.created_at) }}</td>
+                        <td><i class="fa-solid fa-pen-to-square" style="color:blue"></i><i class="fa-solid fa-trash" style="color:red"></i></td>
                     </tr>
                 </tbody>
           </table>
@@ -39,6 +41,7 @@
 
 <script>
 
+import moment from "moment"
 import { mapGetters } from 'vuex';
 
 export default {
@@ -66,28 +69,50 @@ export default {
        {
           await this.$store.dispatch("categories/getCategories")
        },
+       dateFormat(value)
+       {
+        if (value) {
+        return moment(String(value)).format("HH:mm:ss DD/MM/YYYY ");
+          }
+       }
     }
 }
 </script>
 
-<style lang="scss" >
-
-.content-table{
+<style lang="scss" scoped>
+.category-product{
+  width:100%;
+  .table-wrapper{
+  width: 90%;
+  margin: 0 auto;
+  .breadcumb-field{
+    padding: 30px 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .content-table{
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 15px;
   width: 100%; 
-  border-radius: 5px 5px 0 0 ;
+  margin : 0 auto;
+  border-radius:15px 15px 0 0 ;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0,0,0,0.15);
   thead{
     tr{
         background-color: #009879;
         color:#ffffff;
-        text-align: left;
         font-weight: bold;
         th{
-            padding:12px 15px
+            padding:12px 15px;
+            border:2px solid white;
+            text-align: center;
+        }
+        th:first-child{
+          border-top-left-radius: 15px;
+        }
+        th:last-child{
+          border-top-right-radius: 15px;
         }
     }
   } 
@@ -96,15 +121,18 @@ export default {
         border-bottom : 1px solid #dddddd;
         td{
             padding:12px 15px;
+            text-align: center;
+             border:2px solid white;
+
             img{
               height: 60px;
               width: 60px;
             }
             i{
-              font-size:20px;
+              font-size:15px;
               margin: 0px 10px ;
-              padding:10px;
-              background: gray;
+              padding:15px;
+              background: rgb(239, 237, 237);
               border-radius: 50%;
               color: white;
             }
@@ -120,5 +148,9 @@ export default {
     }
   }
 }
+}
+}
+
+
 
 </style>

@@ -8,6 +8,10 @@
         :isActive="isActive"
     >
     </Body>
+    <Footer
+        :isActive="isActive"
+    >
+    </Footer>
 
 </template>
 
@@ -15,13 +19,15 @@
 import Navbar from "./Navbar.vue";
 import Header from "./Header.vue"
 import Body from "./Body.vue";
+import Footer from "./Footer.vue"
 
 export default {
     name: "AuthLayout",
     components: {
         Navbar,
         Body,
-        Header
+        Header,
+        Footer
     },
     data()
     {
@@ -42,7 +48,7 @@ export default {
 
     computed: {
     }
-};
+}
 </script>
 
 <style>

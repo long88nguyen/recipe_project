@@ -24,5 +24,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+body{
+  width: 100% !important;
+  overflow: visible !important;
+  height: 100%;
+}
 </style>

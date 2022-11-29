@@ -75,23 +75,21 @@
                <i class="bx bx-log-out log_out_button" id="log_out" @click="showModal">
 
                </i>
-               <a-modal
-               class="logout-warning"
-                title="Cảnh báo"
-                :visible="visible"
-                :footer=null
-                centered 
-                :destroyOnClose="true"
-                >
-                <center><h5>Bạn có muốn đăng xuất không ?</h5>
-                   
-                </center>
-                <button class="btn btn-primary" style="margin-right:10px">
-                        Xác nhận
-                    </button>
-                    <button class="btn btn-secondary">
-                        Hủy
-                    </button>
+               <a-modal 
+               class="add-timesheet-modal"
+               v-model:visible="visible" title="Xác nhận đăng xuất" 
+               @ok="handleOk"
+               :footer = null
+               centered
+               >
+                    <span class="popup_confirm-content">
+                        Bạn có muốn đăng xuất không ?
+                    </span>
+                    <div class="button_cofirm">
+                     <button class="btn btn-primary"   @click.prevent="logoutHandler()">Xác nhận</button>
+                     <button class="btn btn-danger" @click="cancelPopup">Hủy</button>
+
+                    </div>
                 </a-modal>
            </div>
        </div>
@@ -100,7 +98,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters,mapActions } from 'vuex';
 export default {
    data()
    {
@@ -119,11 +117,27 @@ export default {
    computed:{
     ...mapGetters({
         memberInfo : "common/userCommon"
-    })
+    }),
+
+    ...mapActions("auth", ["logout"]),
    },   
    methods:{
-        showModal() {
+    showModal() {
       this.visible = true;
+    },
+    handleOk(e) {
+      console.log(e);
+      this.visible = false;
+    }, 
+    cancelPopup()
+    {
+        this.visible = !this.visible;
+    },
+    logoutHandler() {
+      this.$store.dispatch("auth/logout").then(() => {
+        
+        this.$router.push({ name: "Login" });
+      });
     },
    },
    created()
@@ -165,7 +179,7 @@ export default {
        left:0;
        height: 100%;
        width:78px;
-       background: #11101d;
+       background: #014f46;
        padding:6px 14px;
        transition: all 0.5s ease;
    }
@@ -293,6 +307,7 @@ export default {
    .sidebar .profile_content {
        position: absolute;
        color: white;
+       background: #03053b;
        bottom: 0;
        left: 0;
        width: 100%;
@@ -307,7 +322,6 @@ export default {
        position: relative;
        padding: 10px 6px;
        height: 60px;
-       background: #1d1b31;
        transition: all 0.5 ease;
    }
    .profile_content .profile .profile_details
@@ -431,7 +445,7 @@ export default {
    .sidebar.active .profile_content .profile {
        background: none;
    }
-   .logout-warning{
+   .add-timesheet-modal{
     .ant-modal-header {
     padding: 16px 24px;
     color: rgba(0, 0, 0, 0.65);
@@ -441,7 +455,8 @@ export default {
     background-color: #d2d6ff;
     border-bottom-color: #3d4cdc;
     .ant-modal-title {
-      color: #3d4cdc;
+      color: #020519;
+      font-weight: bold;
     }
   }.ant-modal {
     width: 100% !important;
@@ -456,6 +471,26 @@ export default {
   .ant-modal-close-x {
        line-height: 48px;
   }
+  .popup_confirm-content{
+    font-weight: bold;
+  }
+  .button_cofirm{
+    margin-top:20px;
+    display: flex;
+    justify-content: flex-end;
+    button{
+        margin:0 5px;
+    }
+  }
+   }
+   /deep/ .ant-modal-content {
+    position: relative;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 10px;
+    // box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+    pointer-events: auto;
    }
 </style>
 
