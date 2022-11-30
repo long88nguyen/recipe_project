@@ -55,7 +55,7 @@ const routes =
             path:'/',
             component:import("../components/user/Dashboard.vue"),
             meta: {
-                requiresAuth: false,
+                requiresAuth: true,
               },
             children:
             [

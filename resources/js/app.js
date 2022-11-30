@@ -4,6 +4,7 @@ import Vue from 'vue'
 import { createApp } from "vue"
 import AppVue from "./AppVue.vue"
 import store from "./store";
+import Toaster from '@meforma/vue-toaster';
 
 import router from './router'
 
@@ -16,6 +17,10 @@ app.component('app-vue',AppVue)
 
 app.use(Antd)
 
+app.use(Toaster,{
+    position:"top",
+    duration:2000
+})
 
 app.use(store)
 

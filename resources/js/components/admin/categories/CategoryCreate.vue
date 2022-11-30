@@ -66,10 +66,11 @@ import axios from 'axios';
             formData.append('image', this.category.image);
             await this.$store.dispatch("categories/createCategory",formData)
             .then(() =>{
-                console.log(formData);
+                this.$toast.success('Thêm mới thành công !');
                 this.$router.push({ path: "/categories" });
             })
             .catch(() => {
+                this.$toast.error('Đã xảy ra lỗi !');
                 console.log("errorr");
             })
         }
