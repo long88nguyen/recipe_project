@@ -34,8 +34,13 @@ export const mutations = {
 }
 
 export const actions = {
-    async getCategories({ commit }) {
-        const response = await axios.get(api.LIST_CATEGORY);
+    async getCategories({ commit },payload) {
+        const response = await axios.get(api.LIST_CATEGORY,{
+            params: {
+                per_page: payload.itemsPerPage,
+                page: payload.currentPage,     
+              }
+        });
         commit(types.CATEGORY.FETCH_CATEGORY_LIST, response.data.data);
       },
     async createCategory({ commit }, params) {

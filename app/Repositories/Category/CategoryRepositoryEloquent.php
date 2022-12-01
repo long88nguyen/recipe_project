@@ -36,7 +36,7 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
 
     public function getAll($request)
     {
-        $perPage = $request->input('per_page', 2);
+        $perPage = $request->input('per_page', 5);
         $sortColumn = $request->input('sort_column', Constant::DEFAULT_SORT_COLUMN_RESPONSE);
         $sortBy = $request->input('sort_by', Constant::DEFAULT_SORT_BY_RESPONSE);
         $getCategory = $this->model->orderBy( $sortColumn,$sortBy);

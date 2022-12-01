@@ -26,18 +26,39 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="category in categoryList.data" :key="category.id">
-                        <td>{{ category.id }}</td>
+                    <tr v-for="(category, index) in categoryList.data" :key="index">
+                        <td>{{
+                      (categoryList.current_page - 1) *
+                      categoryList.per_page +
+                        index +
+                        1
+                  }}</td>
                         <td>{{ category.name }}</td>
-                        <td> <img :src="`uploads/category/${category.image}`" class="img-thumbnail" alt=""/></td>
+                        <td> <img :src="`uploads/category/${category.image}`" class="img-thumbnail" alt="" @click="showImage(category.image)"/></td>
                         <td>{{ dateFormat(category.created_at) }}</td>
                         <td><i class="fa-solid fa-pen-to-square" style="color:blue"></i><i class="fa-solid fa-trash" style="color:red"></i></td>
                     </tr>
                 </tbody>
           </table>
         </div>
-        <a-pagination v-model="searchData.paginate.currentPage" :total="searchData.paginate.totalRecord" show-less-items />
+        <a-pagination 
+        class="paginate"
+        v-model:current="searchData.paginate.currentPage" 
+        :total="searchData.paginate.totalRecord" 
+        :page-size="Number(searchData.paginate.perPage)" 
+        @change = "changePage"
+        show-less-items />
+        <a-modal 
+              :header = null
+               v-model:visible="visible" 
+               :footer = null
+               :closable = false
+               centered
+               >
+               <img :src="`uploads/category/${selectedImg}`" class="img-thumbnail" alt=""/>
+          </a-modal>
     </div>
+
 </template>
 
 <script>
@@ -51,8 +72,9 @@ export default {
         return {
             categories:[],
             visible: false,
+            selectedImg: "",
             searchData: {
-              itemsPerPage:3,
+              itemsPerPage:5,
               paginate: {
                 from: 0,
                 to: 0,
@@ -69,7 +91,6 @@ export default {
 
     async created()
     {
-      console.log(this.searchData);
       if (Object.keys(this.$route.query).length !== 0)
       {
         let params = this.$route.query;
@@ -77,7 +98,7 @@ export default {
         this.listItemsPerPage.includes(parseInt(params.perPage)) &&
         !isNaN(params.perPage)
           ? params.perPage
-          : 3;
+          : '5';
         this.searchData = {
           itemsPerPage: params.perPage,
           paginate: {
@@ -102,6 +123,7 @@ export default {
       pagination: "categories/pagination",
     })
    }, 
+   
     methods:{
        dateFormat(value)
        {
@@ -135,9 +157,23 @@ export default {
           }).catch(() => {});
         },
         changePage(page) {
+          console.log(page);
           this.passParamUrl();
           this.fetchAdditionalTimeSheetData(this.searchData.itemsPerPage, page);
       },
+      showImage(imageLink)
+      {
+        if(imageLink)
+        {
+          this.selectedImg = imageLink;
+          this.visible = true
+        }
+        else
+        {
+          this.$toast.error('eo co anh');
+        }
+        
+      }
     }
 }
 </script>
@@ -213,7 +249,14 @@ export default {
 }
 }
 }
+.paginate
+{
+  margin-top:30px;
+  text-align: center;
+}
+
 
 
 
 </style>
+
