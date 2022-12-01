@@ -46,10 +46,11 @@ export default {
         .then(() => {
           const check_role = this.accountInfo.is_admin;
           if(check_role === 1)
-          {
+          {  
+            this.$router.push({path: "/categories"}).then(() => {
+              this.$toast.success('Đăng nhập thành công !');
+            });
             
-            this.$router.push({path: "/categories"});
-            this.$toast.success('Đăng nhập thành công !');
           }
           else
           {   

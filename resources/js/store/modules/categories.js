@@ -38,7 +38,8 @@ export const actions = {
         const response = await axios.get(api.LIST_CATEGORY,{
             params: {
                 per_page: payload.itemsPerPage,
-                page: payload.currentPage,     
+                page: payload.currentPage, 
+                name: payload.name,    
               }
         });
         commit(types.CATEGORY.FETCH_CATEGORY_LIST, response.data.data);

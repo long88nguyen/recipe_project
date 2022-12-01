@@ -40,6 +40,10 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         $sortColumn = $request->input('sort_column', Constant::DEFAULT_SORT_COLUMN_RESPONSE);
         $sortBy = $request->input('sort_by', Constant::DEFAULT_SORT_BY_RESPONSE);
         $getCategory = $this->model->orderBy( $sortColumn,$sortBy);
+        if(isset($request->name))
+        {
+            $getCategory->where('name', 'like', '%' . $request->name . '%');
+        }
         $getCategory =  $getCategory->paginate($perPage);
         return [
             'listCategory' =>  $getCategory

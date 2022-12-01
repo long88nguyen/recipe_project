@@ -17,6 +17,7 @@
                         <input type="file" @change ="onChange" >
                     </div>
                     <img v-bind:src="imagePreview" width="100" height="100" v-show="showPreview"/>
+
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>
         </div>

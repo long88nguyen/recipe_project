@@ -1,8 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import * as types from "../mutation-types";
-// import api from "@/api/api";
-const api = "http://localhost:8087/api"
+import api from "../../api/api";
+// const api = "http://localhost:8000/api"
 
 export const state = {
   token: Cookies.get("access_token"),
@@ -60,7 +60,7 @@ export const actions = {
   login({ commit }, accounts) {
     return new Promise((resolve, reject) => {
       axios
-        .post(api+"/login", accounts)
+        .post(api.LOGIN, accounts)
         .then(response => {
           commit(types.AUTH.AUTH_LOGIN, response);
           resolve(response);

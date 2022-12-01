@@ -3,6 +3,9 @@
     <div class="category-product">
        
         <div class="table-wrapper">
+          <CategoryFilterVue @search = "updateSearch">
+
+          </CategoryFilterVue>
           <div class="breadcumb-field">
             <a-breadcrumb>
             <a-breadcrumb-item><router-link to="/categories">Home</router-link></a-breadcrumb-item>
@@ -10,7 +13,7 @@
             </a-breadcrumb>
         </div>
           <router-link to="/categories/create">
-        <div class="btn btn-primary mb-3">
+        <div class="btn btn-success mb-3">
 
             <span> Thêm mới danh mục</span>
         </div>
@@ -39,6 +42,7 @@
                         <td><i class="fa-solid fa-pen-to-square" style="color:blue"></i><i class="fa-solid fa-trash" style="color:red"></i></td>
                     </tr>
                 </tbody>
+                
           </table>
         </div>
         <a-pagination 
@@ -65,8 +69,12 @@
 
 import moment from "moment"
 import { mapGetters } from 'vuex';
+import CategoryFilterVue from "./filters/CategoryFilter.vue";
 
 export default {
+    components:{
+      CategoryFilterVue
+    },
     data()
     {
         return {
@@ -74,6 +82,7 @@ export default {
             visible: false,
             selectedImg: "",
             searchData: {
+              name:"",
               itemsPerPage:5,
               paginate: {
                 from: 0,
@@ -100,6 +109,9 @@ export default {
           ? params.perPage
           : '5';
         this.searchData = {
+          name: params.name == undefined
+            ? this.searchData.name.toLowerCase()
+            : params.name.toLowerCase(),
           itemsPerPage: params.perPage,
           paginate: {
             from: params.from,
@@ -114,7 +126,7 @@ export default {
 
       }
       
-      this.fetchAdditionalTimeSheetData()
+      this.fetchCategoryList()
     },
     computed:{
     ...mapGetters({
@@ -131,10 +143,11 @@ export default {
         return moment(String(value)).format("HH:mm:ss DD/MM/YYYY ");
           }
        },
-       async fetchAdditionalTimeSheetData() {
+       async fetchCategoryList() {
         await this.$store.dispatch(
             "categories/getCategories",
             {
+              name: this.searchData.name,
               itemsPerPage: this.searchData.itemsPerPage,
               currentPage: this.searchData.paginate.currentPage,
             }
@@ -149,6 +162,7 @@ export default {
           this.$router.push({
             name: "category-list",
             query: {
+              name: this.checkDataParam(this.searchData.name),
               currentPage: this.checkDataParam(
                 this.searchData.paginate.currentPage
               ),
@@ -157,9 +171,8 @@ export default {
           }).catch(() => {});
         },
         changePage(page) {
-          console.log(page);
           this.passParamUrl();
-          this.fetchAdditionalTimeSheetData(this.searchData.itemsPerPage, page);
+          this.fetchCategoryList(this.searchData.itemsPerPage, page);
       },
       showImage(imageLink)
       {
@@ -173,7 +186,27 @@ export default {
           this.$toast.error('eo co anh');
         }
         
+      },
+      updateSearch(filter) {
+      this.searchData = {
+        ...this.searchData,
+        ...filter
+      };
+      this.searchData.paginate.currentPage = 1;
+      this.passParamUrl();
+      this.search();
+    },
+    async search()
+    {
+      if (this.$route.fullPath !== "/categories") {
+        this.clearParamUrl();
+        
       }
+      this.fetchCategoryList();
+    },
+    clearParamUrl() {
+      return;
+      },
     }
 }
 </script>
@@ -184,6 +217,7 @@ export default {
   .table-wrapper{
   width: 90%;
   margin: 0 auto;
+  padding-top :20px;
   .breadcumb-field{
     padding: 30px 0;
     font-family: Arial, Helvetica, sans-serif;
