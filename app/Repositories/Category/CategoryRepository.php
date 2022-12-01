@@ -11,7 +11,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface CategoryRepository extends RepositoryInterface
 {
-    public function getAll();
+    public function getAll($request);
 
     public function store($request);
 

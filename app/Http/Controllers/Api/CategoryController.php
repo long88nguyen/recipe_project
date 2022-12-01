@@ -15,9 +15,9 @@ class CategoryController extends ApiController
         $this->categoryRepository = $categoryRepository;
     }
 
-    public function getAll()
+    public function getAll(Request $request)
     {
-        $result =  $this->categoryRepository->getAll();
+        $result =  $this->categoryRepository->getAll($request);
         return $this->sendSuccess($result);
     }
 

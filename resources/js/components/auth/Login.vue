@@ -53,7 +53,7 @@ export default {
           }
           else
           {   
-            this.$router.push({path: "/home"});
+            this.$router.push({path: "/home-page"});
             this.$toast.success('Đăng nhập thành công!');
           }
         })

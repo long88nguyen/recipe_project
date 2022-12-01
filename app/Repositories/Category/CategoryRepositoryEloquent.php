@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Category;
 
+use App\Enums\Constant;
 use App\Models\Category;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -33,9 +34,13 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        $getCategory = $this->model->orderBy('id','ASC')->get();
+        $perPage = $request->input('per_page', 2);
+        $sortColumn = $request->input('sort_column', Constant::DEFAULT_SORT_COLUMN_RESPONSE);
+        $sortBy = $request->input('sort_by', Constant::DEFAULT_SORT_BY_RESPONSE);
+        $getCategory = $this->model->orderBy( $sortColumn,$sortBy);
+        $getCategory =  $getCategory->paginate($perPage);
         return [
             'listCategory' =>  $getCategory
         ];

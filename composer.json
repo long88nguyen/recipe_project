@@ -12,6 +12,7 @@
         "laravel/passport": "*",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "myclabs/php-enum": "^1.8",
         "prettus/l5-repository": "^2.8",
         "tymon/jwt-auth": "^1.0"
     },

@@ -8,6 +8,7 @@ export const AUTH = {
 
 
   export const CATEGORY = {
+    GET_CATEGORY_LIST : "GET_CATEGORY_LIST",
     FETCH_CATEGORY_LIST: "FETCH_CATEGORY_LIST",
   };
 

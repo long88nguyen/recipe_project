@@ -4,10 +4,12 @@ import api from "../../api/api";
 
 export const state = {
     userCommon:{},
+    listItemsPerPage: [50, 100, 200],
 }
 
 export const getters = {
     userCommon: state => state.userCommon,
+    listItemsPerPage: state => state.listItemsPerPage,
 }
 
 export const mutations = {

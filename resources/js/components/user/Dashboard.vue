@@ -11,7 +11,7 @@
               <div class="nav-menu">
               <div class="nav_menu-list">
                     <ul>
-                        <li ><router-link to="/home" active-class="active" >Trang chủ</router-link></li>
+                        <li ><router-link to="/home-page" active-class="active" >Trang chủ</router-link></li>
                         <li><router-link to="/post-list" active-class="active">Bài viết</router-link></li>
                         <li><router-link to="/post-detail" active-class="active">Thông tin</router-link></li>
                         

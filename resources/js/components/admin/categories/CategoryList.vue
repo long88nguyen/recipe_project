@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="category in categoryList" :key="category.id">
+                    <tr v-for="category in categoryList.data" :key="category.id">
                         <td>{{ category.id }}</td>
                         <td>{{ category.name }}</td>
                         <td> <img :src="`uploads/category/${category.image}`" class="img-thumbnail" alt=""/></td>
@@ -36,6 +36,7 @@
                 </tbody>
           </table>
         </div>
+        <a-pagination v-model="searchData.paginate.currentPage" :total="searchData.paginate.totalRecord" show-less-items />
     </div>
 </template>
 
@@ -49,32 +50,94 @@ export default {
     {
         return {
             categories:[],
-    
-             visible: false,
+            visible: false,
+            searchData: {
+              itemsPerPage:3,
+              paginate: {
+                from: 0,
+                to: 0,
+                totalPage: 0,
+                path: "",
+                currentPage: 1,
+                totalRecord: 0,
+                perPage: 0,
+            },
+          },
         }
+        
     },
 
-    created()
+    async created()
     {
-    
-      this.getCategoriesList()
+      console.log(this.searchData);
+      if (Object.keys(this.$route.query).length !== 0)
+      {
+        let params = this.$route.query;
+        params.perPage =
+        this.listItemsPerPage.includes(parseInt(params.perPage)) &&
+        !isNaN(params.perPage)
+          ? params.perPage
+          : 3;
+        this.searchData = {
+          itemsPerPage: params.perPage,
+          paginate: {
+            from: params.from,
+            to: params.to,
+            totalPage: parseInt(params.totalPage),
+            path: this.searchData.paginate.path,
+            currentPage: parseInt(params.currentPage),
+            totalRecord: parseInt(params.totalRecord),
+            perPage: parseInt(params.perPage),
+          },
+        }
+
+      }
+      
+      this.fetchAdditionalTimeSheetData()
     },
     computed:{
     ...mapGetters({
-      categoryList : "categories/categoryList"
+      categoryList : "categories/categoryList",
+      listItemsPerPage: "common/listItemsPerPage",
+      pagination: "categories/pagination",
     })
    }, 
     methods:{
-       async getCategoriesList()
-       {
-          await this.$store.dispatch("categories/getCategories")
-       },
        dateFormat(value)
        {
         if (value) {
         return moment(String(value)).format("HH:mm:ss DD/MM/YYYY ");
           }
-       }
+       },
+       async fetchAdditionalTimeSheetData() {
+        await this.$store.dispatch(
+            "categories/getCategories",
+            {
+              itemsPerPage: this.searchData.itemsPerPage,
+              currentPage: this.searchData.paginate.currentPage,
+            }
+          );
+          this.searchData.paginate = this.pagination;
+        },
+        checkDataParam(data) {
+          return data === 0 || data === "" ? undefined : data;
+        },
+        passParamUrl()
+        {
+          this.$router.push({
+            name: "category-list",
+            query: {
+              currentPage: this.checkDataParam(
+                this.searchData.paginate.currentPage
+              ),
+              perPage: this.checkDataParam(this.searchData.itemsPerPage),
+            },
+          }).catch(() => {});
+        },
+        changePage(page) {
+          this.passParamUrl();
+          this.fetchAdditionalTimeSheetData(this.searchData.itemsPerPage, page);
+      },
     }
 }
 </script>

@@ -60,7 +60,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     _this.$toast.success('Đăng nhập thành công !');
                   } else {
                     _this.$router.push({
-                      path: "/home"
+                      path: "/home-page"
                     });
 
                     _this.$toast.success('Đăng nhập thành công!');

@@ -60,7 +60,7 @@ const routes =
             children:
             [
                 {
-                    path:'/home',
+                    path:'/home-page',
                     component:import('../components/user/HomePage.vue')
                 },
                 {

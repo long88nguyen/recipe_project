@@ -4,15 +4,32 @@ import api from "../../api/api";
 
 export const state = {
     categoryList:{},
+    pagination: {
+        from: 0,
+        to: 0,
+        totalPage: 0,
+        path: "",
+        currentPage: 0,
+        totalRecord: 0,
+        perPage: 0
+      },
 }
 
 export const getters = {
     categoryList: state => state.categoryList,
+    pagination: state => state.pagination,
 }
 
 export const mutations = {
     [types.CATEGORY.FETCH_CATEGORY_LIST](state, data) {
         state.categoryList = data.listCategory;
+        state.pagination.from = data.listCategory.from;
+        state.pagination.to = data.listCategory.to;
+        state.pagination.totalPage = data.listCategory.last_page;
+        state.pagination.path = data.listCategory.path;
+        state.pagination.currentPage = data.listCategory.current_page;
+        state.pagination.totalRecord = data.listCategory.total;
+        state.pagination.perPage = data.listCategory.per_page;
       },
 }
 
