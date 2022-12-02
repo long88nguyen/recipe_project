@@ -58,10 +58,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                console.log(2);
                 formData = new FormData();
                 formData.append('name', _this.category.name);
                 formData.append('image', _this.category.image);
-                _context.next = 5;
+                _context.next = 6;
                 return _this.$store.dispatch("categories/createCategory", formData).then(function () {
                   _this.$toast.success('Thêm mới thành công !');
 
@@ -74,7 +75,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.log("errorr");
                 });
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -238,7 +239,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.breadcumb-field[data-v-4f02a55c]\r\n     {\r\n         background: white;\r\n         padding:30px;\r\n         width: 100%;\n}\n.category-product[data-v-4f02a55c]\r\n     {\r\n         margin:10px ;\r\n         background: white;\n}\r\n ", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.breadcumb-field[data-v-4f02a55c]\n     {\n         background: white;\n         padding:30px;\n         width: 100%;\n}\n.category-product[data-v-4f02a55c]\n     {\n         margin:10px ;\n         background: white;\n}\n ", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -287,7 +288,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CategoryCreate_vue_vue_type_template_id_4f02a55c_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CategoryCreate.vue?vue&type=template&id=4f02a55c&scoped=true */ "./resources/js/components/admin/categories/CategoryCreate.vue?vue&type=template&id=4f02a55c&scoped=true");
 /* harmony import */ var _CategoryCreate_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CategoryCreate.vue?vue&type=script&lang=js */ "./resources/js/components/admin/categories/CategoryCreate.vue?vue&type=script&lang=js");
 /* harmony import */ var _CategoryCreate_vue_vue_type_style_index_0_id_4f02a55c_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CategoryCreate.vue?vue&type=style&index=0&id=4f02a55c&scoped=true&lang=css */ "./resources/js/components/admin/categories/CategoryCreate.vue?vue&type=style&index=0&id=4f02a55c&scoped=true&lang=css");
-/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -295,7 +296,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_CategoryCreate_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CategoryCreate_vue_vue_type_template_id_4f02a55c_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-4f02a55c"],['__file',"resources/js/components/admin/categories/CategoryCreate.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_CategoryCreate_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CategoryCreate_vue_vue_type_template_id_4f02a55c_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-4f02a55c"],['__file',"resources/js/components/admin/categories/CategoryCreate.vue"]])
 /* hot reload */
 if (false) {}
 

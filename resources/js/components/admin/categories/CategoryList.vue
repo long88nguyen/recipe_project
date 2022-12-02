@@ -12,12 +12,10 @@
             <a-breadcrumb-item><router-link to="/categories">Categories</router-link></a-breadcrumb-item>
             </a-breadcrumb>
         </div>
-          <router-link to="/categories/create">
-        <div class="btn btn-success mb-3">
+        <div class="btn btn-success mb-3"  @click="openModal">
 
             <span> Thêm mới danh mục</span>
         </div>
-        </router-link>
           <table class="content-table">
                 <thead>
                     <tr>
@@ -39,7 +37,10 @@
                         <td>{{ category.name }}</td>
                         <td> <img :src="`uploads/category/${category.image}`" class="img-thumbnail" alt="" @click="showImage(category.image)"/></td>
                         <td>{{ dateFormat(category.created_at) }}</td>
-                        <td><i class="fa-solid fa-pen-to-square" style="color:blue"></i><i class="fa-solid fa-trash" style="color:red"></i></td>
+                        <td>
+                          <i class="fa-solid fa-pen-to-square" style="color:blue" @click="categoryDetail(category.id)"></i>
+                          <i class="fa-solid fa-trash" style="color:red"></i>
+                        </td>
                     </tr>
                 </tbody>
                 
@@ -60,7 +61,15 @@
                centered
                >
                <img :src="`uploads/category/${selectedImg}`" class="img-thumbnail" alt=""/>
-          </a-modal>
+        </a-modal>
+        <CategoryCreateModalVue
+        :visible="visibleModal"
+        @closeModal="(visibleModal = !visibleModal)"
+        @fetchData="fetchCategoryList"
+        >
+
+        </CategoryCreateModalVue>
+        
     </div>
 
 </template>
@@ -70,16 +79,19 @@
 import moment from "moment"
 import { mapGetters } from 'vuex';
 import CategoryFilterVue from "./filters/CategoryFilter.vue";
+import CategoryCreateModalVue from "./modals/CategoryCreateModal.vue";
 
 export default {
     components:{
-      CategoryFilterVue
+      CategoryFilterVue,
+      CategoryCreateModalVue
     },
     data()
     {
         return {
             categories:[],
             visible: false,
+            visibleModal:false,
             selectedImg: "",
             searchData: {
               name:"",
@@ -137,7 +149,12 @@ export default {
    }, 
    
     methods:{
-       dateFormat(value)
+      openModal()
+      {
+        console.log(1);
+        this.visibleModal = !this.visibleModal
+      },
+      dateFormat(value)
        {
         if (value) {
         return moment(String(value)).format("HH:mm:ss DD/MM/YYYY ");
@@ -207,7 +224,12 @@ export default {
     clearParamUrl() {
       return;
       },
+    categoryDetail(params)
+    {
+      console.log(params);
     }
+    },
+    
 }
 </script>
 

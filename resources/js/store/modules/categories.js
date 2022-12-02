@@ -13,11 +13,13 @@ export const state = {
         totalRecord: 0,
         perPage: 0
       },
+    categoryDetail: {}
 }
 
 export const getters = {
     categoryList: state => state.categoryList,
     pagination: state => state.pagination,
+    categoryDetail: state => state.categoryDetail,
 }
 
 export const mutations = {
@@ -31,6 +33,10 @@ export const mutations = {
         state.pagination.totalRecord = data.listCategory.total;
         state.pagination.perPage = data.listCategory.per_page;
       },
+      [types.CATEGORY.GET_CATEGOTY_DETAIL](state, getCategoryById)
+      {
+        state.categoryDetail = getCategoryById
+      }
 }
 
 export const actions = {
@@ -47,4 +53,20 @@ export const actions = {
     async createCategory({ commit }, params) {
         await axios.post(api.CATEGORY_CREATE, params);
     },
+
+    async getCategoryDetail({ commit }, params) {
+        let url = `${api.CATEGORY_DETAIL}/${params}`;
+        const response = await axios
+          .get(url)
+          .then(res => res)
+          .catch(error => {
+            return error.response;
+          });
+        if (response.status == 200) {
+          commit(
+            types.CATEGORY.GET_CATEGOTY_DETAIL,
+            response.data
+          );
+        }
+      },
 }
