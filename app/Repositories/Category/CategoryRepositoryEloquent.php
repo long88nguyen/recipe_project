@@ -7,6 +7,7 @@ use App\Models\Category;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Category\CategoryRepository;
+use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 
 /**
@@ -54,7 +55,8 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     {
         $timeNow = now();
         $data = [];
-        if ($image = $request->file('image')) {
+        if ($request->file('image')) {
+            $image = $request->file('image');
             $destinationPath = public_path('uploads/category');
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
@@ -74,16 +76,36 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         ];
     }
 
-    public function updateCategory($id,$data)
+    public function updateCategory($id,$request)
     {
-        $category = $this->model->find($id);
+        $category = $this->model->findOrFail($id);
+        if ($request->file('image'))
+        {
+            if(File::exists("uploads/category/".$category->image))
+            {
+                File::delete("uploads/category/".$category->image);
+            }
+            $image = $request->file('image');
+            $destinationPath = public_path('uploads/category');
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data['image'] = "$profileImage";
+        }
+        $timeNow = now();
+        $timeNow = now();
+        $data['name'] = $request->name;
+        $data['updated_at'] = $timeNow;
         $category->update($data);
-        return $data;
+    //     return $data;
     }
 
     public function delete($id)
     {
         $categoryId = $this->model->find($id);
+        if(File::exists("uploads/category/".$categoryId->image))
+        {
+            File::delete("uploads/category/".$categoryId->image);
+        }
         return $categoryId->delete($id);
     }
 }

@@ -43,8 +43,15 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
+    public function getAll($request){
+        $postList = $this->model->get();
+        return [
+            'postList' =>$postList,
+        ];
+    }
     
-    public function getAll($request)
+    public function getListApproved($request)
     {
         $memberId = Auth::user()->member->id;
         $dataPost = $this->model              

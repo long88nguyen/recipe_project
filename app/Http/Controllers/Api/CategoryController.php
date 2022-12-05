@@ -27,9 +27,9 @@ class CategoryController extends ApiController
         return $this->sendSuccess($result);
     }
 
-    public function update(Request $request,$id)
+    public function updateCategory(Request $request,$id)
     {
-        $result =  $this->categoryRepository->updateCategory($id,$request->all());
+        $result =  $this->categoryRepository->updateCategory($id,$request);
         return $this->sendSuccess($result);
     }
 

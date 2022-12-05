@@ -40,7 +40,9 @@ Route::group(['middleware' => 'auth:api'], function() {
 
     //post
     Route::group(['prefix' => 'post'], function () {
-        Route::get('/',[\App\Http\Controllers\Api\PostController::class,'getAll']);
+        Route::get('/get-list',[\App\Http\Controllers\Api\PostController::class,'getAll']);
+        Route::get('/show-approval/{id}',[\App\Http\Controllers\Api\PostController::class,'showApproval']);
+        Route::get('/',[\App\Http\Controllers\Api\PostController::class,'getListApproved']);
         Route::post('/',[\App\Http\Controllers\Api\PostController::class,'store']);
         Route::get('/create',[\App\Http\Controllers\Api\PostController::class,'create']);
         Route::get('/{id}/edit',[\App\Http\Controllers\Api\PostController::class,'edit']);
@@ -55,6 +57,8 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::get('/',[\App\Http\Controllers\Api\CategoryController::class,'getAll']);
         Route::post('/',[\App\Http\Controllers\Api\CategoryController::class,'store']);
         Route::get('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'show']);
+        Route::post('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'updateCategory']);
+        Route::delete('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'delete']);
     });
 
     

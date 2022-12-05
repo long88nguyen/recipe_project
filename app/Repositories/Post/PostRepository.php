@@ -12,6 +12,8 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface PostRepository extends RepositoryInterface
 {
     //
+    public function getListApproved($request);
+
     public function getAll($request);
 
     public function store($request);

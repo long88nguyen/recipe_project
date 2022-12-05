@@ -25,6 +25,12 @@ class PostController extends ApiController
         return $this->sendSuccess($result);
     }
 
+    public function getListApproved(Request $request)
+    {
+        $result = $this->postRepository->getListApproved($request);
+        return $this->sendSuccess($result);
+    }
+
     public function store(Request $request)
     {
         $result = $this->postRepository->store($request);
