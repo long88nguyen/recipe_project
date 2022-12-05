@@ -69,6 +69,13 @@
         >
 
         </CategoryCreateModalVue>
+
+        <CategoryUpdateModal
+          :visible="visibleModalEdit"
+          :id = "idCategory"
+          @ok="handleEditOk"
+          @cancel="handleEditCancel"
+        />
         
     </div>
 
@@ -80,11 +87,13 @@ import moment from "moment"
 import { mapGetters } from 'vuex';
 import CategoryFilterVue from "./filters/CategoryFilter.vue";
 import CategoryCreateModalVue from "./modals/CategoryCreateModal.vue";
+import CategoryUpdateModal from "./modals/CategoryUpdateModal.vue";
 
 export default {
     components:{
       CategoryFilterVue,
-      CategoryCreateModalVue
+      CategoryCreateModalVue,
+      CategoryUpdateModal
     },
     data()
     {
@@ -93,6 +102,8 @@ export default {
             visible: false,
             visibleModal:false,
             selectedImg: "",
+            visibleModalEdit : false,
+            idCategory : null,
             searchData: {
               name:"",
               itemsPerPage:5,
@@ -226,10 +237,19 @@ export default {
       },
     categoryDetail(params)
     {
-      console.log(params);
-    }
+      this.visibleModalEdit = !this.visibleModalEdit;
+      this.idCategory = params;
     },
-    
+    handleEditOk(){
+      this.visibleModalEdit = false;
+      this.idCategory = null;
+      this.$emit("change");
+    },
+    handleEditCancel(){
+      this.visibleModalEdit = false;
+      this.idCategory = null;
+    }
+  },   
 }
 </script>
 
