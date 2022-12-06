@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use DateTimeInterface;
+
 
 class Post extends Model
 {
@@ -31,5 +33,17 @@ class Post extends Model
         return $this->hasMany(Rate::class);
     }
 
+    public function member() {
+        return $this->belongsTo(Member::class,"member_id");
+    }
+
+    public function category() {
+        return $this->belongsTo(Category::class,"category_id");
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+    return $date->format('Y-m-d H:i:s');
+    }
    
 }

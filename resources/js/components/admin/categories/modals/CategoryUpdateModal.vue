@@ -9,7 +9,7 @@
         >
             <UpdateCategory
                 :id ="id"
-                @cancel="handleFormCancel" @ok="handleFormOk"
+                @cancel="handleFormCancel" @ok="handleFormOk"             
             ></UpdateCategory>
     </a-modal>
 </template>

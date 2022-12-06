@@ -74,7 +74,7 @@ export default {
         }
             }
         },
-        async addCategory()
+        async addCategory()     
         {
             console.log(1);
             let formData = new FormData();
@@ -83,8 +83,7 @@ export default {
             await this.$store.dispatch("categories/createCategory",formData)
             .then(() =>{
                 this.$toast.success('Thêm mới thành công !');
-                this.$emit("closeModal");
-                this.$emit("fetchData");
+                this.$emit("ok");
                 this.$router.push({ path: "/categories" });
                 this.category.name = null;
                 this.category.image = null;

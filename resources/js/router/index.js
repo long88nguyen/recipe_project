@@ -1,7 +1,6 @@
 import { createRouter,createWebHistory } from "vue-router";
 
 import CategoryList from '../components/admin/categories/CategoryList.vue'
-import ProductList from '../components/admin/products/ProductList.vue'
 import middlewareAuth from "./middleware/auth";
 import redirectCallback from './middleware/redirect-callback'
 const routes =
@@ -32,23 +31,30 @@ const routes =
                     name:'category-list',
                 },
                 {
-                    path:'/categories/create',
-                    component:import("../components/admin/categories/CategoryCreate.vue"),
-                    name:'category-create'
+                    path:'/posts',
+                    component: import("../components/admin/posts/PostList.vue"),
+                    name:'post-list',
                 },
                 {
-                    path:'categories/detail/:id',
-                    component:import("../components/admin/categories/CategoryDetail.vue"),
-                    name:'category-detail'
+                    path:'/rates',
+                    component: import("../components/admin/rates/RateList.vue"),
+                    name:'rate-list',
                 },
                 {
-                    path:'/products',
-                    component: ProductList,
+                    path:'/favourites',
+                    component: import("../components/admin/favourites/FavouriteList.vue"),
+                    name:'favourite-list',
                 },
                 {
-                    path:'/products/create',
-                    component:import("../components/admin/products/ProductCreate.vue")
-                }
+                    path:'/members',
+                    component: import("../components/admin/members/MemberList.vue"),
+                    name:'member-list',
+                },
+                {
+                    path:'/comments',
+                    component: import("../components/admin/comments/CommentList.vue"),
+                    name:'comment-list',
+                },
             ]
         },
         {

@@ -21,7 +21,7 @@ export default {
     margin-left:78px;
     transition: all 0.5s ease;
     background: white;
-    height: 100vh;
+    height:1000px;
 }
 .body_layout.active {
     width: calc(100% - 240px);

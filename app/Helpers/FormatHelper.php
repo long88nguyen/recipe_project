@@ -1,8 +1,7 @@
 <?php
 
+use App\Enums\Constant;
 use Carbon\Carbon;
-use App\Enums\Constants;
-
 Class FormatHelper
 {
     public static function convertToMinute($strTime)
@@ -78,6 +77,13 @@ Class FormatHelper
         $seconds = intval($explodeTime[2]);
 
         return $hour * 3600 + $minutes * 60 + $seconds;
+    }
+
+    public static function escape_like($string)
+    {
+        $search = array('%', '_', '\u');
+        $replace = array('\%', '\_', '/u');
+        return str_replace($search, $replace, $string);
     }
 
 }

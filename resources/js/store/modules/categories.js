@@ -33,9 +33,10 @@ export const mutations = {
         state.pagination.totalRecord = data.listCategory.total;
         state.pagination.perPage = data.listCategory.per_page;
       },
-      [types.CATEGORY.GET_CATEGOTY_DETAIL](state, getCategoryById)
+      [types.CATEGORY.GET_CATEGOTY_DETAIL](state, data)
       {
-        state.categoryDetail = getCategoryById
+        state.categoryDetail = data.data.getCategoryById
+        console.log(data.data.getCategoryById);
       }
 }
 
@@ -68,5 +69,16 @@ export const actions = {
             response.data
           );
         }
+      },
+
+      async updateCategory({ commit }, params) {
+        let url = `${api.CATEGORY_UPDATE}/${params.get("id")}`;
+        await axios.post(url, params);
+      },
+
+      async deleteCategory({ commit }, categoryId) {
+        await axios.delete(
+          api.CATEGORY_DELETE + "/" + categoryId
+        );
       },
 }

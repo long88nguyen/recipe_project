@@ -2,6 +2,8 @@
 
 namespace App\Repositories\Post;
 
+use App\Enums\Constant;
+use FormatHelper;
 use App\Enums\ErrorType;
 use App\Models\Direction;
 use App\Models\Favourite;
@@ -45,7 +47,30 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     }
 
     public function getAll($request){
-        $postList = $this->model->get();
+        $perPage = $request->input('per_page', 5);
+        $sortColumn = $request->input('sort_column', Constant::DEFAULT_SORT_COLUMN_RESPONSE);
+        $sortBy = $request->input('sort_by', Constant::DEFAULT_SORT_BY_RESPONSE);
+        $postList = $this->model->with("member:id,name","category:id,name");
+        $postList = $postList->orderBy( $sortColumn,$sortBy);
+
+        if ($request->has('status') && $request->status) {
+            $postList->where('posts.status', $request->status);
+        }
+
+        if ($request->has('category_name') && $request->category_name)
+        {
+            $postList->whereHas("category",function($query) use($request){
+                $query->where('categories.name', 'LIKE', '%' . FormatHelper::escape_like($request->category_name) . '%');
+            });
+        }
+
+        if ($request->has('member_name') && $request->member_name)
+        {
+            $postList->whereHas("member",function($query) use($request){
+                $query->where('members.name', 'LIKE', '%' . FormatHelper::escape_like($request->member_name) . '%');
+            });
+        }
+        $postList =  $postList->paginate($perPage);
         return [
             'postList' =>$postList,
         ];

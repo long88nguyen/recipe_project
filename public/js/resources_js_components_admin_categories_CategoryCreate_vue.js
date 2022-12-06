@@ -58,11 +58,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(2);
                 formData = new FormData();
                 formData.append('name', _this.category.name);
                 formData.append('image', _this.category.image);
-                _context.next = 6;
+                _context.next = 5;
                 return _this.$store.dispatch("categories/createCategory", formData).then(function () {
                   _this.$toast.success('Thêm mới thành công !');
 
@@ -75,7 +74,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.log("errorr");
                 });
 
-              case 6:
+              case 5:
               case "end":
                 return _context.stop();
             }

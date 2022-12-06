@@ -33,28 +33,42 @@
                   
            </li>
            <li>
-               <router-link to="" class="router-class">
+               <router-link to="/posts" class="router-class"
+               :class="
+                  url.includes('posts') ? 'active-router' : ''
+                ">
                 <i class="fa-solid fa-signs-post"></i>
                    <span class="links_name">Quản lý bài viết</span>
                </router-link>
                   
            </li>
            <li>
-               <router-link to="" class="router-class">
+               <router-link to="/comments" class="router-class"
+               :class="
+                  url.includes('comments') ? 'active-router' : ''
+                ">
                 <i class="fa-solid fa-image"></i>
-                   <span class="links_name">Quản lý hình ảnh</span>
+                   <span class="links_name">Quản lý bình luận</span>
                </router-link>
                    
            </li>
            <li>
-               <router-link to="" class="router-class">
+               <router-link to="/members" class="router-class"
+               :class="
+                  url.includes('members') ? 'active-router' : ''
+                "
+               >
                 <i class="fa-solid fa-user"></i>
                    <span class="links_name">Quản lý người dùng</span>
                </router-link>
                   
            </li>
            <li>
-               <router-link to="" class="router-class">
+               <router-link to="/rates" class="router-class"
+               :class="
+                  url.includes('rates') ? 'active-router' : ''
+                "
+               >
                 <i class="fa-solid fa-star"></i>
                    <span class="links_name">Quản lý đánh giá</span>
                </router-link>
@@ -316,6 +330,8 @@ export default {
    .log_out_button:hover
    {
     cursor: pointer;
+    background: darkgreen;
+    transition: 0.5s;
    }
 
    .sidebar .profile_content .profile{

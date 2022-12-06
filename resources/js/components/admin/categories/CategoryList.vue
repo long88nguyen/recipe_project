@@ -39,7 +39,7 @@
                         <td>{{ dateFormat(category.created_at) }}</td>
                         <td>
                           <i class="fa-solid fa-pen-to-square" style="color:blue" @click="categoryDetail(category.id)"></i>
-                          <i class="fa-solid fa-trash" style="color:red"></i>
+                          <i class="fa-solid fa-trash" style="color:red" @click="confirmClick(category.id)"></i>
                         </td>
                     </tr>
                 </tbody>
@@ -62,6 +62,18 @@
                >
                <img :src="`uploads/category/${selectedImg}`" class="img-thumbnail" alt=""/>
         </a-modal>
+
+        <a-modal 
+              :header = null
+               v-model:visible="visibleConfirmDetele" 
+               title="Xác nhận xóa ? "
+               :footer = null
+               centered
+               >
+               <button class="btn btn-success" @click="categoryDelete()">Xoa</button>
+        </a-modal>
+
+
         <CategoryCreateModalVue
         :visible="visibleModal"
         @closeModal="(visibleModal = !visibleModal)"
@@ -84,7 +96,7 @@
 <script>
 
 import moment from "moment"
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import CategoryFilterVue from "./filters/CategoryFilter.vue";
 import CategoryCreateModalVue from "./modals/CategoryCreateModal.vue";
 import CategoryUpdateModal from "./modals/CategoryUpdateModal.vue";
@@ -101,6 +113,7 @@ export default {
             categories:[],
             visible: false,
             visibleModal:false,
+            visibleConfirmDetele:false,
             selectedImg: "",
             visibleModalEdit : false,
             idCategory : null,
@@ -156,98 +169,104 @@ export default {
       categoryList : "categories/categoryList",
       listItemsPerPage: "common/listItemsPerPage",
       pagination: "categories/pagination",
-    })
+    }),
+   
    }, 
    
-    methods:{
-      openModal()
-      {
+   methods: {
+    ...mapActions("categories", ["deleteCategory"]),
+    openModal() {
         console.log(1);
         this.visibleModal = !this.visibleModal
-      },
-      dateFormat(value)
-       {
+    },
+    dateFormat(value) {
         if (value) {
-        return moment(String(value)).format("HH:mm:ss DD/MM/YYYY ");
-          }
-       },
-       async fetchCategoryList() {
+            return moment(String(value)).format("HH:mm:ss DD/MM/YYYY ");
+        }
+    },
+    async fetchCategoryList() {
         await this.$store.dispatch(
-            "categories/getCategories",
-            {
-              name: this.searchData.name,
-              itemsPerPage: this.searchData.itemsPerPage,
-              currentPage: this.searchData.paginate.currentPage,
+            "categories/getCategories", {
+                name: this.searchData.name,
+                itemsPerPage: this.searchData.itemsPerPage,
+                currentPage: this.searchData.paginate.currentPage,
             }
-          );
-          this.searchData.paginate = this.pagination;
-        },
-        checkDataParam(data) {
-          return data === 0 || data === "" ? undefined : data;
-        },
-        passParamUrl()
-        {
-          this.$router.push({
+        );
+        this.searchData.paginate = this.pagination;
+    },
+    checkDataParam(data) {
+        return data === 0 || data === "" ? undefined : data;
+    },
+    passParamUrl() {
+        this.$router.push({
             name: "category-list",
             query: {
-              name: this.checkDataParam(this.searchData.name),
-              currentPage: this.checkDataParam(
-                this.searchData.paginate.currentPage
-              ),
-              perPage: this.checkDataParam(this.searchData.itemsPerPage),
+                name: this.checkDataParam(this.searchData.name),
+                currentPage: this.checkDataParam(
+                    this.searchData.paginate.currentPage
+                ),
+                perPage: this.checkDataParam(this.searchData.itemsPerPage),
             },
-          }).catch(() => {});
-        },
-        changePage(page) {
-          this.passParamUrl();
-          this.fetchCategoryList(this.searchData.itemsPerPage, page);
-      },
-      showImage(imageLink)
-      {
-        if(imageLink)
-        {
-          this.selectedImg = imageLink;
-          this.visible = true
-        }
-        else
-        {
-          this.$toast.error('eo co anh');
-        }
-        
-      },
-      updateSearch(filter) {
-      this.searchData = {
-        ...this.searchData,
-        ...filter
-      };
-      this.searchData.paginate.currentPage = 1;
-      this.passParamUrl();
-      this.search();
+        }).catch(() => {});
     },
-    async search()
-    {
-      if (this.$route.fullPath !== "/categories") {
-        this.clearParamUrl();
-        
-      }
-      this.fetchCategoryList();
+    changePage(page) {
+        this.passParamUrl();
+        this.fetchCategoryList(this.searchData.itemsPerPage, page);
+    },
+    showImage(imageLink) {
+        if (imageLink) {
+            this.selectedImg = imageLink;
+            this.visible = true
+        } else {
+            this.$toast.error('eo co anh');
+        }
+
+    },
+    updateSearch(filter) {
+        this.searchData = {
+            ...this.searchData,
+            ...filter
+        };
+        this.searchData.paginate.currentPage = 1;
+        this.passParamUrl();
+        this.search();
+    },
+    async search() {
+        if (this.$route.fullPath !== "/categories") {
+            this.clearParamUrl();
+
+        }
+        this.fetchCategoryList();
     },
     clearParamUrl() {
-      return;
-      },
-    categoryDetail(params)
-    {
-      this.visibleModalEdit = !this.visibleModalEdit;
-      this.idCategory = params;
+        return;
     },
-    handleEditOk(){
-      this.visibleModalEdit = false;
-      this.idCategory = null;
-      this.$emit("change");
+    categoryDetail(params) {
+        this.visibleModalEdit = !this.visibleModalEdit;
+        this.idCategory = params;
     },
-    handleEditCancel(){
-      this.visibleModalEdit = false;
-      this.idCategory = null;
+    async handleEditOk() {
+        this.visibleModalEdit = false;
+        this.idCategory = null;
+        this.fetchCategoryList();
+        this.$emit("change");
+    },
+    handleEditCancel() {
+        this.visibleModalEdit = false;
+        this.idCategory = null;
+    },
+    confirmClick(category_id) {
+        this.idCategory = category_id;
+        this.visibleConfirmDetele = true;
+    },
+    async categoryDelete() {
+        await this.deleteCategory(this.idCategory).then(() => {
+                this.visibleConfirmDetele = false,
+                this.fetchCategoryList();
+            this.$toast.success("xoa du lieu thanh cong");
+        }).catch(() => {
+            this.$toast.error("Xoa that bai")
+        })
     }
   },   
 }
