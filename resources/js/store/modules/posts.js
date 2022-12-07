@@ -17,6 +17,7 @@ export const state = {
 
 export const getters = {
     dataPost : state => state.dataPost,
+    pagination: state => state.pagination,
 }
 
 export const mutations = {
@@ -36,11 +37,13 @@ export const mutations = {
 export const actions = {
     async getPosts({ commit },payload) {
         const response = await axios.get(api.LIST_ALL_POST,{
-            params: {
-                // per_page: payload.itemsPerPage,
-                // page: payload.currentPage, 
-                // name: payload.name,    
-              }
+            params:{
+                category_name: payload.category_name,
+                member_name: payload.member_name,
+                status:payload.status,
+                per_page: payload.itemsPerPage,
+                page: payload.currentPage, 
+            }
         });
         commit(types.POST.GET_POST_LIST, response.data.data);
       },

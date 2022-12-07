@@ -1,5 +1,5 @@
 <template>
-    <div class="">comment list</div>
+    <div class="">codASDSDasdasmment list</div>
 </template>
 
 <script>
