@@ -189,6 +189,30 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         return Category::all();
     }
 
+    public function showApproval($id)
+    {
+        $dataApprove = $this->model       
+        ->leftJoin('ingredients','posts.id','=','ingredients.post_id')
+        ->leftJoin('directions','posts.id','=','directions.post_id')
+        ->leftJoin('favourites','posts.id','=','favourites.post_id')
+        ->leftJoin('post_images','posts.id','=','post_images.post_id')
+        ->leftJoin('rates','posts.id','=','rates.post_id')
+        ->leftJoin('favourites as f','posts.id','=','favourites.post_id')
+        ->with('Ingredients','Directions','PostImage',"member:id,name")
+        ->select('posts.*',DB::raw('count(f.id) as number_favourite,
+        round(avg(rates.number_rating),1) as number_rating'))
+        ->groupBy('id','title','content',
+        'category_id','note','nutrition_facts',
+        'time','member_id','status','created_at',
+        'updated_at','deleted_at')
+        ->where('posts.id',$id)
+        ->first();
+
+        return [
+            "dataApprove" => $dataApprove
+        ];
+    }
+
     public function edit($id)
     {
         $memberId = Auth::user()->member->id;

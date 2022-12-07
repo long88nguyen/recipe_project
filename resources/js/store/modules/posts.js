@@ -13,11 +13,15 @@ export const state = {
         totalRecord: 0,
         perPage: 0
     },
+    showApprove: {}
+
 }
 
 export const getters = {
     dataPost : state => state.dataPost,
     pagination: state => state.pagination,
+    showApprove: state => state.showApprove,
+
 }
 
 export const mutations = {
@@ -31,6 +35,11 @@ export const mutations = {
         state.pagination.totalRecord = data.postList.total;
         state.pagination.perPage = data.postList.per_page;
     },
+    [types.POST.GET_POST_DETAIL](state, data)
+      {
+        state.showApprove = data.data.dataApprove
+        console.log(state.showApprove);
+      }
     
 }
 
@@ -46,5 +55,20 @@ export const actions = {
             }
         });
         commit(types.POST.GET_POST_LIST, response.data.data);
+      },
+      async getApprovePost({ commit }, params) {
+        let url = `${api.SHOW_APPROVE}/${params}`;
+        const response = await axios
+          .get(url)
+          .then(res => res)
+          .catch(error => {
+            return error.response;
+          });
+        if (response.status == 200) {
+          commit(
+            types.POST.GET_POST_DETAIL,
+            response.data
+          );
+        }
       },
 }

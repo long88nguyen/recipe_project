@@ -16,6 +16,8 @@ export const AUTH = {
 
   export const POST = {
     GET_POST_LIST : "GET_POST_LIST",
+    GET_POST_DETAIL: "GET_POST_DETAIL",
+
   };
 
   export const COMMON = {

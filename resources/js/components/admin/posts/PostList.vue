@@ -15,13 +15,13 @@
                     <tr>
                         <th>#</th>
                         <th style="width:15%">Member Name</th>
-                        <th>Category Name</th>   
+                        <th style="width:15%">Category Name</th>   
                         <th>Title</th>
                         <th style="width:20%">Content</th>
                         <th style="width:10%">Status</th>
                         <th style="width:10%">Time</th>
                         <th style="width:15%">Created at</th>
-                        <th style="width:10%">Action</th>
+                        <th style="width:5%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +52,16 @@
                 
           </table>
         </div>
+        
+
+        <PostApproveModal
+        :visible="ApproveVisible"
+        :id = "idPost"
+        @ok="handleEditOk"
+        @cancel="handleEditCancel"
+        >
+
+        </PostApproveModal>
         <a-pagination 
         class="paginate"
         v-model:current="searchData.paginate.currentPage" 
@@ -64,15 +74,18 @@
 
 <script>
 
+import PostApproveModal from "./modals/PostApproveModal.vue"
 import PostFilter from "./filters/PostFilter.vue"
 import { mapGetters } from 'vuex'
 
 export default {
     components:{
-        PostFilter
+        PostApproveModal,
+        PostFilter,
     },  
     data(){
         return{
+            ApproveVisible:false,
             idPost:null,
             searchData: {
               category_name:"",
@@ -193,8 +206,19 @@ export default {
     approveModal(params)
     {
         this.idPost = params;
+        this.ApproveVisible = !this.ApproveVisible;
         console.log(params);
-    }
+    },
+    async handleEditOk() {
+        this.ApproveVisible = false;
+        this.idPost = null;
+        this.fetchDataPost();
+        this.$emit("change");
+    },
+    handleEditCancel() {
+        this.visibleModalEdit = false;
+        this.idCategory = null;
+    },
     }
 }
 </script>

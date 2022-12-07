@@ -36,7 +36,6 @@ export const mutations = {
       [types.CATEGORY.GET_CATEGOTY_DETAIL](state, data)
       {
         state.categoryDetail = data.data.getCategoryById
-        console.log(data.data.getCategoryById);
       }
 }
 
