@@ -71,4 +71,8 @@ export const actions = {
           );
         }
       },
+      async updateStatusPost({ commit }, params) {
+        let url = `${api.APPROVE_POST}/${params.id}`;
+        await axios.post(url, params);
+      },
 }

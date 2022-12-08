@@ -12,6 +12,7 @@ const CATEGORY_DELETE = '/api/category';
 
 const LIST_ALL_POST = '/api/post/get-list'
 const SHOW_APPROVE ='/api/post/show-approval'
+const APPROVE_POST ='/api/post/approve'
 
 //common
 const LIST_COMMON = '/api/common'; 
@@ -29,6 +30,7 @@ export default {
     //post
     LIST_ALL_POST,
     SHOW_APPROVE,
+    APPROVE_POST,
 
     //authentication
     LOGIN

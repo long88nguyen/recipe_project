@@ -4,6 +4,7 @@
                 <div class="form_group">
                 <label for="">Name</label>
                 <input type="text" class="form-control" v-model="CategoryDetail.name">
+
                 </div>
                 <div class="form-image-cate">
                     <div class="form_group">

@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::post('/{id}/update',[\App\Http\Controllers\Api\PostController::class,'update']);
         Route::delete('/{id}',[\App\Http\Controllers\Api\PostController::class,'delete']);
         Route::post('/approval',[\App\Http\Controllers\Api\PostController::class,'listApproval']);
-        Route::post('/{id}/approve',[\App\Http\Controllers\Api\PostController::class,'approve']);     
+        Route::post('/approve/{id}',[\App\Http\Controllers\Api\PostController::class,'approve']);     
     });
 
     //categories
