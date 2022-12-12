@@ -17,7 +17,7 @@
                 "
                >
                <i class="fa-solid fa-chart-line"></i>
-                   <span class="links_name">Trang chủ</span>
+                   <span class="links_name">Dashboard</span>
                </router-link>
                    
            </li>
@@ -28,7 +28,7 @@
                 "
                >
                <i class="fa-solid fa-list"></i>
-                   <span class="links_name">Quản lý danh mục</span>
+                   <span class="links_name">Category</span>
                </router-link>
                   
            </li>
@@ -38,7 +38,7 @@
                   url.includes('posts') ? 'active-router' : ''
                 ">
                 <i class="fa-solid fa-signs-post"></i>
-                   <span class="links_name">Quản lý bài viết</span>
+                   <span class="links_name">Post</span>
                </router-link>
                   
            </li>
@@ -48,7 +48,7 @@
                   url.includes('comments') ? 'active-router' : ''
                 ">
                 <i class="fa-solid fa-image"></i>
-                   <span class="links_name">Quản lý bình luận</span>
+                   <span class="links_name">Comment</span>
                </router-link>
                    
            </li>
@@ -59,20 +59,11 @@
                 "
                >
                 <i class="fa-solid fa-user"></i>
-                   <span class="links_name">Quản lý người dùng</span>
+                   <span class="links_name">User</span>
                </router-link>
                   
            </li>
-           <li>
-               <router-link to="/rates" class="router-class"
-               :class="
-                  url.includes('rates') ? 'active-router' : ''
-                "
-               >
-                <i class="fa-solid fa-star"></i>
-                   <span class="links_name">Quản lý đánh giá</span>
-               </router-link>
-           </li>
+           
        </ul>
        <div class="profile_content">
            <div class="profile">

@@ -14,6 +14,7 @@ export const state = {
         perPage: 0
     },
     showApprove: {},
+    memberPost : {},
 
 }
 
@@ -21,6 +22,7 @@ export const getters = {
     dataPost : state => state.dataPost,
     pagination: state => state.pagination,
     showApprove: state => state.showApprove,
+    memberPost: state => state.memberPost,
 
 }
 
@@ -36,9 +38,10 @@ export const mutations = {
         state.pagination.perPage = data.postList.per_page;
     },
     [types.POST.GET_POST_DETAIL](state, dataApprove)
-      {
-        state.showApprove = dataApprove;
-      }
+    {
+      state.showApprove = dataApprove;
+      state.memberPost = dataApprove.member
+    }
   
 }
 

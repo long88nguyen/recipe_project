@@ -4,7 +4,7 @@
         <a-row>
             <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">             
                 <div class="logo_food">
-                <img src="" alt="" >
+                <img src="../../uploads/images/logofood.png" alt="">
               </div>
             </a-col>
             <a-col  :xxl="12" :xl="12" :lg="12" :md="12" :xs="12">
@@ -22,7 +22,7 @@
 
             <a-col :xxl="3" :xl="3" :lg="3" :md="3" :xs="3">
                 <div class="nav-account">
-                    <img src="" alt="" @click="toggleProfile">
+                    <img src="../../uploads/images/dd.jpg" alt="" @click="toggleProfile">
                     <span> Long </span>
                     <div class="nav-account-menu" :class="{activce:isActiveVisible}">
                        
@@ -94,7 +94,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 * {
   margin: 0;
   padding: 0px;
@@ -135,7 +135,7 @@ export default {
       align-items: center;
       img
         {
-          height: 70px;
+          height: 80px;
           
         }
     }

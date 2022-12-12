@@ -3,10 +3,10 @@
         <div class="post_description">
             <div class="post_layout post_by">
                 <div class="member_name"> 
-                    <i class="fa-regular fa-user"></i> {{ showApprove.member.name }} <br>
+                    <i class="fa-regular fa-user"></i> {{ memberPost.name}}
                 </div>
                 <div class="created_at">
-                    <i class="fa-solid fa-clock"></i>  
+                    <i class="fa-solid fa-clock"></i>  {{  showApprove.created_at }}
                 </div>
             </div>
             <div class="post_layout post_image">
@@ -14,28 +14,34 @@
                </div> 
             <div class="post_layout post_title">
                 <label for="">Title</label>
-                <input type="text" class="form-control" disabled >
+                <input type="text" class="form-control" disabled :value="showApprove.title">
             </div>
             <div class="post_layout post_content">
                 <label for="">Content</label>
-                <textarea name="" id="" cols="30" rows="10" class="form-control" disabled >
+                <textarea name="" id="" cols="30" rows="5" class="form-control" disabled :value="showApprove.content" >
                    
 
                 </textarea>
             </div>
             <div class="post_layout post_ingredient">
                 <label for="">Ingredient</label>
-                <textarea name="" id="" cols="30" rows="10" class="form-control">
-                    
-                </textarea>
+                <!-- {{ showApprove }} -->
+                <template v-for="(ingre,index) in showApprove.ingredients" :key="index">
+                    <input type="text" class="form-control input_direction" disabled  :value="'+ '+ingre.name">
+                </template>
+                
             </div>
             <div class="post_layout post_direction">
                 <label for="">Direction</label>
-                <textarea name="" id="" cols="30" rows="10"  class="form-control"></textarea>
+                <br>
+                <template v-for="(direc,index) in showApprove.directions" :key="index">
+                    <span>Step {{index}}</span>
+                    <textarea name="" id="" cols="30" rows="3"  class="form-control input_ingredient" :value = "direc.description" disabled></textarea>
+                </template>    
             </div>
             <div class="post_layout post_time">
                 <label for="">Time</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" disabled :value="showApprove.time + 'minute'">
             </div>
             <div class="btn_event" v-if = "(showApprove.status == 1)">
                 <button class="btn btn-primary" @click="Approve(2)">Approved</button>
@@ -52,20 +58,14 @@ import axios from "axios";
 export default {
     data(){
         return{
-            heeeloo: 1,
             status:null,
-            heeoo:{
-                products:{
-                    hello : 1,
-                    ok : "2"
-                }
-            }
         }
     },
     props:["id"],
     computed:{
         ...mapGetters({
-            showApprove:"posts/showApprove"
+            showApprove:"posts/showApprove",
+            memberPost:"posts/memberPost"
         }),
     },
     created()
@@ -111,6 +111,12 @@ export default {
                 width: 150px;
                 height: 150px;
             }
+        }
+        .input_ingredient{
+            margin:5px 0px;
+        }
+        .input_direction{
+            margin:5px 0px;
         }
         .btn_event{
             display: flex;

@@ -3,43 +3,43 @@
         <div class="filter_post">
             <div class="filter_post-option">
                 <div class="filter_post-item active">
-                    <img src="" alt="">
+                    <img src="../../../uploads/images/logofood.png" alt="">
                     <h5 class="filter_post-title">
                         Tất cả
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="" alt="">
+                    <img src="../../../uploads/images/eggcate.png" alt="">
                     <h5 class="filter_post-title">
                         Trứng gà
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="" alt="">
+                    <img src="../../../uploads/images/eggduckcate.png" alt="">
                     <h5 class="filter_post-title">
                         Trứng vịt
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="" alt="">
+                    <img src="../../../uploads/images/kobefoocate.png" alt="">
                     <h5 class="filter_post-title">
                         Bò Kobe
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="" alt="">
+                    <img src="../../../uploads/images/fishfood.png" alt="">
                     <h5 class="filter_post-title">
                         Cá thu
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="" alt="">
+                    <img src="../../../uploads/images/chickencate.png" alt="">
                     <h5 class="filter_post-title">
                         Thịt gà
                     </h5>
                 </div>
                 <div class="filter_post-item">
-                    <img src="" alt="">
+                    <img src="../../../uploads/images/meatcate.png" alt="">
                     <h5 class="filter_post-title">
                         Thịt lợn
                     </h5>
