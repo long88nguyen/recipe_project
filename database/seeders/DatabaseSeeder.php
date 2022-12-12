@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Ingredient::factory(100)->create();
         // \App\Models\Category::factory(10)->create();
         //  \App\Models\Direction::factory(100)->create();
-         \App\Models\PostImage::factory(100)->create();
+        //  \App\Models\PostImage::factory(100)->create();
     }
 }

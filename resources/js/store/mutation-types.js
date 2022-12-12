@@ -20,6 +20,18 @@ export const AUTH = {
 
   };
 
+  export const INGREDIENT = {
+    GET_INGREDIENT_LIST : "GET_INGREDIENT_LIST",
+  }
+
+  export const DIRECTION = {
+    GET_DIRECTION_LIST : "GET_DIRECTION_LIST",
+  }
+
+  export const POST_IMAGE = {
+    GET_POST_IMAGE_LIST : "GET_POST_IMAGE_LIST",
+  }
+
   export const COMMON = {
     USER_INFO: "USER_INFO"
   }

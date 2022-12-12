@@ -14,6 +14,19 @@ const LIST_ALL_POST = '/api/post/get-list'
 const SHOW_APPROVE ='/api/post/show-approval'
 const APPROVE_POST ='/api/post/approve'
 
+//ingredient 
+
+const LIST_ALL_INGREDIENT = '/api/ingredient'
+
+
+//direction 
+
+const LIST_ALL_DIRECTION = '/api/direction'
+
+// post-image
+
+const LIST_ALL_POST_IMAGE = '/api/post-image'
+
 //common
 const LIST_COMMON = '/api/common'; 
 export default {
@@ -31,6 +44,15 @@ export default {
     LIST_ALL_POST,
     SHOW_APPROVE,
     APPROVE_POST,
+
+    //ingredient
+    LIST_ALL_INGREDIENT,
+
+    //direction
+    LIST_ALL_DIRECTION,
+
+    //post_image    
+    LIST_ALL_POST_IMAGE,
 
     //authentication
     LOGIN

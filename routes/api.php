@@ -72,4 +72,20 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::post('/{id}',[\App\Http\Controllers\Api\FavouriteController::class,'favouritePost']);
         Route::delete('/{id}',[\App\Http\Controllers\Api\FavouriteController::class,'unfavouritePost']);
     });
+
+    //ingredient 
+     
+    Route::group(['prefix' => 'ingredient'], function () {
+        Route::get('/',[\App\Http\Controllers\Api\IngredientController::class,'getAll']);
+    });
+
+    //direction 
+    Route::group(['prefix' => 'direction'], function () {
+        Route::get('/',[\App\Http\Controllers\Api\DirectionController::class,'getAll']);
+    });
+
+    //post-image 
+    Route::group(['prefix' => 'post-image'], function () {
+        Route::get('/',[\App\Http\Controllers\Api\PostImageController::class,'getAll']);
+    });
 });

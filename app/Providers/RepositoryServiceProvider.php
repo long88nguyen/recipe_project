@@ -32,6 +32,26 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Favourite\FavouriteRepository::class,
             \App\Repositories\Favourite\FavouriteRepositoryEloquent::class
         );
+
+        $this->app->bind(
+            \App\Repositories\Ingredient\IngredientRepository::class,
+            \App\Repositories\Ingredient\IngredientRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Direction\DirectionRepository::class,
+            \App\Repositories\Direction\DirectionRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\PostImage\PostImageRepository::class,
+            \App\Repositories\PostImage\PostImageRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Comment\CommentRepository::class,
+            \App\Repositories\Comment\CommentRepositoryEloquent::class
+        );
     }
 
     /**

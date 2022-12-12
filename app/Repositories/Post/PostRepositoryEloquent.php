@@ -198,7 +198,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         ->leftJoin('post_images','posts.id','=','post_images.post_id')
         ->leftJoin('rates','posts.id','=','rates.post_id')
         ->leftJoin('favourites as f','posts.id','=','favourites.post_id')
-        ->with('Ingredients','Directions','PostImage',"member")
+        ->with('Ingredients','Directions','PostImage',"member:id,name")
         ->select('posts.*',DB::raw('count(f.id) as number_favourite,
         round(avg(rates.number_rating),1) as number_rating'))
         ->groupBy('id','title','content',
@@ -208,9 +208,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         ->where('posts.id',$id)
         ->first();
 
-        return [
-            "dataApprove" => $dataApprove
-        ];
+        return $dataApprove;
     }
 
     public function edit($id)

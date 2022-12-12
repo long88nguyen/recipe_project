@@ -13,7 +13,7 @@ export const state = {
         totalRecord: 0,
         perPage: 0
     },
-    showApprove: {}
+    showApprove: {},
 
 }
 
@@ -35,12 +35,11 @@ export const mutations = {
         state.pagination.totalRecord = data.postList.total;
         state.pagination.perPage = data.postList.per_page;
     },
-    [types.POST.GET_POST_DETAIL](state, data)
+    [types.POST.GET_POST_DETAIL](state, dataApprove)
       {
-        state.showApprove = data.data.dataApprove
-        console.log(state.showApprove);
+        state.showApprove = dataApprove;
       }
-    
+  
 }
 
 export const actions = {
@@ -67,7 +66,7 @@ export const actions = {
         if (response.status == 200) {
           commit(
             types.POST.GET_POST_DETAIL,
-            response.data
+            response.data.data
           );
         }
       },

@@ -3,25 +3,22 @@
         <div class="post_description">
             <div class="post_layout post_by">
                 <div class="member_name"> 
-                    <i class="fa-regular fa-user"></i>  {{ heeoo.products}} <br> {{postApprove.member }}
+                    <i class="fa-regular fa-user"></i> {{ showApprove.member.name }} <br>
                 </div>
                 <div class="created_at">
-                    <i class="fa-solid fa-clock"></i> {{postApprove.created_at }} 
+                    <i class="fa-solid fa-clock"></i>  
                 </div>
             </div>
             <div class="post_layout post_image">
-                <template v-for="(image,index) in postApprove.post_image" :key="index">
-                    {{ image}}
-                    <img :src="`upload/category/20221206113152.png`" alt="" height="150px" width="150px">
-                </template>
+              
                </div> 
             <div class="post_layout post_title">
                 <label for="">Title</label>
-                <input type="text" class="form-control" disabled :value="postApprove.title">
+                <input type="text" class="form-control" disabled >
             </div>
             <div class="post_layout post_content">
                 <label for="">Content</label>
-                <textarea name="" id="" cols="30" rows="10" class="form-control" disabled :value = "postApprove.content">
+                <textarea name="" id="" cols="30" rows="10" class="form-control" disabled >
                    
 
                 </textarea>
@@ -40,7 +37,7 @@
                 <label for="">Time</label>
                 <input type="text" class="form-control">
             </div>
-            <div class="btn_event" v-if = "(postApprove.status == 1)">
+            <div class="btn_event" v-if = "(showApprove.status == 1)">
                 <button class="btn btn-primary" @click="Approve(2)">Approved</button>
                 <button class="btn btn-success" @click="Reject(3)">Reject</button>
             </div>
@@ -50,9 +47,12 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import axios from "axios";
+
 export default {
     data(){
         return{
+            heeeloo: 1,
             status:null,
             heeoo:{
                 products:{
@@ -65,12 +65,12 @@ export default {
     props:["id"],
     computed:{
         ...mapGetters({
-            postApprove:"posts/showApprove"
-        })
+            showApprove:"posts/showApprove"
+        }),
     },
     created()
     {
-        this.$store.dispatch('posts/getApprovePost',this.$props.id);        
+        this.$store.dispatch('posts/getApprovePost',this.$props.id);    
     },
     methods:{
         async approvePost()
@@ -105,6 +105,12 @@ export default {
         padding:10px;
         .post_layout{
             margin: 10px 0px;
+        }
+        .post_image{
+            img{
+                width: 150px;
+                height: 150px;
+            }
         }
         .btn_event{
             display: flex;
