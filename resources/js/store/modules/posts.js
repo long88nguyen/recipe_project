@@ -15,6 +15,7 @@ export const state = {
     },
     showApprove: {},
     memberPost : {},
+    getPostApproved : {},
 
 }
 
@@ -23,6 +24,7 @@ export const getters = {
     pagination: state => state.pagination,
     showApprove: state => state.showApprove,
     memberPost: state => state.memberPost,
+    getPostApproved: state => state.getPostApproved,
 
 }
 
@@ -36,6 +38,9 @@ export const mutations = {
         state.pagination.currentPage = data.postList.current_page;
         state.pagination.totalRecord = data.postList.total;
         state.pagination.perPage = data.postList.per_page;
+    },
+    [types.POST.GET_POST_APPROVED](state, data) {
+      state.getPostApproved = data.dataPost;
     },
     [types.POST.GET_POST_DETAIL](state, dataApprove)
     {
@@ -58,6 +63,16 @@ export const actions = {
         });
         commit(types.POST.GET_POST_LIST, response.data.data);
       },
+
+      async getPostsApproved({ commit },payload) {
+        const response = await axios.get(api.LIST_POST_APPROVED,{
+          params:{
+              category_id: payload.category_id,
+          }
+      });
+        commit(types.POST.GET_POST_APPROVED, response.data.data);
+      },
+
       async getApprovePost({ commit }, params) {
         let url = `${api.SHOW_APPROVE}/${params}`;
         const response = await axios
@@ -73,6 +88,7 @@ export const actions = {
           );
         }
       },
+
       async updateStatusPost({ commit }, params) {
         let url = `${api.APPROVE_POST}/${params.id}`;
         await axios.post(url, params);

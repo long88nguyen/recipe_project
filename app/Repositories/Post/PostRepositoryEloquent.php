@@ -79,21 +79,23 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     public function getListApproved($request)
     {
         $memberId = Auth::user()->member->id;
-        $dataPost = $this->model              
-                    ->leftJoin('ingredients','posts.id','=','ingredients.post_id')
-                    ->leftJoin('directions','posts.id','=','directions.post_id')
-                    ->leftJoin('favourites','posts.id','=','favourites.post_id')
-                    ->leftJoin('post_images','posts.id','=','post_images.post_id')
-                    ->leftJoin('rates','posts.id','=','rates.post_id')
-                    ->leftJoin('favourites as f','posts.id','=','favourites.post_id')
-                    ->with('Ingredients','Directions','PostImage')
-                    ->select('posts.*',DB::raw('count(f.id) as number_favourite,
-                    round(avg(rates.number_rating),1) as number_rating'))
-                    ->groupBy('id','title','content',
-                    'category_id','note','nutrition_facts',
-                    'time','member_id','status','created_at',
-                    'updated_at','deleted_at')
-                    ->get();
+        $dataPost = $this->model->join("favourites","favourites.post_id","posts.id")
+        ->select([
+            "posts.*",
+            DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
+            DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
+        ])
+        ->groupBy("id","title","content",
+        "category_id","member_id",
+        "time","status","created_at",
+        "updated_at","nutrition_facts",
+        "note","deleted_at");
+
+        if ($request->has('category_id') && $request->category_id) {
+            $dataPost->where('posts.category_id', $request->category_id);
+        }
+
+        $dataPost = $dataPost->get();
          foreach($dataPost as $value)
          {
         
@@ -107,7 +109,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 $value->favouriteable = true;
             }
          }
-        return $dataPost;
+        return [
+          "dataPost" => $dataPost
+        ];
     }
 
     public function store($request)

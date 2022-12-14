@@ -13,6 +13,7 @@ const CATEGORY_DELETE = '/api/category';
 const LIST_ALL_POST = '/api/post/get-list'
 const SHOW_APPROVE ='/api/post/show-approval'
 const APPROVE_POST ='/api/post/approve'
+const LIST_POST_APPROVED ='/api/post'
 
 //ingredient 
 
@@ -44,6 +45,7 @@ export default {
     LIST_ALL_POST,
     SHOW_APPROVE,
     APPROVE_POST,
+    LIST_POST_APPROVED,
 
     //ingredient
     LIST_ALL_INGREDIENT,

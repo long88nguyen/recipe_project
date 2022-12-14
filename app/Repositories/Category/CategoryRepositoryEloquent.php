@@ -45,9 +45,12 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         {
             $getCategory->where('name', 'like', '%' . $request->name . '%');
         }
+        $getAllcategory =  $getCategory->limit(7)->get();
+
         $getCategory =  $getCategory->paginate($perPage);
         return [
-            'listCategory' =>  $getCategory
+            'listCategory' =>  $getCategory,
+            'getAllcategory' => $getAllcategory
         ];
     }
 

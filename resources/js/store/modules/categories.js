@@ -4,6 +4,7 @@ import api from "../../api/api";
 
 export const state = {
     categoryList:{},
+    getAllcategory:{},
     pagination: {
         from: 0,
         to: 0,
@@ -20,6 +21,7 @@ export const getters = {
     categoryList: state => state.categoryList,
     pagination: state => state.pagination,
     categoryDetail: state => state.categoryDetail,
+    getAllcategory: state => state.getAllcategory,
 }
 
 export const mutations = {
@@ -32,6 +34,9 @@ export const mutations = {
         state.pagination.currentPage = data.listCategory.current_page;
         state.pagination.totalRecord = data.listCategory.total;
         state.pagination.perPage = data.listCategory.per_page;
+      },
+      [types.CATEGORY.GET_CATEGORY_LIST](state, data) {
+        state.getAllcategory = data.getAllcategory;
       },
       [types.CATEGORY.GET_CATEGOTY_DETAIL](state, data)
       {
@@ -50,6 +55,10 @@ export const actions = {
               }
         });
         commit(types.CATEGORY.FETCH_CATEGORY_LIST, response.data.data);
+      },
+      async getAllCategories({ commit },payload) {
+        const response = await axios.get(api.LIST_CATEGORY);
+        commit(types.CATEGORY.GET_CATEGORY_LIST, response.data.data);
       },
     async createCategory({ commit }, params) {
         await axios.post(api.CATEGORY_CREATE, params);
