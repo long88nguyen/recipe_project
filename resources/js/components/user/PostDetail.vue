@@ -90,10 +90,14 @@
                         
                    </div>
                    <div class="post-feedback">
-
+                    <button > 
+                        fassds
+                    </button>
+                    <a-rate :default-value="2" disabled />
                    </div>
                 </div>
             </a-col>
+
             <a-col :xxl="6" :xl="6" :lg="6">                 
                 <div class="post_suggest">
                     <div class="post_suggest-img">
@@ -109,7 +113,15 @@
 
 <script>
 export default {
-
+    data(){
+        return {
+        }
+    },
+    methods:{
+      
+    },  
+    created(){
+    }
 }
 </script>
 

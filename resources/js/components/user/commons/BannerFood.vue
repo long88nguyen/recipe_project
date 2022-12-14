@@ -1,6 +1,8 @@
 <template>
     <div class="filter_container">
+
         <div class="filter_post">
+            <h5>Hôm nay ăn gì</h5>
             <div class="filter_post-option">
                 <div class="filter_post-item" :class="(searchData.category_id == null) ? 'active' : ''">
                     <img src="../../../uploads/images/logofood.png" alt="">
@@ -16,6 +18,7 @@
                         </h5>
                     </div>
                 </template>
+    
                 
             </div>
         </div>
@@ -23,14 +26,14 @@
   <div class="banner_food">
         <div class="banner_food-container">
             <a-row>
-                <h1>{{ searchData.category_id }}</h1>
-                <template v-for="(post,index) in getPostApproved" :key="index">
+                <template v-for="(post,index) in getPostApproved.data" :key="index">
                     <a-col :xxl="6" :xl="6" :lg="6" :md="12" :xs="24">
                    <div class="card_item">
-                        <img src="" alt="" class="card_img">
+                        <img src="../../../uploads/images/kobefoocate.png" alt="" class="card_img">
                         <div class="card_heart">
-                            <i class="fa-regular fa-heart" v-if="post.favouriteable"></i>
-                            <i class="fa-solid fa-heart" v-else></i>
+                            <i class="fa-solid fa-heart"  v-if="post.favouriteable == false" @click="unsubmitFavourite(post.id)"></i>
+                            <i class="fa-regular fa-heart" v-else @click="submitFavourite(post.id)"></i>
+
                         </div>
                        
                         <h5 class="card_title">
@@ -40,20 +43,40 @@
                             {{ post.content}}
                         </h4>
                         <div class="card-rating">
-                            <div class="card_star">
-                                <i class="fa-solid fa-star"></i>
+                            <div class="rating_side">
+                                <div class="card_star">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            
+                                <h5>{{ post.number_rating }}</h5>
                             </div>
-                           
-                            <h5>{{ post.number_rating }}</h5>
+                            <div class="favourite_side">
+                                <div class="card_wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </div>
+                            
+                                <h5>{{ post.count_favourite }}</h5>
+                            </div>
+                        </div>
+                        <div class="member_side">
+                            <img src="../../../uploads/avatar.png" alt="">
                         </div>
                    </div>    
                 </a-col>
                 </template>
-                
             </a-row>
+            <a-pagination 
+            class="paginate"
+            v-model:current="searchData.paginate.currentPage" 
+            :total="searchData.paginate.totalRecord" 
+            :page-size="Number(searchData.paginate.perPage)" 
+            @change = "changePage"
+            show-less-items />
         </div>
+       
     </div>
-</template>
+    </template>
+
 
 <script>
 import { mapGetters } from 'vuex'
@@ -62,6 +85,16 @@ export default {
         return {
             searchData:{
                 category_id:null,
+                itemsPerPage:5,
+                paginate: {
+                from: 0,
+                to: 0,
+                totalPage: 0,
+                path: "",
+                currentPage: 1,
+                totalRecord: 0,
+                perPage: 0,
+              },
             },
             products:[
                 {
@@ -77,13 +110,17 @@ export default {
     },
      
     created(){
+        console.log(this.$store.getters['common/userCommon'].id);
         this.$store.dispatch("categories/getAllCategories")
         this.fecthDataPost();
     },
     computed:{
        ...mapGetters({
         categoryList:"categories/getAllcategory",
-        getPostApproved:"posts/getPostApproved"
+        getPostApproved:"posts/getPostApproved",
+        userCommom :"common/userCommon",
+        listItemsPerPage: "common/listItemsPerPage",
+        pagination: "posts/pagination"
        }),
     },
     methods:{
@@ -91,18 +128,55 @@ export default {
         {
             this.$store.dispatch("posts/getPostsApproved",{
                 category_id: this.searchData.category_id ? parseInt(this.searchData.category_id) : null,
+                itemsPerPage: this.searchData.itemsPerPage,
+                currentPage: this.searchData.paginate.currentPage,
             })
+            this.searchData.paginate = this.pagination;
         },
         search(value){
             this.searchData.category_id = value ? value : null,
             console.log(this.searchData.category_id);
+            this.searchData.paginate.currentPage = 1;
             this.fecthDataPost();
+        },
+        async submitFavourite(value)
+        {
+            console.log(1);
+            const account = this.$store.getters['common/userCommon'];
+            this.$store.dispatch("favourites/submitFavourite",{
+                id: value,
+                member_id: account.id, 
+            }).then(() => {
+                this.$toast.success("Add wish list successful !");
+                this.fecthDataPost();
+            }).catch(() =>{
+                this.$toast.error("Erorr!");    
+            })
+        },
+
+        async unsubmitFavourite(value){
+            this.$store.dispatch("favourites/deleteFavourite",{
+                id: value,
+            }).then(() => {
+                this.$toast.success("delete wish list successful !");
+                this.fecthDataPost();
+            }).catch(() =>{
+                this.$toast.error("Erorr!");    
+            })
+        },
+
+        changePage(page) {
+            this.fecthDataPost(this.searchData.itemsPerPage, page);
+        },
+
+        countData(){
+             this.categoryList.length();
         }
     }, 
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .banner_food{
    width: 100%;
     .banner_food-container
@@ -111,7 +185,7 @@ export default {
         margin:0 auto;
         .card_item{
             width: 90%;
-            height: 300px;
+            height: 350px;
             border-radius:5px;
             transition: 0.3s;
             background: white; 
@@ -145,28 +219,67 @@ export default {
             }
             h4{
                 font-size: 24px;
+                height: 40px;
                 padding:0px 10px 0 10px;
                
             }
-            h5{
+            .card_title{
                 font-size:18px;
+                height:45px;
                 padding:10px
             }
             .card-rating
             {
-                width: 100%;
-                height: 40px;
-                line-height: 40px;
                 display: flex;
-                .card_star
+                justify-content: space-between;
+                .rating_side
                 {
-                    padding:0px 10px 0 10px;
-                    i{
-                        color: #d54215;
-                        padding: 0px 5px 0 0;
+                    width: 100%;
+                    height: 40px;
+                    line-height: 40px;
+                    display: flex;
+                    .card_star
+                    {
+                        padding:0px 10px 0 10px;
+                        i{
+                            color: #d54215;
+                            padding: 0px 5px 0 0;
+                        }
+                       
                     }
+                    h5{
+                            line-height: 40px;
+                        }
+                }
+                .favourite_side
+                {
+                    width: 100%;
+                    height: 40px;
+                    line-height: 40px;
+                    display: flex;
+                    .card_wishlist
+                    {
+                        padding:0px 10px 0 10px;
+                        i{
+                            color: #d54215;
+                            padding: 0px 5px 0 0;
+                        }
+                        
+                    }
+                    h5{
+                            line-height: 40px;
+                        }
                 }
                 
+            }
+            .member_side{
+                text-align: end;
+                padding: 10px 15px;
+                img{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 15px;
+                }
             }
         }
         .card_item:hover{
@@ -183,29 +296,32 @@ export default {
         margin:0 auto;
         margin-top:20px ;
         margin-bottom:30px ;
+        h5{
+            margin-bottom:20px;
+        }
         .filter_post-option
         {
             width: 100%;
-            height: 50px;
+            height: 40px;
             display: flex;
             justify-content: space-between;
             .filter_post-item{
                 width: 130px;
-                height: 50px;
+                height: 40px;
                 background:  white;
-                border-radius: 25px;
+                border-radius: 20px;
                
                 img{
-                    width: 50px;
-                    height: 50px;
-                    border-radius:25px ;
+                    width: 40px;
+                    height: 40px;
+                    border-radius:20px ;
                     padding:3px;
-                    margin-right:10px ;
+                    margin-right:5px ;
                     float: left;
                 }
                 h5{
                     font-size:11px;
-                    line-height: 50px;
+                    line-height: 40px;
                 }
             }
             .active{
@@ -216,6 +332,7 @@ export default {
                 }
                 .filter_post-item:hover{
                     background:#f1734c;
+                    cursor: pointer;
                     
                     transition: 0.5s;
                     h5{
@@ -226,5 +343,6 @@ export default {
         
     }
 }
+
  
 </style>

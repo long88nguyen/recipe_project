@@ -95,10 +95,12 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             $dataPost->where('posts.category_id', $request->category_id);
         }
 
-        $dataPost = $dataPost->get();
-         foreach($dataPost as $value)
-         {
-        
+        if ($request->has('title') && $request->title)
+        {
+            $dataPost->where('posts.title', 'LIKE', '%' . FormatHelper::escape_like($request->title) . '%');
+        }
+        $dataPost = $dataPost->paginate(8);
+        $dataPost->map(function($value) use($memberId){
             $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
             if($checkFavourite)
             {
@@ -108,9 +110,47 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             {
                 $value->favouriteable = true;
             }
-         }
+        });
+         
         return [
-          "dataPost" => $dataPost
+          "dataPost" => $dataPost,
+        ];
+    }
+
+    public function SearchPost($request)
+    {
+        $memberId = Auth::user()->member->id;
+        $searchPost = $this->model->join("favourites","favourites.post_id","posts.id")
+        ->select([
+            "posts.*",
+            DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
+            DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
+        ])
+        ->groupBy("id","title","content",
+        "category_id","member_id",
+        "time","status","created_at",
+        "updated_at","nutrition_facts",
+        "note","deleted_at");
+
+        if ($request->has('title') && $request->title)
+        {
+            $searchPost->where('posts.title', 'LIKE', '%' . FormatHelper::escape_like($request->title) . '%');
+        }
+        $searchPost = $searchPost->get();
+        $searchPost->map(function($value) use($memberId){
+            $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
+            if($checkFavourite)
+            {
+                $value->favouriteable = false;
+            }
+            else
+            {
+                $value->favouriteable = true;
+            }
+        });
+         
+        return [
+          "searchPost" => $searchPost,
         ];
     }
 

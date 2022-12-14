@@ -14,10 +14,16 @@ const LIST_ALL_POST = '/api/post/get-list'
 const SHOW_APPROVE ='/api/post/show-approval'
 const APPROVE_POST ='/api/post/approve'
 const LIST_POST_APPROVED ='/api/post'
+const SEARCH_POST_APPROVED ='/api/post/search-result'
 
 //ingredient 
 
 const LIST_ALL_INGREDIENT = '/api/ingredient'
+
+// favourite 
+
+const FAVOURITE_POST = '/api/favourite'
+const DELETE_FAVORITE = '/api/favourite'
 
 
 //direction 
@@ -46,6 +52,12 @@ export default {
     SHOW_APPROVE,
     APPROVE_POST,
     LIST_POST_APPROVED,
+    SEARCH_POST_APPROVED,
+
+    //favourite
+
+    FAVOURITE_POST,
+    DELETE_FAVORITE,
 
     //ingredient
     LIST_ALL_INGREDIENT,

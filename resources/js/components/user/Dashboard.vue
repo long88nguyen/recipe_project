@@ -19,17 +19,16 @@
                 </div>
               </div>
             </a-col>
-
             <a-col :xxl="3" :xl="3" :lg="3" :md="3" :xs="3">
                 <div class="nav-account">
                     <img src="../../uploads/images/dd.jpg" alt="" @click="toggleProfile">
-                    <span> Long </span>
+                    <span> {{ userCommon.name}} </span>
                     <div class="nav-account-menu" :class="{activce:isActiveVisible}">
                        
                         <ul>
                             <li><i class="fa-solid fa-address-card"></i><router-link to="/profile" @click="toggleProfile">My Profile</router-link></li>
-                            <li><i class="fa-solid fa-gear"></i><a href="">Cài đặt</a></li>
-                            <li><i class="fa-solid fa-right-from-bracket"></i><a href="">Đăng xuất</a></li>
+                            <li><i class="fa-solid fa-gear"></i><span>Cài đặt</span></li>
+                            <li @click="showModal"><i class="fa-solid fa-right-from-bracket"></i><span>Đăng xuất</span></li>
                         </ul>
                     </div>
                 </div>
@@ -41,8 +40,10 @@
             <a-col :xxl="24" :xl="24" :lg="24" :md="24" :xs="24">
                  <div class="nav-search"   v-show="scrollEvent < 100">
                       <form action="" class="search-bar">
-                          <input type="text" placeholder="Search anything ... " @input="isActive">
-                          <button>
+                          <input type="text" placeholder="Search anything ... " @input="isActive"
+                          v-model="title"
+                          >
+                          <button @click.prevent="search">
                               <i class="fa-solid fa-magnifying-glass"></i>
                           </button>
                       </form>
@@ -50,45 +51,100 @@
             </a-col>
         </a-row>
     </nav>
+          <a-modal 
+            class="add-timesheet-modal"
+            v-model:visible="visible" 
+            title="Xác nhận đăng xuất" 
+            @ok="handleOk"
+            :footer = null
+            centered
+            >
+                <span class="popup_confirm-content">
+                    Bạn có muốn đăng xuất không ?
+                </span>
+                <div class="button_cofirm">
+                  <button class="btn btn-primary"   @click.prevent="logoutHandler()">Xác nhận</button>
+                  <button class="btn btn-danger" @click="cancelPopup">Hủy</button>
+
+                </div>
+          </a-modal>
   </div>
-    <router-view/>
+    <router-view :items="getAllPost"/>
     <Footer></Footer>
     
 </template>
 
 <script>
+import { mapGetters,mapActions } from 'vuex'
 
 
 import Footer from "./commons/Footer.vue"
 export default {
     components:{
-   
       Footer
     },
     data()
     {
         return {
+          title: "",
+          visible:false,
           isActiveVisible : false,
           scrollEvent :0,
         }
     },
+    computed:{
+      ...mapGetters({
+        userCommon : "common/userCommon",
+        getAllPost :"posts/getAllPost"
+      })
+    },  
     watch:{
       
     },  
     created(){
+      
       window.addEventListener("scroll",this.onScroll)
+      this.fetchAllPost()
     },  
     methods:
     {
+      ...mapActions("auth", ["logout"]),
       toggleProfile()
       {
 
         this.isActiveVisible = !this.isActiveVisible;
         console.log(this.isActiveVisible);
       },
+      fetchAllPost(){
+        this.$store.dispatch('posts/getAllPost',{
+          title:this.title,
+        });
+      },
       onScroll(e)
       {
         this.scrollEvent =window.top.scrollY;
+      },
+      showModal() {
+      this.visible = true;
+      },
+      handleOk(e) {
+        console.log(e);
+        this.visible = false;
+      }, 
+      cancelPopup()
+      {
+          this.visible = !this.visible;
+      },
+      logoutHandler() {
+        this.$store.dispatch("auth/logout").then(() => {
+          
+          this.$router.push({ name: "Login" });
+        });
+      },
+      search(){
+        this.fetchAllPost();
+        this.$router.push({ name: "search-post" });
+        this.title = null;
       }
     }
 }
@@ -285,7 +341,20 @@ export default {
                     align-items: center;
                     border-radius: 50%;
                 }
+                span{
+                    cursor: pointer;
+                    display: inline-block;
+                    text-decoration: none;
+                    color:white;
+                    font-weight: bold;
+                    transition:0.5s;
+                }
+                span:hover{
+                  transition: 0.4s;
+                  border-bottom:3px solid white;
+                }
                 a{
+                    cursor: pointer;
                     display: inline-block;
                     text-decoration: none;
                     color:white;
@@ -306,7 +375,6 @@ export default {
     .activce
     {
       max-height:300px;
-      padding:10px;
       transition:0.5s;
     }
 
@@ -483,4 +551,45 @@ export default {
 
 
 
+</style>
+
+<style lang="scss" scoped>
+.add-timesheet-modal{
+    .ant-modal-header {
+    padding: 16px 24px;
+    color: rgba(0, 0, 0, 0.65);
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 10px 10px 0 0;
+    background-color: #d2d6ff;
+    border-bottom-color: #3d4cdc;
+    .ant-modal-title {
+      color: #020519;
+      font-weight: bold;
+    }
+  }.ant-modal {
+    width: 100% !important;
+    max-width: 684px;
+  }
+    .ant-modal-content {
+    border-radius: 10px;
+  }
+  .ant-modal-close {
+    outline: unset !important;
+  }
+  .ant-modal-close-x {
+       line-height: 48px;
+  }
+  .popup_confirm-content{
+    font-weight: bold;
+  }
+  .button_cofirm{
+    margin-top:20px;
+    display: flex;
+    justify-content: flex-end;
+    button{
+        margin:0 5px;
+    }
+  }
+   }
 </style>

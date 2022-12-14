@@ -84,6 +84,11 @@ const routes =
                 {
                     path:"/create-post",
                     component:import('../components/user/CreatePost.vue')
+                },
+                {
+                    path:"/search-result",
+                    component:import('../components/user/SearchResult.vue'),
+                    name : "search-post",
                 }
             ]
         },

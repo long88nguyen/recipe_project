@@ -18,9 +18,14 @@ export const AUTH = {
     GET_POST_LIST : "GET_POST_LIST",
     GET_POST_DETAIL: "GET_POST_DETAIL",
     GET_POST_APPROVED: "GET_POST_APPROVED",
+    GET_ALL_POST: "GET_ALL_POST",
 
 
   };
+
+  export const FAVOURITE = {
+    SUBMIT: "SUBMIT",
+  }
 
   export const INGREDIENT = {
     GET_INGREDIENT_LIST : "GET_INGREDIENT_LIST",

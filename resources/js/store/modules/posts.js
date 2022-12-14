@@ -16,6 +16,7 @@ export const state = {
     showApprove: {},
     memberPost : {},
     getPostApproved : {},
+    getAllPost : {},
 
 }
 
@@ -25,6 +26,7 @@ export const getters = {
     showApprove: state => state.showApprove,
     memberPost: state => state.memberPost,
     getPostApproved: state => state.getPostApproved,
+    getAllPost: state => state.getAllPost,
 
 }
 
@@ -41,6 +43,16 @@ export const mutations = {
     },
     [types.POST.GET_POST_APPROVED](state, data) {
       state.getPostApproved = data.dataPost;
+      state.pagination.from = data.dataPost.from;
+      state.pagination.to = data.dataPost.to;
+      state.pagination.totalPage = data.dataPost.last_page;
+      state.pagination.path = data.dataPost.path;
+      state.pagination.currentPage = data.dataPost.current_page;
+      state.pagination.totalRecord = data.dataPost.total;
+      state.pagination.perPage = data.dataPost.per_page;
+    },
+    [types.POST.GET_ALL_POST](state, data) {
+      state.getAllPost = data.searchPost;
     },
     [types.POST.GET_POST_DETAIL](state, dataApprove)
     {
@@ -68,9 +80,20 @@ export const actions = {
         const response = await axios.get(api.LIST_POST_APPROVED,{
           params:{
               category_id: payload.category_id,
+              per_page: payload.itemsPerPage,
+              page: payload.currentPage, 
           }
       });
         commit(types.POST.GET_POST_APPROVED, response.data.data);
+      },
+
+      async getAllPost({ commit },payload) {
+        const response = await axios.get(api.SEARCH_POST_APPROVED,{
+          params:{
+              title: payload.title,
+          }
+      });
+        commit(types.POST.GET_ALL_POST, response.data.data);
       },
 
       async getApprovePost({ commit }, params) {

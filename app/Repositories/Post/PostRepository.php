@@ -27,4 +27,6 @@ interface PostRepository extends RepositoryInterface
     public function delete($id);
 
     public function approve($request,$id);
+
+    public function SearchPost($request);
 }
