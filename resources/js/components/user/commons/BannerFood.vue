@@ -72,8 +72,39 @@
             :page-size="Number(searchData.paginate.perPage)" 
             @change = "changePage"
             show-less-items />
+            <div class="container_showmore"> 
+                <div class="show_more"><span>Show more category</span></div>
+            </div>
+            
+            
         </div>
-       
+        <div class="newfood-container">
+            <h4>new post</h4>
+            <div>
+                <a-row>
+                    <a-col :xxl="8" :xl="8" :lg="8" :md="12" :xs="24">
+                    <div class="newpost_cartd">
+                        <a-carousel 
+                        effect="fade"
+                        dotsClass = "slick-dots"
+                        autoplay>
+                            <div class="hello"><img src="../../../uploads/images/banner2.png" alt=""></div>
+                            <div class="hello"><img src="../../../uploads/images/banner3.png" alt=""></div>
+                            <div class="hello"><img src="../../../uploads/images/banner4.png" alt=""></div>
+                        </a-carousel>
+                        <div class="bookmark">
+                            <i class="fa-regular fa-bookmark"></i>
+                        <!-- <i class="fa-solid fa-bookmark"></i> -->
+                        </div>
+                      
+                        <span>helloo word</span>
+
+                    </div>
+                </a-col>
+            </a-row>
+            </div>
+          
+        </div>
     </div>
     </template>
 
@@ -286,6 +317,63 @@ export default {
             box-shadow:2px 1px gray;
             transition: 0.3s;
         }
+        .container_showmore{
+            .show_more{
+                width: 100%;
+                margin-top: 20px;
+                height: 40px;
+                background: #f0f0f0;
+                color: #212529;
+                text-align: center;
+                line-height: 40px;
+                border-radius: 20px;
+            }
+            .show_more:hover{
+                cursor: pointer;
+                background: rgb(212, 211, 211);
+                transition: 0.5s;
+            }
+        }
+    }
+    .newfood-container{
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 20px;
+        .newpost_cartd
+        {
+            height: 250px;
+            width: 100%;
+            background: none;;
+            position: relative;
+            span{
+                position: absolute;
+                bottom: 10px;
+                left: 20px;
+                color: black;
+                font-size: 20px;
+                
+                }
+            .bookmark
+            {
+                position: absolute;
+                top: 20px;
+                font-size: 40px;
+                left: 20px;
+            }
+            }
+            .hello{
+                width: 100%;
+                height: 250px;
+                padding: 10px 10px;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0.7;
+                filter: alpha(opacity=40);
+            }
+            
+        }
     }
 }
 .filter_container{
@@ -343,6 +431,8 @@ export default {
         
     }
 }
+
+
 
  
 </style>

@@ -21,6 +21,12 @@ class CategoryController extends ApiController
         return $this->sendSuccess($result);
     }
 
+    public function getPostbyCateogry(Request $request)
+    {
+        $result =  $this->categoryRepository->getPostbyCateogry($request);
+        return $this->sendSuccess($result);
+    }
+
     public function store(Request $request)
     {
         $result =  $this->categoryRepository->store($request);

@@ -93,7 +93,6 @@
                     <button > 
                         fassds
                     </button>
-                    <a-rate :default-value="2" disabled />
                    </div>
                 </div>
             </a-col>

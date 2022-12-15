@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::get('/',[\App\Http\Controllers\Api\CategoryController::class,'getAll']);
         Route::post('/',[\App\Http\Controllers\Api\CategoryController::class,'store']);
         Route::get('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'show']);
+        Route::get('/category-post',[\App\Http\Controllers\Api\CategoryController::class,'getPostbyCateogry']);
         Route::post('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'updateCategory']);
         Route::delete('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'delete']);
     });

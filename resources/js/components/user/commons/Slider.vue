@@ -26,9 +26,33 @@
                 <a-col :xxl="12" :xl="12" :lg="12" :md="24" :xs="24">
                   <div class="slider_intro">
                       <h1>Khám phá món ăn trên khắp thế giới</h1>
-                      
-                     
-                        <button>Xem ngay</button>
+                      <div class="most_favourite">
+                          <div class="favourite_item">
+                            <img src="../../../uploads/images/kobefoocate.png" alt="" class="rounded">
+                            <div class="favourite_content">
+                              <h4>contentcontentcontentcontentconten</h4>
+                              <h5>descriptiondescriptiondescriptiondescriptiond</h5>
+                              <h6><i class="fa-regular fa-clock"></i> 5 days ago</h6> 
+                            </div>
+                          </div>
+                          <div class="favourite_item">
+                            <img src="../../../uploads/images/eggduckcate.png" alt="" class="rounded">
+                            <div class="favourite_content">
+                              <h4>contentcontentcontentc</h4>
+                              <h5>descriptiondescriptio</h5>
+                              <h6><i class="fa-regular fa-clock"></i> a minutes ago</h6> 
+                            </div>
+                          </div>
+                          <div class="favourite_item">
+                            <img src="../../../uploads/images/meatcate.png" alt="" class="rounded">
+                            <div class="favourite_content">
+                              <h4>contentcontentcontent</h4>
+                              <h5>descriptiondescriptiondescriptiondescriptio</h5>
+                              <h6><i class="fa-regular fa-clock"></i> 1 hours ago</h6> 
+                            </div>
+                          </div>
+                      </div>
+                  
                         
                   </div>
                   
@@ -105,6 +129,23 @@
           .slider_intro
           {
             position: absolute;
+            .most_favourite{
+              font-family: Arial, Helvetica, sans-serif;
+              .favourite_item{
+                padding: 5px 0;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                img{
+                  width: 100px;
+                  height: 100px;
+                  border-radius: 50px;
+                }
+                .favourite_content{
+                  margin-left: 20px;
+                }
+              }
+            }
             h1{
               font-size: 24px;
               font-family: 'Roboto', sans-serif;

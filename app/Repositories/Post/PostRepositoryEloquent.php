@@ -136,8 +136,23 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         {
             $searchPost->where('posts.title', 'LIKE', '%' . FormatHelper::escape_like($request->title) . '%');
         }
-        $searchPost = $searchPost->get();
-        $searchPost->map(function($value) use($memberId){
+
+
+        $okk = $searchPost->get();
+
+        $okk->map(function($value) use($memberId){
+            $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
+            if($checkFavourite)
+            {
+                $value->favouriteable = false;
+            }
+            else
+            {
+                $value->favouriteable = true;
+            }
+        });
+        $okk2 = $searchPost->limit(4)->get();
+        $okk2->map(function($value) use($memberId){
             $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
             if($checkFavourite)
             {
@@ -150,7 +165,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         });
          
         return [
-          "searchPost" => $searchPost,
+        "searchPcheckFavouriteost" => $okk,
+          "searchPost" => $okk2,
+
         ];
     }
 
