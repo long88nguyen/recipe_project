@@ -99,8 +99,8 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         {
             $dataPost->where('posts.title', 'LIKE', '%' . FormatHelper::escape_like($request->title) . '%');
         }
-        $dataPost = $dataPost->paginate(8);
-        $dataPost->map(function($value) use($memberId){
+        $getList = $dataPost->paginate(8);
+        $getList->map(function($value) use($memberId){
             $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
             if($checkFavourite)
             {
@@ -111,16 +111,30 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 $value->favouriteable = true;
             }
         });
-         
+        $getOrder = $dataPost->orderBy("created_at","DESC")->limit(6)->get();
+        $getOrder->map(function($value) use($memberId){
+            $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
+            if($checkFavourite)
+            {
+                $value->favouriteable = false;
+            }
+            else
+            {
+                $value->favouriteable = true;
+            }
+        });
+       
         return [
-          "dataPost" => $dataPost,
+          "dataPost" => $getList,
+          
+          "getOrder" => $getOrder,
         ];
     }
 
     public function SearchPost($request)
     {
         $memberId = Auth::user()->member->id;
-        $searchPost = $this->model->join("favourites","favourites.post_id","posts.id")
+        $searchPost = $this->model->with("member:id,name","PostImage:id,post_id,image")->join("favourites","favourites.post_id","posts.id")
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -138,9 +152,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         }
 
 
-        $okk = $searchPost->get();
+        $listAll = $searchPost->get();
 
-        $okk->map(function($value) use($memberId){
+        $listAll->map(function($value) use($memberId){
             $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
             if($checkFavourite)
             {
@@ -151,8 +165,11 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 $value->favouriteable = true;
             }
         });
-        $okk2 = $searchPost->limit(4)->get();
-        $okk2->map(function($value) use($memberId){
+        $listMostFavourite = $searchPost->orderBy("count_favourite","DESC")->limit(3)->get();
+        $listMostFavourite->map(function($value) use($memberId){
+            // dump(Carbon::now()->format("Y-m-d H:i:s"));
+            // dump(Carbon::now()->format("Y-m-d H:m:i"),Carbon::parse($value->created_at)->format("Y-m-d H:m:i"));
+            $value->duration = strtotime(Carbon::now()->format("Y-m-d H:i:s")) - strtotime(Carbon::parse($value->created_at)->format("Y-m-d H:i:s")); 
             $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
             if($checkFavourite)
             {
@@ -165,9 +182,8 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         });
          
         return [
-        "searchPcheckFavouriteost" => $okk,
-          "searchPost" => $okk2,
-
+        "searchPost" => $listAll,
+        "listMostFavourite" => $listMostFavourite,
         ];
     }
 

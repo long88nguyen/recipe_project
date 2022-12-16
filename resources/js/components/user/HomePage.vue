@@ -1,18 +1,22 @@
 <template>
     <Slider></Slider>
+    <ButtonCreatePostVue></ButtonCreatePostVue>
     <BannerFood></BannerFood>
     <StatPost/>
 </template>
 
 <script>
 import BannerFood from "./commons/BannerFood.vue"
+
 import Slider from "./commons/Slider.vue"
 import StatPost from "./commons/StatPost.vue"
+import ButtonCreatePostVue from "./commons/ButtonCreatePost.vue"
 export default {
     components:{
         BannerFood,
         Slider,
         StatPost,
+        ButtonCreatePostVue
     }
 }
 </script>

@@ -16,7 +16,9 @@ export const state = {
     showApprove: {},
     memberPost : {},
     getPostApproved : {},
+    getPostOrder : {},
     getAllPost : {},
+    getMostFavourite : {},
 
 }
 
@@ -26,7 +28,10 @@ export const getters = {
     showApprove: state => state.showApprove,
     memberPost: state => state.memberPost,
     getPostApproved: state => state.getPostApproved,
+    getPostOrder: state => state.getPostOrder,
     getAllPost: state => state.getAllPost,
+    getMostFavourite: state => state.getMostFavourite,
+
 
 }
 
@@ -43,6 +48,7 @@ export const mutations = {
     },
     [types.POST.GET_POST_APPROVED](state, data) {
       state.getPostApproved = data.dataPost;
+      state.getPostOrder = data.getOrder;
       state.pagination.from = data.dataPost.from;
       state.pagination.to = data.dataPost.to;
       state.pagination.totalPage = data.dataPost.last_page;
@@ -53,6 +59,7 @@ export const mutations = {
     },
     [types.POST.GET_ALL_POST](state, data) {
       state.getAllPost = data.searchPost;
+      state.getMostFavourite = data.listMostFavourite;
     },
     [types.POST.GET_POST_DETAIL](state, dataApprove)
     {

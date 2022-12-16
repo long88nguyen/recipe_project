@@ -82,25 +82,29 @@
             <h4>new post</h4>
             <div>
                 <a-row>
-                    <a-col :xxl="8" :xl="8" :lg="8" :md="12" :xs="24">
-                    <div class="newpost_cartd">
-                        <a-carousel 
-                        effect="fade"
-                        dotsClass = "slick-dots"
-                        autoplay>
-                            <div class="hello"><img src="../../../uploads/images/banner2.png" alt=""></div>
-                            <div class="hello"><img src="../../../uploads/images/banner3.png" alt=""></div>
-                            <div class="hello"><img src="../../../uploads/images/banner4.png" alt=""></div>
-                        </a-carousel>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-bookmark"></i>
-                        <!-- <i class="fa-solid fa-bookmark"></i> -->
-                        </div>
-                      
-                        <span>helloo word</span>
+                    <template v-for="(post_order,index) in getPostOrder" :key="index">
+                        <a-col :xxl="8" :xl="8" :lg="8" :md="12" :xs="24">
+                            <div class="newpost_cartd">
+                                <a-carousel 
+                                effect="fade"
+                                dotsClass = "slick-dots"
+                                autoplay>
+                                    <div class="hello"><img src="../../../uploads/images/eggduckcate.png" alt=""></div>
+                                    <div class="hello"><img src="../../../uploads/images/kobefoocate.png" alt=""></div>
+                                    <div class="hello"><img src="../../../uploads/images/meatcate.png" alt=""></div>
+                                </a-carousel>
+                                <div class="bookmark">
+                                    <i class="fa-solid fa-bookmark"  v-if="post_order.favouriteable == false" @click="unsubmitFavourite(post_order.id)"></i>
 
-                    </div>
-                </a-col>
+                                    <i class="fa-regular fa-bookmark" v-else @click="submitFavourite(post_order.id)"></i>
+                                </div>
+                            
+                                <span>{{post_order.title}}</span>
+
+                            </div>
+                        </a-col>
+                    </template>
+                    
             </a-row>
             </div>
           
@@ -149,6 +153,7 @@ export default {
        ...mapGetters({
         categoryList:"categories/getAllcategory",
         getPostApproved:"posts/getPostApproved",
+        getPostOrder:"posts/getPostOrder",
         userCommom :"common/userCommon",
         listItemsPerPage: "common/listItemsPerPage",
         pagination: "posts/pagination"
@@ -347,9 +352,9 @@ export default {
             position: relative;
             span{
                 position: absolute;
-                bottom: 10px;
-                left: 20px;
-                color: black;
+                bottom: 30px;
+                left: 30px;
+                color: white;
                 font-size: 20px;
                 
                 }
@@ -359,6 +364,7 @@ export default {
                 top: 20px;
                 font-size: 40px;
                 left: 20px;
+                color:white;
             }
             }
             .hello{
@@ -369,7 +375,6 @@ export default {
                 img{
                     width: 100%;
                     height: 100%;
-                    opacity: 0.7;
                 filter: alpha(opacity=40);
             }
             

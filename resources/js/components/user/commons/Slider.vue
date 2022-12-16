@@ -25,32 +25,19 @@
                 </a-col>
                 <a-col :xxl="12" :xl="12" :lg="12" :md="24" :xs="24">
                   <div class="slider_intro">
-                      <h1>Khám phá món ăn trên khắp thế giới</h1>
+                      <h1>Trending</h1>
                       <div class="most_favourite">
+                        <template v-for = "(post,index) in getMostFavourite" :key="index">
                           <div class="favourite_item">
                             <img src="../../../uploads/images/kobefoocate.png" alt="" class="rounded">
                             <div class="favourite_content">
-                              <h4>contentcontentcontentcontentconten</h4>
-                              <h5>descriptiondescriptiondescriptiondescriptiond</h5>
-                              <h6><i class="fa-regular fa-clock"></i> 5 days ago</h6> 
+                              <h4>{{ post.title }}</h4>
+                              <h6 v-if = "post.duration > 86400"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/86400) }} days ago</h6> 
+                              <h6 v-else-if = "post.duration < 86400 && post.duration > 3600"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/3600) }} hours ago</h6> 
+                              <h6 v-else-if = "post.duration < 3600"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/60) }} minutes ago</h6> 
                             </div>
                           </div>
-                          <div class="favourite_item">
-                            <img src="../../../uploads/images/eggduckcate.png" alt="" class="rounded">
-                            <div class="favourite_content">
-                              <h4>contentcontentcontentc</h4>
-                              <h5>descriptiondescriptio</h5>
-                              <h6><i class="fa-regular fa-clock"></i> a minutes ago</h6> 
-                            </div>
-                          </div>
-                          <div class="favourite_item">
-                            <img src="../../../uploads/images/meatcate.png" alt="" class="rounded">
-                            <div class="favourite_content">
-                              <h4>contentcontentcontent</h4>
-                              <h5>descriptiondescriptiondescriptiondescriptio</h5>
-                              <h6><i class="fa-regular fa-clock"></i> 1 hours ago</h6> 
-                            </div>
-                          </div>
+                        </template> 
                       </div>
                   
                         
@@ -66,6 +53,7 @@
 </template>
   
 <script>
+import { mapGetters } from 'vuex'
  export default {
     data() {
       return {
@@ -73,6 +61,14 @@
         context: null,
         isFavourite:false,
       }
+    },
+    created(){
+      this.$store.dispatch('posts/getAllPost')
+    },
+    computed:{
+       ...mapGetters({
+        getMostFavourite : "posts/getMostFavourite"
+       })
     },
     methods: {
       onContext(ctx) {
@@ -98,7 +94,6 @@
           background: #364d79;
           overflow: hidden;
           border-radius:5px;
-          position: relative;
           img{
             width: 100%;
             height: 100%;
@@ -128,7 +123,8 @@
           }
           .slider_intro
           {
-            position: absolute;
+            background: #f5f6ea;
+            padding: 20px;
             .most_favourite{
               font-family: Arial, Helvetica, sans-serif;
               .favourite_item{
@@ -143,6 +139,9 @@
                 }
                 .favourite_content{
                   margin-left: 20px;
+                  h4{
+                    width: 100%;
+                  }
                 }
               }
             }
