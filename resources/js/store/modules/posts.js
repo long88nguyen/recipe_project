@@ -97,7 +97,7 @@ export const actions = {
       async getAllPost({ commit },payload) {
         const response = await axios.get(api.SEARCH_POST_APPROVED,{
           params:{
-              title: payload.title,
+            title: payload.title,
           }
       });
         commit(types.POST.GET_ALL_POST, response.data.data);
@@ -122,5 +122,9 @@ export const actions = {
       async updateStatusPost({ commit }, params) {
         let url = `${api.APPROVE_POST}/${params.id}`;
         await axios.post(url, params);
+      },
+
+      async createPost({ commit }, params) {
+        await axios.post(api.CREATE_POST, params);
       },
 }

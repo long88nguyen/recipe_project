@@ -14,6 +14,7 @@ const LIST_ALL_POST = '/api/post/get-list'
 const SHOW_APPROVE ='/api/post/show-approval'
 const APPROVE_POST ='/api/post/approve'
 const LIST_POST_APPROVED ='/api/post'
+const CREATE_POST ='/api/post'
 const SEARCH_POST_APPROVED ='/api/post/search-result'
 
 //ingredient 
@@ -53,6 +54,7 @@ export default {
     APPROVE_POST,
     LIST_POST_APPROVED,
     SEARCH_POST_APPROVED,
+    CREATE_POST,
 
     //favourite
 

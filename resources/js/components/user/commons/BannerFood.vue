@@ -12,9 +12,9 @@
                 </div>
                 <template v-for="(category, index) in categoryList" :key="index">
                     <div class="filter_post-item" :class="(searchData.category_id == category.id) ? 'active' : ''" @click = "search(category.id)">
-                        <img src="../../../uploads/images/eggcate.png" alt="">
+                        <img :src="`/uploads/category/${category.image}`" alt="">
                         <h5 class="filter_post-title">
-                            {{ category.name.substring(0,10) + "..." }}
+                            {{ category.name.substring(0,10) }}
                         </h5>
                     </div>
                 </template>
@@ -28,8 +28,9 @@
             <a-row>
                 <template v-for="(post,index) in getPostApproved.data" :key="index">
                     <a-col :xxl="6" :xl="6" :lg="6" :md="12" :xs="24">
+
                    <div class="card_item">
-                        <img src="../../../uploads/images/kobefoocate.png" alt="" class="card_img">
+                        <img :src="`/uploads/posts/${post.post_image[0].image}`" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-solid fa-heart"  v-if="post.favouriteable == false" @click="unsubmitFavourite(post.id)"></i>
                             <i class="fa-regular fa-heart" v-else @click="submitFavourite(post.id)"></i>
@@ -37,10 +38,10 @@
                         </div>
                        
                         <h5 class="card_title">
-                           {{ post.title}}
+                           {{ post.title.substring(0,20) + "..."}}
                         </h5>
                         <h4 class="card_category">
-                            {{ post.content}}
+                            {{ post.content.substring(0,20) + "..." }}
                         </h4>
                         <div class="card-rating">
                             <div class="rating_side">
@@ -89,9 +90,10 @@
                                 effect="fade"
                                 dotsClass = "slick-dots"
                                 autoplay>
-                                    <div class="hello"><img src="../../../uploads/images/eggduckcate.png" alt=""></div>
-                                    <div class="hello"><img src="../../../uploads/images/kobefoocate.png" alt=""></div>
-                                    <div class="hello"><img src="../../../uploads/images/meatcate.png" alt=""></div>
+                                    <template v-for="(image,index) in post_order.post_image" :key="index">
+                                        <div class="hello"><img :src="`/uploads/posts/${image.image}`" alt=""></div>
+                                    </template>
+                                    
                                 </a-carousel>
                                 <div class="bookmark">
                                     <i class="fa-solid fa-bookmark"  v-if="post_order.favouriteable == false" @click="unsubmitFavourite(post_order.id)"></i>
@@ -99,7 +101,7 @@
                                     <i class="fa-regular fa-bookmark" v-else @click="submitFavourite(post_order.id)"></i>
                                 </div>
                             
-                                <span>{{post_order.title}}</span>
+                                <span>{{post_order.title.substring(0,20) + "..."}}</span>
 
                             </div>
                         </a-col>

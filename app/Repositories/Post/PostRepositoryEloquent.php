@@ -79,7 +79,8 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     public function getListApproved($request)
     {
         $memberId = Auth::user()->member->id;
-        $dataPost = $this->model->join("favourites","favourites.post_id","posts.id")
+        $dataPost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
+        ->with("PostImage:id,post_id,image")
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -111,7 +112,20 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 $value->favouriteable = true;
             }
         });
-        $getOrder = $dataPost->orderBy("created_at","DESC")->limit(6)->get();
+
+        $postOrder = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
+        ->with("PostImage:id,post_id,image")
+        ->select([
+            "posts.*",
+            DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
+            DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
+        ])
+        ->groupBy("id","title","content",
+        "category_id","member_id",
+        "time","status","created_at",
+        "updated_at","nutrition_facts",
+        "note","deleted_at");
+        $getOrder = $postOrder->orderBy("id","DESC")->limit(6)->get();
         $getOrder->map(function($value) use($memberId){
             $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
             if($checkFavourite)
@@ -134,7 +148,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     public function SearchPost($request)
     {
         $memberId = Auth::user()->member->id;
-        $searchPost = $this->model->with("member:id,name","PostImage:id,post_id,image")->join("favourites","favourites.post_id","posts.id")
+        $searchPost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -165,10 +179,20 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 $value->favouriteable = true;
             }
         });
-        $listMostFavourite = $searchPost->orderBy("count_favourite","DESC")->limit(3)->get();
+
+        $getFavourite = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
+        ->select([
+            "posts.*",
+            DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
+            DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
+        ])
+        ->groupBy("id","title","content",
+        "category_id","member_id",
+        "time","status","created_at",
+        "updated_at","nutrition_facts",
+        "note","deleted_at");
+        $listMostFavourite = $getFavourite->orderBy("count_favourite","DESC")->limit(3)->get();
         $listMostFavourite->map(function($value) use($memberId){
-            // dump(Carbon::now()->format("Y-m-d H:i:s"));
-            // dump(Carbon::now()->format("Y-m-d H:m:i"),Carbon::parse($value->created_at)->format("Y-m-d H:m:i"));
             $value->duration = strtotime(Carbon::now()->format("Y-m-d H:i:s")) - strtotime(Carbon::parse($value->created_at)->format("Y-m-d H:i:s")); 
             $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
             if($checkFavourite)
@@ -200,14 +224,14 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 'status' => 1,
                 'category_id' => $data['category_id'],
                 'member_id' => $memberId,
-                'nutrition_facts' => $data['nutrition_facts'] ? $data['nutrition_facts'] != null : $data['nutrition_facts'] = null,
-                'note' => $data['note'] ? $data['note'] != null : $data['note'] = null,
+                'nutrition_facts' => $data['nutrition_facts'] != null ? $data['nutrition_facts'] : $data['nutrition_facts'] = null,
+                'note' => $data['note']!= null ? $data['note']  : $data['note'] = null,
                 'time' => $data['time'],
                 'created_at' => $timeNow,
                 'updated_at' => $timeNow,
             ];
             $postSave = $this->model->create($dataPost);
-            $arrIngredient = $data['ingredient_list'];
+            $arrIngredient = $data['ingredients'];
             foreach ($arrIngredient as $key => $item)
             {
                     $dataIngredient  = [
@@ -219,7 +243,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                     Ingredient::insert($dataIngredient);
             }
     
-           $arrDirection = $data['direction_list'];
+           $arrDirection = $data['directions'];
            foreach ($arrDirection as $key => $item)
             {
                     $dataDirection  = [
@@ -232,16 +256,25 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                     Direction::insert($dataDirection);
             }
     
-            $arrImage = $data['image_list'];
-            foreach ($arrImage as $key => $item)
+            if($request->file('img_evidence'))
             {
-                    $dataImage  = [
-                        'post_id' => $postSave->id,
-                        'image' => $item,
-                        'created_at' => $timeNow,
-                        'updated_at'=> $timeNow,
-                    ];
-                    PostImage::insert($dataImage);
+                $arrImage = $request->file('img_evidence');
+                foreach ($arrImage as $key => $item)
+                {
+                    // $extension = $item->getClientOriginalName();
+                    // $fileName = time().'-' .$request->name.'.'.$extension;
+                        $destinationPath = public_path('uploads/posts');
+                        $profileImage = random_int(100000000,99999999999) . "." . $item->getClientOriginalExtension();
+                        $item->move($destinationPath, $profileImage);
+                        $data['image'] = "$profileImage";
+                        $dataImage  = [
+                            'post_id' => $postSave->id,
+                            'image' =>  $data['image'],
+                            'created_at' => $timeNow,
+                            'updated_at'=> $timeNow,
+                        ];
+                        PostImage::insert($dataImage);
+                }
             }
 
             DB::commit();
@@ -461,6 +494,48 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             ];
         }
     }
+
+    public function GetListFavourite()
+    {
+        $memberId = Auth::user()->member->id;
+        $favouritePost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
+        ->select([
+            "posts.*",'favourites.member_id as favourites_by',
+            DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
+            DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
+        ])
+        ->groupBy("id","title","content",
+        "category_id","member_id",
+        "time","status","created_at",
+        "updated_at","nutrition_facts",
+        "note","deleted_at",'favourites.member_id')
+        ->where("favourites.member_id",$memberId)->get();
+        return [
+            'listMyFavourites' => $favouritePost
+        ]; 
+    }
+
+    public function MyPost()
+    {
+        $memberId = Auth::user()->member->id;
+        $myPost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
+        ->select([
+            "posts.*",
+            DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
+            DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
+        ])
+        ->groupBy("id","title","content",
+        "category_id","member_id",
+        "time","status","created_at",
+        "updated_at","nutrition_facts",
+        "note","deleted_at")
+        ->where("posts.member_id",$memberId)->get();
+        return [
+            'listMyPost' => $myPost
+        ]; 
+    }
+
+
 }
 
 

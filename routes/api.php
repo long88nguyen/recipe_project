@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::delete('/{id}',[\App\Http\Controllers\Api\PostController::class,'delete']);
         Route::post('/approval',[\App\Http\Controllers\Api\PostController::class,'listApproval']);
         Route::post('/approve/{id}',[\App\Http\Controllers\Api\PostController::class,'approve']);     
+        Route::get('/list-favourite',[\App\Http\Controllers\Api\PostController::class,'GetListFavourite']);     
+        Route::get('/my-post',[\App\Http\Controllers\Api\PostController::class,'MyPost']);     
     });
 
     //categories

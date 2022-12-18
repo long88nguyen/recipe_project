@@ -33,6 +33,10 @@ class Post extends Model
         return $this->hasMany(Rate::class);
     }
 
+    public function favourites() {
+        return $this->hasMany(Favourite::class);
+    }
+
     public function member() {
         return $this->belongsTo(Member::class,"member_id");
     }

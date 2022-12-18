@@ -29,4 +29,8 @@ interface PostRepository extends RepositoryInterface
     public function approve($request,$id);
 
     public function SearchPost($request);
+
+    public function GetListFavourite();
+
+    public function MyPost();
 }

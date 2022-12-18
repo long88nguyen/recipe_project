@@ -92,4 +92,17 @@ class PostController extends ApiController
         }
         return $this->sendSuccess();
     }
+
+    public function GetListFavourite()
+    {
+        $result =  $this->postRepository->GetListFavourite();
+        return $this->sendSuccess($result);
+    }
+
+    public function MyPost()
+    {
+        $result =  $this->postRepository->MyPost();
+        return $this->sendSuccess($result);
+    }
+
 }

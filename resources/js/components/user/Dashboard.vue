@@ -113,7 +113,6 @@ export default {
       {
 
         this.isActiveVisible = !this.isActiveVisible;
-        console.log(this.isActiveVisible);
       },
       fetchAllPost(){
         this.$store.dispatch('posts/getAllPost',{
