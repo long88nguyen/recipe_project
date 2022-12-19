@@ -7,6 +7,23 @@
                     <div class="post_detail-title">
                         <h1>{{ getPostDetail.title }}</h1>
                     </div>
+                    <div class="post_list_info">
+                        <div class="post_list_rate">
+                            <star-rating 
+                                v-model:rating="getPostDetail.number_rating" 
+                                inactive-color="#000"
+                                active-color="#f00"
+                                v-bind:star-size="20"
+                                :read-only = true
+                                :show-rating = false
+                                :round-start-rating = false
+                            /> <div>
+                            {{ getPostDetail.number_rating }}
+                                
+                            </div>
+                        </div>
+                        <div class="post_list_wist">  <i class="fa-regular fa-heart"></i> {{ getPostDetail.count_favourite }}</div>
+                    </div>
                    <div class="post_detail-content">
                     <h5>
                         {{ getPostDetail.content }}
@@ -27,18 +44,18 @@
                     </div>
                    
                    <div class="post_detail-img">
-                    <div class="image1">   
+                    <div class="image_panel">   
                         <template v-for = "(image,index) in getPostDetail.post_image" :key="index">
-                                <a-row>
-                                    <a-col :xxl = "12" :xl="12" :lg="12">
-                                        <img :src="`/uploads/posts/${image.image}`" alt="">
-                                    </a-col>
-                                </a-row>
+                            
+                            <img :src="`/uploads/posts/${image.image}`" alt="">
+                                    
                         </template>         
                     </div>
                    </div>
                    <div class="post_detail-time">
-                    
+                        <div class="option save_post"> <span >Save</span>  <i class="fa-regular fa-heart"></i></div>
+                        <div class="option favourite_post"><span @click="showPopup">Rate</span> <i class="fa-regular fa-star"></i></div>
+                        <div class="option share_post"><span>Share</span> <i class="fa-solid fa-share"></i></div>
                    </div>
                    <div class="post_ingre">
                         <h3>Nguyên Liệu</h3>
@@ -74,18 +91,48 @@
                 </div>
             </a-col>
         </a-row>
-     
+        <a-modal 
+            class="add-timesheet-modal"
+            v-model:visible="visible" 
+            title="Đánh giá bài viết" 
+            @ok="handleOk"
+            :footer = null
+            centered
+            >
+            <label for="">Your Rating</label>
+            <star-rating 
+                v-model:rating="rating" 
+                inactive-color="#000"
+                active-color="#f00"
+                v-bind:star-size="40"
+                :show-rating = false
+                :round-start-rating = false
+                @update:rating ="setRating"
+            />
+            <label for="">Your review</label>
+            <textarea name="" id="" rows="10"
+            class="form-control"            
+            ></textarea>
+            <button class="btn btn-success text-center mt-3" @click="submitRate">Đánh giá</button>
+          </a-modal>
     </div>
   </div>
 </template>
 
 <script>
-import moment from 'moment';
+
+import StarRating from 'vue-star-rating'
+import moment from 'moment'
 import { mapGetters } from 'vuex'
 export default {
     data(){
         return {
+            visible:false,
+            rating:1,
         }
+    },
+    components:{
+        StarRating
     },
     computed:{
         ...mapGetters({
@@ -98,7 +145,22 @@ export default {
         let postId =this.$route.params.id;
         await this.$store.dispatch("posts/detailPostUser",postId)
       },
+      showPopup(){
+        this.visible = true;
+      },    
+      handleOk(){
+        this.visible = false;
+      },
 
+      setRating(rating)
+      {
+        this.rating = rating;
+      },
+
+      submitRate()
+      {
+        console.log(this.rating);
+      },    
       formatDate(value){
         return moment(String(value)).format("HH:mm:ss DD/MM/YYYY")
       }
@@ -126,6 +188,18 @@ export default {
                 padding: 20px 20px 10px 20px;
                 background: white;
             }
+
+            .post_list_info
+            {
+               background: white;
+               padding: 20px;
+               display: flex;
+               .post_list_rate{
+                display: flex;
+                width: 150px;
+               }
+            }
+
             .post_detail-content{
                 padding: 0px 20px 20px 20px;
                 background: white;
@@ -158,19 +232,90 @@ export default {
             .post_detail-img{
                 width: 100%;
                 background: white;
-                .image1{
+                .image_panel{
                     width: 100%;
+                    display: flex;
                 }
                 img{
-                    width: 100%;
+                    padding: 5px;
+                    width: 50%;
+                    height: 300px;
                 }
             }
             .post_detail-time{
                 margin-top:20px;
-                width: 100%;
-                height: 100px;
-                background: white;
+                width: 360px;
+                height:60px;
+                background: #f5f6ea;
                 border-radius: 10px;
+                display: flex;
+                .option{
+                    
+                    width: 120px;
+                    height:60px;
+                    border-right: 1px solid rgb(234, 234, 234);
+                }
+                .option:last-child{
+                    border-right: none;
+                }
+
+                .save_post{
+                    text-align: center;
+                    line-height: 60px;
+                    font-size: 16px;
+                    background: #d54215;
+                    color: white;
+                    font-weight: 500;
+                    i{
+                        margin-left: 5px;
+                    }
+
+                    span:hover{
+                        border-bottom : 3px solid white;
+                        transition: 0.5s;                        
+                        cursor: pointer;
+                    }
+                }
+                
+
+                .favourite_post{
+                    text-align: center;
+                    line-height: 60px;
+                    font-size: 16px;
+                    color: black;
+                    font-weight: 500;
+                    i{
+                        color:#d54215;
+                        margin-left: 5px;
+                    }
+
+                    span:hover{
+                        border-bottom : 3px solid black;
+                        transition: 0.5s;
+                        cursor: pointer;
+                    }
+                }
+
+                
+
+                .share_post{
+                    text-align: center;
+                    line-height: 60px;
+                    font-size: 16px;
+                    color: black;
+                    font-weight: 500;
+                    i{
+                        color:#d54215;
+                        margin-left: 5px;
+                    }
+
+                    span:hover{
+                        border-bottom : 3px solid black;
+                        transition: 0.5s;
+                        cursor: pointer;
+                        
+                    }
+                }
             }
 
             .post_ingre{
@@ -180,8 +325,6 @@ export default {
                 border-radius: 10px;
                 h3{
                     padding:20px;
-                
-
                 }
                 ul{
                     padding:0 20px 20px 20px;
