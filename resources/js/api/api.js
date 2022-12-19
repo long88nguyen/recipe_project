@@ -16,6 +16,7 @@ const APPROVE_POST ='/api/post/approve'
 const LIST_POST_APPROVED ='/api/post'
 const CREATE_POST ='/api/post'
 const SEARCH_POST_APPROVED ='/api/post/search-result'
+const POST_DETAIL = '/api/post/detail'
 
 //ingredient 
 
@@ -55,6 +56,7 @@ export default {
     LIST_POST_APPROVED,
     SEARCH_POST_APPROVED,
     CREATE_POST,
+    POST_DETAIL,
 
     //favourite
 

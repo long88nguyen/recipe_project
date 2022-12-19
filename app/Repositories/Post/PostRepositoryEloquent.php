@@ -149,6 +149,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     {
         $memberId = Auth::user()->member->id;
         $searchPost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
+        ->with("PostImage:id,post_id,image")
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -181,6 +182,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         });
 
         $getFavourite = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
+        ->with("PostImage:id,post_id,image")
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -321,29 +323,27 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         return $dataApprove;
     }
 
-    public function edit($id)
+    public function detail($id)
     {
-        $memberId = Auth::user()->member->id;
 
-        $dataGetById = $this->model              
-        ->leftJoin('ingredients','posts.id','=','ingredients.post_id')
-        ->leftJoin('directions','posts.id','=','directions.post_id')
-        ->leftJoin('favourites','posts.id','=','favourites.post_id')
-        ->leftJoin('post_images','posts.id','=','post_images.post_id')
-        ->leftJoin('rates','posts.id','=','rates.post_id')
-        ->leftJoin('favourites as f','posts.id','=','favourites.post_id')
-        ->with('Ingredients','Directions','PostImage')
-        ->select('posts.*',DB::raw('count(f.id) as number_favourite,
-        round(avg(rates.number_rating),1) as number_rating'))
-        ->groupBy('id','title','content',
-        'category_id','note','nutrition_facts',
-        'time','member_id','status','created_at',
-        'updated_at','deleted_at')
+        $postDetail = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
+        ->with("PostImage:id,post_id,image","Ingredients","Directions","member")
+        ->select([
+            "posts.*",
+            DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
+            DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
+        ])
+        ->groupBy("id","title","content",
+        "category_id","member_id",
+        "time","status","created_at",
+        "updated_at","nutrition_facts",
+        "note","deleted_at")
         ->where('posts.id',$id)
-        ->where('posts.member_id',$memberId)
-        ->get();
+        ->first();
 
-        return $dataGetById;
+        return [
+            "postDetail" => $postDetail
+            ];
     }
 
     public function update($request,$id)

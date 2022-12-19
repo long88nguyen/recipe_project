@@ -59,9 +59,9 @@ class PostController extends ApiController
         return $this->sendSuccess($result);
     }
 
-    public function edit($id)
+    public function detail($id)
     {
-        $result = $this->postRepository->edit($id);
+        $result = $this->postRepository->detail($id);
         return $this->sendSuccess($result);
     }
 

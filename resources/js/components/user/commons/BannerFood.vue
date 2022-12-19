@@ -28,21 +28,26 @@
             <a-row>
                 <template v-for="(post,index) in getPostApproved.data" :key="index">
                     <a-col :xxl="6" :xl="6" :lg="6" :md="12" :xs="24">
-
-                   <div class="card_item">
+                        
+                   <div 
+                    class="card_item">
                         <img :src="`/uploads/posts/${post.post_image[0].image}`" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-solid fa-heart"  v-if="post.favouriteable == false" @click="unsubmitFavourite(post.id)"></i>
                             <i class="fa-regular fa-heart" v-else @click="submitFavourite(post.id)"></i>
 
                         </div>
-                       
+                        <router-link
+                        :to="{
+                          path: `/post-detail/${post.id}`
+                        }">
                         <h5 class="card_title">
                            {{ post.title.substring(0,20) + "..."}}
                         </h5>
                         <h4 class="card_category">
                             {{ post.content.substring(0,20) + "..." }}
                         </h4>
+                        </router-link> 
                         <div class="card-rating">
                             <div class="rating_side">
                                 <div class="card_star">
@@ -62,7 +67,8 @@
                         <div class="member_side">
                             <img src="../../../uploads/avatar.png" alt="">
                         </div>
-                   </div>    
+                   </div>   
+                 
                 </a-col>
                 </template>
             </a-row>

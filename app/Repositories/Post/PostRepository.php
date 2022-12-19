@@ -20,7 +20,7 @@ interface PostRepository extends RepositoryInterface
 
     public function showCreate();
 
-    public function edit($id);
+    public function detail($id);
 
     public function update($request,$id);
 

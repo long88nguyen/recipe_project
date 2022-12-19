@@ -74,7 +74,7 @@ const routes =
                     component:import('../components/user/PostList.vue')
                 },
                 {
-                    path:"/post-detail",
+                    path:"/post-detail/:id",
                     component:import('../components/user/PostDetail.vue')
                 },
                 {
@@ -91,7 +91,7 @@ const routes =
                     name : "search-post",
                 }
             ]
-        },
+        }
        
     ]
 

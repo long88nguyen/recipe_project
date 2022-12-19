@@ -34,6 +34,7 @@
         "js-cookie": "^2.2.1",
         "moment": "^2.25.3",
         "v-toaster": "^1.0.3",
+        "vee-validate": "^4.7.3",
         "vue": "^3.2.39",
         "vue-loader": "^17.0.0",
         "vue-router": "^4.0.13",
