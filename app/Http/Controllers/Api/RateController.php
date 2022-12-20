@@ -31,4 +31,22 @@ class RateController extends ApiController
         $result = $this->rateRepository->listRate($id);
         return $this->sendSuccess($result);
     }
+
+    public function detail($id)
+    {
+        $result = $this->rateRepository->detail($id);
+        return $this->sendSuccess($result);
+    }
+
+    public function updateRate($id)
+    {
+        $result = $this->rateRepository->updateRate($id);
+        return $this->sendSuccess($result);
+    }
+
+    public function delete($id)
+    {
+        $result = $this->rateRepository->delete($id);
+        return $this->sendSuccess($result);
+    }
 }

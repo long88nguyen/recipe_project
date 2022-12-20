@@ -17,6 +17,7 @@ const LIST_POST_APPROVED ='/api/post'
 const CREATE_POST ='/api/post'
 const SEARCH_POST_APPROVED ='/api/post/search-result'
 const POST_DETAIL = '/api/post/detail'
+const MY_POST = '/api/post/my-post'
 
 //rate 
 
@@ -64,6 +65,7 @@ export default {
     SEARCH_POST_APPROVED,
     CREATE_POST,
     POST_DETAIL,
+    MY_POST,
 
     //favourite
 

@@ -61,6 +61,28 @@
                     {{  rate.review }}
                 </span>
             </div>
+            <div class="review_action" v-if="checkUserId == rate.member_id">
+                <a-tooltip>
+                    <template #title>
+                    Like
+                    </template>
+                        <i class="fa-solid fa-thumbs-up"></i>
+                </a-tooltip>
+
+                <a-tooltip>
+                    <template #title>
+                    Delete rate
+                    </template>
+                <i class="fa-solid fa-trash"></i>
+                </a-tooltip>
+
+                <a-tooltip>
+                    <template #title>
+                    Edit rate
+                    </template>
+                <i class="fa-solid fa-pen-to-square"></i>
+                </a-tooltip>
+            </div>
         </div>
         </template>
        
@@ -92,11 +114,15 @@ export default {
     computed:{
         ...mapGetters({
             rateListByPost:"rates/rateListByPost",
-        })
+        }),
+        checkUserId()
+        {
+            return this.$store.getters['common/userCommon'].id;
+        }
     },
 
     created(){
-        console.log(this.$route.params.id);
+        console.log(this.$store.getters['common/userCommon'].id);
         this.getListRateByPost();
     },
 
@@ -162,6 +188,17 @@ export default {
         }
         .review_like{
             margin-top: 10px;
+        }
+
+        .review_action{
+            margin-top: 10px;
+            font-size: 16px;
+            display: flex;
+            justify-content: end;
+            i{
+                margin-left: 15px;
+                cursor: pointer;
+            }
         }
     }
 

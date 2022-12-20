@@ -526,6 +526,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
             DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
         ])
+        ->with("PostImage")
         ->groupBy("id","title","content",
         "category_id","member_id",
         "time","status","created_at",

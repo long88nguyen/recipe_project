@@ -49,7 +49,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
     getPostDetail: "posts/getPostDetail",
-    getPostDetailMember: "posts/getPostDetailMember"
+    getPostDetailMember: "posts/getPostDetailMember",
+    getMyPostUser: "posts/getMyPostUser"
   })),
   methods: {
     fetchPostDetail: function fetchPostDetail() {
@@ -125,6 +126,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   created: function created() {
     this.fetchPostDetail();
+    this.$store.dispatch("posts/getMyPost");
   }
 });
 
@@ -175,11 +177,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       type: Number
     }
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
     rateListByPost: "rates/rateListByPost"
-  })),
+  })), {}, {
+    checkUserId: function checkUserId() {
+      return this.$store.getters['common/userCommon'].id;
+    }
+  }),
   created: function created() {
-    console.log(this.$route.params.id);
+    console.log(this.$store.getters['common/userCommon'].id);
     this.getListRateByPost();
   },
   methods: {
@@ -340,29 +346,33 @@ var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_29 = {
   "class": "post_suggest"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "post_suggest-img"
-})], -1
+};
+
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Posts by the same author", -1
 /* HOISTED */
 );
 
-var _hoisted_30 = {
+var _hoisted_31 = ["src"];
+var _hoisted_32 = {
+  "class": "post_suggest-content"
+};
+var _hoisted_33 = {
   "class": "rating_side_detail"
 };
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
 }, "Your Rating", -1
 /* HOISTED */
 );
 
-var _hoisted_32 = {
+var _hoisted_35 = {
   "class": "review_side"
 };
 
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
 }, "Your review", -1
 /* HOISTED */
@@ -459,7 +469,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         lg: 6
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_29];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.getMyPostUser, function (post, index) {
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+              key: index,
+              "class": "post_suggest-list"
+            }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: "/uploads/posts/".concat(post.post_image[0].image),
+              alt: ""
+            }, null, 8
+            /* PROPS */
+            , _hoisted_31), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.title), 1
+            /* TEXT */
+            )]);
+          }), 128
+          /* KEYED_FRAGMENT */
+          ))])];
         }),
         _: 1
         /* STABLE */
@@ -481,7 +505,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     centered: ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_star_rating, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_star_rating, {
         rating: $data.rating,
         "onUpdate:rating": [_cache[2] || (_cache[2] = function ($event) {
           return $data.rating = $event;
@@ -495,7 +519,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "border-width": 1
       }, null, 8
       /* PROPS */
-      , ["rating", "onUpdate:rating"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+      , ["rating", "onUpdate:rating"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
         name: "",
         rows: 3,
         id: "",
@@ -586,8 +610,33 @@ var _hoisted_11 = {
 var _hoisted_12 = {
   "class": "review_content"
 };
+var _hoisted_13 = {
+  key: 0,
+  "class": "review_action"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-solid fa-thumbs-up"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-solid fa-trash"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-solid fa-pen-to-square"
+}, null, -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_star_rating = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("star-rating");
+
+  var _component_a_tooltip = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-tooltip");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_star_rating, {
     rating: $data.rating,
@@ -641,7 +690,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(rate.review), 1
     /* TEXT */
-    )])]);
+    )]), $options.checkUserId == rate.member_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_tooltip, null, {
+      title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Like ")];
+      }),
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [_hoisted_14];
+      }),
+      _: 1
+      /* STABLE */
+
+    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_tooltip, null, {
+      title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete rate ")];
+      }),
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [_hoisted_15];
+      }),
+      _: 1
+      /* STABLE */
+
+    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_tooltip, null, {
+      title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Edit rate ")];
+      }),
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [_hoisted_16];
+      }),
+      _: 1
+      /* STABLE */
+
+    })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128
   /* KEYED_FRAGMENT */
   ))]);
@@ -666,7 +745,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  font-family: 'Roboto', sans-serif;\n}\n.post_detail {\n  width: 100%;\n  margin-top: 200px;\n}\n.post_detail .post_detail-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.post_detail .post_detail-container .post_infomation {\n  width: 100%;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-title {\n  padding: 20px 20px 10px 20px;\n  background: white;\n}\n.post_detail .post_detail-container .post_infomation .post_list_info {\n  background: white;\n  padding: 20px;\n  display: flex;\n}\n.post_detail .post_detail-container .post_infomation .post_list_info .post_list_rate {\n  display: flex;\n  width: 150px;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-content {\n  padding: 0px 20px 20px 20px;\n  background: white;\n}\n.post_detail .post_detail-container .post_infomation .post_account {\n  background: white;\n  padding: 20px;\n  display: flex;\n}\n.post_detail .post_detail-container .post_infomation .post_account img {\n  width: 40px;\n  height: 40px;\n  border-radius: 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_account .post_acount-detail {\n  margin-left: 10px;\n}\n.post_detail .post_detail-container .post_infomation .post_account .post_acount-detail h1 {\n  font-size: 18px;\n}\n.post_detail .post_detail-container .post_infomation .post_account .post_acount-detail .post_time {\n  font-size: 10px;\n  font-weight: 200;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-img {\n  width: 100%;\n  background: white;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-img .image_panel {\n  width: 100%;\n  display: flex;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-img img {\n  padding: 5px;\n  width: 50%;\n  height: 300px;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time {\n  margin-top: 20px;\n  width: 360px;\n  height: 60px;\n  background: #f5f6ea;\n  border-radius: 10px;\n  display: flex;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .option {\n  width: 120px;\n  height: 60px;\n  border-right: 1px solid #eaeaea;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .option:last-child {\n  border-right: none;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .save_post {\n  text-align: center;\n  line-height: 60px;\n  font-size: 16px;\n  background: #d54215;\n  color: white;\n  font-weight: 500;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .save_post i {\n  margin-left: 5px;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .save_post span:hover {\n  border-bottom: 3px solid white;\n  transition: 0.5s;\n  cursor: pointer;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .favourite_post {\n  text-align: center;\n  line-height: 60px;\n  font-size: 16px;\n  color: black;\n  font-weight: 500;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .favourite_post i {\n  color: #d54215;\n  margin-left: 5px;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .favourite_post span:hover {\n  border-bottom: 3px solid black;\n  transition: 0.5s;\n  cursor: pointer;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .share_post {\n  text-align: center;\n  line-height: 60px;\n  font-size: 16px;\n  color: black;\n  font-weight: 500;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .share_post i {\n  color: #d54215;\n  margin-left: 5px;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .share_post span:hover {\n  border-bottom: 3px solid black;\n  transition: 0.5s;\n  cursor: pointer;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre {\n  margin-top: 20px;\n  width: 100%;\n  background: white;\n  border-radius: 10px;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre h3 {\n  padding: 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre ul {\n  padding: 0 20px 20px 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre ul li {\n  margin: 20px 0;\n  font-size: 18px;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre ul li i {\n  font-size: 10px;\n  color: red;\n  margin-right: 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre ul li span {\n  font-weight: bold;\n}\n.post_detail .post_detail-container .post_infomation .post_direction {\n  margin-top: 20px;\n  width: 100%;\n  background: white;\n  border-radius: 10px;\n}\n.post_detail .post_detail-container .post_infomation .post_direction h3 {\n  padding: 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_direction ul {\n  padding: 0 20px 20px 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_direction ul li {\n  margin: 20px 0;\n  font-size: 16px;\n}\n.post_detail .post_detail-container .post_infomation .post_direction ul li span {\n  font-weight: bold;\n}\n.post_detail .post_detail-container .post_infomation .post-feedback {\n  margin-top: 20px;\n  width: 100%;\n  height: 200px;\n  background: white;\n  border-radius: 10px;\n}\n.post_detail .post_detail-container .post_suggest {\n  width: 100%;\n  height: 1000px;\n  background: white;\n  margin-left: 10px;\n}\n.rating_side_detail {\n  padding: 10px 0;\n}\n.rating_side_detail label {\n  margin-bottom: 10px;\n  font-weight: bold;\n}\n.review_side label {\n  margin-bottom: 10px;\n  font-weight: bold;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  font-family: 'Roboto', sans-serif;\n}\n.post_detail {\n  width: 100%;\n  margin-top: 200px;\n}\n.post_detail .post_detail-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.post_detail .post_detail-container .post_infomation {\n  width: 100%;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-title {\n  padding: 20px 20px 10px 20px;\n  background: white;\n}\n.post_detail .post_detail-container .post_infomation .post_list_info {\n  background: white;\n  padding: 20px;\n  display: flex;\n}\n.post_detail .post_detail-container .post_infomation .post_list_info .post_list_rate {\n  display: flex;\n  width: 150px;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-content {\n  padding: 0px 20px 20px 20px;\n  background: white;\n}\n.post_detail .post_detail-container .post_infomation .post_account {\n  background: white;\n  padding: 20px;\n  display: flex;\n}\n.post_detail .post_detail-container .post_infomation .post_account img {\n  width: 40px;\n  height: 40px;\n  border-radius: 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_account .post_acount-detail {\n  margin-left: 10px;\n}\n.post_detail .post_detail-container .post_infomation .post_account .post_acount-detail h1 {\n  font-size: 18px;\n}\n.post_detail .post_detail-container .post_infomation .post_account .post_acount-detail .post_time {\n  font-size: 10px;\n  font-weight: 200;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-img {\n  width: 100%;\n  background: white;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-img .image_panel {\n  width: 100%;\n  display: flex;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-img img {\n  padding: 5px;\n  width: 50%;\n  height: 300px;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time {\n  margin-top: 20px;\n  width: 360px;\n  height: 60px;\n  background: #f5f6ea;\n  border-radius: 10px;\n  display: flex;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .option {\n  width: 120px;\n  height: 60px;\n  border-right: 1px solid #eaeaea;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .option:last-child {\n  border-right: none;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .save_post {\n  text-align: center;\n  line-height: 60px;\n  font-size: 16px;\n  background: #d54215;\n  color: white;\n  font-weight: 500;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .save_post i {\n  margin-left: 5px;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .save_post span:hover {\n  border-bottom: 3px solid white;\n  transition: 0.5s;\n  cursor: pointer;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .favourite_post {\n  text-align: center;\n  line-height: 60px;\n  font-size: 16px;\n  color: black;\n  font-weight: 500;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .favourite_post i {\n  color: #d54215;\n  margin-left: 5px;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .favourite_post span:hover {\n  border-bottom: 3px solid black;\n  transition: 0.5s;\n  cursor: pointer;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .share_post {\n  text-align: center;\n  line-height: 60px;\n  font-size: 16px;\n  color: black;\n  font-weight: 500;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .share_post i {\n  color: #d54215;\n  margin-left: 5px;\n}\n.post_detail .post_detail-container .post_infomation .post_detail-time .share_post span:hover {\n  border-bottom: 3px solid black;\n  transition: 0.5s;\n  cursor: pointer;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre {\n  margin-top: 20px;\n  width: 100%;\n  background: white;\n  border-radius: 10px;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre h3 {\n  padding: 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre ul {\n  padding: 0 20px 20px 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre ul li {\n  margin: 20px 0;\n  font-size: 18px;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre ul li i {\n  font-size: 10px;\n  color: red;\n  margin-right: 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_ingre ul li span {\n  font-weight: bold;\n}\n.post_detail .post_detail-container .post_infomation .post_direction {\n  margin-top: 20px;\n  width: 100%;\n  background: white;\n  border-radius: 10px;\n}\n.post_detail .post_detail-container .post_infomation .post_direction h3 {\n  padding: 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_direction ul {\n  padding: 0 20px 20px 20px;\n}\n.post_detail .post_detail-container .post_infomation .post_direction ul li {\n  margin: 20px 0;\n  font-size: 16px;\n}\n.post_detail .post_detail-container .post_infomation .post_direction ul li span {\n  font-weight: bold;\n}\n.post_detail .post_detail-container .post_infomation .post-feedback {\n  margin-top: 20px;\n  width: 100%;\n  height: 200px;\n  background: white;\n  border-radius: 10px;\n}\n.post_detail .post_detail-container .post_suggest {\n  width: 100%;\n  height: 1000px;\n  background: white;\n  margin-left: 10px;\n  padding: 20px;\n}\n.post_detail .post_detail-container .post_suggest h4 {\n  color: #d54215;\n}\n.post_detail .post_detail-container .post_suggest .post_suggest-list {\n  margin: 20px 0;\n}\n.post_detail .post_detail-container .post_suggest .post_suggest-list img {\n  width: 100%;\n  height: 150px;\n  border: 4px solid #eae7e7;\n  border-radius: 10px;\n}\n.post_detail .post_detail-container .post_suggest .post_suggest-list .post_suggest-content {\n  text-align: center;\n  width: 100%;\n  margin-top: 10px;\n  font-size: 18px;\n  font-weight: bold;\n}\n.post_detail .post_detail-container .post_suggest .post_suggest-list .post_suggest-content:hover {\n  border-bottom: 1px solid #d54215;\n  transition: 0.5s;\n  cursor: pointer;\n}\n.rating_side_detail {\n  padding: 10px 0;\n}\n.rating_side_detail label {\n  margin-bottom: 10px;\n  font-weight: bold;\n}\n.review_side label {\n  margin-bottom: 10px;\n  font-weight: bold;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -690,7 +769,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".review_list {\n  background: white;\n  padding: 20px;\n  margin-top: 10px;\n}\n.review_list h1 {\n  font-weight: bold;\n}\n.review_list .rating_infomation .rating_avg_list {\n  width: 50%;\n  margin: 0 auto;\n}\n.review_list .rating_infomation .rating_avg_list .rating_avg_detail {\n  margin-top: 5px;\n  display: flex;\n}\n.review_list .rating_infomation .rating_avg_list .rating_avg_detail span {\n  margin-left: 5px;\n}\n.review_list .member_rating_list {\n  padding: 20px 0;\n  border-bottom: 1px solid gainsboro;\n}\n.review_list .member_rating_list .rating_account img {\n  width: 40px;\n  height: 40px;\n  margin-right: 10px;\n  border-radius: 20px;\n}\n.review_list .member_rating_list .rating_account span {\n  border-bottom: 1px solid #d54215;\n}\n.review_list .member_rating_list .rating_number_side {\n  margin-top: 15px;\n  display: flex;\n  height: 30px;\n}\n.review_list .member_rating_list .rating_number_side .rating_number_side-count {\n  height: 30px;\n}\n.review_list .member_rating_list .rating_number_side .rating_number_side-time {\n  height: 30px;\n  padding-top: 4px;\n  margin-left: 10px;\n}\n.review_list .member_rating_list .review_content {\n  margin-top: 20px;\n}\n.review_list .member_rating_list .review_like {\n  margin-top: 10px;\n}\n.review_list .member_rating_list:last-child {\n  border: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".review_list {\n  background: white;\n  padding: 20px;\n  margin-top: 10px;\n}\n.review_list h1 {\n  font-weight: bold;\n}\n.review_list .rating_infomation .rating_avg_list {\n  width: 50%;\n  margin: 0 auto;\n}\n.review_list .rating_infomation .rating_avg_list .rating_avg_detail {\n  margin-top: 5px;\n  display: flex;\n}\n.review_list .rating_infomation .rating_avg_list .rating_avg_detail span {\n  margin-left: 5px;\n}\n.review_list .member_rating_list {\n  padding: 20px 0;\n  border-bottom: 1px solid gainsboro;\n}\n.review_list .member_rating_list .rating_account img {\n  width: 40px;\n  height: 40px;\n  margin-right: 10px;\n  border-radius: 20px;\n}\n.review_list .member_rating_list .rating_account span {\n  border-bottom: 1px solid #d54215;\n}\n.review_list .member_rating_list .rating_number_side {\n  margin-top: 15px;\n  display: flex;\n  height: 30px;\n}\n.review_list .member_rating_list .rating_number_side .rating_number_side-count {\n  height: 30px;\n}\n.review_list .member_rating_list .rating_number_side .rating_number_side-time {\n  height: 30px;\n  padding-top: 4px;\n  margin-left: 10px;\n}\n.review_list .member_rating_list .review_content {\n  margin-top: 20px;\n}\n.review_list .member_rating_list .review_like {\n  margin-top: 10px;\n}\n.review_list .member_rating_list .review_action {\n  margin-top: 10px;\n  font-size: 16px;\n  display: flex;\n  justify-content: end;\n}\n.review_list .member_rating_list .review_action i {\n  margin-left: 15px;\n  cursor: pointer;\n}\n.review_list .member_rating_list:last-child {\n  border: none;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -771,7 +850,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PostDetail_vue_vue_type_template_id_c7f8280c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostDetail.vue?vue&type=template&id=c7f8280c */ "./resources/js/components/user/PostDetail.vue?vue&type=template&id=c7f8280c");
 /* harmony import */ var _PostDetail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostDetail.vue?vue&type=script&lang=js */ "./resources/js/components/user/PostDetail.vue?vue&type=script&lang=js");
 /* harmony import */ var _PostDetail_vue_vue_type_style_index_0_id_c7f8280c_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostDetail.vue?vue&type=style&index=0&id=c7f8280c&lang=scss */ "./resources/js/components/user/PostDetail.vue?vue&type=style&index=0&id=c7f8280c&lang=scss");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -779,7 +858,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PostDetail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostDetail_vue_vue_type_template_id_c7f8280c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/PostDetail.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PostDetail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostDetail_vue_vue_type_template_id_c7f8280c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/PostDetail.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -802,7 +881,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ReviewPanel_vue_vue_type_template_id_66e19ba1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReviewPanel.vue?vue&type=template&id=66e19ba1 */ "./resources/js/components/user/component/ReviewPanel.vue?vue&type=template&id=66e19ba1");
 /* harmony import */ var _ReviewPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReviewPanel.vue?vue&type=script&lang=js */ "./resources/js/components/user/component/ReviewPanel.vue?vue&type=script&lang=js");
 /* harmony import */ var _ReviewPanel_vue_vue_type_style_index_0_id_66e19ba1_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReviewPanel.vue?vue&type=style&index=0&id=66e19ba1&lang=scss */ "./resources/js/components/user/component/ReviewPanel.vue?vue&type=style&index=0&id=66e19ba1&lang=scss");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -810,7 +889,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_ReviewPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ReviewPanel_vue_vue_type_template_id_66e19ba1__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/component/ReviewPanel.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_ReviewPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ReviewPanel_vue_vue_type_template_id_66e19ba1__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/component/ReviewPanel.vue"]])
 /* hot reload */
 if (false) {}
 

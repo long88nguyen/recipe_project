@@ -85,11 +85,18 @@
                 </div>
             </a-col>
 
-            <a-col :xxl="6" :xl="6" :lg="6">                 
+            <a-col :xxl="6" :xl="6" :lg="6"> 
+               
+                    
+                              
                 <div class="post_suggest">
-                    <div class="post_suggest-img">
-
+                    <h4>Posts by the same author</h4>
+                    <template v-for="(post,index) in getMyPostUser" :key="index">
+                    <div class="post_suggest-list">
+                        <img :src="`/uploads/posts/${post.post_image[0].image}`" alt="">
+                        <div class="post_suggest-content">{{  post.title }}</div>
                     </div>
+                    </template> 
                 </div>
             </a-col>
         </a-row>
@@ -150,7 +157,8 @@ export default {
     computed:{
         ...mapGetters({
             getPostDetail:"posts/getPostDetail",
-            getPostDetailMember:"posts/getPostDetailMember"
+            getPostDetailMember:"posts/getPostDetailMember",
+            getMyPostUser:"posts/getMyPostUser"
         })
     },
     methods:{
@@ -200,6 +208,7 @@ export default {
     },  
     created(){
         this.fetchPostDetail();
+        this.$store.dispatch("posts/getMyPost")
     }
 }
 </script>
@@ -411,6 +420,33 @@ export default {
             height:1000px;
             background: white;
             margin-left:10px;
+            padding: 20px;
+            h4{
+                color: #d54215;
+            }
+            .post_suggest-list{
+                margin: 20px 0;
+
+                img{
+                    width: 100%;
+                    height: 150px;
+                    border: 4px solid rgb(234, 231, 231);
+                    border-radius: 10px;
+                }
+                .post_suggest-content{
+                    text-align: center;
+                    width: 100%;
+                    margin-top: 10px;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                .post_suggest-content:hover{
+                    border-bottom:1px solid #d54215;
+                    transition: 0.5s;
+                    cursor: pointer;
+                }
+            }
 
         }
     }

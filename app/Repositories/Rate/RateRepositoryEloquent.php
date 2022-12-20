@@ -75,7 +75,7 @@ class RateRepositoryEloquent extends BaseRepository implements RateRepository
                 'post_id' => $id,
                 'member_id' => $memberId,
                 'number_rating' => $request['number_rating'],
-                'review' => "nfsfldsfjsdfjdfjlk",
+                'review' => $request['review'] ? $request['review'] : null,
                 'created_at' => $timeNow,
                 'updated_at' => $timeNow,
             ];
@@ -104,5 +104,13 @@ class RateRepositoryEloquent extends BaseRepository implements RateRepository
             "getRateByPost" => $getRateByPost
         ];
         
+    }
+
+    public function detail($id){
+        $employeeId = Auth::user()->member->id;
+        $getRateDetail = $this->model->where("id",$id)->where("employee_id",$employeeId)->first();
+        return [
+            "getRateDetail" => $getRateDetail
+        ];
     }
 }

@@ -20,7 +20,8 @@ export const state = {
     getAllPost : {},
     getMostFavourite : {},
     getPostDetail:{},
-    getPostDetailMember:{}
+    getPostDetailMember:{},
+    getMyPostUser:{},
 
 }
 
@@ -35,6 +36,7 @@ export const getters = {
     getMostFavourite: state => state.getMostFavourite,
     getPostDetail: state => state.getPostDetail,
     getPostDetailMember: state => state.getPostDetailMember,
+    getMyPostUser: state => state.getMyPostUser,
 
 
 }
@@ -65,10 +67,9 @@ export const mutations = {
       state.getAllPost = data.searchPost;
       state.getMostFavourite = data.listMostFavourite;
     },
-    [types.POST.GET_POST_DETAIL](state, dataApprove)
+    [types.POST.GET_MY_POST](state, data)
     {
-      state.showApprove = dataApprove;
-      state.memberPost = dataApprove.member
+      state.getMyPostUser = data.listMyPost;
     },
     [types.POST.GET_POST_DETAIL_USER](state, data)
     {
@@ -110,6 +111,11 @@ export const actions = {
           }
       });
         commit(types.POST.GET_ALL_POST, response.data.data);
+      },
+
+      async getMyPost({ commit },payload) {
+        const response = await axios.get(api.MY_POST);
+        commit(types.POST.GET_MY_POST, response.data.data);
       },
 
       async getApprovePost({ commit }, params) {
