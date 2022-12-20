@@ -12,4 +12,6 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface RateRepository extends RepositoryInterface
 {
     public function ratePost($request , $id);
+
+    public function listRate($id);
 }

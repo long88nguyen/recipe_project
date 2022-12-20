@@ -27,6 +27,12 @@ export const AUTH = {
     SUBMIT: "SUBMIT",
   }
 
+
+  export const RATE = {
+    RATE_POST_LIST: "RATE_POST_LIST",
+  }
+
+
   export const INGREDIENT = {
     GET_INGREDIENT_LIST : "GET_INGREDIENT_LIST",
   }

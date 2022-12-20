@@ -77,9 +77,11 @@
                             </template>
                         </ul>   
                    </div>
-                   <div class="post-feedback">
-                    
+                   <div class="post_direction">
+                    <h3>Nutrition Facts</h3>
+                       
                    </div>
+                   <rating-panel :id="getPostDetail.id"/>
                 </div>
             </a-col>
 
@@ -99,20 +101,28 @@
             :footer = null
             centered
             >
-            <label for="">Your Rating</label>
-            <star-rating 
-                v-model:rating="rating" 
-                inactive-color="#000"
-                active-color="#f00"
-                v-bind:star-size="40"
-                :show-rating = false
-                :round-start-rating = false
-                @update:rating ="setRating"
-            />
-            <label for="">Your review</label>
-            <textarea name="" id="" rows="10"
-            class="form-control"            
-            ></textarea>
+            <div class="rating_side_detail">
+                <label for="">Your Rating</label>
+                <star-rating 
+                    v-model:rating="rating" 
+                    inactive-color="#E8E8E8"
+                    active-color="#FFFF00"
+                    v-bind:star-size="40"
+                    :show-rating = false
+                    border-color = "#444444"	
+                    :round-start-rating = false
+                    @update:rating ="setRating"
+                    :border-width="1"
+                />
+            </div>
+           
+            <div class="review_side">
+                <label for="">Your review</label>
+                <textarea name="" :rows = "3" id="" v-model="review"
+                class="form-control"            
+                ></textarea>
+            </div>
+            
             <button class="btn btn-success text-center mt-3" @click="submitRate">Đánh giá</button>
           </a-modal>
     </div>
@@ -124,15 +134,18 @@
 import StarRating from 'vue-star-rating'
 import moment from 'moment'
 import { mapGetters } from 'vuex'
+import RatingPanel from "./component/ReviewPanel.vue"
 export default {
     data(){
         return {
             visible:false,
             rating:1,
+            review:""
         }
     },
     components:{
-        StarRating
+        StarRating,
+        RatingPanel
     },
     computed:{
         ...mapGetters({
@@ -146,7 +159,15 @@ export default {
         await this.$store.dispatch("posts/detailPostUser",postId)
       },
       showPopup(){
-        this.visible = true;
+        if(this.getPostDetail.rateable == false)
+        {
+            return this.visible = true;
+        }
+        else
+        {
+            return this.$toast.error("This post has been rated by you!")
+        }
+        
       },    
       handleOk(){
         this.visible = false;
@@ -157,9 +178,21 @@ export default {
         this.rating = rating;
       },
 
-      submitRate()
+      async submitRate()
       {
-        console.log(this.rating);
+        await this.$store.dispatch("rates/saveRate",{
+            post_id : this.getPostDetail.id,
+            number_rating : this.rating,
+            review : this.review
+        }).then(() =>{
+            this.$toast.success("Rating successful!");
+        }).catch(() =>{
+            this.$toast.error("error");
+        })
+        this.rating = 1;
+        this.review = "",
+        this.visible = false;
+        this.fetchPostDetail();
       },    
       formatDate(value){
         return moment(String(value)).format("HH:mm:ss DD/MM/YYYY")
@@ -171,7 +204,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 *{
     font-family: 'Roboto', sans-serif ;
 }
@@ -383,4 +416,20 @@ export default {
     }
 }
 
+.rating_side_detail{
+    padding:10px 0;
+    label{
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+}
+
+.review_side
+{
+    label{
+        margin-bottom: 10px;
+        font-weight: bold;
+        
+    }
+}
 </style>

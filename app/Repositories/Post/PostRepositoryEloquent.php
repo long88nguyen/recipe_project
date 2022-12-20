@@ -10,6 +10,7 @@ use App\Models\Favourite;
 use App\Models\Ingredient;
 use App\Models\Post;
 use App\Models\PostImage;
+use App\Models\Rate;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Post\PostRepository;
@@ -326,6 +327,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     public function detail($id)
     {
 
+        $memberId = Auth::user()->member->id;
         $postDetail = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
         ->with("PostImage:id,post_id,image","Ingredients","Directions","member")
         ->select([
@@ -340,7 +342,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "note","deleted_at")
         ->where('posts.id',$id)
         ->first();
-
+        $postDetail->rateable = Rate::where("member_id",$memberId)->where("post_id",$id)->first() ? true : false;
         return [
             "postDetail" => $postDetail
             ];

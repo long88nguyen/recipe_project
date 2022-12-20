@@ -41,7 +41,7 @@ class RateRepositoryEloquent extends BaseRepository implements RateRepository
         $this->pushCriteria(app(RequestCriteria::class));
     }
     
-    public function ratePost($request , $id)
+    public function ratePost($request,$id)
     {
         try{
             DB::beginTransaction();
@@ -74,12 +74,12 @@ class RateRepositoryEloquent extends BaseRepository implements RateRepository
             $dataRate = [
                 'post_id' => $id,
                 'member_id' => $memberId,
-                'number_rating' =>$request['number_rating'],
+                'number_rating' => $request['number_rating'],
+                'review' => "nfsfldsfjsdfjdfjlk",
                 'created_at' => $timeNow,
                 'updated_at' => $timeNow,
             ];
-            $this->model->create($dataRate);
-
+            $ok = $this->model->create($dataRate);
             DB::commit();
 
             return ['success' => true]; 
@@ -95,5 +95,14 @@ class RateRepositoryEloquent extends BaseRepository implements RateRepository
                 'message' => $e->getMessage()
             ];
         }
+    }
+
+    public function listRate($id)
+    {
+        $getRateByPost = $this->model->where("post_id",$id)->with("member")->orderBy('id','DESC')->get();
+        return [
+            "getRateByPost" => $getRateByPost
+        ];
+        
     }
 }

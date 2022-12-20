@@ -18,7 +18,14 @@ const CREATE_POST ='/api/post'
 const SEARCH_POST_APPROVED ='/api/post/search-result'
 const POST_DETAIL = '/api/post/detail'
 
+//rate 
+
+const POST_RATE_LIST = '/api/rate/list-rate'
+const POST_RATE = '/api/rate'
+
 //ingredient 
+
+
 
 const LIST_ALL_INGREDIENT = '/api/ingredient'
 
@@ -62,6 +69,10 @@ export default {
 
     FAVOURITE_POST,
     DELETE_FAVORITE,
+
+    //rate
+    POST_RATE_LIST,
+    POST_RATE,
 
     //ingredient
     LIST_ALL_INGREDIENT,

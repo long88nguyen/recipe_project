@@ -69,6 +69,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     //rate
     Route::group(['prefix' => 'rate'], function () {
         Route::post('/{id}',[\App\Http\Controllers\Api\RateController::class,'ratePost']);
+        Route::get('/list-rate/{id}',[\App\Http\Controllers\Api\RateController::class,'listRate']);
     });
 
     //favourite

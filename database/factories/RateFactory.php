@@ -14,7 +14,7 @@ class RateFactory extends Factory
     public function definition()
     {
         return [
-            "post_id" => random_int(1,20),
+            "post_id" => 4,
             "member_id" =>random_int(1000,1005),
             "number_rating" => random_int(1,5),
         ];
