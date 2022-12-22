@@ -22,6 +22,8 @@ export const state = {
     getPostDetail:{},
     getPostDetailMember:{},
     getMyPostUser:{},
+    getYourPost:{},
+    idCreatePost:null,
 
 }
 
@@ -37,6 +39,8 @@ export const getters = {
     getPostDetail: state => state.getPostDetail,
     getPostDetailMember: state => state.getPostDetailMember,
     getMyPostUser: state => state.getMyPostUser,
+    getYourPost: state => state.getYourPost,
+    idCreatePost: state => state.idCreatePost,
 
 
 }
@@ -71,10 +75,15 @@ export const mutations = {
     {
       state.getMyPostUser = data.listMyPost;
     },
+    [types.POST.GET_YOUR_POST](state, data)
+    {
+      state.getYourPost = data.listYourPost;
+    },
     [types.POST.GET_POST_DETAIL_USER](state, data)
     {
       state.getPostDetail = data.postDetail;
       state.getPostDetailMember = data.postDetail.member;
+      state.idCreatePost = data.postDetail.member.id;
     }
   
 }
@@ -116,6 +125,11 @@ export const actions = {
       async getMyPost({ commit },payload) {
         const response = await axios.get(api.MY_POST);
         commit(types.POST.GET_MY_POST, response.data.data);
+      },
+
+      async getYourPost({ commit },postId) {
+        const response = await axios.get(api.YOUR_POST + "/" + postId);
+        commit(types.POST.GET_YOUR_POST, response.data.data);
       },
 
       async getApprovePost({ commit }, params) {

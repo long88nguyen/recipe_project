@@ -538,6 +538,26 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         ]; 
     }
 
+    public function YourPost($id)
+    {
+        $YourPost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
+        ->select([
+            "posts.*",
+            DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
+            DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
+        ])
+        ->with("PostImage")
+        ->groupBy("id","title","content",
+        "category_id","member_id",
+        "time","status","created_at",
+        "updated_at","nutrition_facts",
+        "note","deleted_at")
+        ->where("posts.member_id",$id)->get();
+        return [
+            'listYourPost' => $YourPost
+        ];
+    }
+
 
 }
 

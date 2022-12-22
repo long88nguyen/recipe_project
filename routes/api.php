@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::post('/approve/{id}',[\App\Http\Controllers\Api\PostController::class,'approve']);     
         Route::get('/list-favourite',[\App\Http\Controllers\Api\PostController::class,'GetListFavourite']);     
         Route::get('/my-post',[\App\Http\Controllers\Api\PostController::class,'MyPost']);     
+        Route::get('/your-post/{id}',[\App\Http\Controllers\Api\PostController::class,'YourPost']);     
     });
 
     //categories

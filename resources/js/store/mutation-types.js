@@ -21,6 +21,7 @@ export const AUTH = {
     GET_ALL_POST: "GET_ALL_POST",
     GET_POST_DETAIL_USER: "GET_POST_DETAIL_USER",
     GET_MY_POST: "GET_MY_POST",
+    GET_YOUR_POST: "GET_YOUR_POST",
 
   };
 
@@ -31,6 +32,7 @@ export const AUTH = {
 
   export const RATE = {
     RATE_POST_LIST: "RATE_POST_LIST",
+    RATE_DETAIL: "RATE_DETAIL",
   }
 
 

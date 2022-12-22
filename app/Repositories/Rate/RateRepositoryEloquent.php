@@ -107,10 +107,25 @@ class RateRepositoryEloquent extends BaseRepository implements RateRepository
     }
 
     public function detail($id){
-        $employeeId = Auth::user()->member->id;
-        $getRateDetail = $this->model->where("id",$id)->where("employee_id",$employeeId)->first();
+        $memberId = Auth::user()->member->id;
+        $getRateDetail = $this->model->where("id",$id)->where("member_id",$memberId)->first();
         return [
             "getRateDetail" => $getRateDetail
         ];
+    }
+
+    public function updateRate($request,$id)
+    {
+        $rateId = $this->model->find($id);
+        $dataUpdate = [
+            "number_rating" => $request['number_rating'],
+            "review" => $request['review'] ? $request['review'] : null,
+        ];
+        return $rateId->update($dataUpdate);
+    }
+    
+    public function delete($id)
+    {
+        return $this->model->find($id)->delete();
     }
 }

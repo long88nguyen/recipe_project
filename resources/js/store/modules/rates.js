@@ -4,16 +4,23 @@ import api from "../../api/api";
 
 export const state = {
     rateListByPost : {},
+    rateDetail : {},
 }
 
 export const getters = {
     rateListByPost : state => state.rateListByPost,
+    rateDetail : state => state.rateDetail,
 }
 
 export const mutations = {
     [types.RATE.RATE_POST_LIST](state, data)
     {
       state.rateListByPost = data.getRateByPost;
+    },
+
+    [types.RATE.RATE_DETAIL](state, data)
+    {
+      state.rateDetail = data.getRateDetail;
     },
 }
 
@@ -32,4 +39,24 @@ export const actions = {
           response.data.data
         );
       },
+
+    async detailRate({ commit }, rateId) {
+      const response = await axios.get(
+        api.RATE_DETAIL + "/" + rateId
+      );
+      commit(
+        types.RATE.RATE_DETAIL,
+        response.data.data
+      );
+    },
+
+    async updateRate({ commit }, params) {
+      let url = `${api.UPDATE_RATE}/${params.id}`;
+      await axios.post(url, params);
+    },
+
+    async deleteRate({ commit }, rateId) {
+      let url = api.DELETE_RATE + "/" + rateId;
+      await axios.delete(url);
+    },
 }

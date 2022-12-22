@@ -18,11 +18,15 @@ const CREATE_POST ='/api/post'
 const SEARCH_POST_APPROVED ='/api/post/search-result'
 const POST_DETAIL = '/api/post/detail'
 const MY_POST = '/api/post/my-post'
+const YOUR_POST = '/api/post/your-post'
 
 //rate 
 
 const POST_RATE_LIST = '/api/rate/list-rate'
 const POST_RATE = '/api/rate'
+const RATE_DETAIL = '/api/rate/rate-detail'
+const UPDATE_RATE = '/api/rate/update-rate'
+const DELETE_RATE = '/api/rate/delete'
 
 //ingredient 
 
@@ -66,6 +70,7 @@ export default {
     CREATE_POST,
     POST_DETAIL,
     MY_POST,
+    YOUR_POST,
 
     //favourite
 
@@ -75,6 +80,9 @@ export default {
     //rate
     POST_RATE_LIST,
     POST_RATE,
+    RATE_DETAIL,
+    UPDATE_RATE,
+    DELETE_RATE,
 
     //ingredient
     LIST_ALL_INGREDIENT,

@@ -105,4 +105,10 @@ class PostController extends ApiController
         return $this->sendSuccess($result);
     }
 
+    public function YourPost($id)
+    {
+        $result =  $this->postRepository->YourPost($id);
+        return $this->sendSuccess($result);
+    }
+
 }

@@ -73,19 +73,66 @@
                     <template #title>
                     Delete rate
                     </template>
-                <i class="fa-solid fa-trash"></i>
+                <i class="fa-solid fa-trash" @click="DeleteRate(rate.id)"></i>
                 </a-tooltip>
 
                 <a-tooltip>
                     <template #title>
                     Edit rate
                     </template>
-                <i class="fa-solid fa-pen-to-square"></i>
+                <i class="fa-solid fa-pen-to-square" @click="DetailRate(rate.id)"></i>
                 </a-tooltip>
             </div>
         </div>
         </template>
-       
+        <a-modal 
+            class="add-timesheet-modal"
+            v-model:visible="visible" 
+            title="Chỉnh sửa đánh giá" 
+            @ok="handleOk"
+            :footer = null
+            centered
+            >
+            <div class="rating_side_detail">
+                <label for="">Your Rating</label>
+                <star-rating 
+                    v-model:rating="rateDetail.number_rating" 
+                    inactive-color="#E8E8E8"
+                    active-color="#FFFF00"
+                    v-bind:star-size="40"
+                    :show-rating = false
+                    border-color = "#444444"	
+                    :round-start-rating = false
+                    @update:rating ="setRating"
+                    :border-width="1"
+                />
+            </div>
+            <div class="review_side">
+                <label for="">Your review</label>
+                <textarea name="" :rows = "3" id=""
+                class="form-control"  v-model ="rateDetail.review"          
+                ></textarea>
+            </div>
+            
+            <button class="btn btn-success text-center mt-3" @click="updateRate(rateDetail.id)">Đánh giá</button>
+          </a-modal>
+          <a-modal 
+            class="add-timesheet-modal"
+            v-model:visible="visibleDelete" 
+            title="Xác nhận xóa đánh giá" 
+            @ok="handleOk"
+            :footer = null
+            centered
+            >
+            <div class="delete_confirm">
+                <h5>Bạn có muốn xóa đánh giá này không ?</h5>
+            </div>
+
+            <button class="btn btn-success text-center mt-3" @click="DeleteSubmit">Đánh giá</button>
+
+            <button class="btn btn-danger text-center mt-3 mr-2" @click="unsubmit">Hủy</button>
+
+          </a-modal>
     </div>
 </template>
 
@@ -98,11 +145,15 @@ export default {
         StarRating
     },
     data(){
+        
         return {
-            rating:3,
             data_rating:[
                 1,2,3,4,5
             ],
+            visible : false,
+            number_rating: 0,
+            rateId :null,
+            visibleDelete:false,
         }
     },
     props:{
@@ -114,23 +165,79 @@ export default {
     computed:{
         ...mapGetters({
             rateListByPost:"rates/rateListByPost",
+            rateDetail:"rates/rateDetail"
         }),
         checkUserId()
         {
             return this.$store.getters['common/userCommon'].id;
         }
     },
-
     created(){
-        console.log(this.$store.getters['common/userCommon'].id);
         this.getListRateByPost();
     },
 
     methods:{
+        unsubmit()
+        {
+            this.visibleDelete = false;
+        },
+
+        DeleteSubmit()
+        {
+            let rateId = this.rateId;
+            this.$store.dispatch("rates/deleteRate",rateId).then(() => {
+                let postId = this.$route.params.id;
+                this.$toast.success('Update rating successful!')
+                this.$store.dispatch('rates/listRatePost',postId);
+                this.$store.dispatch('posts/detailPostUser',postId);
+             }
+            ).catch(() => {
+                this.$toast.error('error')
+            })
+            this.visibleDelete = false;
+        },
+
         async getListRateByPost(){
             let postId = this.$route.params.id;
             this.$store.dispatch("rates/listRatePost",postId)
+        },
+
+        async DetailRate(value)
+        {
+            console.log(value);
+            this.visible = true;
+            let rateId = value;
+            await this.$store.dispatch("rates/detailRate",rateId);
+        },
+        setRating(value)
+        {
+            this.number_rating = value;
+        },  
+
+        updateRate(value){
+            // console.log( this.rateDetail.id,
+            //     this.number_rating,
+            //  this.rateDetail.review);
+
+            this.$store.dispatch("rates/updateRate",{
+                id : value,
+                number_rating : this.number_rating,
+                review : this.rateDetail.review,
+        }).then(()=>{
+            this.visible = false;
+            let postId = this.$route.params.id;
+            this.$toast.success('Update rating successful!')
+            this.$store.dispatch('rates/listRatePost',postId);
+            this.$store.dispatch('posts/detailPostUser',postId);
+        }).catch(() =>{
+            this.$toast.error('error')
+        });
+        },
+        DeleteRate(value){
+            this.visibleDelete = true;
+            this.rateId = value;
         }
+
     }
 }
 </script>
@@ -194,7 +301,7 @@ export default {
             margin-top: 10px;
             font-size: 16px;
             display: flex;
-            justify-content: end;
+            justify-content: flex-end;
             i{
                 margin-left: 15px;
                 cursor: pointer;

@@ -91,7 +91,8 @@
                               
                 <div class="post_suggest">
                     <h4>Posts by the same author</h4>
-                    <template v-for="(post,index) in getMyPostUser" :key="index">
+                    {{  idMemberok }}
+                    <template v-for="(post,index) in getYourPost" :key="index">
                     <div class="post_suggest-list">
                         <img :src="`/uploads/posts/${post.post_image[0].image}`" alt="">
                         <div class="post_suggest-content">{{  post.title }}</div>
@@ -147,19 +148,27 @@ export default {
         return {
             visible:false,
             rating:1,
-            review:""
+            review:"",
+            memberId:null,
         }
     },
     components:{
         StarRating,
         RatingPanel
     },
+    async created(){    
+        this.memberId = this.idMember;
+        this.fetchPostDetail();
+        this.getPostYour();
+    },
     computed:{
         ...mapGetters({
             getPostDetail:"posts/getPostDetail",
             getPostDetailMember:"posts/getPostDetailMember",
-            getMyPostUser:"posts/getMyPostUser"
-        })
+            getYourPost:"posts/getYourPost",
+            idMember:"posts/idCreatePost"
+        }),
+       
     },
     methods:{
       async fetchPostDetail(){
@@ -200,16 +209,20 @@ export default {
         this.rating = 1;
         this.review = "",
         this.visible = false;
+        let postId = this.$route.params.id;
+        this.$store.dispatch('rates/listRatePost',postId);
         this.fetchPostDetail();
       },    
       formatDate(value){
         return moment(String(value)).format("HH:mm:ss DD/MM/YYYY")
+      },
+
+      async getPostYour(){
+        let postId = this.getPostDetailMember.id;
+        await this.$store.dispatch("posts/getYourPost",postId)
       }
     },  
-    created(){
-        this.fetchPostDetail();
-        this.$store.dispatch("posts/getMyPost")
-    }
+   
 }
 </script>
 

@@ -33,4 +33,7 @@ interface PostRepository extends RepositoryInterface
     public function GetListFavourite();
 
     public function MyPost();
+
+    public function YourPost($id);
+
 }
