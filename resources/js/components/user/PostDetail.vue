@@ -149,7 +149,6 @@ export default {
             visible:false,
             rating:1,
             review:"",
-            memberId:null,
         }
     },
     components:{
@@ -157,7 +156,6 @@ export default {
         RatingPanel
     },
     async created(){    
-        this.memberId = this.idMember;
         this.fetchPostDetail();
         this.getPostYour();
     },
@@ -173,7 +171,7 @@ export default {
     methods:{
       async fetchPostDetail(){
         let postId =this.$route.params.id;
-        await this.$store.dispatch("posts/detailPostUser",postId)
+        await this.$store.dispatch("posts/detailPostUser",postId);
       },
       showPopup(){
         if(this.getPostDetail.rateable == false)
@@ -218,6 +216,7 @@ export default {
       },
 
       async getPostYour(){
+        await this.fetchPostDetail();
         let postId = this.getPostDetailMember.id;
         await this.$store.dispatch("posts/getYourPost",postId)
       }
@@ -278,11 +277,8 @@ export default {
                 .post_time{
                     font-size:10px;
                     font-weight: 200;
-
-                }
-                }
-               
-                
+                    }
+                } 
             }
             .post_detail-img{
                 width: 100%;
@@ -442,7 +438,7 @@ export default {
 
                 img{
                     width: 100%;
-                    height: 150px;
+                    height: 200px;
                     border: 4px solid rgb(234, 231, 231);
                     border-radius: 10px;
                 }
