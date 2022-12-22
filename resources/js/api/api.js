@@ -18,6 +18,7 @@ const CREATE_POST ='/api/post'
 const SEARCH_POST_APPROVED ='/api/post/search-result'
 const POST_DETAIL = '/api/post/detail'
 const MY_POST = '/api/post/my-post'
+const LIST_FAVOURITE_POST = '/api/post/list-favourite'
 const YOUR_POST = '/api/post/your-post'
 
 //rate 
@@ -71,6 +72,7 @@ export default {
     POST_DETAIL,
     MY_POST,
     YOUR_POST,
+    LIST_FAVOURITE_POST,
 
     //favourite
 

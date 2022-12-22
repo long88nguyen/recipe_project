@@ -502,16 +502,30 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         $memberId = Auth::user()->member->id;
         $favouritePost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
         ->select([
-            "posts.*",'favourites.member_id as favourites_by',
+            "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
             DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
         ])
+        ->with("PostImage")
         ->groupBy("id","title","content",
         "category_id","member_id",
         "time","status","created_at",
         "updated_at","nutrition_facts",
         "note","deleted_at",'favourites.member_id')
         ->where("favourites.member_id",$memberId)->get();
+        foreach($favouritePost as $value)
+        {
+            $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
+            if($checkFavourite)
+            {
+                $value->favouriteable = false;
+            }
+            else
+            {
+                $value->favouriteable = true;
+            }
+        }
+       
         return [
             'listMyFavourites' => $favouritePost
         ]; 

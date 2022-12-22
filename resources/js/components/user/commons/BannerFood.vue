@@ -248,11 +248,12 @@ export default {
            .card_heart{
                 width: 30px;
                 height: 30px;
-                background: orange;
+                background: #d54215;
                 position: absolute;
                 top:15px;
                 left:10px;
-                font-size: 20px;
+                font-size: 14px;
+                color:white;
                 border-radius: 50%;
                 i
                 {
