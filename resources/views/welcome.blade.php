@@ -21,6 +21,6 @@
         <app-vue></app-vue>
     </div>
 
-    <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 </body>
 </html>
