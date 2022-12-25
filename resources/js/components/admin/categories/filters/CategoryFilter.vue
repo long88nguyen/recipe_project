@@ -1,11 +1,11 @@
 <template>
     <div class="category-filter">
-        <input type="text" class="input-form"
+        <input type="text" class="form-control"
         @change="search"
         v-model="name"
         v-on:keyup.enter="search"
         > 
-        <button class="btn btn-info" @click.prevent = "search">Search</button>
+        <button class="btn btn-success" @click.prevent = "search">Tìm kiếm </button>
     </div>
 </template>
 
@@ -28,15 +28,11 @@ export default {
 
 <style lang="scss">
 .category-filter{
-    .input-form{
-        height: 40px;
-        width: 400px;
-        margin: 0 20px 0 0;
-        outline: none;
-        border-radius:20px;
-        background: none;
-        border:1px solid silver;
-        padding:0 0 0 20px;
+    display: flex;
+    margin-bottom: 20px;
+    input{
+        width:400px;
+        margin-right: 20px;
     }
 }
 </style>

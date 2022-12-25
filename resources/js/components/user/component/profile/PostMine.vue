@@ -5,6 +5,9 @@
                 <div 
                     class="card_item">
                         <img :src="`/uploads/posts/${post.post_image[0].image}`" alt="" class="card_img">
+                        <div class="card_status">
+                            <span>Đã duyệt</span>
+                        </div>
                         <router-link
                         :to="{
                           path: `/post-detail/${post.id}`
@@ -31,6 +34,10 @@
                             
                                 <h5>{{ post.count_favourite }}</h5>
                             </div>
+                        </div>
+                        <div class="card_action">
+                            <i class="fa-solid fa-pen-to-square blue"></i>
+                            <i class="fa-solid fa-trash red"></i>
                         </div>
                    </div>   
         </a-col>
@@ -72,22 +79,19 @@ export default {
 
             }
            
-           .card_heart{
-                width: 30px;
-                height: 30px;
-                background: #d54215;
-                position: absolute;
-                top:15px;
-                left:10px;
-                color: white;
-                font-size: 14px;
-                border-radius: 50%;
-                i
-                {
-                    display: flex;
-                    justify-content: center;
-                    line-height: 30px;
-                }
+           .card_status{
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            width: 100px;
+            height: 30px;
+            background: #198754;
+            position: absolute;
+            top: -2px;
+            right: 10px;
+            color: white;
+            font-size: 14px;
+            border-radius: 15px;
             }
             h4{
                 font-size: 24px;
@@ -151,6 +155,18 @@ export default {
                     width: 30px;
                     height: 30px;
                     border-radius: 15px;
+                }
+            }
+            .card_action{
+                font-size: 20px;
+                text-align: center;
+                margin-top: 10px;
+                .blue{
+                    margin-right: 20px;
+                    color:blue;
+                }
+                .red{
+                    color: red;
                 }
             }
         }

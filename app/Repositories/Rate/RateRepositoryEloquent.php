@@ -106,6 +106,15 @@ class RateRepositoryEloquent extends BaseRepository implements RateRepository
         
     }
 
+    public function getAll($request)
+    {
+        $getAll = $this->model->orderBy('id','DESC')->with("member:id,name")->paginate(10);
+        return [
+            "getAll" => $getAll
+        ];
+        
+    }
+
     public function detail($id){
         $memberId = Auth::user()->member->id;
         $getRateDetail = $this->model->where("id",$id)->where("member_id",$memberId)->first();

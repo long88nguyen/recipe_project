@@ -28,6 +28,7 @@ const POST_RATE = '/api/rate'
 const RATE_DETAIL = '/api/rate/rate-detail'
 const UPDATE_RATE = '/api/rate/update-rate'
 const DELETE_RATE = '/api/rate/delete'
+const GET_ALL_RATE = '/api/rate'
 
 //ingredient 
 
@@ -85,6 +86,7 @@ export default {
     RATE_DETAIL,
     UPDATE_RATE,
     DELETE_RATE,
+    GET_ALL_RATE,
 
     //ingredient
     LIST_ALL_INGREDIENT,

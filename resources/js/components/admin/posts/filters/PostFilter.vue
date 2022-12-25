@@ -47,7 +47,7 @@
                 </a-row>
             </div>
             <div class="input_submit">
-                <button class="btn btn-info"  @click.prevent="search">Search</button>
+                <button class="btn btn-success"  @click.prevent="search">Tìm kiếm</button>
             </div>
     </div>
 </template>
@@ -73,16 +73,16 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .input_search
 {
     .form-input{
-        padding: 0 20px;
+        margin-right:10px ;
     }
     
 }
 .input_submit{
         text-align: center;
-        margin-top: 10px;
+        margin: 10px 0;
 }
 </style>

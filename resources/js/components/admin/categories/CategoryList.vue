@@ -3,15 +3,16 @@
     <div class="category-product">
        
         <div class="table-wrapper">
-          <CategoryFilterVue @search = "updateSearch">
-
-          </CategoryFilterVue>
           <div class="breadcumb-field">
             <a-breadcrumb>
             <a-breadcrumb-item><router-link to="/categories">Home</router-link></a-breadcrumb-item>
             <a-breadcrumb-item><router-link to="/categories">Categories</router-link></a-breadcrumb-item>
             </a-breadcrumb>
         </div>
+          <CategoryFilterVue @search = "updateSearch">
+
+          </CategoryFilterVue>
+          
         <div class="btn btn-success mb-3"  @click="openModal">
 
             <span> Thêm mới danh mục</span>
@@ -136,31 +137,31 @@ export default {
 
     async created()
     {
-      if (Object.keys(this.$route.query).length !== 0)
-      {
-        let params = this.$route.query;
-        params.perPage =
-        this.listItemsPerPage.includes(parseInt(params.perPage)) &&
-        !isNaN(params.perPage)
-          ? params.perPage
-          : '5';
-        this.searchData = {
-          name: params.name == undefined
-            ? this.searchData.name.toLowerCase()
-            : params.name.toLowerCase(),
-          itemsPerPage: params.perPage,
-          paginate: {
-            from: params.from,
-            to: params.to,
-            totalPage: parseInt(params.totalPage),
-            path: this.searchData.paginate.path,
-            currentPage: parseInt(params.currentPage),
-            totalRecord: parseInt(params.totalRecord),
-            perPage: parseInt(params.perPage),
-          },
-        }
+      // if (Object.keys(this.$route.query).length !== 0)
+      // {
+      //   let params = this.$route.query;
+      //   params.perPage =
+      //   this.listItemsPerPage.includes(parseInt(params.perPage)) &&
+      //   !isNaN(params.perPage)
+      //     ? params.perPage
+      //     : '5';
+      //   this.searchData = {
+      //     name: params.name == undefined
+      //       ? this.searchData.name.toLowerCase()
+      //       : params.name.toLowerCase(),
+      //     itemsPerPage: params.perPage,
+      //     paginate: {
+      //       from: params.from,
+      //       to: params.to,
+      //       totalPage: parseInt(params.totalPage),
+      //       path: this.searchData.paginate.path,
+      //       currentPage: parseInt(params.currentPage),
+      //       totalRecord: parseInt(params.totalRecord),
+      //       perPage: parseInt(params.perPage),
+      //     },
+      //   }
 
-      }
+      // }
       
       this.fetchCategoryList()
     },
@@ -200,13 +201,13 @@ export default {
     passParamUrl() {
         this.$router.push({
             name: "category-list",
-            query: {
-                name: this.checkDataParam(this.searchData.name),
-                currentPage: this.checkDataParam(
-                    this.searchData.paginate.currentPage
-                ),
-                perPage: this.checkDataParam(this.searchData.itemsPerPage),
-            },
+            // query: {
+            //     name: this.checkDataParam(this.searchData.name),
+            //     currentPage: this.checkDataParam(
+            //         this.searchData.paginate.currentPage
+            //     ),
+            //     perPage: this.checkDataParam(this.searchData.itemsPerPage),
+            // },
         }).catch(() => {});
     },
     changePage(page) {

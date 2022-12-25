@@ -1,8 +1,11 @@
 <template>
-    <Slider></Slider>
-    <ButtonCreatePostVue></ButtonCreatePostVue>
-    <BannerFood></BannerFood>
-    <StatPost/>
+    <div class="side_user">
+        <Slider></Slider>
+        <ButtonCreatePostVue></ButtonCreatePostVue>
+        <BannerFood></BannerFood>
+        <StatPost/>
+    </div>
+    
 </template>
 
 <script>
@@ -25,7 +28,5 @@ export default {
 body{
   width: 100% !important;
   overflow: visible !important;
-  height: 100%;
-  background: rgb(250, 246, 243);
 }
 </style>

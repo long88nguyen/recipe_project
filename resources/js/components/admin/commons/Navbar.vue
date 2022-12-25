@@ -4,7 +4,7 @@
            <div class="logo">
                <i class="bx bxl-c-plus-plus"></i>
                <div class="logo-name">
-                   CodingLab
+                   WorldRecipes
                </div>
            </div>
            <i class="bx bx-menu" id="btn" v-on:click="$emit('ToggleNavbar')" ></i>
@@ -43,12 +43,12 @@
                   
            </li>
            <li>
-               <router-link to="/comments" class="router-class"
+               <router-link to="/rates" class="router-class"
                :class="
-                  url.includes('comments') ? 'active-router' : ''
+                  url.includes('rates') ? 'active-router' : ''
                 ">
                 <i class="fa-solid fa-image"></i>
-                   <span class="links_name">Comment</span>
+                   <span class="links_name">Rating</span>
                </router-link>
                    
            </li>
@@ -172,7 +172,7 @@ export default {
    }
    body{
        position:relative;
-       height: 3000px;
+       height: 1000vh;
        background: gray;
        width: 100%;
        overflow: hidden;

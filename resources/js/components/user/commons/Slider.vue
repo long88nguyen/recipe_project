@@ -81,12 +81,12 @@ import { mapGetters } from 'vuex'
 <style lang="scss" >
 
 .slider_container{
+   padding-top: 200px;
    width: 100%;
     .slider_food
     {
         width: 70%;
         margin:0 auto;
-        margin-top:200px ;
         .hello{
           text-align: center;
           height: 200px;

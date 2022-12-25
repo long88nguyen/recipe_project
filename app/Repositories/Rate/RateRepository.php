@@ -20,4 +20,6 @@ interface RateRepository extends RepositoryInterface
     public function updateRate($request,$id);
 
     public function delete($id);
+
+    public function getAll($request);
 }

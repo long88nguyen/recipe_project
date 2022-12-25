@@ -35,7 +35,7 @@
                 <label for="">Direction</label>
                 <br>
                 <template v-for="(direc,index) in showApprove.directions" :key="index">
-                    <span>Step {{index}}</span>
+                    <span>Step {{index+1}}</span>
                     <textarea name="" id="" cols="30" rows="3"  class="form-control input_ingredient" :value = "direc.description" disabled></textarea>
                 </template>    
             </div>
@@ -65,11 +65,12 @@ export default {
     computed:{
         ...mapGetters({
             showApprove:"posts/showApprove",
-            memberPost:"posts/memberPost"
+            memberPost:"posts/getPostDetailMemberAdmin"
         }),
     },
     created()
     {
+        console.log(this.$props.id);
         this.$store.dispatch('posts/getApprovePost',this.$props.id);    
     },
     methods:{
@@ -81,7 +82,7 @@ export default {
             }).then(() => {
                 this.$emit("ok");
                 this.$toast.success("Duyệt thành công")
-            }).cactch(() =>{
+            }).catch(() =>{
                 this.$toast.success("Đã xảy ra lỗi!");
             });
         },

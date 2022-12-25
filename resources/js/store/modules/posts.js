@@ -21,6 +21,7 @@ export const state = {
     getMostFavourite : {},
     getPostDetail:{},
     getPostDetailMember:{},
+    getPostDetailMemberAdmin:{},
     getMyPostUser:{},
     getYourPost:{},
     getFavouritePost:{},
@@ -39,6 +40,7 @@ export const getters = {
     getMostFavourite: state => state.getMostFavourite,
     getPostDetail: state => state.getPostDetail,
     getPostDetailMember: state => state.getPostDetailMember,
+    getPostDetailMemberAdmin: state => state.getPostDetailMemberAdmin,
     getMyPostUser: state => state.getMyPostUser,
     getYourPost: state => state.getYourPost,
     getFavouritePost: state => state.getFavouritePost,
@@ -90,6 +92,12 @@ export const mutations = {
       state.getPostDetail = data.postDetail;
       state.getPostDetailMember = data.postDetail.member;
       state.idCreatePost = data.postDetail.member.id;
+    },
+
+    [types.POST.GET_POST_DETAIL](state, data)
+    {
+      state.showApprove = data;
+      state.getPostDetailMemberAdmin = data.member;
     }
   
 }

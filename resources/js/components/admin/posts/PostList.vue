@@ -30,7 +30,7 @@
                         <td>{{ post.member.name }}</td>
                         <td>{{ post.category.name }}</td>   
                         <td>{{ post.title }}</td>
-                        <td>{{ post.content }}</td>
+                        <td>{{ post.content.substring(0,30) + "..." }}</td>
                         <td> 
                             <div class="title pending" v-if="(post.status==1)">
                                 Chờ duyệt

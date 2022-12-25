@@ -34,6 +34,7 @@ export const AUTH = {
   export const RATE = {
     RATE_POST_LIST: "RATE_POST_LIST",
     RATE_DETAIL: "RATE_DETAIL",
+    LIST_ALL_RATE: "LIST_ALL_RATE",
   }
 
 
