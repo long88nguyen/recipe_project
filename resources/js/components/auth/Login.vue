@@ -1,5 +1,6 @@
 <template>
   <div class="login_layout">
+    <img src="../../uploads/images/pgfood.png">
     <div class="center" >
     <h1>Đăng nhập</h1>
     <form action="" @submit.prevent="login">
@@ -73,9 +74,14 @@ export default {
   margin:0;
   padding:0;
   font-family: montserrat;
-  background: linear-gradient(120deg, #a1d3f4,#e9cbf5);
+  background: rgba(0, 0, 0,0.6);
   height: 100vh;
   overflow: hidden;
+  img{
+    width: 100%;
+    height: 100vh;
+    opacity: 0.4;
+  }
 }
 .center{
   position:absolute;

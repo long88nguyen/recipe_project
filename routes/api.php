@@ -77,6 +77,11 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::get('/',[\App\Http\Controllers\Api\RateController::class,'getAll']);
     });
 
+    //member
+    Route::group(['prefix' => 'member'], function () {
+        Route::get('/',[\App\Http\Controllers\Api\MemberController::class,'getAll']);
+    });
+
     //favourite
     Route::group(['prefix' => 'favourite'], function () {
         Route::post('/{id}',[\App\Http\Controllers\Api\FavouriteController::class,'favouritePost']);

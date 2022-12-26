@@ -30,6 +30,10 @@ export const AUTH = {
     SUBMIT: "SUBMIT",
   }
 
+  export const MEMBER = {
+    GET_ALL_MEMBER: "GET_ALL_MEMBER",
+  }
+
 
   export const RATE = {
     RATE_POST_LIST: "RATE_POST_LIST",

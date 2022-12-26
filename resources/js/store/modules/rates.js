@@ -69,8 +69,11 @@ export const actions = {
         const response = await axios.get(
           api.GET_ALL_RATE,{
             params:{
+              member_name: payload.member_name, 
+              post_title: payload.post_title,
               per_page: payload.itemsPerPage,
               page: payload.currentPage, 
+               
             }
           } 
         );

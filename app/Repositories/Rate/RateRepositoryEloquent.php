@@ -9,6 +9,7 @@ use App\Repositories\Rate\RateRepository;
 use App\Models\Post;
 use App\Models\Rate;
 use Carbon\Carbon;
+use FormatHelper;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -108,7 +109,23 @@ class RateRepositoryEloquent extends BaseRepository implements RateRepository
 
     public function getAll($request)
     {
-        $getAll = $this->model->orderBy('id','DESC')->with("member:id,name")->paginate(10);
+        $getAll = $this->model->orderBy('id','DESC')->with("member:id,name","post:id,title");
+        if ($request->has('post_title') && $request->post_title)
+        {
+            $getAll->whereHas("post",function($query) use($request){
+                $query->where('posts.title', 'LIKE', '%' . FormatHelper::escape_like($request->post_title) . '%');
+            });
+        }
+
+        if ($request->has('member_name') && $request->member_name)
+        {
+            $getAll->whereHas("member",function($query) use($request){
+                $query->where('members.name', 'LIKE', '%' . FormatHelper::escape_like($request->member_name) . '%');
+            });
+        }
+        
+        
+        $getAll = $getAll->paginate(10);
         return [
             "getAll" => $getAll
         ];

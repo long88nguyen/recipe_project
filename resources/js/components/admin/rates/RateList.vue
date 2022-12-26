@@ -9,6 +9,7 @@
             <a-breadcrumb-item><router-link to="/rate-list">Rating</router-link></a-breadcrumb-item>
             </a-breadcrumb>
         </div>
+        <RateFilterVue @search="updateSearch"/>
           <table class="content-table">
                 <thead>
                     <tr>
@@ -30,12 +31,20 @@
                         1
                   }}</td>
                         <td>{{ rate.member.name }}</td>
-                        <td>{{ rate.post_id }}</td>
-                        <td>{{ rate.number_rating }} </td>
+                        <td>{{ rate.post.title }}</td>
+                        <td>  <star-rating 
+                                v-model:rating="rate.number_rating" 
+                                inactive-color="#DCDCDC"
+                                active-color="#009879"
+                                v-bind:star-size="20"
+                                :read-only = true
+                                :show-rating = false
+                                :round-start-rating = false
+                            /> </td>
                         <td>{{ rate.review }} </td>
                         <td>{{ dateFormat(rate.created_at) }}</td>
                         <td>
-                          <i class="fa-solid fa-trash" style="color:red"></i>
+                          <i class="fa-solid fa-trash" style="color:red" @click="DeleteRate(rate.id)"></i>
                         </td>
                     </tr>
                 </tbody>
@@ -49,24 +58,46 @@
         :page-size="Number(searchData.paginate.perPage)" 
         @change = "changePage"
          />
+         <a-modal 
+            class="add-timesheet-modal"
+            v-model:visible="visibleDelete" 
+            title="Xác nhận xóa đánh giá" 
+            @ok="handleOk"
+            :footer = null
+            centered
+            >
+            <div class="delete_confirm">
+                <h5>Bạn có muốn xóa đánh giá này không ?</h5>
+            </div>
 
+            <button class="btn btn-success text-center mt-3" @click="DeleteSubmit">Xác nhận</button>
+
+            <button class="btn btn-danger text-center mt-3 mr-2" @click="unsubmit">Hủy</button>
+
+          </a-modal>
         
     </div>
 
 </template>
 
 <script>
-
+import StarRating from 'vue-star-rating'
+import RateFilterVue from './filter/RateFilter.vue';
 import moment from "moment"
 import {  mapGetters } from 'vuex';
 export default {
     components:{
+      StarRating,
+      RateFilterVue
     },
     data()
     {
-        return {           
+        return {     
+            visibleDelete:false,
+            rateId :null,
             searchData: {
-              name:"",
+              post_title:"",
+              member_name:"",
               itemsPerPage:5,
               paginate: {
                 from: 0,
@@ -105,44 +136,50 @@ export default {
     async fetchRatingList() {
         await this.$store.dispatch(
             "rates/getAllRateAdmin",{
+                post_title : this.searchData.post_title,
+                member_name : this.searchData.member_name,
                 itemsPerPage: this.searchData.itemsPerPage,
                 currentPage: this.searchData.paginate.currentPage,
             }
         );
         this.searchData.paginate = this.pagination;
     },
-    checkDataParam(data) {
-        return data === 0 || data === "" ? undefined : data;
-    },
-    passParamUrl() {
-        this.$router.push({
-            name: "rates-list",
-        }).catch(() => {});
-    },
+
     changePage(page) {
         console.log(page);
         this.fetchRatingList(this.searchData.itemsPerPage, page);
     },
+
+   
+
     updateSearch(filter) {
         this.searchData = {
             ...this.searchData,
             ...filter
         };
         this.searchData.paginate.currentPage = 1;
-        this.passParamUrl();
         this.search();
     },
     async search() {
-        if (this.$route.fullPath !== "/rates") {
-            this.clearParamUrl();
-
-        }
         this.fetchRatingList();
     },
-    clearParamUrl() {
-        return;
+    
+    DeleteRate(value){
+            this.visibleDelete = true;
+            this.rateId = value;
     },
-   
+    DeleteSubmit()
+        {
+            let rateId = this.rateId;
+            this.$store.dispatch("rates/deleteRate",rateId).then(() => {
+                this.$toast.success('Rating deleted!')
+                this.fetchRatingList()
+             }
+            ).catch(() => {
+                this.$toast.error('error')
+            })
+            this.visibleDelete = false;
+        },
   },   
 }
 </script>

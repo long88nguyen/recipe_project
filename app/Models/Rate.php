@@ -19,4 +19,8 @@ class Rate extends Model
     public function member(){
         return $this->belongsTo(Member::class ,  "member_id");
     }
+
+    public function post(){
+        return $this->belongsTo(Post::class ,  "post_id");
+    }
 }

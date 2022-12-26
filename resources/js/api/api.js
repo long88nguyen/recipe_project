@@ -30,6 +30,10 @@ const UPDATE_RATE = '/api/rate/update-rate'
 const DELETE_RATE = '/api/rate/delete'
 const GET_ALL_RATE = '/api/rate'
 
+//member 
+
+const MEMBER_LIST = '/api/member'
+
 //ingredient 
 
 
@@ -87,6 +91,9 @@ export default {
     UPDATE_RATE,
     DELETE_RATE,
     GET_ALL_RATE,
+
+    //member
+    MEMBER_LIST,
 
     //ingredient
     LIST_ALL_INGREDIENT,
