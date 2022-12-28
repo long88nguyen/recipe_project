@@ -21,6 +21,7 @@ const POST_DETAIL = '/api/post/detail'
 const MY_POST = '/api/post/my-post'
 const LIST_FAVOURITE_POST = '/api/post/list-favourite'
 const YOUR_POST = '/api/post/your-post'
+const UPDATE_POST = '/api/post/update'
 
 //rate 
 
@@ -80,6 +81,7 @@ export default {
     MY_POST,
     YOUR_POST,
     LIST_FAVOURITE_POST,
+    UPDATE_POST,
 
     //favourite
 

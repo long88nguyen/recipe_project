@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::get('/create',[\App\Http\Controllers\Api\PostController::class,'create']);
         Route::get('/search-result',[\App\Http\Controllers\Api\PostController::class,'SearchPost']);
         Route::get('/detail/{id}',[\App\Http\Controllers\Api\PostController::class,'detail']);
-        Route::post('/{id}/update',[\App\Http\Controllers\Api\PostController::class,'update']);
+        Route::post('/update/{id}',[\App\Http\Controllers\Api\PostController::class,'update']);
         Route::delete('/{id}',[\App\Http\Controllers\Api\PostController::class,'delete']);
         Route::post('/approval',[\App\Http\Controllers\Api\PostController::class,'listApproval']);
         Route::post('/approve/{id}',[\App\Http\Controllers\Api\PostController::class,'approve']);     

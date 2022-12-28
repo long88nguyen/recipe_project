@@ -272,7 +272,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                         $data['image'] = "$profileImage";
                         $dataImage  = [
                             'post_id' => $postSave->id,
-                            'image' =>  $data['image'],
+                            'image' =>  "/uploads/posts/".$data['image'],
                             'created_at' => $timeNow,
                             'updated_at'=> $timeNow,
                         ];
@@ -348,7 +348,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             ];
     }
 
-    public function update($request,$id)
+    public function update($id,$request)
     {
         try{
             DB::beginTransaction();
@@ -362,7 +362,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             $dataPostById = $this->model->findOrFail($id);
 
             Ingredient::where('post_id',$dataPostById->id)->delete();
-            PostImage::where('post_id',$dataPostById->id)->delete();
+           
             Direction::where('post_id',$dataPostById->id)->delete();
 
             $dataPost = [
@@ -377,10 +377,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 'updated_at' => $timeNow,
             ];
 
-            
             $dataPostById->update($dataPost);
 
-            $arrIngredient = $data['ingredient_list'];
+            $arrIngredient = $data['ingredients'];
             foreach ($arrIngredient as $key => $item)
             {
                     $dataIngredient  = [
@@ -392,7 +391,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                     Ingredient::insert($dataIngredient);
             }
     
-           $arrDirection = $data['direction_list'];
+           $arrDirection = $data['directions'];
            foreach ($arrDirection as $key => $item)
             {
                     $dataDirection  = [
@@ -404,19 +403,27 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                     ];
                     Direction::insert($dataDirection);
             }
-    
-            $arrImage = $data['image_list'];
-            foreach ($arrImage as $key => $item)
+            if($request->file('img_evidence'))
             {
-                    $dataImage  = [
-                        'post_id' => $dataPostById->id,
-                        'image' => $item,
-                        'created_at' => $timeNow,
-                        'updated_at'=> $timeNow,
-                    ];
-                    PostImage::insert($dataImage);
-            }
+                PostImage::where('post_id',$dataPostById->id)->delete();
+                $arrImage = $request->file('img_evidence');
+                foreach ($arrImage as $key => $item);
+                {
+                        $destinationPath = public_path('uploads/posts');
+                        $profileImage = random_int(100000000,99999999999) . "." . $item->getClientOriginalExtension();
+                        $item->move($destinationPath, $profileImage);
+                        $data['image'] = "$profileImage";
+                        $dataImage  = [
+                            'post_id' => $dataPostById->id,
+                            'image' =>  "/uploads/posts/".$data['image'],
+                            'created_at' => $timeNow,
+                            'updated_at'=> $timeNow,
+                        ];
+                        PostImage::insert($dataImage);
+                }
 
+            }
+                
             DB::commit();
 
             return ['success' => true];

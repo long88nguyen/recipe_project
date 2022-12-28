@@ -31,7 +31,7 @@
                         
                    <div 
                     class="card_item">
-                        <img :src="`/uploads/posts/${post.post_image[0].image}`" alt="" class="card_img">
+                        <img :src="post.post_image[0].image" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-solid fa-heart"  v-if="post.favouriteable == false" @click="unsubmitFavourite(post.id)"></i>
                             <i class="fa-regular fa-heart" v-else @click="submitFavourite(post.id)"></i>
@@ -97,7 +97,7 @@
                                 dotsClass = "slick-dots"
                                 autoplay>
                                     <template v-for="(image,index) in post_order.post_image" :key="index">
-                                        <div class="hello"><img :src="`/uploads/posts/${image.image}`" alt=""></div>
+                                        <div class="hello"><img :src="image.image" alt=""></div>
                                     </template>
                                     
                                 </a-carousel>

@@ -29,7 +29,7 @@
                       <div class="most_favourite">
                         <template v-for = "(post,index) in getMostFavourite" :key="index">
                           <div class="favourite_item">
-                            <img :src="`/uploads/posts/${post.post_image[0].image}`" alt="" class="rounded">
+                            <img :src="post.post_image[0].image" alt="" class="rounded">
                             <div class="favourite_content">
                               <h4>{{ post.title }}</h4>
                               <h6 v-if = "post.duration > 86400"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/86400) }} days ago</h6> 

@@ -4,7 +4,7 @@
         <a-col :xxl="6" :xl="6" :lg="8" :md="12" :xs="24">
             <div 
                     class="card_item">
-                        <img :src="`/uploads/posts/${post.post_image[0].image}`" alt="" class="card_img">
+                        <img :src="post.post_image[0].image" alt="" class="card_img">
                         <div class="card_heart">
                             <div  v-if="post.favouriteable == false">
                             <a-tooltip>

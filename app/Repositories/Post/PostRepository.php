@@ -22,7 +22,7 @@ interface PostRepository extends RepositoryInterface
 
     public function detail($id);
 
-    public function update($request,$id);
+    public function update($id,$request);
 
     public function delete($id);
 

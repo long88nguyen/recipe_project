@@ -65,9 +65,9 @@ class PostController extends ApiController
         return $this->sendSuccess($result);
     }
 
-    public function update(Request $request ,$id)
+    public function update($id,Request $request )
     {
-        $result = $this->postRepository->update($request->all(),$id);
+        $result = $this->postRepository->update($id,$request);
         if (!$result['success']) {
 
             return $this->sendError(ErrorType::CODE_5000, ErrorType::STATUS_5000, $result['message']);

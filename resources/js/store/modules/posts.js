@@ -171,6 +171,11 @@ export const actions = {
         await axios.post(url, params);
       },
 
+      async updateDataPost({ commit }, params) {
+        let url = `${api.UPDATE_POST}/${params.id}`;
+        await axios.post(url, params.data);
+      },
+
       async createPost({ commit }, params) {
         await axios.post(api.CREATE_POST, params);
       },

@@ -47,7 +47,7 @@
                     <div class="image_panel">   
                         <template v-for = "(image,index) in getPostDetail.post_image" :key="index">
                             
-                            <img :src="`/uploads/posts/${image.image}`" alt="">
+                            <img :src="image.image" alt="">
                                     
                         </template>         
                     </div>
@@ -94,7 +94,7 @@
                     {{  idMemberok }}
                     <template v-for="(post,index) in getYourPost" :key="index">
                     <div class="post_suggest-list">
-                        <img :src="`/uploads/posts/${post.post_image[0].image}`" alt="">
+                        <img :src="post.post_image[0].image" alt="">
                         <div class="post_suggest-content">{{  post.title }}</div>
                     </div>
                     </template> 
