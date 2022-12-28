@@ -48,5 +48,13 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
             "listMember" => $listMember,
         ];
     }
+
+    public function detail($id)
+    {
+        $memberId = $this->model->find($id);
+        return [
+            "memberId" => $memberId,
+        ];
+    }
     
 }

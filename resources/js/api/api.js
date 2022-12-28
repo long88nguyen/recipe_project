@@ -1,5 +1,6 @@
 //authentication
 const LOGIN = '/api/login'
+const REGISTER = '/api/register'
 
 // category
 const LIST_CATEGORY = '/api/category';
@@ -33,6 +34,7 @@ const GET_ALL_RATE = '/api/rate'
 //member 
 
 const MEMBER_LIST = '/api/member'
+const MEMBER_DETAIL = '/api/member'
 
 //ingredient 
 
@@ -94,6 +96,7 @@ export default {
 
     //member
     MEMBER_LIST,
+    MEMBER_DETAIL,
 
     //ingredient
     LIST_ALL_INGREDIENT,
@@ -105,6 +108,7 @@ export default {
     LIST_ALL_POST_IMAGE,
 
     //authentication
-    LOGIN
+    LOGIN,
+    REGISTER
 
 }

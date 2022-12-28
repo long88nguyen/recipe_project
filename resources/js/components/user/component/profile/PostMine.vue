@@ -36,7 +36,12 @@
                             </div>
                         </div>
                         <div class="card_action">
+                            <router-link
+                                :to="{
+                                path: `/update-post/${post.id}`
+                                }">
                             <i class="fa-solid fa-pen-to-square blue"></i>
+                            </router-link>
                             <i class="fa-solid fa-trash red"></i>
                         </div>
                    </div>   

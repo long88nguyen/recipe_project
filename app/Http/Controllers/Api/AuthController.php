@@ -42,14 +42,16 @@ class AuthController extends Controller
 
             $user = new User([
                 'email' => $request->input('email'),
-                'password' => bcrypt($request->input('password'))
+                'password' => bcrypt($request->input('password')),
+                'is_admin' => 0
             ]);
+
             $user->save();
 
             
             $dataMember = [
                 'user_id' => $user->id,
-                'name' => $data['name'],
+                'name' => 'ID'.random_int(1000000,9999999),
             ];
             Member::create( $dataMember);
 

@@ -75,6 +75,11 @@ export const actions = {
     commit(types.AUTH.AUTH_LOGOUT, { status: 200 });
   },
 
+  async register({ commit }, params) {
+    let url = api.REGISTER;
+    await axios.post(url, params);
+  },
+
 //   refreshToken({ commit }) {
 //     return new Promise((resolve, reject) => {
 //       axios

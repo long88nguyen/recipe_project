@@ -32,6 +32,7 @@ export const AUTH = {
 
   export const MEMBER = {
     GET_ALL_MEMBER: "GET_ALL_MEMBER",
+    GET_MEMBER_DETAIL: "GET_MEMBER_DETAIL",
   }
 
 

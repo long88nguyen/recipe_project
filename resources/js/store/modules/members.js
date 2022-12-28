@@ -13,10 +13,12 @@ export const state = {
         totalRecord: 0,
         perPage: 0
     },
+    memberDetail:{},
 }
 
 export const getters = {
     listDataMember : state => state.listDataMember,
+    memberDetail : state => state.memberDetail,
     pagination: state => state.pagination,
 
 }
@@ -33,7 +35,13 @@ export const mutations = {
       state.pagination.totalRecord = data.listMember.total;
       state.pagination.perPage = data.listMember.per_page;
     },
+    [types.MEMBER.GET_MEMBER_DETAIL](state, data)
+    {
+      state.memberDetail = data.memberId;
+    },
 }
+
+
 
 export const actions = {
     async getAllMemberAdmin({ commit }, payload) {
@@ -51,4 +59,15 @@ export const actions = {
           response.data.data
         );
       },
+
+      async getMemberDetail({ commit }, member_id) {
+        const response = await axios.get(
+          api.MEMBER_DETAIL + "/" + member_id);
+        commit(
+          types.MEMBER.GET_MEMBER_DETAIL,
+          response.data.data
+        );
+      },
 }
+
+

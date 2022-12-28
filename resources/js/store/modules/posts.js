@@ -91,7 +91,6 @@ export const mutations = {
     {
       state.getPostDetail = data.postDetail;
       state.getPostDetailMember = data.postDetail.member;
-      state.idCreatePost = data.postDetail.member.id;
     },
 
     [types.POST.GET_POST_DETAIL](state, data)

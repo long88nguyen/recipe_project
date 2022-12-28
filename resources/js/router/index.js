@@ -14,6 +14,14 @@ const routes =
               },
         },
         {
+            path:"/register",
+            component:import('../components/auth/Register.vue'),
+            name: "Register",
+            meta: {
+                requiresAuth: false
+              },
+        },
+        {
             path:"/",
             component:import("../components/admin/commons/AuthLayout.vue"),
             meta: {
@@ -84,6 +92,10 @@ const routes =
                 {
                     path:"/create-post",
                     component:import('../components/user/CreatePost.vue')
+                },
+                {
+                    path:"/update-post/:id",
+                    component:import('../components/user/component/posts/UpdatePost.vue')
                 },
                 {
                     path:"/search-result",

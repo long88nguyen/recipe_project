@@ -13,12 +13,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _component_profile_PostMine_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component/profile/PostMine.vue */ "./resources/js/components/user/component/profile/PostMine.vue");
 /* harmony import */ var _component_profile_PostFavourite_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component/profile/PostFavourite.vue */ "./resources/js/components/user/component/profile/PostFavourite.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var _component_profile_UpdateProfileModal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component/profile/UpdateProfileModal.vue */ "./resources/js/components/user/component/profile/UpdateProfileModal.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -33,31 +35,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   components: {
     PostMine: _component_profile_PostMine_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PostFavourite: _component_profile_PostFavourite_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    PostFavourite: _component_profile_PostFavourite_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    UpdateProfileModalVue: _component_profile_UpdateProfileModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
     userCommon: "common/userCommon"
   })),
   created: function created() {},
   methods: {
-    callback: function callback(key) {
-      console.log(key);
-    },
-    showModal: function showModal() {
+    openModal: function openModal() {
       this.visible = true;
     },
-    handleOk: function handleOk(e) {
-      var _this = this;
-
-      this.ModalText = 'The modal will be closed after two seconds';
-      this.confirmLoading = true;
-      setTimeout(function () {
-        _this.visible = false;
-        _this.confirmLoading = false;
-      }, 2000);
+    handleEditOk: function handleEditOk() {
+      this.visible = false;
     },
-    handleCancel: function handleCancel(e) {
-      console.log('Clicked cancel button');
+    handleEditCancel: function handleEditCancel() {
       this.visible = false;
     }
   }
@@ -260,11 +252,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_a_tabs = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-tabs");
 
+  var _component_UpdateProfileModalVue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("UpdateProfileModalVue");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.userCommon.name), 1
   /* TEXT */
-  ), _hoisted_6])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_tabs, {
+  ), _hoisted_6])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-outline-primary",
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.openModal && $options.openModal.apply($options, arguments);
+    })
+  }, " Chỉnh sửa thông tin cá nhân "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_tabs, {
     "default-active-key": "1",
-    onChange: $options.callback
+    onChange: _ctx.callback
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_tab_pane, {
@@ -295,7 +294,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["onChange"])])])]);
+  , ["onChange"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_UpdateProfileModalVue, {
+    visibleProfile: $data.visible,
+    onOk: $options.handleEditOk,
+    onCancel: $options.handleEditCancel
+  }, null, 8
+  /* PROPS */
+  , ["visibleProfile", "onOk", "onCancel"])])]);
 }
 
 /***/ }),
@@ -522,13 +527,19 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_11 = {
   "class": "card_action"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-solid fa-pen-to-square blue"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-solid fa-trash red"
-})], -1
+}, null, -1
 /* HOISTED */
 );
 
@@ -578,7 +589,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* TEXT */
             )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.count_favourite), 1
             /* TEXT */
-            )])]), _hoisted_11])];
+            )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+              to: {
+                path: "/update-post/".concat(post.id)
+              }
+            }, {
+              "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                return [_hoisted_12];
+              }),
+              _: 2
+              /* DYNAMIC */
+
+            }, 1032
+            /* PROPS, DYNAMIC_SLOTS */
+            , ["to"]), _hoisted_13])])];
           }),
           _: 2
           /* DYNAMIC */
@@ -839,6 +863,26 @@ const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_proj
 /* hot reload */
 if (false) {}
 
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/user/component/profile/UpdateProfileModal.vue":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/user/component/profile/UpdateProfileModal.vue ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+const script = {}
+
+;
+const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__["default"])(script, [['__file',"resources/js/components/user/component/profile/UpdateProfileModal.vue"]])
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
 

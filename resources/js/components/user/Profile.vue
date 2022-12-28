@@ -7,8 +7,11 @@
                 <h1> {{userCommon.name}} </h1>
                 <h3>@longnguyen</h3>
             </div>
+            
         </div>
-       
+        <button class="btn btn-outline-primary" @click="openModal">
+                Chỉnh sửa thông tin cá nhân
+        </button>
         <div class="profile_tab">
         <a-tabs default-active-key="1" @change="callback">
             <a-tab-pane key="1" tab="Bài viết đã đăng">
@@ -21,7 +24,10 @@
             </a-tab-pane>   
         </a-tabs>
         </div>
-        
+        <UpdateProfileModalVue :visibleProfile="visible"
+                                @ok="handleEditOk"
+                            @cancel="handleEditCancel"
+        />
     </div>
   </div>
 </template>
@@ -29,6 +35,7 @@
 <script>
 import PostMine from "./component/profile/PostMine.vue"
 import PostFavourite from "./component/profile/PostFavourite.vue"
+import UpdateProfileModalVue from "./component/profile/UpdateProfileModal.vue";
 import { mapGetters } from 'vuex';
 export default {
     data() {
@@ -41,6 +48,7 @@ export default {
     components:{
         PostMine,
         PostFavourite,
+        UpdateProfileModalVue
     },
     computed:{
         ...mapGetters({
@@ -51,25 +59,18 @@ export default {
     created(){
     },
     methods: {
-        callback(key) {
-        console.log(key);
-        },
-        showModal() {
-      this.visible = true;
+    openModal()
+    {
+        this.visible = true
     },
-        handleOk(e) {
-        this.ModalText = 'The modal will be closed after two seconds';
-        this.confirmLoading = true;
-        setTimeout(() => {
-            this.visible = false;
-            this.confirmLoading = false;
-        }, 2000);
-        },
-        handleCancel(e) {
-        console.log('Clicked cancel button');
-        this.visible = false;
-        },
+    handleEditOk(){
+        this.visible = false
     },
+    handleEditCancel(){
+        this.visible = false
+    }
+
+    }
 }   
 </script>
 

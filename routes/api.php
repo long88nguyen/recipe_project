@@ -80,6 +80,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     //member
     Route::group(['prefix' => 'member'], function () {
         Route::get('/',[\App\Http\Controllers\Api\MemberController::class,'getAll']);
+        Route::get('/{id}',[\App\Http\Controllers\Api\MemberController::class,'detail']);
     });
 
     //favourite
