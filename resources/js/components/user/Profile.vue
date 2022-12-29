@@ -24,9 +24,11 @@
             </a-tab-pane>   
         </a-tabs>
         </div>
-        <UpdateProfileModalVue :visibleProfile="visible"
+        <UpdateProfile :visibleProfile="visible"
                                 @ok="handleEditOk"
                             @cancel="handleEditCancel"
+                            :id = "memberId"
+
         />
     </div>
   </div>
@@ -35,7 +37,7 @@
 <script>
 import PostMine from "./component/profile/PostMine.vue"
 import PostFavourite from "./component/profile/PostFavourite.vue"
-import UpdateProfileModalVue from "./component/profile/UpdateProfileModal.vue";
+import UpdateProfile from "./component/profile/UpdateProfile.vue";
 import { mapGetters } from 'vuex';
 export default {
     data() {
@@ -43,12 +45,13 @@ export default {
         ModalText: 'Content of the modal',
         visible: false,
         confirmLoading: false,
+        memberId : null,
     };
     },
     components:{
         PostMine,
         PostFavourite,
-        UpdateProfileModalVue
+        UpdateProfile
     },
     computed:{
         ...mapGetters({
@@ -62,6 +65,7 @@ export default {
     openModal()
     {
         this.visible = true
+        this.memberId = this.userCommon.id
     },
     handleEditOk(){
         this.visible = false

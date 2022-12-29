@@ -27,7 +27,7 @@
         <div class="banner_food-container">
             <a-row>
                 <template v-for="(post,index) in getPostApproved.data" :key="index">
-                    <a-col :xxl="6" :xl="6" :lg="6" :md="12" :xs="24">
+                    <a-col :xxl="6" :xl="6" :lg="8" :md="12" :xs="24">
                         
                    <div 
                     class="card_item">

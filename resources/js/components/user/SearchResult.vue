@@ -3,43 +3,47 @@
         <div class="banner_food-container">
             <center><h1>Kết quả tìm kiếm</h1>
             </center>
-            <div v-if="items.length >0">
+            <div v-if="items.length > 0">
                 <a-row>
                 <template v-for="(post,index) in items" :key="index">
-                    <a-col :xxl="6" :xl="6" :lg="6" :md="12" :xs="24">
-                   <div class="card_item">
-                        <img src="../../uploads/images/kobefoocate.png" alt="" class="card_img">
-                        <div class="card_heart">
-                            <i class="fa-solid fa-heart"  v-if="post.favouriteable == false" @click="unsubmitFavourite(post.id)"></i>
-                            <i class="fa-regular fa-heart" v-else @click="submitFavourite(post.id)"></i>
-                        </div>
-                        <h5 class="card_title">
-                           {{ post.title}}
-                        </h5>
-                        <h4 class="card_category">
-                            {{ post.content}}
-                        </h4>
-                        <div class="card-rating">
-                            <div class="rating_side">
-                                <div class="card_star">
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            
-                                <h5>{{ post.number_rating }}</h5>
-                            </div>
-                            <div class="favourite_side">
-                                <div class="card_wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </div>
-                            
-                                <h5>{{ post.count_favourite }}</h5>
-                            </div>
-                        </div>
-                        <div class="member_side">
-                            <img src="../../uploads/avatar.png" alt="">
-                        </div>
-                   </div>    
-                </a-col>
+                    <a-col :xxl="6" :xl="6" :lg="8" :md="12" :xs="24">
+                        
+                        <div 
+                         class="card_item">
+                             <img :src="post.post_image[0].image" alt="" class="card_img">
+                             <router-link
+                             :to="{
+                               path: `/post-detail/${post.id}`
+                             }">
+                             <h5 class="card_title">
+                                {{ post.title.substring(0,20) + "..."}}
+                             </h5>
+                             <h4 class="card_category">
+                                 {{ post.content.substring(0,20) + "..." }}
+                             </h4>
+                             </router-link> 
+                             <div class="card-rating">
+                                 <div class="rating_side">
+                                     <div class="card_star">
+                                         <i class="fa-solid fa-star"></i>
+                                     </div>
+                                 
+                                     <h5>{{ post.number_rating }}</h5>
+                                 </div>
+                                 <div class="favourite_side">
+                                     <div class="card_wishlist">
+                                         <i class="fa-regular fa-heart"></i>
+                                     </div>
+                                 
+                                     <h5>{{ post.count_favourite }}</h5>
+                                 </div>
+                             </div>
+                             <div class="member_side">
+                                <span>{{ post.member.name }}</span> <img src="../../uploads/avatar.png" alt="">
+                             </div>
+                        </div>   
+                      
+                     </a-col>
                 </template>
             </a-row>
             </div>
@@ -56,6 +60,7 @@ import { mapGetters } from 'vuex'
 export default {
     data(){
         return {
+            title:"",
         }
     },
      
@@ -68,39 +73,6 @@ export default {
     },
     props:["items"],
     methods:{
-        async submitFavourite(value)
-        {
-            console.log(1);
-            const account = this.$store.getters['common/userCommon'];
-            this.$store.dispatch("favourites/submitFavourite",{
-                id: value,
-                member_id: account.id, 
-            }).then(() => {
-                this.$toast.success("Add wish list successful !");
-                this.fecthDataPost();
-            }).catch(() =>{
-                this.$toast.error("Erorr!");    
-            })
-        },
-
-        async unsubmitFavourite(value){
-            this.$store.dispatch("favourites/deleteFavourite",{
-                id: value,
-            }).then(() => {
-                this.$toast.success("delete wish list successful !");
-                this.fecthDataPost();
-            }).catch(() =>{
-                this.$toast.error("Erorr!");    
-            })
-        },
-
-        changePage(page) {
-            this.fecthDataPost(this.searchData.itemsPerPage, page);
-        },
-
-        countData(){
-             this.categoryList.length();
-        }
     }, 
 }
 </script>
@@ -134,11 +106,12 @@ export default {
            .card_heart{
                 width: 30px;
                 height: 30px;
-                background: orange;
+                background: #d54215;
                 position: absolute;
                 top:15px;
                 left:10px;
-                font-size: 20px;
+                font-size: 14px;
+                color:white;
                 border-radius: 50%;
                 i
                 {
@@ -148,7 +121,7 @@ export default {
                 }
             }
             h4{
-                font-size: 24px;
+                font-size: 20px;
                 height: 40px;
                 padding:0px 10px 0 10px;
                
@@ -215,6 +188,23 @@ export default {
         .card_item:hover{
             box-shadow:2px 1px gray;
             transition: 0.3s;
+        }
+        .container_showmore{
+            .show_more{
+                width: 100%;
+                margin-top: 20px;
+                height: 40px;
+                background: #f0f0f0;
+                color: #212529;
+                text-align: center;
+                line-height: 40px;
+                border-radius: 20px;
+            }
+            .show_more:hover{
+                cursor: pointer;
+                background: rgb(212, 211, 211);
+                transition: 0.5s;
+            }
         }
     }
 }

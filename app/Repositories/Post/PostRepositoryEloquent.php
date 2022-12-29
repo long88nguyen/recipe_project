@@ -150,7 +150,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     {
         $memberId = Auth::user()->member->id;
         $searchPost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
-        ->with("PostImage:id,post_id,image")
+        ->with("PostImage:id,post_id,image","Ingredients:id,name,post_id","member:id,name")
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -167,6 +167,27 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             $searchPost->where('posts.title', 'LIKE', '%' . FormatHelper::escape_like($request->title) . '%');
         }
 
+
+        if ($request->has('category_name') && $request->category_name)
+        {
+            $searchPost->whereHas("category",function($query) use($request){
+                $query->where('categories.name', 'LIKE', '%' . FormatHelper::escape_like($request->category_name) . '%');
+            });
+        }
+
+        if ($request->has('ingredient_name') && $request->ingredient_name)
+        {
+            $searchPost->whereHas("Ingredients",function($query) use($request){
+                $query->where('ingredients.name', 'LIKE', '%' . FormatHelper::escape_like($request->ingredient_name) . '%');
+            });
+        }
+
+        if ($request->has('member_name') && $request->member_name)
+        {
+            $searchPost->whereHas("member",function($query) use($request){
+                $query->where('members.name', 'LIKE', '%' . FormatHelper::escape_like($request->member_name) . '%');
+            });
+        }
 
         $listAll = $searchPost->get();
 

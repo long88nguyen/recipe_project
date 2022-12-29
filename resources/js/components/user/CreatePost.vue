@@ -58,7 +58,7 @@
                       <div class="form-ingredient">
                         <label for="">Direction</label>
                         <div class="form-group" v-for="(input,k) in forms.directions" :key="k">
-                          <textarea :placeholder="'Step ' + k" :rows="4" type="text" class="form-control" v-model="input.desc" ></textarea>
+                          <textarea :placeholder="'Step ' + (k+1)" :rows="4" type="text" class="form-control" v-model="input.desc" ></textarea>
                               <span>
                                 <div
                                   class="fas fa-minus-circle"
@@ -151,7 +151,7 @@
                    
                     </a-col>
                 </a-row>
-                <button type="submit" class="btn btn-outline-success text-center">
+                <button type="submit" class="btn btn-outline-success text-center mt-3">
                     Tạo mới món ăn
                 </button>
             </div>
@@ -193,7 +193,7 @@ export default {
          }],
         directions: [
           {
-          desc:"d",
+          desc:"",
         }],
       },
      
@@ -402,5 +402,13 @@ export default {
     }
            
 }
+
+@media (max-width: 780px)
+{
+  .create_post_container
+    {
+      width: 90%;
+    }
+} 
 </style>
 

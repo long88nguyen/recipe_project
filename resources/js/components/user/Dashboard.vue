@@ -12,8 +12,7 @@
               <div class="nav_menu-list">
                     <ul>
                         <li ><router-link to="/home-page" active-class="active" >Trang chủ</router-link></li>
-                        <li><router-link to="/post-list" active-class="active">Bài viết</router-link></li>
-                        <li><router-link to="/post-detail" active-class="active">Thông tin</router-link></li>
+                        <li><router-link to="/search-result" active-class="active">Tìm kiếm</router-link></li>
                         
                     </ul>
                 </div>
@@ -47,7 +46,11 @@
                               <i class="fa-solid fa-magnifying-glass"></i>
                           </button>
                       </form>
+                      <div class="nav_filter" @click="openModalFilter">
+                        <img src="../../uploads/images/filter.png" alt=""> Filter
+                      </div>
                   </div>
+                  
             </a-col>
         </a-row>
     </nav>
@@ -70,6 +73,12 @@
           </a-modal>
   </div>
     <router-view :items="getAllPost"/>
+    <PostFilterModalVue 
+    :visibleSearch="visibleSearch"
+    @ok="closeModal"
+    @cancel = "closeModal"
+    @search = "filterSearch"
+      />
     <Footer></Footer>
     
 </template>
@@ -79,17 +88,25 @@ import { mapGetters,mapActions } from 'vuex'
 
 
 import Footer from "./commons/Footer.vue"
+import PostFilterModalVue from './component/search/PostFilterModal.vue'
 export default {
     components:{
-      Footer
+      Footer,
+      PostFilterModalVue
     },
     data()
     {
         return {
-          title: "",
+          title:"",
           visible:false,
           isActiveVisible : false,
           scrollEvent :0,
+          visibleSearch:false,
+          searchData:{
+            ingredient_name:"",
+            member_name:"",
+            category_name:"",
+          }
         }
     },
     computed:{
@@ -117,6 +134,9 @@ export default {
       fetchAllPost(){
         this.$store.dispatch('posts/getAllPost',{
           title:this.title,
+          ingredient_name: this.searchData.ingredient_name,
+          member_name: this.searchData.member_name,
+          category_name: this.searchData.category_name,
         });
       },
       onScroll(e)
@@ -141,10 +161,41 @@ export default {
         });
       },
       search(){
+        this.searchData.category_name = ""
+        this.searchData.member_name = ""
+        this.searchData.ingredient_name = ""
         this.fetchAllPost();
         this.$router.push({ name: "search-post" });
         this.title = null;
-      }
+      },
+
+      searching(){
+        this.fetchAllPost();
+        this.$router.push({ name: "search-post" });
+        this.title = null;
+      },
+    
+
+      openModalFilter(){
+        this.visibleSearch = true;
+      },
+
+      closeModal(){
+        this.visibleSearch = false;
+      },
+
+      filterSearch(filter){
+        this.searchData = {
+            ...this.searchData,
+            ...filter
+        };
+        this.searching();
+        this.visibleSearch = false;
+      }      
+    },
+    SubmitValue()
+    {
+      console.log(12);
     }
 }
 </script>
@@ -236,6 +287,7 @@ export default {
   .nav-search {
     transition: 0.5s;
     width: 100%;
+    display: flex;
     .search-bar {
       width: 60%;
       margin: 0 auto;
@@ -271,6 +323,18 @@ export default {
         background: white;
         line-height: 40px;
         cursor: pointer;
+      }
+    }
+    .nav_filter{
+      cursor: pointer;
+      width: 20%;
+      text-align: start;
+      display: flex;
+      align-items: center;
+      img{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
       }
     }
     .active{

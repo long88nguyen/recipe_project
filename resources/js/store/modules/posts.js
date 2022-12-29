@@ -130,6 +130,9 @@ export const actions = {
         const response = await axios.get(api.SEARCH_POST_APPROVED,{
           params:{
             title: payload.title,
+            ingredient_name: payload.ingredient_name,
+            member_name: payload.member_name,
+            category_name: payload.category_name,
           }
       });
         commit(types.POST.GET_ALL_POST, response.data.data);

@@ -47,7 +47,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: ""
         }],
         directions: [{
-          desc: "d"
+          desc: ""
         }]
       }
     };
@@ -376,7 +376,7 @@ var _hoisted_46 = {
 
 var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
-  "class": "btn btn-outline-success text-center"
+  "class": "btn btn-outline-success text-center mt-3"
 }, " Tạo mới món ăn ", -1
 /* HOISTED */
 );
@@ -467,7 +467,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "class": "form-group",
               key: k
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
-              placeholder: 'Step ' + k,
+              placeholder: 'Step ' + (k + 1),
               rows: 4,
               type: "text",
               "class": "form-control",
@@ -603,7 +603,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".create_post {\n  width: 100%;\n  margin-top: 200px;\n}\n.create_post .create_post_container {\n  width: 70%;\n  margin: 0 auto;\n  background: white;\n}\n.create_post .create_post_container .create_post_detail {\n  padding: 30px;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient {\n  margin-top: 10px;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group {\n  padding: 5px 10px 5px 0px;\n  display: flex;\n  align-items: center;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group input {\n  width: 80%;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group textarea {\n  width: 80%;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group select {\n  width: 80%;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group span {\n  width: 20%;\n  height: 40px;\n  line-height: 40px;\n  margin-left: 5px;\n  font-size: 25px;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group span .fa-minus-circle {\n  color: red;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group span .fa-plus-circle {\n  margin-left: 5px;\n  color: blue;\n}\n.form-image .form-upload .file_input_button {\n  width: 150px;\n  height: 40px;\n  background: #dbd8d8;\n  border-radius: 20px;\n  text-align: center;\n  line-height: 40px;\n  margin-top: 10px;\n}\n.form-image .form-upload .file_input_button:hover {\n  cursor: pointer;\n  border: 1px solid blue;\n  transition: 0.5s;\n}\n.form-image .form-upload .img__name {\n  display: flex;\n  justify-content: space-between;\n  padding: 20px 20px 10px 0;\n}\n.form-image .form-upload .img__name i {\n  font-size: 15px;\n  color: red;\n  cursor: pointer;\n}\n.form-image .showImg img {\n  border: 1px solid blue;\n  margin-right: 5px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".create_post {\n  width: 100%;\n  margin-top: 200px;\n}\n.create_post .create_post_container {\n  width: 70%;\n  margin: 0 auto;\n  background: white;\n}\n.create_post .create_post_container .create_post_detail {\n  padding: 30px;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient {\n  margin-top: 10px;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group {\n  padding: 5px 10px 5px 0px;\n  display: flex;\n  align-items: center;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group input {\n  width: 80%;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group textarea {\n  width: 80%;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group select {\n  width: 80%;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group span {\n  width: 20%;\n  height: 40px;\n  line-height: 40px;\n  margin-left: 5px;\n  font-size: 25px;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group span .fa-minus-circle {\n  color: red;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group span .fa-plus-circle {\n  margin-left: 5px;\n  color: blue;\n}\n.form-image .form-upload .file_input_button {\n  width: 150px;\n  height: 40px;\n  background: #dbd8d8;\n  border-radius: 20px;\n  text-align: center;\n  line-height: 40px;\n  margin-top: 10px;\n}\n.form-image .form-upload .file_input_button:hover {\n  cursor: pointer;\n  border: 1px solid blue;\n  transition: 0.5s;\n}\n.form-image .form-upload .img__name {\n  display: flex;\n  justify-content: space-between;\n  padding: 20px 20px 10px 0;\n}\n.form-image .form-upload .img__name i {\n  font-size: 15px;\n  color: red;\n  cursor: pointer;\n}\n.form-image .showImg img {\n  border: 1px solid blue;\n  margin-right: 5px;\n}\n@media (max-width: 780px) {\n.create_post_container {\n    width: 90%;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -652,7 +652,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CreatePost_vue_vue_type_template_id_c2666db6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreatePost.vue?vue&type=template&id=c2666db6 */ "./resources/js/components/user/CreatePost.vue?vue&type=template&id=c2666db6");
 /* harmony import */ var _CreatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreatePost.vue?vue&type=script&lang=js */ "./resources/js/components/user/CreatePost.vue?vue&type=script&lang=js");
 /* harmony import */ var _CreatePost_vue_vue_type_style_index_0_id_c2666db6_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreatePost.vue?vue&type=style&index=0&id=c2666db6&lang=scss */ "./resources/js/components/user/CreatePost.vue?vue&type=style&index=0&id=c2666db6&lang=scss");
-/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -660,7 +660,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_CreatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CreatePost_vue_vue_type_template_id_c2666db6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/CreatePost.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_CreatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CreatePost_vue_vue_type_template_id_c2666db6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/CreatePost.vue"]])
 /* hot reload */
 if (false) {}
 
