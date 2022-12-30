@@ -101,6 +101,11 @@ const routes =
                     path:"/search-result",
                     component:import('../components/user/SearchResult.vue'),
                     name : "search-post",
+                },
+                {
+                    path:"/all-post",
+                    component:import('../components/user/GetAllPost.vue'),
+                    name : "all-post",
                 }
             ]
         }

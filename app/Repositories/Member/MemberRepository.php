@@ -15,4 +15,6 @@ interface MemberRepository extends RepositoryInterface
 
     public function detail($id);
 
+    public function updateMember($request,$id);
+
 }

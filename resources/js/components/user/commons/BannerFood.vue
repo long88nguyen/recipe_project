@@ -37,6 +37,7 @@
                             <i class="fa-regular fa-heart" v-else @click="submitFavourite(post.id)"></i>
 
                         </div>
+                           
                         <router-link
                         :to="{
                           path: `/post-detail/${post.id}`
@@ -80,7 +81,7 @@
             @change = "changePage"
             show-less-items />
             <div class="container_showmore"> 
-                <div class="show_more"><span>Show more category</span></div>
+                <router-link to="/all-post"><div class="show_more"><span>Show more category</span></div></router-link>
             </div>
             
             
@@ -262,6 +263,8 @@ export default {
                     line-height: 30px;
                 }
             }
+
+            
             h4{
                 font-size: 24px;
                 height: 40px;

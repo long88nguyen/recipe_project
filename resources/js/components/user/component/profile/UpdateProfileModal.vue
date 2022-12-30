@@ -1,11 +1,36 @@
 <template>
 <div class="form_input-category">
-    <form @submit.prevent="updateCategory" enctype="multipart/form-data">
+    <form @submit.prevent="updateProfile" enctype="multipart/form-data">
         <div class="form_group">
-        <label for="">Name</label>
-        <input type="text" class="form-control" v-model="memberDetail.name">
-
+            <label for="">Name</label>
+            <input type="text" class="form-control" v-model="memberDetail.name">
         </div>
+
+        <div class="form_group">
+            <label for="">Birthday</label>
+            <input type="date" class="form-control" v-model="memberDetail.birthday" >
+        </div>
+
+        <div class="form_group">
+            <label for="">Phone number</label>
+            <input type="text" class="form-control" v-model="memberDetail.phone">
+        </div>
+        <div class="form-group">
+            <label for="">Gender</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="0" v-model="memberDetail.gender"/>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Male
+                </label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="1" v-model="memberDetail.gender">
+            <label class="form-check-label" for="flexRadioDefault2">
+                Female
+            </label>
+            </div>
+        </div>
+        
         <div class="form-image-cate">
             <div class="form_group">
                 <label for="">image</label>
@@ -17,7 +42,7 @@
                         Upload
                     </label>
                 </div>
-                <img :src="`uploads/profile/${memberDetail.image}`" width="100" height="100" class="img-thumbnail" alt="" v-if="(showPreview == false)"/>
+                <img :src="memberDetail.avatar" width="100" height="100" class="img-thumbnail" alt="" v-if="(showPreview == false)"/>
                 <img v-bind:src="imagePreview" width="100" height="100" v-show="showPreview"/>
             </div>
         </div>
@@ -30,13 +55,19 @@
 </template>
 
 <script>
+import moment from 'moment';
 import { mapGetters } from 'vuex';
 export default {
     data(){
         return {
-            category:{
-                name:null,
-                image:null,
+            forms:{
+                id:"",
+                name:"",
+                phone:"",
+                avatar:null,
+                birthday:"",
+                gender:"",
+
             },
             imagePreview: null,
             showPreview: false,
@@ -57,7 +88,7 @@ export default {
         },
         onChange(e)
         {
-           this.category.image = e.target.files[0];
+           this.forms.avatar = e.target.files[0];
            let reader  = new FileReader();
 
             reader.addEventListener("load", function () {
@@ -65,15 +96,35 @@ export default {
             this.imagePreview = reader.result;
             }.bind(this), false);
 
-            if( this.category.image ){
+            if( this.forms.avatar ){
 
-        if ( /\.(jpe?g|png|gif)$/i.test( this.category.image.name ) ) {
+        if ( /\.(jpe?g|png|gif)$/i.test( this.forms.avatar.name ) ) {
 
             console.log("here");
-            reader.readAsDataURL( this.category.image );
+            reader.readAsDataURL( this.forms.avatar );
         }
             }
         },
+        async updateProfile(){
+
+            let formData = new FormData();
+            for(let key in this.forms)
+            {
+                
+                let data = this.memberDetail[key] !== undefined ? this.memberDetail[key] : "";
+                formData.append(key, data);
+            }
+            formData.append('avatar', this.forms.avatar); 
+
+            await this.$store.dispatch('members/updateMember',formData).then(() => {
+                this.$toast.success("Update profile success!");
+                this.$emit("ok");
+                this.$router.push({ path: "/profile" });
+            }).catch(() =>{
+                this.$toast.error('Đã xảy ra lỗi !');
+                console.log("errorr");
+            })
+        } 
     }
 }
 </script>
@@ -82,6 +133,7 @@ export default {
 .form_input-category{
     padding:20px;
     .form-image-cate{
+        
         .show-image{
             margin-top: 10px;
             display: flex;
@@ -102,5 +154,8 @@ export default {
         }
         }
     }
+    .form_group{
+            margin:15px 0;
+        }
 }
 </style>

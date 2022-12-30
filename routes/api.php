@@ -53,17 +53,19 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::post('/approve/{id}',[\App\Http\Controllers\Api\PostController::class,'approve']);     
         Route::get('/list-favourite',[\App\Http\Controllers\Api\PostController::class,'GetListFavourite']);     
         Route::get('/my-post',[\App\Http\Controllers\Api\PostController::class,'MyPost']);     
-        Route::get('/your-post/{id}',[\App\Http\Controllers\Api\PostController::class,'YourPost']);     
+        Route::get('/your-post/{id}',[\App\Http\Controllers\Api\PostController::class,'YourPost']);
+            
     });
 
     //categories
     Route::group(['prefix' => 'category'], function () {
+        Route::get('/post-by-category',[\App\Http\Controllers\Api\CategoryController::class,'getPostByCategory']);
         Route::get('/',[\App\Http\Controllers\Api\CategoryController::class,'getAll']);
         Route::post('/',[\App\Http\Controllers\Api\CategoryController::class,'store']);
-        Route::get('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'show']);
-        Route::get('/category-post',[\App\Http\Controllers\Api\CategoryController::class,'getPostbyCateogry']);
+        Route::get('/detail/{id}',[\App\Http\Controllers\Api\CategoryController::class,'show']);
         Route::post('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'updateCategory']);
         Route::delete('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'delete']);
+
     });
 
     
@@ -81,6 +83,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::group(['prefix' => 'member'], function () {
         Route::get('/',[\App\Http\Controllers\Api\MemberController::class,'getAll']);
         Route::get('/{id}',[\App\Http\Controllers\Api\MemberController::class,'detail']);
+        Route::post('/{id}',[\App\Http\Controllers\Api\MemberController::class,'updateMember']);
     });
 
     //favourite

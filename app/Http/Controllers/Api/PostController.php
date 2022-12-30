@@ -111,4 +111,8 @@ class PostController extends ApiController
         return $this->sendSuccess($result);
     }
 
+
+    public function getPostByCategory(){
+        return 1;
+    }
 }

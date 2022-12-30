@@ -8,6 +8,7 @@ const CATEGORY_CREATE = '/api/category';
 const CATEGORY_DETAIL = '/api/category';
 const CATEGORY_UPDATE = '/api/category';
 const CATEGORY_DELETE = '/api/category';
+const CATEGORY_POST = '/api/category/';
 
 //post
 
@@ -36,6 +37,7 @@ const GET_ALL_RATE = '/api/rate'
 
 const MEMBER_LIST = '/api/member'
 const MEMBER_DETAIL = '/api/member'
+const UPDATE_MEMBER = '/api/member'
 
 //ingredient 
 
@@ -99,6 +101,7 @@ export default {
     //member
     MEMBER_LIST,
     MEMBER_DETAIL,
+    UPDATE_MEMBER,
 
     //ingredient
     LIST_ALL_INGREDIENT,

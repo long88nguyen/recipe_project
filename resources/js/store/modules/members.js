@@ -68,6 +68,11 @@ export const actions = {
           response.data.data
         );
       },
+
+      async updateMember({ commit }, params) {
+        let url = `${api.UPDATE_MEMBER}/${params.get("id")}`;
+        await axios.post(url, params);
+      },
 }
 
 

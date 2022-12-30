@@ -20,4 +20,7 @@ interface CategoryRepository extends RepositoryInterface
     public function updateCategory($id,$requets);
 
     public function delete($id);
+
+    public function getPostByCategory($request);
+
 }

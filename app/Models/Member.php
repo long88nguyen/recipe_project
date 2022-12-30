@@ -9,7 +9,7 @@ class Member extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','user_id','name','phone','gender','birtday','image'];
+    protected $fillable = ['id','user_id','name','phone','gender','birthday','avatar'];
 
     public function Posts()
     {

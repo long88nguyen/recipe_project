@@ -81,6 +81,7 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
 
     public function updateCategory($id,$request)
     {
+        dd($request->all());
         $category = $this->model->findOrFail($id);
         if ($request->file('image'))
         {
@@ -110,5 +111,13 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
             File::delete("uploads/category/".$categoryId->image);
         }
         return $categoryId->delete($id);
+    }
+
+    public function getPostByCategory($request)
+    {
+        $getCategoryPost = $this->model->with("Posts.PostImage:id,post_id,image","Posts:id,category_id")->get();
+        return [
+            "getCategoryPost" => $getCategoryPost,
+        ];
     }
 }

@@ -21,12 +21,6 @@ class CategoryController extends ApiController
         return $this->sendSuccess($result);
     }
 
-    public function getPostbyCateogry(Request $request)
-    {
-        $result =  $this->categoryRepository->getPostbyCateogry($request);
-        return $this->sendSuccess($result);
-    }
-
     public function store(Request $request)
     {
         $result =  $this->categoryRepository->store($request);
@@ -48,6 +42,11 @@ class CategoryController extends ApiController
     public function delete(Request $request,$id)
     {
         $result =  $this->categoryRepository->delete($id);
+        return $this->sendSuccess($result);
+    }
+
+    public function getPostByCategory(Request $request){
+        $result =  $this->categoryRepository->getPostByCategory($request);
         return $this->sendSuccess($result);
     }
 }

@@ -2,9 +2,8 @@
     <div class="form_input-category">
             <form @submit.prevent="updateCategory" enctype="multipart/form-data">
                 <div class="form_group">
-                <label for="">Name</label>
-                <input type="text" class="form-control" v-model="CategoryDetail.name">
-
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" v-model="CategoryDetail.name">
                 </div>
                 <div class="form-image-cate">
                     <div class="form_group">
@@ -72,6 +71,7 @@ export default {
         }
             }
         },
+        
         async updateCategory()
         {
             let formData = new FormData();

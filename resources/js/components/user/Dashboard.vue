@@ -72,7 +72,10 @@
                 </div>
           </a-modal>
   </div>
+  <div class="body_view">
     <router-view :items="getAllPost"/>
+  </div>
+    
     <PostFilterModalVue 
     :visibleSearch="visibleSearch"
     @ok="closeModal"
@@ -461,7 +464,9 @@ export default {
 .layout_active{
   height: 80px;
 }
-
+.body_view{
+  min-height: 650px;
+}
 
 @media (max-width: 1220px) {
   nav {

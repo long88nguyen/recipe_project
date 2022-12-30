@@ -28,4 +28,10 @@ class MemberController extends ApiController
         $result = $this->memberRepository->detail($id);
         return $this->sendSuccess($result);
     }
+
+    public function updateMember(Request $request, $id)
+    {
+        $result = $this->memberRepository->updateMember($request,$id);
+        return $this->sendSuccess($result);
+    }
 }

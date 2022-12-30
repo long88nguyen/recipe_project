@@ -4,7 +4,7 @@
         v-model:visible="visibleProfile" 
         :footer = null
         centered
-        title="Thêm mới danh mục" 
+        title="Chỉnh sửa thông tin cá nhân" 
         @ok="handleOk" @cancel="handleCancel" :destroyOnClose="true"
         >
             <UpdateProfileModalVue
