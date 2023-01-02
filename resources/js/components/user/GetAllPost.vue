@@ -2,35 +2,55 @@
  <div class="get_all_post">
     <div class="get_all_post_container">
         <h5>Danh sách bài viết</h5>
-        <div class="list_all_post">
-            <div class="category">
-                <img src="../../uploads/images/eggduckcate.png" alt="">
-                <span>Hello word</span>
-            </div>
-            <div class="post_by_category">
-                <a-row>
-                    <a-col :xxl = "6" :xl = "6" :lg = "6">
-                        <div class="post_item">
-                            <img src="../../uploads/images/fishfood.png" alt="">
-                            <div class="card_heart">
-                                <i class="fa-solid fa-heart" ></i>
-                                <i class="fa-regular fa-heart" ></i>
+        <template v-for="(category,index) in getAllCategoryByPost" :key="index">
+            <div class="list_all_post" v-if="category.posts.length > 0">
+                <div class="category">
+                    <img :src="category.image" alt="">
+                    <span>{{category.name}}</span>
+                </div>
+                <div class="list_post">
+                    <div class="post_by_category">
+                    <a-row>
+                        <template v-for="(post,index) in category.posts" :key="index">
+                        <a-col :xxl = "6" :xl = "6" :lg = "8" :md="12" :xs="24">
+                            <div class="post_item">
+                                <img :src="post.post_image[0].image" alt="">
+                                <div class="card_heart">
+                                    <i class="fa-solid fa-heart" ></i>
+                                    <i class="fa-regular fa-heart" ></i>
+                                </div>
+                                <button class="btn_post">Xem bài viết</button>
                             </div>
-                            <button class="btn_post">Xem bài viết</button>
-                        </div>
-                    </a-col>
-                </a-row>
-            </div>
-
-            
-        </div>
+                        </a-col>
+                        </template>  
+                    </a-row>
+                    </div>
+                
+                </div>
+                  
+         </div>
+        </template>
+       
     </div>
  </div>  
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-
+    created(){
+        this.getPost();
+    },
+    methods:{
+        async getPost(){
+            await this.$store.dispatch('categories/getAllCategoryByPost')
+        }
+    },
+    computed:{
+        ...mapGetters({
+            getAllCategoryByPost:"categories/getAllCategoryByPost"
+        })
+    }
 }
 </script>
 
@@ -52,7 +72,6 @@ export default {
                 width: 200px;
                 border-radius: 5px;
                 background: #f5f6ea;
-                padding: 0 5px;
                 img{
                     width: 40px;
                     height: 40px;
@@ -64,11 +83,16 @@ export default {
                     font-size: 16px;
                 }
             }
+           .list_post{
+            width: 100%;
             .post_by_category{
+            width: 100%;
+
                 margin-top:20px ;
                 .post_item{
+            width: 100%;
+            margin: 10px;
                 height: 200px;
-                margin:5px;
                 img{
                     width: 100%;
                     height: 200px;
@@ -94,8 +118,8 @@ export default {
             }
             .btn_post{
                 position: absolute;
-                top: 100px;
-                right: 100px;
+                top: 45%;
+                right: 30%;
                 width: 120px;
                 height: 30px;
                 border: none;
@@ -110,6 +134,8 @@ export default {
             }
                 }
             }
+           }
+        
             
         }
     }

@@ -4,9 +4,11 @@ namespace App\Repositories\Category;
 
 use App\Enums\Constant;
 use App\Models\Category;
+use App\Models\Rate;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Category\CategoryRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 
@@ -115,7 +117,15 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
 
     public function getPostByCategory($request)
     {
+        $memberId =  Auth::user()->member->id;
         $getCategoryPost = $this->model->with("Posts.PostImage:id,post_id,image","Posts:id,category_id")->get();
+        foreach($getCategoryPost as $value)
+        {
+            foreach($value['Posts'] as $item)
+            {
+                $item->rateable = Rate::where("member_id",$memberId)->where("id",$item->id)->first() ? true : false;;
+            }
+        }
         return [
             "getCategoryPost" => $getCategoryPost,
         ];

@@ -8,7 +8,7 @@ const CATEGORY_CREATE = '/api/category';
 const CATEGORY_DETAIL = '/api/category';
 const CATEGORY_UPDATE = '/api/category';
 const CATEGORY_DELETE = '/api/category';
-const CATEGORY_POST = '/api/category/';
+const CATEGORY_POST = '/api/category/post-by-category';
 
 //post
 
@@ -71,6 +71,7 @@ export default {
     CATEGORY_DETAIL,
     CATEGORY_UPDATE,
     CATEGORY_DELETE,
+    CATEGORY_POST,
 
     //post
     LIST_ALL_POST,

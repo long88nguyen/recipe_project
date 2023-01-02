@@ -14,7 +14,8 @@ export const state = {
         totalRecord: 0,
         perPage: 0
       },
-    categoryDetail: {}
+    categoryDetail: {},
+    getAllCategoryByPost: {},
 }
 
 export const getters = {
@@ -22,6 +23,7 @@ export const getters = {
     pagination: state => state.pagination,
     categoryDetail: state => state.categoryDetail,
     getAllcategory: state => state.getAllcategory,
+    getAllCategoryByPost: state => state.getAllCategoryByPost,
 }
 
 export const mutations = {
@@ -42,6 +44,11 @@ export const mutations = {
       {
         state.categoryDetail = data.data.getCategoryById
         return state.categoryDetail
+      },
+
+      [types.CATEGORY.GET_CATEGOTY_POST](state, data)
+      {
+        state.getAllCategoryByPost = data.getCategoryPost
       }
 }
 
@@ -60,9 +67,16 @@ export const actions = {
         const response = await axios.get(api.LIST_CATEGORY);
         commit(types.CATEGORY.GET_CATEGORY_LIST, response.data.data);
       },
-    async createCategory({ commit }, params) {
-        await axios.post(api.CATEGORY_CREATE, params);
-    },
+
+      async getAllCategoryByPost({ commit },payload) {
+        const response = await axios.get(api.CATEGORY_POST);
+        commit(types.CATEGORY.GET_CATEGOTY_POST, response.data.data);
+      },
+
+
+      async createCategory({ commit }, params) {
+          await axios.post(api.CATEGORY_CREATE, params);
+      },
 
     async getCategoryDetail({ commit }, params) {
         let url = `${api.CATEGORY_DETAIL}/${params}`;
