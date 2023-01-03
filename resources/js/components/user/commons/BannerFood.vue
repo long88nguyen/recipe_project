@@ -12,7 +12,7 @@
                 </div>
                 <template v-for="(category, index) in categoryList" :key="index">
                     <div class="filter_post-item" :class="(searchData.category_id == category.id) ? 'active' : ''" @click = "search(category.id)">
-                        <img :src="`/uploads/category/${category.image}`" alt="">
+                        <img :src="category.image" alt="">
                         <h5 class="filter_post-title">
                             {{ category.name.substring(0,10) }}
                         </h5>
@@ -413,7 +413,7 @@ export default {
             .filter_post-item{
                 width: 130px;
                 height: 40px;
-                background:  white;
+                background:  rgb(241, 232, 232);
                 border-radius: 20px;
                
                 img{

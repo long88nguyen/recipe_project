@@ -16,8 +16,8 @@
                             <div class="post_item">
                                 <img :src="post.post_image[0].image" alt="">
                                 <div class="card_heart">
-                                    <i class="fa-solid fa-heart" ></i>
-                                    <i class="fa-regular fa-heart" ></i>
+                                    <i class="fa-solid fa-heart" v-if="post.rateable == true" @click="unsubmitFavourite(post.id)"></i>
+                                    <i class="fa-regular fa-heart" v-else @click="submitFavourite(post.id)"></i>
                                 </div>
                                 <button class="btn_post">Xem bài viết</button>
                             </div>
@@ -44,7 +44,33 @@ export default {
     methods:{
         async getPost(){
             await this.$store.dispatch('categories/getAllCategoryByPost')
-        }
+        },
+
+        async submitFavourite(value)
+        {
+            console.log(1);
+            const account = this.$store.getters['common/userCommon'];
+            this.$store.dispatch("favourites/submitFavourite",{
+                id: value,
+                member_id: account.id, 
+            }).then(() => {
+                this.$toast.success("Add wish list successful !");
+                this.getPost();
+            }).catch(() =>{
+                this.$toast.error("Erorr!");    
+            })
+        },
+
+        async unsubmitFavourite(value){
+            this.$store.dispatch("favourites/deleteFavourite",{
+                id: value,
+            }).then(() => {
+                this.$toast.success("delete wish list successful !");
+                this.getPost();
+            }).catch(() =>{
+                this.$toast.error("Erorr!");    
+            })
+        },
     },
     computed:{
         ...mapGetters({
@@ -90,8 +116,8 @@ export default {
 
                 margin-top:20px ;
                 .post_item{
-            width: 100%;
-            margin: 10px;
+                width: 100%;
+                padding: 10px;
                 height: 200px;
                 img{
                     width: 100%;

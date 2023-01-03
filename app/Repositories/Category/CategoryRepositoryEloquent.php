@@ -4,6 +4,7 @@ namespace App\Repositories\Category;
 
 use App\Enums\Constant;
 use App\Models\Category;
+use App\Models\Favourite;
 use App\Models\Rate;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -123,7 +124,8 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         {
             foreach($value['Posts'] as $item)
             {
-                $item->rateable = Rate::where("member_id",$memberId)->where("id",$item->id)->first() ? true : false;;
+
+                $item->rateable = Favourite::where("member_id",$memberId)->where("post_id",$item->id)->first() ? true : false;;
             }
         }
         return [
