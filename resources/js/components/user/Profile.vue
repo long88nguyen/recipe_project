@@ -2,7 +2,7 @@
   <div class="profile_page">
     <div class="profile_container">
         <div class="profile_account">
-            <img src="../../uploads/avatar.png" alt="">
+            <img :src="userCommon.avatar" alt="">
             <div class="profile_account-detail">
                 <h1> {{userCommon.name}} </h1>
                 <h3>@longnguyen</h3>

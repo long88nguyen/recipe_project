@@ -84,7 +84,6 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
 
     public function updateCategory($id,$request)
     {
-        dd($request->all());
         $category = $this->model->findOrFail($id);
         if ($request->file('image'))
         {
@@ -103,7 +102,6 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         $data['name'] = $request->name;
         $data['updated_at'] = $timeNow;
         $category->update($data);
-    //     return $data;
     }
 
     public function delete($id)

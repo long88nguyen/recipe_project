@@ -81,7 +81,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     {
         $memberId = Auth::user()->member->id;
         $dataPost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
-        ->with("PostImage:id,post_id,image")
+        ->with("PostImage:id,post_id,image","member:id,name,avatar")
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),

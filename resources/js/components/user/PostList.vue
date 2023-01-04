@@ -418,8 +418,7 @@ export default {
             height: 300px;
             border-radius:5px;
             transition: 0.3s;
-            background: white; 
-            margin: 10px 5px; 
+            background: white;
 
             img{
                 width: 100%;

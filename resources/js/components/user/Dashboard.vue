@@ -2,10 +2,13 @@
   <div class="container-layout" :class="{ layout_active: scrollEvent >= 100 }">
     <nav>
         <a-row>
-            <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">             
+            <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">     <router-link 
+                  to="/home-page"
+                  >        
                 <div class="logo_food">
-                <img src="../../uploads/images/logofood.png" alt="">
+                  <img src="../../uploads/images/logofood.png" alt="">
               </div>
+            </router-link>
             </a-col>
             <a-col  :xxl="12" :xl="12" :lg="12" :md="12" :xs="12">
               <div class="nav-menu">
@@ -20,13 +23,12 @@
             </a-col>
             <a-col :xxl="3" :xl="3" :lg="3" :md="3" :xs="3">
                 <div class="nav-account">
-                    <img src="../../uploads/images/dd.jpg" alt="" @click="toggleProfile">
+                    <img :src="userCommon.avatar" alt="" @click="toggleProfile">
                     <span> {{ userCommon.name}} </span>
                     <div class="nav-account-menu" :class="{activce:isActiveVisible}">
                        
                         <ul>
                             <li><i class="fa-solid fa-address-card"></i><router-link to="/profile" @click="toggleProfile">My Profile</router-link></li>
-                            <li><i class="fa-solid fa-gear"></i><span>Cài đặt</span></li>
                             <li @click="showModal"><i class="fa-solid fa-right-from-bracket"></i><span>Đăng xuất</span></li>
                         </ul>
                     </div>

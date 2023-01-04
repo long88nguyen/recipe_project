@@ -5,7 +5,7 @@ const REGISTER = '/api/register'
 // category
 const LIST_CATEGORY = '/api/category';
 const CATEGORY_CREATE = '/api/category';
-const CATEGORY_DETAIL = '/api/category';
+const CATEGORY_DETAIL = '/api/category/detail';
 const CATEGORY_UPDATE = '/api/category';
 const CATEGORY_DELETE = '/api/category';
 const CATEGORY_POST = '/api/category/post-by-category';

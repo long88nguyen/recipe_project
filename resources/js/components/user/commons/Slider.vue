@@ -31,7 +31,7 @@
                           <div class="favourite_item">
                             <img :src="post.post_image[0].image" alt="" class="rounded">
                             <div class="favourite_content">
-                              <h4>{{ post.title }}</h4>
+                              <h4 class="favourite_title">{{ post.title }}</h4>
                               <h6 v-if = "post.duration > 86400"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/86400) }} days ago</h6> 
                               <h6 v-else-if = "post.duration < 86400 && post.duration > 3600"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/3600) }} hours ago</h6> 
                               <h6 v-else-if = "post.duration < 3600"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/60) }} minutes ago</h6> 
@@ -141,6 +141,11 @@ import { mapGetters } from 'vuex'
                   margin-left: 20px;
                   h4{
                     width: 100%;
+                  }
+                  .favourite_title:hover{
+                    border-bottom: 1px solid #d54215;
+                    transition: 0.5s;
+                    cursor: pointer;
                   }
                 }
               }

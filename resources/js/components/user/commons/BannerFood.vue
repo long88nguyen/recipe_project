@@ -18,7 +18,14 @@
                         </h5>
                     </div>
                 </template>
-    
+                <router-link to="/all-post">
+                    <div class="filter_post-more">
+                        
+                        <h5 class="filter_post-title">
+                            {{ categoryList.length }} + Danh mục
+                        </h5>
+                </div>
+                </router-link>
                 
             </div>
         </div>
@@ -65,8 +72,11 @@
                                 <h5>{{ post.count_favourite }}</h5>
                             </div>
                         </div>
+
                         <div class="member_side">
-                            <img src="../../../uploads/avatar.png" alt="">
+                            <span>
+                                {{post.member.name }}
+                            </span><img :src="post.member.avatar" alt="">
                         </div>
                    </div>   
                  
@@ -230,15 +240,16 @@ export default {
         margin:0 auto;
         .card_item{
             width: 90%;
-            height: 350px;
+            max-height: 400px;
             border-radius:5px;
             transition: 0.3s;
             background: white; 
-            margin: 10px 5px; 
+            // margin: 10px 5px; 
+            margin:10px 0;
 
             img{
                 width: 100%;
-                height: 150px;
+                height: 200px;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
                 top:0;
@@ -265,12 +276,18 @@ export default {
             }
 
             
-            h4{
+            .card_category{
                 font-size: 24px;
-                height: 40px;
-                padding:0px 10px 0 10px;
+                height: 30px;
+                line-height: 30px;
+                margin:0px 10px 10px 10px;
                
             }
+            .card_category:hover{
+                border-bottom:1px solid #d54215;
+                transition: 0.5s;
+            }
+
             .card_title{
                 font-size:18px;
                 height:45px;
@@ -323,6 +340,9 @@ export default {
             .member_side{
                 text-align: end;
                 padding: 10px 15px;
+                span{
+                    margin-right:10px;
+                }
                 img{
                     width: 30px;
                     height: 30px;
@@ -444,6 +464,20 @@ export default {
                         color:white;
                     }
                 }
+
+                .filter_post-more{
+                cursor: pointer;
+                text-align: center;
+                width: 130px;
+                height: 40px;
+                background:  rgba(0, 0, 0,0.2);
+                border-radius: 20px;
+                h5{
+                    font-size:13px;
+                    font-weight: bold;
+                    line-height: 40px;
+                }
+            }
         }
         
     }

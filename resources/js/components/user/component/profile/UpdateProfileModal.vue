@@ -120,6 +120,7 @@ export default {
                 this.$toast.success("Update profile success!");
                 this.$emit("ok");
                 this.$router.push({ path: "/profile" });
+                this.$store.dispatch('common/getUserCommon')
             }).catch(() =>{
                 this.$toast.error('Đã xảy ra lỗi !');
                 console.log("errorr");

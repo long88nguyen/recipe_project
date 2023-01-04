@@ -61,6 +61,10 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
     public function updateMember($request, $id)
     {
         $updateData = $this->model->find($id);
+        $data['name'] = $request->name;
+        $data['phone'] = $request->phone;
+        $data['birthday'] = $request->birthday;
+        $data['gender'] = $request->gender;
         if ($request->file('avatar'))
         {
             if(File::exists("uploads/avatars/".$updateData->avatar))
@@ -71,18 +75,10 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
             $destinationPath = public_path('uploads/avatars');
             $profileImage = "/uploads/avatars/".date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $newImage = "$profileImage";
+            $data['avatar'] = $profileImage;
         }
-        
-        $dataNew = [
-            'name' => $request->name,
-            'phone' => $request->phone ? $request->phone != null : null,
-            'birthday' => $request->birthday ? $request->birthday != null : null,
-            'gender' => $request->gender ? $request->gender != null : null,
-            'avatar' => $newImage,
-        ];
-        dd($dataNew); 
-        return $updateData->update($dataNew);
+
+        return $updateData->update($data);
 
     }
 }

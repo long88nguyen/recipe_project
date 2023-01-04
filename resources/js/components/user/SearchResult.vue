@@ -91,7 +91,6 @@ export default {
             border-radius:5px;
             transition: 0.3s;
             background: white; 
-            margin: 10px 5px; 
 
             img{
                 width: 100%;

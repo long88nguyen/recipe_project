@@ -65,14 +65,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card_item{
             width: 90%;
             height: 350px;
             border-radius:5px;
             transition: 0.3s;
             background: white; 
-            margin: 10px 5px; 
 
             img{
                 width: 100%;

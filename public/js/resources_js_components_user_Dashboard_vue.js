@@ -191,9 +191,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _uploads_images_logofood_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../uploads/images/logofood.png */ "./resources/js/uploads/images/logofood.png");
-/* harmony import */ var _uploads_images_dd_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../uploads/images/dd.jpg */ "./resources/js/uploads/images/dd.jpg");
-/* harmony import */ var _uploads_images_filter_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../uploads/images/filter.png */ "./resources/js/uploads/images/filter.png");
-
+/* harmony import */ var _uploads_images_filter_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../uploads/images/filter.png */ "./resources/js/uploads/images/filter.png");
 
 
 
@@ -222,19 +220,12 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "nav-account"
 };
+var _hoisted_5 = ["src"];
 
-var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "fa-solid fa-address-card"
   }, null, -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-    "class": "fa-solid fa-gear"
-  }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Cài đặt")], -1
   /* HOISTED */
   );
 });
@@ -283,7 +274,7 @@ var _hoisted_14 = [_hoisted_13];
 
 var _hoisted_15 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: _uploads_images_filter_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+    src: _uploads_images_filter_png__WEBPACK_IMPORTED_MODULE_2__["default"],
     alt: ""
   }, null, -1
   /* HOISTED */
@@ -305,9 +296,9 @@ var _hoisted_18 = {
   "class": "body_view"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_a_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-col");
-
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
+  var _component_a_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-col");
 
   var _component_a_row = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-row");
 
@@ -333,7 +324,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         xs: 6
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_1];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+            to: "/home-page"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_1];
+            }),
+            _: 1
+            /* STABLE */
+
+          })];
         }),
         _: 1
         /* STABLE */
@@ -380,18 +380,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-            src: _uploads_images_dd_jpg__WEBPACK_IMPORTED_MODULE_2__["default"],
+            src: _ctx.userCommon.avatar,
             alt: "",
             onClick: _cache[0] || (_cache[0] = function () {
               return $options.toggleProfile && $options.toggleProfile.apply($options, arguments);
             })
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.userCommon.name), 1
+          }, null, 8
+          /* PROPS */
+          , _hoisted_5), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.userCommon.name), 1
           /* TEXT */
           ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
             "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["nav-account-menu", {
               activce: $data.isActiveVisible
             }])
-          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
             to: "/profile",
             onClick: $options.toggleProfile
           }, {
@@ -403,7 +405,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
           }, 8
           /* PROPS */
-          , ["onClick"])]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+          , ["onClick"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
             onClick: _cache[1] || (_cache[1] = function () {
               return $options.showModal && $options.showModal.apply($options, arguments);
             })
@@ -732,20 +734,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.form-group{\n    margin:15px 0;\n}\
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
-
-/***/ }),
-
-/***/ "./resources/js/uploads/images/dd.jpg":
-/*!********************************************!*\
-  !*** ./resources/js/uploads/images/dd.jpg ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/dd.jpg?d3c04cbdc9658fdccc219634957ee722");
 
 /***/ }),
 
