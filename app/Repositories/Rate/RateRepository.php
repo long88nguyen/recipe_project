@@ -22,4 +22,6 @@ interface RateRepository extends RepositoryInterface
     public function delete($id);
 
     public function getAll($request);
+
+    public function StatRate($id);
 }

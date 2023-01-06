@@ -32,6 +32,7 @@ const RATE_DETAIL = '/api/rate/rate-detail'
 const UPDATE_RATE = '/api/rate/update-rate'
 const DELETE_RATE = '/api/rate/delete'
 const GET_ALL_RATE = '/api/rate'
+const GET_STAT_RATE = '/api/rate/stat-rate'
 
 //member 
 
@@ -98,6 +99,7 @@ export default {
     UPDATE_RATE,
     DELETE_RATE,
     GET_ALL_RATE,
+    GET_STAT_RATE,
 
     //member
     MEMBER_LIST,

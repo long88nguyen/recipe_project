@@ -25,16 +25,21 @@
                 </a-col>
                 <a-col :xxl="12" :xl="12" :lg="12" :md="24" :xs="24">
                   <div class="slider_intro">
-                      <h1>Trending</h1>
+                      <h1>Thịnh hành</h1>
                       <div class="most_favourite">
                         <template v-for = "(post,index) in getMostFavourite" :key="index">
                           <div class="favourite_item">
                             <img :src="post.post_image[0].image" alt="" class="rounded">
                             <div class="favourite_content">
+                              <router-link 
+                                :to="{
+                                path: `/post-detail/${post.id}`
+                                }" >
                               <h4 class="favourite_title">{{ post.title }}</h4>
-                              <h6 v-if = "post.duration > 86400"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/86400) }} days ago</h6> 
-                              <h6 v-else-if = "post.duration < 86400 && post.duration > 3600"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/3600) }} hours ago</h6> 
-                              <h6 v-else-if = "post.duration < 3600"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/60) }} minutes ago</h6> 
+                              </router-link>
+                              <h6 v-if = "post.duration > 86400"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/86400) }} ngày trước</h6> 
+                              <h6 v-else-if = "post.duration < 86400 && post.duration > 3600"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/3600) }} giờ trước</h6> 
+                              <h6 v-else-if = "post.duration < 3600"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/60) }} phút trước</h6> 
                             </div>
                           </div>
                         </template> 

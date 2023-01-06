@@ -1,5 +1,5 @@
 <template>
-  <div class="create_post">
+  <div class="create_post_old">
     <div class="create_post_container">
         <div class="create_post_detail">
             <h4>Tạo mới món ăn</h4>
@@ -318,16 +318,15 @@ export default {
 };  
 </script>
 
-<style lang="scss">
-.create_post{
+<style lang="scss" scoped>
+.create_post_old{
     width: 100%;
     margin-top:200px;
-    
+    background: #f4f9f6;
     .create_post_container
     {
         width: 70%;
         margin:0 auto;
-        background: white;
         .create_post_detail{
           padding: 30px;
           .form-ingredient{

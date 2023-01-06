@@ -1,20 +1,7 @@
 <template>
     <div class="stat_container">
         <div class="bigbanner">
-        <div class="stat_list">
-            <div class="stat_item">
-                <h1>100 Món trứng</h1>
-            </div>
-            <div class="stat_item">
-                <h1>200 Món thịt</h1>
-            </div>
-            <div class="stat_item">
-                <h1>200 Món cá</h1>
-            </div>
-            <div class="stat_item">
-                <h1>50 Món mỳ</h1>
-            </div>
-            </div>
+      
         </div>
     </div>
 </template>

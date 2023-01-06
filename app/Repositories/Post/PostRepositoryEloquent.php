@@ -363,6 +363,17 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "note","deleted_at")
         ->where('posts.id',$id)
         ->first();
+     
+        $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$postDetail->id)->first();
+        if($checkFavourite)
+        {
+            $postDetail->favouriteable = false;
+        }
+        else
+        {
+            $postDetail->favouriteable = true;
+        }
+    
         $postDetail->rateable = Rate::where("member_id",$memberId)->where("post_id",$id)->first() ? true : false;
         return [
             "postDetail" => $postDetail

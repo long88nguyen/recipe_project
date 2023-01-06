@@ -22,7 +22,7 @@
                     <div class="filter_post-more">
                         
                         <h5 class="filter_post-title">
-                            {{ categoryList.length }} + Danh mục
+                            {{ categoryList.length }}+ Danh mục
                         </h5>
                 </div>
                 </router-link>
@@ -57,12 +57,16 @@
                         </h4>
                         </router-link> 
                         <div class="card-rating">
-                            <div class="rating_side">
-                                <div class="card_star">
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            
-                                <h5>{{ post.number_rating }}</h5>
+                            <div class="rating_side">           
+                                <h5> <star-rating 
+                                v-model:rating="post.number_rating" 
+                                inactive-color="#DCDCDC"
+                                active-color="#d54215"
+                                v-bind:star-size="20"
+                                :read-only = true
+                                :show-rating = false
+                                :round-start-rating = false
+                            /> </h5>
                             </div>
                             <div class="favourite_side">
                                 <div class="card_wishlist">
@@ -97,11 +101,15 @@
             
         </div>
         <div class="newfood-container">
-            <h4>new post</h4>
+            <h4>Bài viết mới</h4>
             <div>
                 <a-row>
                     <template v-for="(post_order,index) in getPostOrder" :key="index">
                         <a-col :xxl="8" :xl="8" :lg="8" :md="12" :xs="24">
+                            <router-link 
+                                :to="{
+                                path: `/post-detail/${post_order.id}`
+                                }" >
                             <div class="newpost_cartd">
                                 <a-carousel 
                                 effect="fade"
@@ -112,15 +120,16 @@
                                     </template>
                                     
                                 </a-carousel>
-                                <div class="bookmark">
-                                    <i class="fa-solid fa-bookmark"  v-if="post_order.favouriteable == false" @click="unsubmitFavourite(post_order.id)"></i>
+                                <div class="card_heart">
+                                    <i class="fa-solid fa-heart"  v-if="post_order.favouriteable == false" @click="unsubmitFavourite(post_order.id)"></i>
+                                    <i class="fa-regular fa-heart" v-else @click="submitFavourite(post_order.id)"></i>
 
-                                    <i class="fa-regular fa-bookmark" v-else @click="submitFavourite(post_order.id)"></i>
                                 </div>
                             
                                 <span>{{post_order.title.substring(0,20) + "..."}}</span>
 
                             </div>
+                            </router-link>
                         </a-col>
                     </template>
                     
@@ -134,7 +143,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import StarRating from 'vue-star-rating'
 export default {
+    components:{
+        StarRating
+    },
     data(){
         return {
             searchData:{
@@ -226,8 +239,11 @@ export default {
 
         countData(){
              this.categoryList.length();
+        },
+        scrollToTop() {
+            window.scrollTo(0,0);
         }
-    }, 
+    }
 }
 </script>
 
@@ -303,6 +319,7 @@ export default {
                     height: 40px;
                     line-height: 40px;
                     display: flex;
+                    padding: 0 15px;
                     .card_star
                     {
                         padding:0px 10px 0 10px;
@@ -322,6 +339,7 @@ export default {
                     height: 40px;
                     line-height: 40px;
                     display: flex;
+                    margin-top: 4px;
                     .card_wishlist
                     {
                         padding:0px 10px 0 10px;
@@ -378,10 +396,14 @@ export default {
         margin-top: 20px;
         .newpost_cartd
         {
+            cursor: pointer;
             height: 250px;
             width: 100%;
             background: none;;
             position: relative;
+            img{
+                border-radius: 10px;
+            }
             span{
                 position: absolute;
                 bottom: 30px;
@@ -390,26 +412,51 @@ export default {
                 font-size: 20px;
                 
                 }
-            .bookmark
-            {
+            .card_heart{
+                width: 30px;
+                height: 30px;
+                background: #d54215;
                 position: absolute;
-                top: 20px;
-                font-size: 40px;
-                left: 20px;
+                top:20px;
+                left:20px;
+                font-size: 14px;
                 color:white;
+                border-radius: 50%;
+                i
+                {
+                    display: flex;
+                    justify-content: center;
+                    line-height: 30px;
+                }
             }
-            }
-            .hello{
-                width: 100%;
-                height: 250px;
-                padding: 10px 10px;
-
-                img{
-                    width: 100%;
-                    height: 100%;
+        }
+        .newpost_cartd:hover{
+            img{
+                opacity: 0.6;
                 filter: alpha(opacity=40);
+                transition: 0.5s;
             }
-            
+          
+            span{
+            color:black;
+            top:50%;
+            left: 20%;
+            transition: 0.5s;
+            font-size: 24px;
+            font-weight: bold;
+
+            }
+        }
+        .hello{
+            width: 100%;
+            height: 250px;
+            padding: 10px 10px;
+
+            img{
+                width: 100%;
+                height: 100%;
+        }
+        
         }
     }
 }

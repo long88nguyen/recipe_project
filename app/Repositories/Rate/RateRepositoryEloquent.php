@@ -154,4 +154,23 @@ class RateRepositoryEloquent extends BaseRepository implements RateRepository
     {
         return $this->model->find($id)->delete();
     }
+
+    public function StatRate($id){
+        $rateRange = [1, 2, 3, 4, 5];
+        $rateStat = $this->model->where('post_id',$id)
+                    ->select("number_rating",DB::raw('count(rates.number_rating) as count_star'))
+                    ->groupBy('number_rating')
+                    ->get()
+                    ->pluck("count_star","number_rating");
+        $totalReview = $this->model->where('post_id',$id)->count();
+        $dataStar = [];
+        foreach ($rateRange as $item) {
+            $dataStar[$item] = $rateStat->get($item, 0);
+        }
+        return [
+           'dataStar' => $dataStar,
+           'totalReview' => $totalReview,
+        ];
+
+    }
 }

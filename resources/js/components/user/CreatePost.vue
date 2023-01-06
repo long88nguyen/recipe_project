@@ -1,28 +1,28 @@
 <template>
-  <div class="create_post">
+  <div class="create_post_new">
     <div class="create_post_container">
         <div class="create_post_detail">
-            <h4>Tạo mới món ăn</h4>
+            <h4>Tạo bài viết mới</h4>
             <form action=""  @submit.prevent="registerOverTimeRequest">
               <div class="create_post-header">
                 <a-row>
                     <a-col :xxl="14" :xl="14" :lg="14">
                       <div class="form-ingredient">
-                        <label for="">title</label>
+                        <label for="">Tiêu đề</label>
                         <div class="form-group">
                           <textarea :rows="2" type="text" class="form-control" v-model="forms.title"></textarea>
                           
                         </div>
                       </div>
                       <div class="form-ingredient">
-                        <label for="">content</label>
+                        <label for="">Mô tả</label>
                         <div class="form-group">
                           <textarea :rows="2" type="text" class="form-control" v-model="forms.content"></textarea>
                           
                         </div>
                       </div>
                       <div class="form-ingredient">
-                        <label for="">Cateogry</label>
+                        <label for="">Danh mục</label>
                         <div class="form-group">
                           <select class="form-control" v-model="forms.category_id">
                             <template v-for="(option,index) in getAllcategory" :key="index">
@@ -34,7 +34,7 @@
                         </div>
                       </div>
                       <div class="form-ingredient">
-                        <label for="">Ingredient</label>
+                        <label for="">Thành phần</label>
                         <div class="form-group" v-for="(input,k) in forms.ingredients" :key="k">
                           <input type="text" class="form-control" v-model="input.name" />
                               <span>
@@ -56,7 +56,7 @@
               
                         
                       <div class="form-ingredient">
-                        <label for="">Direction</label>
+                        <label for="">Các bước thực hiện</label>
                         <div class="form-group" v-for="(input,k) in forms.directions" :key="k">
                           <textarea :placeholder="'Step ' + (k+1)" :rows="4" type="text" class="form-control" v-model="input.desc" ></textarea>
                               <span>
@@ -76,7 +76,7 @@
                       </div>
 
                       <div class="form-ingredient">
-                        <label for="">Time</label>
+                        <label for="">Thời gian thực hiện</label>
                         <div class="form-group">
                           <input  type="text" class="form-control" v-model="forms.time"/>
                           
@@ -84,7 +84,7 @@
                       </div>
 
                       <div class="form-ingredient">
-                        <label for="">Nutritions fact</label>
+                        <label for="">Thành phần dinh dưỡng (nếu có)</label>
                         <div class="form-group">
                           <textarea :rows="2" type="text" class="form-control" v-model="forms.nutrition_facts"></textarea>
                           
@@ -92,7 +92,7 @@
                       </div>
 
                       <div class="form-ingredient">
-                        <label for="">Note</label>
+                        <label for="">Ghi chú </label>
                         <div class="form-group">
                           <textarea :rows="2" type="text" class="form-control" v-model="forms.note"></textarea>
                           
@@ -102,7 +102,7 @@
                     <a-col :xxl="10" :xl="10" :lg="10">
                       <div class="form-image">
                         <div class="form-upload">
-                            <label for="">Image</label>
+                            <label for="">Ảnh sản phẩm</label>
                             <div class="file_input_wrap" style="display: none">
                               <input
                                   type="file"
@@ -152,7 +152,7 @@
                     </a-col>
                 </a-row>
                 <button type="submit" class="btn btn-outline-success text-center mt-3">
-                    Tạo mới món ăn
+                    Tạo mới bài viết
                 </button>
             </div>
             </form>
@@ -319,10 +319,11 @@ export default {
 </script>
 
 <style lang="scss">
-.create_post{
+.create_post_new{
     width: 100%;
-    margin-top:200px;
-    
+    padding-top:200px;
+    background: #f4f9f6;
+    font-family: 'Roboto', sans-serif ;;
     .create_post_container
     {
         width: 70%;

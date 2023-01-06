@@ -38,6 +38,12 @@ class RateController extends ApiController
         return $this->sendSuccess($result);
     }
 
+    public function StatRate($id)
+    {
+        $result = $this->rateRepository->StatRate($id);
+        return $this->sendSuccess($result);
+    }
+
     public function detail($id)
     {
         $result = $this->rateRepository->detail($id);

@@ -77,6 +77,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::post('/update-rate/{id}',[\App\Http\Controllers\Api\RateController::class,'updateRate']);
         Route::delete('/delete/{id}',[\App\Http\Controllers\Api\RateController::class,'delete']);
         Route::get('/',[\App\Http\Controllers\Api\RateController::class,'getAll']);
+        Route::get('/stat-rate/{id}',[\App\Http\Controllers\Api\RateController::class,'StatRate']);
     });
 
     //member

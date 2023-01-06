@@ -15,6 +15,9 @@ export const state = {
       totalRecord: 0,
       perPage: 0
   },
+  getStatRate:{},
+  totalReview:{},
+  
 }
 
 export const getters = {
@@ -22,6 +25,8 @@ export const getters = {
     rateDetail : state => state.rateDetail,
     getAllRate : state => state.getAllRate,
     pagination: state => state.pagination,
+    getStatRate: state => state.getStatRate,
+    totalReview: state => state.totalReview,
 
 }
 
@@ -31,10 +36,18 @@ export const mutations = {
       state.rateListByPost = data.getRateByPost;
     },
 
+    [types.RATE.LIST_STAT_RATE](state, data)
+    {
+      state.getStatRate = data.dataStar;
+      state.totalReview = data.totalReview;
+    },
+
     [types.RATE.RATE_DETAIL](state, data)
     {
       state.rateDetail = data.getRateDetail;
     },
+
+    
 
     [types.RATE.LIST_ALL_RATE](state, data)
     {
@@ -61,6 +74,16 @@ export const actions = {
         );
         commit(
           types.RATE.RATE_POST_LIST,
+          response.data.data
+        );
+      },
+
+      async listStatRateByPost({ commit }, postId) {
+        const response = await axios.get(
+          api.GET_STAT_RATE + "/" + postId
+        );
+        commit(
+          types.RATE.LIST_STAT_RATE,
           response.data.data
         );
       },

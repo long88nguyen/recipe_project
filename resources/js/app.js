@@ -5,6 +5,7 @@ import { createApp } from "vue"
 import AppVue from "./AppVue.vue"
 import store from "./store";
 import Toaster from '@meforma/vue-toaster';
+import VueSocialSharing from 'vue-social-sharing'
 
 import router from './router'
 
@@ -23,6 +24,7 @@ app.use(Toaster,{
 })
 
 app.use(store)
+app.use(VueSocialSharing)
 
 app.use(router)
 

@@ -196,7 +196,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "create_post"
+  "class": "create_post_new"
 };
 var _hoisted_2 = {
   "class": "create_post_container"
@@ -205,7 +205,7 @@ var _hoisted_3 = {
   "class": "create_post_detail"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Tạo mới món ăn", -1
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Tạo bài viết mới", -1
 /* HOISTED */
 );
 
@@ -218,7 +218,7 @@ var _hoisted_6 = {
 
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "title", -1
+}, "Tiêu đề", -1
 /* HOISTED */
 );
 
@@ -231,7 +231,7 @@ var _hoisted_9 = {
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "content", -1
+}, "Mô tả", -1
 /* HOISTED */
 );
 
@@ -244,7 +244,7 @@ var _hoisted_12 = {
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Cateogry", -1
+}, "Danh mục", -1
 /* HOISTED */
 );
 
@@ -258,7 +258,7 @@ var _hoisted_16 = {
 
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Ingredient", -1
+}, "Thành phần", -1
 /* HOISTED */
 );
 
@@ -271,7 +271,7 @@ var _hoisted_21 = {
 
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Direction", -1
+}, "Các bước thực hiện", -1
 /* HOISTED */
 );
 
@@ -284,7 +284,7 @@ var _hoisted_26 = {
 
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Time", -1
+}, "Thời gian thực hiện", -1
 /* HOISTED */
 );
 
@@ -297,7 +297,7 @@ var _hoisted_29 = {
 
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Nutritions fact", -1
+}, "Thành phần dinh dưỡng (nếu có)", -1
 /* HOISTED */
 );
 
@@ -310,7 +310,7 @@ var _hoisted_32 = {
 
 var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Note", -1
+}, "Ghi chú ", -1
 /* HOISTED */
 );
 
@@ -326,7 +326,7 @@ var _hoisted_36 = {
 
 var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Image", -1
+}, "Ảnh sản phẩm", -1
 /* HOISTED */
 );
 
@@ -377,7 +377,7 @@ var _hoisted_46 = {
 var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
   "class": "btn btn-outline-success text-center mt-3"
-}, " Tạo mới món ăn ", -1
+}, " Tạo mới bài viết ", -1
 /* HOISTED */
 );
 
@@ -603,7 +603,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".create_post {\n  width: 100%;\n  margin-top: 200px;\n}\n.create_post .create_post_container {\n  width: 70%;\n  margin: 0 auto;\n  background: white;\n}\n.create_post .create_post_container .create_post_detail {\n  padding: 30px;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient {\n  margin-top: 10px;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group {\n  padding: 5px 10px 5px 0px;\n  display: flex;\n  align-items: center;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group input {\n  width: 80%;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group textarea {\n  width: 80%;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group select {\n  width: 80%;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group span {\n  width: 20%;\n  height: 40px;\n  line-height: 40px;\n  margin-left: 5px;\n  font-size: 25px;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group span .fa-minus-circle {\n  color: red;\n}\n.create_post .create_post_container .create_post_detail .form-ingredient .form-group span .fa-plus-circle {\n  margin-left: 5px;\n  color: blue;\n}\n.form-image .form-upload .file_input_button {\n  width: 150px;\n  height: 40px;\n  background: #dbd8d8;\n  border-radius: 20px;\n  text-align: center;\n  line-height: 40px;\n  margin-top: 10px;\n}\n.form-image .form-upload .file_input_button:hover {\n  cursor: pointer;\n  border: 1px solid blue;\n  transition: 0.5s;\n}\n.form-image .form-upload .img__name {\n  display: flex;\n  justify-content: space-between;\n  padding: 20px 20px 10px 0;\n}\n.form-image .form-upload .img__name i {\n  font-size: 15px;\n  color: red;\n  cursor: pointer;\n}\n.form-image .showImg img {\n  border: 1px solid blue;\n  margin-right: 5px;\n}\n@media (max-width: 780px) {\n.create_post_container {\n    width: 90%;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".create_post_new {\n  width: 100%;\n  padding-top: 200px;\n  background: #f4f9f6;\n  font-family: 'Roboto', sans-serif;\n}\n.create_post_new .create_post_container {\n  width: 70%;\n  margin: 0 auto;\n  background: white;\n}\n.create_post_new .create_post_container .create_post_detail {\n  padding: 30px;\n}\n.create_post_new .create_post_container .create_post_detail .form-ingredient {\n  margin-top: 10px;\n}\n.create_post_new .create_post_container .create_post_detail .form-ingredient .form-group {\n  padding: 5px 10px 5px 0px;\n  display: flex;\n  align-items: center;\n}\n.create_post_new .create_post_container .create_post_detail .form-ingredient .form-group input {\n  width: 80%;\n}\n.create_post_new .create_post_container .create_post_detail .form-ingredient .form-group textarea {\n  width: 80%;\n}\n.create_post_new .create_post_container .create_post_detail .form-ingredient .form-group select {\n  width: 80%;\n}\n.create_post_new .create_post_container .create_post_detail .form-ingredient .form-group span {\n  width: 20%;\n  height: 40px;\n  line-height: 40px;\n  margin-left: 5px;\n  font-size: 25px;\n}\n.create_post_new .create_post_container .create_post_detail .form-ingredient .form-group span .fa-minus-circle {\n  color: red;\n}\n.create_post_new .create_post_container .create_post_detail .form-ingredient .form-group span .fa-plus-circle {\n  margin-left: 5px;\n  color: blue;\n}\n.form-image .form-upload .file_input_button {\n  width: 150px;\n  height: 40px;\n  background: #dbd8d8;\n  border-radius: 20px;\n  text-align: center;\n  line-height: 40px;\n  margin-top: 10px;\n}\n.form-image .form-upload .file_input_button:hover {\n  cursor: pointer;\n  border: 1px solid blue;\n  transition: 0.5s;\n}\n.form-image .form-upload .img__name {\n  display: flex;\n  justify-content: space-between;\n  padding: 20px 20px 10px 0;\n}\n.form-image .form-upload .img__name i {\n  font-size: 15px;\n  color: red;\n  cursor: pointer;\n}\n.form-image .showImg img {\n  border: 1px solid blue;\n  margin-right: 5px;\n}\n@media (max-width: 780px) {\n.create_post_container {\n    width: 90%;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

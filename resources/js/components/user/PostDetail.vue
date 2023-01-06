@@ -17,12 +17,12 @@
                                 :read-only = true
                                 :show-rating = false
                                 :round-start-rating = false
-                            /> <div>
+                            /> <div class="number">
                             {{ getPostDetail.number_rating }}
                                 
                             </div>
                         </div>
-                        <div class="post_list_wist">  <i class="fa-regular fa-heart"></i> {{ getPostDetail.count_favourite }}</div>
+                        <div class="post_list_wist">  <i class="fa-regular fa-heart"></i> <span>{{ getPostDetail.count_favourite }}</span></div>
                     </div>
                    <div class="post_detail-content">
                     <h5>
@@ -31,7 +31,7 @@
                     
                    </div>
                     <div class="post_account">
-                        <img src="../../uploads/avatar.png" alt="">
+                        <img :src="getPostDetailMember.avatar" alt="">
                         <div class="post_acount-detail">
                             <h1 class="post_account-name">
                             {{getPostDetailMember.name}}
@@ -53,9 +53,23 @@
                     </div>
                    </div>
                    <div class="post_detail-time">
-                        <div class="option save_post"> <span >Save</span>  <i class="fa-regular fa-heart"></i></div>
-                        <div class="option favourite_post"><span @click="showPopup">Rate</span> <i class="fa-regular fa-star"></i></div>
+                        <div class="option save_post" v-if="getPostDetail.favouriteable  == true" @click="submitFavourite(getPostDetail.id)"> <span >Lưu bài viết</span>  <i class="fa-regular fa-heart"></i></div>
+                        <div class="option save_post" v-else @click="unsubmitFavourite(getPostDetail.id)" > <span >Bỏ lưu</span>  <i class="fa-solid fa-heart"></i></div>
+                        
+                    
+                        <div class="option favourite_post" v-if="getPostDetail.rateable==false" ><span @click="showPopup">Rate</span> <i class="fa-regular fa-star"></i></div>
+                        <div class="option favourite_post" v-else><span @click="showPopup" >Rated</span> <i class="fa-solid fa-star"></i></div>
+                        <!-- <ShareNetwork
+                            network="facebook"
+                            
+                            :url="`https://localhost:8087/post-detail/4`"
+                            title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+                            description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+                            quote="The hot reload is so fast it\'s near instant. - Evan You"
+                            hashtags="vuejs,vite"
+                        > -->
                         <div class="option share_post"><span>Share</span> <i class="fa-solid fa-share"></i></div>
+                        <!-- </ShareNetwork> -->
                    </div>
                    <div class="post_ingre">
                         <h3>Nguyên Liệu</h3>
@@ -91,7 +105,6 @@
                               
                 <div class="post_suggest">
                     <h4>Posts by the same author</h4>
-                    {{  idMemberok }}
                     <template v-for="(post,index) in getYourPost" :key="index">
                     <div class="post_suggest-list">
                         <img :src="post.post_image[0].image" alt="">
@@ -114,7 +127,7 @@
                 <star-rating 
                     v-model:rating="rating" 
                     inactive-color="#E8E8E8"
-                    active-color="#FFFF00"
+                    active-color="#d54215"
                     v-bind:star-size="40"
                     :show-rating = false
                     border-color = "#444444"	
@@ -183,7 +196,32 @@ export default {
             return this.$toast.error("This post has been rated by you!")
         }
         
-      },    
+      },  
+      async submitFavourite(value)
+        {
+            console.log(1);
+            const account = this.$store.getters['common/userCommon'];
+            this.$store.dispatch("favourites/submitFavourite",{
+                id: value,
+                member_id: account.id, 
+            }).then(() => {
+                this.$toast.success("Add wish list successful !");
+                this.fetchPostDetail();
+            }).catch(() =>{
+                this.$toast.error("Erorr!");    
+            })
+        },
+
+        async unsubmitFavourite(value){
+            this.$store.dispatch("favourites/deleteFavourite",{
+                id: value,
+            }).then(() => {
+                this.$toast.success("delete wish list successful !");
+                this.fetchPostDetail();
+            }).catch(() =>{
+                this.$toast.error("Erorr!");    
+            })
+        },  
       handleOk(){
         this.visible = false;
       },
@@ -251,6 +289,12 @@ export default {
                .post_list_rate{
                 display: flex;
                 width: 150px;
+                .number{
+                    margin: 7px 0 0 7px;
+                }
+               }
+               .post_list_wist{
+                margin-top:6px;
                }
             }
 
@@ -295,14 +339,14 @@ export default {
             }
             .post_detail-time{
                 margin-top:20px;
-                width: 360px;
+                width: 480px;
                 height:60px;
                 background: #f5f6ea;
                 border-radius: 10px;
                 display: flex;
                 .option{
                     
-                    width: 120px;
+                    width: 160px;
                     height:60px;
                     border-right: 1px solid rgb(234, 234, 234);
                 }

@@ -1,33 +1,22 @@
 <template>
     <div class="review_list">
-        <h1>Review (102)</h1>
+        <h1>Review ({{totalReview}})</h1>
         <div class="rating_infomation">
             <div class="rating_avg">
 
             </div>
             <div class="rating_avg_list">
-                <star-rating 
-                        v-model:rating= "rating"
-                        inactive-color="#000"
-                        active-color="#f00"
-                        v-bind:star-size="20"
-                        :read-only = true
-                        :show-rating = false
-                    /> 
-                    <span>1234 Ratings</span>
-                    <template v-for="(rate,index) in data_rating" :key="index" >
+                    <template v-for="(rate,index) in getStatRate" :key="index" >
                     <div class="rating_avg_detail">
-                       
-                           
                             <star-rating 
-                                :rating= "`${rate}`"
+                                :rating= "index"
                                 inactive-color="#000"
                                 active-color="#f00"
                                 v-bind:star-size="20"
                                 :read-only = true
                                 :show-rating = false
                             /> 
-                            <span> {{ rate }}</span>
+                            <span> ({{ rate }})</span>
                         
                         
 
@@ -62,12 +51,8 @@
                 </span>
             </div>
             <div class="review_action" v-if="checkUserId == rate.member_id">
-                <a-tooltip>
-                    <template #title>
-                    Like
-                    </template>
-                        <i class="fa-solid fa-thumbs-up"></i>
-                </a-tooltip>
+               
+                
 
                 <a-tooltip>
                     <template #title>
@@ -165,15 +150,19 @@ export default {
     computed:{
         ...mapGetters({
             rateListByPost:"rates/rateListByPost",
-            rateDetail:"rates/rateDetail"
+            rateDetail:"rates/rateDetail",
+            getStatRate:"rates/getStatRate",
+            totalReview:"rates/totalReview"
         }),
         checkUserId()
         {
             return this.$store.getters['common/userCommon'].id;
         }
     },
-    created(){
+    async created(){
         this.getListRateByPost();
+        let postId = this.$route.params.id;
+        await this.$store.dispatch('rates/listStatRateByPost',postId)
     },
 
     methods:{
@@ -258,7 +247,8 @@ export default {
                 margin-top:5px;
                 display: flex;
                 span{
-                    margin-left: 5px;
+                    margin-left: 10px;
+                    display: flex;
                 }
             }
         }
