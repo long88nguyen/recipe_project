@@ -56,14 +56,14 @@
 
                 <a-tooltip>
                     <template #title>
-                    Delete rate
+                    Xóa đánh giá
                     </template>
                 <i class="fa-solid fa-trash" @click="DeleteRate(rate.id)"></i>
                 </a-tooltip>
 
                 <a-tooltip>
                     <template #title>
-                    Edit rate
+                    Chỉnh sửa đánh giá
                     </template>
                 <i class="fa-solid fa-pen-to-square" @click="DetailRate(rate.id)"></i>
                 </a-tooltip>
@@ -79,11 +79,11 @@
             centered
             >
             <div class="rating_side_detail">
-                <label for="">Your Rating</label>
+                <label for="">Đánh giá</label>
                 <star-rating 
                     v-model:rating="rateDetail.number_rating" 
                     inactive-color="#E8E8E8"
-                    active-color="#FFFF00"
+                    active-color="#d54215"
                     v-bind:star-size="40"
                     :show-rating = false
                     border-color = "#444444"	
@@ -93,7 +93,7 @@
                 />
             </div>
             <div class="review_side">
-                <label for="">Your review</label>
+                <label for="">Nhận xét</label>
                 <textarea name="" :rows = "3" id=""
                 class="form-control"  v-model ="rateDetail.review"          
                 ></textarea>
@@ -115,7 +115,7 @@
 
             <button class="btn btn-success text-center mt-3" @click="DeleteSubmit">Đánh giá</button>
 
-            <button class="btn btn-danger text-center mt-3 mr-2" @click="unsubmit">Hủy</button>
+            <button class="btn btn-danger text-center mt-3 mr-2" @click="unsubmit" style="margin-left:10px">Hủy</button>
 
           </a-modal>
     </div>
@@ -176,12 +176,12 @@ export default {
             let rateId = this.rateId;
             this.$store.dispatch("rates/deleteRate",rateId).then(() => {
                 let postId = this.$route.params.id;
-                this.$toast.success('Update rating successful!')
+                this.$toast.success('Xóa đánh giá thành công!')
                 this.$store.dispatch('rates/listRatePost',postId);
                 this.$store.dispatch('posts/detailPostUser',postId);
              }
             ).catch(() => {
-                this.$toast.error('error')
+                this.$toast.error('Đã sảy ra lỗi')
             })
             this.visibleDelete = false;
         },
@@ -215,11 +215,11 @@ export default {
         }).then(()=>{
             this.visible = false;
             let postId = this.$route.params.id;
-            this.$toast.success('Update rating successful!')
+            this.$toast.success('Chỉnh sửa đánh giá thành công!')
             this.$store.dispatch('rates/listRatePost',postId);
             this.$store.dispatch('posts/detailPostUser',postId);
         }).catch(() =>{
-            this.$toast.error('error')
+            this.$toast.error('Đã sảy ra lỗi!')
         });
         },
         DeleteRate(value){

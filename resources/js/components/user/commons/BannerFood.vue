@@ -106,10 +106,7 @@
                 <a-row>
                     <template v-for="(post_order,index) in getPostOrder" :key="index">
                         <a-col :xxl="8" :xl="8" :lg="8" :md="12" :xs="24">
-                            <router-link 
-                                :to="{
-                                path: `/post-detail/${post_order.id}`
-                                }" >
+                           
                             <div class="newpost_cartd">
                                 <a-carousel 
                                 effect="fade"
@@ -125,11 +122,14 @@
                                     <i class="fa-regular fa-heart" v-else @click="submitFavourite(post_order.id)"></i>
 
                                 </div>
-                            
+                                <router-link 
+                                :to="{
+                                path: `/post-detail/${post_order.id}`
+                                }" >
                                 <span>{{post_order.title.substring(0,20) + "..."}}</span>
-
-                            </div>
                             </router-link>
+                            </div>
+                           
                         </a-col>
                     </template>
                     

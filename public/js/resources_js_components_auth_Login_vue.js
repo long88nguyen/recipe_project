@@ -30,6 +30,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      errors: {
+        email: '',
+        password: ''
+      },
       form: {
         email: '',
         password: ''
@@ -40,6 +44,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     accountInfo: "auth/account"
   })),
   methods: {
+    validate: function validate() {
+      if (!this.form.email) {
+        this.errors.email = "Email is required";
+      }
+
+      if (!this.form.password) {
+        this.errors.password = "Password is required";
+      }
+    },
     login: function login() {
       var _this = this;
 
@@ -48,14 +61,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _this.validate();
+
+                _context.next = 3;
                 return _this.$store.dispatch('auth/login', _this.form).then(function () {
                   var check_role = _this.accountInfo.is_admin;
 
                   if (check_role === 1) {
                     _this.$router.push({
                       path: "/categories"
-                    }).then(function () {
+                    }).then(function (response) {
                       _this.$toast.success('Đăng nhập thành công !');
                     });
                   } else {
@@ -65,13 +80,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                     _this.$toast.success('Đăng nhập thành công!');
                   }
-                })["catch"](function () {
-                  console.log("errrrrrrrrrrrrrrr");
-
-                  _this.$toast.error('Đăng nhập thất bại !');
+                })["catch"](function (error) {
+                  _this.$toast.error('Đăng nhập không thành công! Vui lòng kiểm tra lại thông tin đăng nhập');
                 });
 
-              case 2:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -142,53 +155,48 @@ var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_8 = {
+  "class": "feedback_validation"
+};
+var _hoisted_9 = {
   "class": "txt_field"
 };
 
-var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Password", -1
   /* HOISTED */
   );
 });
 
-var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "pass"
-  }, " Forgot Password ? ", -1
-  /* HOISTED */
-  );
-});
+var _hoisted_12 = {
+  "class": "feedback_validation"
+};
 
-var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "submit",
     name: "",
-    id: ""
+    id: "",
+    value: "Đăng nhập"
   }, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "signup_link"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Not a Member ?"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: ""
-  }, " Signup")], -1
-  /* HOISTED */
-  );
-});
-
+var _hoisted_14 = {
+  "class": "signup_link"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     action: "",
-    onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.login && $options.login.apply($options, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -196,18 +204,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $data.form.email = $event;
     }),
-    required: ""
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.email]]), _hoisted_6, _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    onBlur: _cache[1] || (_cache[1] = function ($event) {
+      return $options.validate();
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.email]]), _hoisted_6, _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.email), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "password",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.form.password = $event;
     }),
-    required: ""
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.password]]), _hoisted_9, _hoisted_10]), _hoisted_11, _hoisted_12, _hoisted_13], 32
+    onBlur: _cache[3] || (_cache[3] = function ($event) {
+      return $options.validate();
+    }),
+    "class": "is-invalid"
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.password]]), _hoisted_10, _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.password), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"pass\">\n        Forgot Password ?\n      </div> "), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bạn chưa có tài khoản ?"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/register"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Đăng ký")];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])], 32
   /* HYDRATE_EVENTS */
   )])]);
 }
@@ -230,7 +256,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".login_layout[data-v-4221c3ad] {\n  margin: 0;\n  padding: 0;\n  font-family: montserrat;\n  background: rgba(0, 0, 0, 0.6);\n  height: 100vh;\n  overflow: hidden;\n}\n.login_layout img[data-v-4221c3ad] {\n  width: 100%;\n  height: 100vh;\n  opacity: 0.4;\n}\n.center[data-v-4221c3ad] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 400px;\n  background: white;\n  border-radius: 10px;\n}\n.center h1[data-v-4221c3ad] {\n  text-align: center;\n  padding: 20px 0 20px 0;\n}\n.center form[data-v-4221c3ad] {\n  padding: 0 40px;\n  box-sizing: border-box;\n}\n.center form .txt_field[data-v-4221c3ad] {\n  position: relative;\n  border-bottom: 2px solid #adadad;\n  margin: 30px 0;\n}\n.center form .txt_field input[data-v-4221c3ad] {\n  width: 100%;\n  padding: 0 5px;\n  height: 40px;\n  font-size: 16px;\n  border: none;\n  background: none;\n  outline: none;\n}\n.center form .txt_field label[data-v-4221c3ad] {\n  position: absolute;\n  top: 50%;\n  left: 5px;\n  color: #989696;\n  transform: translateY(-50%);\n  font-size: 16px;\n  pointer-events: none;\n  transition: .5s;\n}\n.center form .txt_field span[data-v-4221c3ad]::before {\n  content: '';\n  position: absolute;\n  top: 40px;\n  left: 0;\n  width: 0%;\n  height: 2px;\n  background: #2691d9;\n  transition: 0.5s;\n}\n.center .pass[data-v-4221c3ad] {\n  margin: -5xp 0 20px 5px;\n  color: #a6a6a6;\n  cursor: pointer;\n}\n.center .pass[data-v-4221c3ad]:hover {\n  text-decoration: underline;\n}\n.center input[type=\"submit\"][data-v-4221c3ad] {\n  width: 100%;\n  height: 50px;\n  border: 1px solid;\n  background: #2691d9;\n  border-radius: 25px;\n  font-size: 18px;\n  color: #e9f4fb;\n  font-weight: 700;\n  cursor: pointer;\n  outline: none;\n  margin-top: 30px;\n}\n.center input[type=\"submit\"][data-v-4221c3ad]:hover {\n  border-color: #2691d9;\n  transition: .5s;\n}\n.center .signup_link[data-v-4221c3ad] {\n  margin: 30px 0;\n  text-align: center;\n  font-size: 16px;\n  color: #666666;\n}\n.center .signup_link a[data-v-4221c3ad] {\n  color: #2691d9;\n  text-decoration: none;\n}\n.center .signup_link a[data-v-4221c3ad]:hover {\n  text-decoration: underline;\n}\n.txt_field input:focus ~ label[data-v-4221c3ad],\n.txt_field input:valid ~ label[data-v-4221c3ad] {\n  top: -5px;\n  color: #2691d9;\n}\n.txt_field input:focus ~ span[data-v-4221c3ad]::before,\n.txt_field input:valid ~ span[data-v-4221c3ad]::before {\n  width: 100%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".login_layout[data-v-4221c3ad] {\n  margin: 0;\n  padding: 0;\n  font-family: montserrat;\n  background: rgba(0, 0, 0, 0.6);\n  height: 100vh;\n  overflow: hidden;\n}\n.login_layout img[data-v-4221c3ad] {\n  width: 100%;\n  height: 100vh;\n  opacity: 0.4;\n}\n.center[data-v-4221c3ad] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 400px;\n  background: white;\n  border-radius: 10px;\n}\n.center h1[data-v-4221c3ad] {\n  text-align: center;\n  padding: 20px 0 20px 0;\n}\n.center form[data-v-4221c3ad] {\n  padding: 0 40px;\n  box-sizing: border-box;\n}\n.center form .txt_field[data-v-4221c3ad] {\n  position: relative;\n  border-bottom: 2px solid #adadad;\n  margin: 30px 0 10px 0;\n}\n.center form .txt_field input[data-v-4221c3ad] {\n  width: 100%;\n  padding: 0 5px;\n  height: 40px;\n  font-size: 16px;\n  border: none;\n  background: none;\n  outline: none;\n}\n.center form .txt_field label[data-v-4221c3ad] {\n  position: absolute;\n  top: 50%;\n  left: 5px;\n  color: #989696;\n  transform: translateY(-50%);\n  font-size: 16px;\n  pointer-events: none;\n  transition: .5s;\n}\n.center form .txt_field span[data-v-4221c3ad]::before {\n  content: '';\n  position: absolute;\n  top: 40px;\n  left: 0;\n  width: 0%;\n  height: 2px;\n  background: #2691d9;\n  transition: 0.5s;\n}\n.center .pass[data-v-4221c3ad] {\n  margin: -5xp 0 20px 5px;\n  color: #a6a6a6;\n  cursor: pointer;\n}\n.center .pass[data-v-4221c3ad]:hover {\n  text-decoration: underline;\n}\n.center input[type=\"submit\"][data-v-4221c3ad] {\n  width: 100%;\n  height: 50px;\n  border: 1px solid;\n  background: #2691d9;\n  border-radius: 25px;\n  font-size: 18px;\n  color: #e9f4fb;\n  font-weight: 700;\n  cursor: pointer;\n  outline: none;\n  margin-top: 30px;\n}\n.center input[type=\"submit\"][data-v-4221c3ad]:hover {\n  border-color: #2691d9;\n  transition: .5s;\n}\n.center .signup_link[data-v-4221c3ad] {\n  margin: 30px 0;\n  text-align: center;\n  font-size: 16px;\n  color: #666666;\n}\n.center .signup_link a[data-v-4221c3ad] {\n  color: #2691d9;\n  text-decoration: none;\n}\n.center .signup_link a[data-v-4221c3ad]:hover {\n  text-decoration: underline;\n}\n.txt_field input:focus ~ label[data-v-4221c3ad],\n.txt_field input:valid ~ label[data-v-4221c3ad] {\n  top: -5px;\n  color: #2691d9;\n}\n.txt_field input:focus ~ span[data-v-4221c3ad]::before,\n.txt_field input:valid ~ span[data-v-4221c3ad]::before {\n  width: 100%;\n}\n.feedback_validation[data-v-4221c3ad] {\n  color: red;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

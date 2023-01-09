@@ -162,14 +162,9 @@ var _hoisted_11 = {
 };
 var _hoisted_12 = ["onClick"];
 var _hoisted_13 = ["onClick"];
-
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "btn_post"
-}, "Xem bài viết", -1
-/* HOISTED */
-);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
   var _component_a_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-col");
 
   var _component_a_row = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-row");
@@ -217,7 +212,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 }
               }, null, 8
               /* PROPS */
-              , _hoisted_13))]), _hoisted_14])];
+              , _hoisted_13))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+                to: {
+                  path: "/post-detail/".concat(post.id)
+                },
+                "class": "btn_post"
+              }, {
+                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Xem bài viết ")];
+                }),
+                _: 2
+                /* DYNAMIC */
+
+              }, 1032
+              /* PROPS, DYNAMIC_SLOTS */
+              , ["to"])])];
             }),
             _: 2
             /* DYNAMIC */
@@ -260,7 +269,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".get_all_post {\n  width: 100%;\n  margin-top: 200px;\n}\n.get_all_post .get_all_post_container {\n  width: 70%;\n  margin: 0 auto;\n  background: white;\n}\n.get_all_post .get_all_post_container .list_all_post {\n  margin-top: 20px;\n}\n.get_all_post .get_all_post_container .list_all_post .category {\n  height: 50px;\n  line-height: 50px;\n  width: 200px;\n  border-radius: 5px;\n  background: #f5f6ea;\n}\n.get_all_post .get_all_post_container .list_all_post .category img {\n  width: 40px;\n  height: 40px;\n  border: 1px solid silver;\n  border-radius: 20px;\n  margin-right: 10px;\n}\n.get_all_post .get_all_post_container .list_all_post .category span {\n  font-size: 16px;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post {\n  width: 100%;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category {\n  width: 100%;\n  margin-top: 20px;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item {\n  width: 100%;\n  padding: 10px;\n  height: 200px;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item img {\n  width: 100%;\n  height: 200px;\n  border-radius: 10px;\n  position: relative;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item .card_heart {\n  width: 30px;\n  height: 30px;\n  background: #d54215;\n  position: absolute;\n  top: 15px;\n  left: 10px;\n  font-size: 14px;\n  color: white;\n  border-radius: 50%;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item .card_heart i {\n  display: flex;\n  justify-content: center;\n  line-height: 30px;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item .btn_post {\n  position: absolute;\n  top: 45%;\n  right: 30%;\n  width: 120px;\n  height: 30px;\n  border: none;\n  text-align: center;\n  line-height: 30px;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item .btn_post:hover {\n  background: #d54215;\n  color: white;\n  transition: 0.5s;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".get_all_post {\n  width: 100%;\n  margin-top: 200px;\n}\n.get_all_post .get_all_post_container {\n  width: 70%;\n  margin: 0 auto;\n  background: white;\n}\n.get_all_post .get_all_post_container .list_all_post {\n  margin-top: 20px;\n}\n.get_all_post .get_all_post_container .list_all_post .category {\n  height: 50px;\n  line-height: 50px;\n  width: 200px;\n  border-radius: 5px;\n  background: #f5f6ea;\n}\n.get_all_post .get_all_post_container .list_all_post .category img {\n  width: 40px;\n  height: 40px;\n  border: 1px solid silver;\n  border-radius: 20px;\n  margin-right: 10px;\n}\n.get_all_post .get_all_post_container .list_all_post .category span {\n  font-size: 16px;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post {\n  width: 100%;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category {\n  width: 100%;\n  margin-top: 20px;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item {\n  width: 100%;\n  padding: 10px;\n  height: 200px;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item img {\n  width: 100%;\n  height: 200px;\n  border-radius: 10px;\n  position: relative;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item .card_heart {\n  width: 30px;\n  height: 30px;\n  background: #d54215;\n  position: absolute;\n  top: 15px;\n  left: 20px;\n  font-size: 14px;\n  color: white;\n  border-radius: 50%;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item .card_heart i {\n  display: flex;\n  justify-content: center;\n  line-height: 30px;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item .btn_post {\n  position: absolute;\n  top: 45%;\n  right: 30%;\n  width: 120px;\n  height: 30px;\n  border: none;\n  text-align: center;\n  line-height: 30px;\n  background: white;\n  color: black;\n}\n.get_all_post .get_all_post_container .list_all_post .list_post .post_by_category .post_item .btn_post:hover {\n  background: #d54215;\n  color: white;\n  transition: 0.5s;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

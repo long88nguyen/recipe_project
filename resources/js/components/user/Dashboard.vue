@@ -16,6 +16,7 @@
                     <ul>
                         <li ><router-link to="/home-page" active-class="active" >Trang chủ</router-link></li>
                         <li><router-link to="/search-result" active-class="active">Tìm kiếm</router-link></li>
+                        <li><router-link to="/all-post" active-class="active">Bài viết</router-link></li>
                         
                     </ul>
                 </div>
@@ -28,7 +29,7 @@
                     <div class="nav-account-menu" :class="{activce:isActiveVisible}">
                        
                         <ul>
-                            <li><i class="fa-solid fa-address-card"></i><router-link to="/profile" @click="toggleProfile">My Profile</router-link></li>
+                            <li><i class="fa-solid fa-address-card"></i><router-link to="/profile" @click="toggleProfile">Thông tin cá nhân</router-link></li>
                             <li @click="showModal"><i class="fa-solid fa-right-from-bracket"></i><span>Đăng xuất</span></li>
                         </ul>
                     </div>
@@ -41,7 +42,7 @@
             <a-col :xxl="24" :xl="24" :lg="24" :md="24" :xs="24">
                  <div class="nav-search"   v-show="scrollEvent < 100">
                       <form action="" class="search-bar">
-                          <input type="text" placeholder="Search anything ... " @input="isActive"
+                          <input type="text" placeholder="Nhập thông tin tìm kiếm ... " @input="isActive"
                           v-model="title"
                           >
                           <button @click.prevent="search">
@@ -143,6 +144,7 @@ export default {
           member_name: this.searchData.member_name,
           category_name: this.searchData.category_name,
         });
+        this.title="";
       },
       onScroll(e)
       {
@@ -316,7 +318,7 @@ export default {
         font-size: 14px;
       }
       ::placeholder {
-        color: black;
+        color: rgba(0,0,0,0.4);
       }
       button {
         border: none;

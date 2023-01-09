@@ -150,7 +150,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     {
         $memberId = Auth::user()->member->id;
         $searchPost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
-        ->with("PostImage:id,post_id,image","Ingredients:id,name,post_id","member:id,name")
+        ->with("PostImage:id,post_id,image","Ingredients:id,name,post_id","member:id,name,avatar")
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -605,7 +605,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "time","status","created_at",
         "updated_at","nutrition_facts",
         "note","deleted_at")
-        ->where("posts.member_id",$id)->get();
+        ->where("posts.member_id",$id)->limit(5)->get();
         return [
             'listYourPost' => $YourPost
         ];

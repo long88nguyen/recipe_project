@@ -36,7 +36,7 @@
         "js-cookie": "^2.2.1",
         "moment": "^2.25.3",
         "v-toaster": "^1.0.3",
-        "vee-validate": "^4.7.3",
+        "vee-validate": "^2.2.15",
         "vue": "^3.2.39",
         "vue-chartjs": "^5.1.0",
         "vue-echarts": "^6.3.3",

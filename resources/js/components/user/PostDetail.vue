@@ -57,8 +57,8 @@
                         <div class="option save_post" v-else @click="unsubmitFavourite(getPostDetail.id)" > <span >Bỏ lưu</span>  <i class="fa-solid fa-heart"></i></div>
                         
                     
-                        <div class="option favourite_post" v-if="getPostDetail.rateable==false" ><span @click="showPopup">Rate</span> <i class="fa-regular fa-star"></i></div>
-                        <div class="option favourite_post" v-else><span @click="showPopup" >Rated</span> <i class="fa-solid fa-star"></i></div>
+                        <div class="option favourite_post" v-if="getPostDetail.rateable==false" ><span @click="showPopup">Đánh giá</span> <i class="fa-regular fa-star"></i></div>
+                        <div class="option favourite_post" v-else><span @click="showPopup" >Đã đánh giá</span> <i class="fa-solid fa-star"></i></div>
                         <!-- <ShareNetwork
                             network="facebook"
                             
@@ -68,7 +68,7 @@
                             quote="The hot reload is so fast it\'s near instant. - Evan You"
                             hashtags="vuejs,vite"
                         > -->
-                        <div class="option share_post"><span>Share</span> <i class="fa-solid fa-share"></i></div>
+                        <div class="option share_post"><span>Chia sẻ</span> <i class="fa-solid fa-share"></i></div>
                         <!-- </ShareNetwork> -->
                    </div>
                    <div class="post_ingre">
@@ -91,10 +91,22 @@
                             </template>
                         </ul>   
                    </div>
-                   <div class="post_direction">
-                    <h3>Nutrition Facts</h3>
-                       
+                   <div class="post_nutrition_fact" v-if="getPostDetail.nutrition_facts">
+                    <h4>Thành phần dinh dưỡng</h4>
+                        <span>{{ getPostDetail.nutrition_facts  }}</span>
                    </div>
+
+                   <div class="post_note" v-if="getPostDetail.note">
+                    <h4>Ghi chú</h4>
+                        <p>{{ getPostDetail.note  }}</p>
+                   </div>
+
+                   <div class="post_time_make" v-if="getPostDetail.time">
+                    <h4>Thời gian thực hiện</h4>
+                        <p>{{ getPostDetail.time  }} phút</p>
+                   </div>
+
+                   
                    <rating-panel :id="getPostDetail.id"/>
                 </div>
             </a-col>
@@ -104,7 +116,7 @@
                     
                               
                 <div class="post_suggest">
-                    <h4>Posts by the same author</h4>
+                    <h4>Bài viết cùng tác giả</h4>
                     <template v-for="(post,index) in getYourPost" :key="index">
                     <div class="post_suggest-list">
                         <img :src="post.post_image[0].image" alt="">
@@ -123,7 +135,7 @@
             centered
             >
             <div class="rating_side_detail">
-                <label for="">Your Rating</label>
+                <label for="">Đánh giá</label>
                 <star-rating 
                     v-model:rating="rating" 
                     inactive-color="#E8E8E8"
@@ -138,7 +150,7 @@
             </div>
            
             <div class="review_side">
-                <label for="">Your review</label>
+                <label for="">Nhận xét</label>
                 <textarea name="" :rows = "3" id="" v-model="review"
                 class="form-control"            
                 ></textarea>
@@ -459,6 +471,42 @@ export default {
               
                
             }
+            .post_nutrition_fact{
+                h4{
+                    padding: 20px;
+                }
+                span{
+                    padding: 20px;
+                    font-size:16px;
+                }
+            }
+            .post_note{
+                h4{
+                    padding: 20px;
+                }
+                p{
+                    padding-left:20px;
+                    font-size:16px;
+                }
+            }
+
+            .post_time_make{
+                background: #f5f6ea;
+                width: 300px;
+                margin-top:10px;
+                h4{
+                    padding: 20px;
+                }
+                p{
+                    padding-left:20px;
+                    padding-bottom: 10px;
+                    font-size:16px;
+                    i{
+                        font-size: 20px;
+                    }
+                }
+            }
+
             .post-feedback{
                 margin-top:20px;
                 width: 100%;

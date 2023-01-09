@@ -42,25 +42,74 @@
                                 }">
                             <i class="fa-solid fa-pen-to-square blue"></i>
                             </router-link>
-                            <i class="fa-solid fa-trash red"></i>
+
+                            <i class="fa-solid fa-trash red" @click="openConfirm(post.id)"></i>
                         </div>
                    </div>   
         </a-col>
         </template>
         
     </a-row>
+    <a-modal 
+    class="add-timesheet-modal"
+        v-model:visible="isConfirmModal" 
+        :footer = null
+        centered
+        title="Xác nhận xóa bài viết" 
+        @ok="handleOk" @cancel="handleCancel" :destroyOnClose="true"
+        >
+        <h4>Bạn có chắc chắn xóa bài viết này?</h4>
+        <button class="btn btn-primary" @click="confirmDelete">Xác nhận </button>
+        <button class="btn btn-danger" @click="cancelConfirm" style="margin-left:10px">Hủy </button>
+    </a-modal>  
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 export default {
+    data(){
+        return{
+            isConfirmModal : false,
+            idPost: null,
+        }
+    },
     computed:{
         ...mapGetters({
             getMyPostUser:"posts/getMyPostUser",
         }),
     },
     created(){
-        this.$store.dispatch("posts/getMyPost")
+        this.fetchData()
+    },
+    methods:{
+        async fetchData(){
+            await this.$store.dispatch("posts/getMyPost");
+        },
+        openConfirm(value){
+            this.isConfirmModal = true
+            this.idPost = value;
+        },
+        handleCancel(){
+            this.isConfirmModal = false
+        },
+        handleOk(){
+            this.isConfirmModal = false
+        },
+        cancelConfirm(){
+            this.isConfirmModal = false
+        },
+
+        async confirmDelete(){
+            let postId = this.idPost;
+            await this.$store.dispatch('posts/deletePost',postId).then(() =>{
+                this.$toast.success('ok')
+                this.fetchData()
+            }).catch(()=>{
+                this.$toast.error('ok')
+            });
+            this.isConfirmModal = false
+
+        }
     }
 }
 </script>

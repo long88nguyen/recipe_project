@@ -1,7 +1,7 @@
 <template>
   <div class="banner_food">
         <div class="banner_food-container">
-            <center><h1>Kết quả tìm kiếm</h1>
+            <center><h3>Kết quả tìm kiếm</h3>
             </center>
             <div v-if="items.length > 0">
                 <a-row>
@@ -39,7 +39,7 @@
                                  </div>
                              </div>
                              <div class="member_side">
-                                <span>{{ post.member.name }}</span> <img src="../../uploads/avatar.png" alt="">
+                                <span>{{ post.member.name }}</span> <img :src="post.member.avatar" alt="">
                              </div>
                         </div>   
                       
@@ -48,7 +48,9 @@
             </a-row>
             </div>
             <div v-else>
-                <center><h5 style="color:red">Không có kết quả tìm kiếm !</h5></center>
+                <center><h5 style="color:red">Không có kết quả tìm kiếm !</h5>
+                <router-link to="/home-page" class="back_page">Quay lại trang chủ</router-link>
+                </center>
             </div>
         </div>
        
@@ -79,7 +81,9 @@ export default {
 
 <style lang="scss" scoped>
 .banner_food{
-    margin-top: 200px;
+    background: #f4f9f6;
+    padding-top: 200px;
+    padding-bottom: 30px;
    width: 100%;
     .banner_food-container
     {
@@ -87,14 +91,16 @@ export default {
         margin:0 auto;
         .card_item{
             width: 90%;
-            height: 350px;
+            max-height: 400px;
             border-radius:5px;
             transition: 0.3s;
             background: white; 
+            // margin: 10px 5px; 
+            margin:10px 0;
 
             img{
                 width: 100%;
-                height: 150px;
+                height: 200px;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
                 top:0;
@@ -119,16 +125,28 @@ export default {
                     line-height: 30px;
                 }
             }
-            h4{
-                font-size: 20px;
-                height: 40px;
-                padding:0px 10px 0 10px;
+            // h4{
+            //     font-size: 20px;
+            //     height: 40px;
+            //     padding:0px 10px 0 10px;
                
-            }
+            // }
             .card_title{
                 font-size:18px;
                 height:45px;
                 padding:10px
+            }
+
+            .card_category{
+                font-size: 24px;
+                height: 30px;
+                line-height: 30px;
+                margin:0px 10px 10px 10px;
+               
+            }
+            .card_category:hover{
+                border-bottom:1px solid #d54215;
+                transition: 0.5s;
             }
             .card-rating
             {
@@ -182,6 +200,9 @@ export default {
                     height: 30px;
                     border-radius: 15px;
                 }
+                span{
+                    margin-right: 10px;
+                }
             }
         }
         .card_item:hover{
@@ -208,4 +229,10 @@ export default {
     }
 }
 
+.back_page{
+    font-size:16px;
+}
+.back_page:hover{
+    text-decoration: underline;
+}
 </style>

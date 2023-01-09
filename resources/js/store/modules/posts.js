@@ -183,6 +183,10 @@ export const actions = {
         await axios.post(api.CREATE_POST, params);
       },
 
+      async deletePost({ commit }, postId) {
+        await axios.delete(api.DELETE_POST + "/" + postId);
+      },
+
       async detailPostUser({ commit }, postId) {
         const response = await axios.get(
           api.POST_DETAIL + "/" + postId

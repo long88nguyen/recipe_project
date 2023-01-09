@@ -7,24 +7,43 @@
               <div class="create_post-header">
                 <a-row>
                     <a-col :xxl="14" :xl="14" :lg="14">
-                      <div class="form-ingredient">
-                        <label for="">Tiêu đề</label>
+
+                     <div class="form-ingredient"> 
+                        <label for="">Tiêu đề <span class="validate_feedback">*</span></label>
                         <div class="form-group">
-                          <textarea :rows="2" type="text" class="form-control" v-model="forms.title"></textarea>
-                          
+                          <textarea :rows="3" 
+                          type="text" 
+                          class="form-control" 
+                          v-model="forms.title"
+                          @blur="validate()"
+                          :class="{'is-invalid' : errors.title }"
+                          >
+                        </textarea>                        
                         </div>
+                        <div class="validate_feedback">{{ errors.title }}</div>
                       </div>
+
                       <div class="form-ingredient">
-                        <label for="">Mô tả</label>
+                        <label for="">Mô tả <span class="validate_feedback">*</span></label>
                         <div class="form-group">
-                          <textarea :rows="2" type="text" class="form-control" v-model="forms.content"></textarea>
-                          
+                          <textarea :rows="3" type="text" 
+                          class="form-control" 
+                          v-model="forms.content"
+                          @blur="validate()"
+                          :class="{'is-invalid' : errors.content }"
+                          ></textarea>     
                         </div>
+                        <div class="validate_feedback">{{ errors.content }}</div>
                       </div>
+
                       <div class="form-ingredient">
-                        <label for="">Danh mục</label>
+                        <label for="">Danh mục <span class="validate_feedback">*</span></label>
                         <div class="form-group">
-                          <select class="form-control" v-model="forms.category_id">
+                          <select class="form-control" v-model="forms.category_id"
+                          @change="validate()"
+                          :class="{'is-invalid' : errors.category_id }"
+                          >
+                            <option value="">-- Chọn danh mục --</option>
                             <template v-for="(option,index) in getAllcategory" :key="index">
                               <option :value="option.id">{{option.name}}</option>
                             </template>
@@ -32,11 +51,18 @@
                           </select>
                           
                         </div>
+                        <div class="validate_feedback">{{ errors.category_id }}</div>
                       </div>
+
+
+
                       <div class="form-ingredient">
-                        <label for="">Thành phần</label>
+                        <label for="">Thành phần <span class="validate_feedback">*</span></label>
                         <div class="form-group" v-for="(input,k) in forms.ingredients" :key="k">
-                          <input type="text" class="form-control" v-model="input.name" />
+                          <input type="text" class="form-control" v-model="input.name" 
+                          @blur="validate()"
+                          :class="{'is-invalid' : errors.ingredients }"
+                          />
                               <span>
                                 <div
                                   class="fas fa-minus-circle"
@@ -51,14 +77,17 @@
                                 </div>
                               </span>
                         </div>
+                        <div class="validate_feedback">{{ errors.ingredients }}</div>
                       </div>
 
               
                         
                       <div class="form-ingredient">
-                        <label for="">Các bước thực hiện</label>
+                        <label for="">Các bước thực hiện <span class="validate_feedback">*</span></label>
                         <div class="form-group" v-for="(input,k) in forms.directions" :key="k">
-                          <textarea :placeholder="'Step ' + (k+1)" :rows="4" type="text" class="form-control" v-model="input.desc" ></textarea>
+                          <textarea :placeholder="'Step ' + (k+1)" :rows="4" type="text" class="form-control" v-model="input.desc"       
+                          @blur="validate()"
+                          :class="{'is-invalid' : errors.directions }"></textarea>
                               <span>
                                 <div
                                   class="fas fa-minus-circle"
@@ -73,14 +102,20 @@
                                 </div>
                               </span>
                         </div>
+                        <div class="validate_feedback">{{ errors.directions }}</div>
                       </div>
 
                       <div class="form-ingredient">
-                        <label for="">Thời gian thực hiện</label>
+                        <label for="">Thời gian thực hiện <span class="validate_feedback">*</span></label>
                         <div class="form-group">
-                          <input  type="text" class="form-control" v-model="forms.time"/>
-                          
+                          <input  type="text" 
+                          class="form-control" 
+                          v-model="forms.time"
+                          @blur="validate()"
+                          :class="{'is-invalid' : errors.time }"
+                          />
                         </div>
+                        <div class="validate_feedback">{{ errors.time }}</div>
                       </div>
 
                       <div class="form-ingredient">
@@ -102,7 +137,7 @@
                     <a-col :xxl="10" :xl="10" :lg="10">
                       <div class="form-image">
                         <div class="form-upload">
-                            <label for="">Ảnh sản phẩm</label>
+                            <label for="">Ảnh sản phẩm <span class="validate_feedback">*</span></label>
                             <div class="file_input_wrap" style="display: none">
                               <input
                                   type="file"
@@ -147,6 +182,7 @@
                         </div>
                         <div v-else>
                         </div>
+                        <div class="validate_feedback">{{ errors.img_evidence }}</div>
                       </div>            
                    
                     </a-col>
@@ -168,6 +204,7 @@ import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
+      errors:[],
       errorFileMessage: "",
       imageType: [
         "image/jpeg",
@@ -179,6 +216,16 @@ export default {
       isImage: true,
       image_evidence: [],
       image_name: [],
+      errors:{
+        img_evidence: "",
+        category_id:"",
+        title:"",
+        content:"",
+        time:"",
+        ingredients:"",
+        directions:"",
+
+      },
       forms: {
         img_evidence: [],
         category_id:"",
@@ -281,11 +328,91 @@ export default {
       this.image_name.splice(index, 1);
     },
 
+    validate(){
+        this.errors = {
+          img_evidence: "",
+          category_id:"",
+          title:"",
+          content:"",
+          time:"",
+          ingredients:"",
+          directions:"",
+          
+        }
+        let isValid = true;
+        if(!this.forms.title)
+        {
+          this.errors.title = "Tiêu đề là bắt buộc"
+          isValid = false
+        }
+        
+        if(!this.forms.category_id)
+        {
+          this.errors.category_id = "Vui lòng chọn 1 danh mục"
+          isValid = false
+        } 
+
+        if(this.forms.title.length > 255)
+        {
+          this.errors.title = "Tiêu đề quá dài (tối đa 255 ký tư)"
+          isValid = false
+        }
+
+        if(!this.forms.content)
+        {
+          this.errors.content = "Tiêu đề là bắt buộc"
+          isValid = false
+        }  
+
+        else if(this.forms.content.length > 255)
+        {
+          this.errors.content = "Tiêu đề quá dài (tối đa 255 ký tư)"
+          isValid = false
+        }
+
+        if(!this.forms.time)
+        {
+          this.errors.time = "Thời gian thực hiện là bắt buộc"
+          isValid = false
+        }
+
+        else if(!this.isNumber(this.forms.time))
+        {
+          this.errors.time = "Thời gian nhập sai định dạng (0-9)"
+          isValid = false
+        }
+        if( this.forms.img_evidence.length == 0)
+        {
+          this.errors.img_evidence = "Chọn tối thiểu một ảnh"
+          isValid = false
+        }
+
+        if(this.forms.directions[0].desc == "")
+        {
+          this.errors.directions = "Vui lòng nhập các bước thực hiện"
+          isValid = false 
+        }
+
+        if(this.forms.ingredients[0].name == "")
+        {
+          this.errors.ingredients = "Vui lòng nhập nguyên liệu" 
+          isValid = false
+        }
+
+        return isValid
+
+    },
+
+    isNumber(value){
+      return /^\d*$/.test(value)
+    },
     async registerOverTimeRequest()
     {
-      let formData = new FormData();
+      console.log(this.validate());
+      if(this.validate()){
+        let formData = new FormData();
       for (let key in this.forms) {
-        console.log(key);
+        // console.log(key);
         if (key === "img_evidence") {
           if (this.forms.img_evidence && this.forms.img_evidence.length > 0) {
             for (let i = 0; i < this.forms.img_evidence.length; i++) {
@@ -306,13 +433,13 @@ export default {
         .dispatch("posts/createPost", formData)
         .then(() => {
           this.$router.push({ path : "/home-page"})
-          this.$toast.success("Add new post successful!")
+          this.$toast.success("Tạo mới bài viết thành công, vui lòng chờ duyệt!")
         })
         .catch(() => {
           this.$toast.error("Error! Please check again !")
         });
+      }
     }, 
-     
 
   },
 };  
@@ -332,8 +459,9 @@ export default {
         .create_post_detail{
           padding: 30px;
           .form-ingredient{
-            margin-top:10px;
+            margin:20px 0;
             .form-group{
+              margin:0px;
               padding: 5px 10px 5px 0px;
               display: flex;
               align-items: center;
@@ -411,5 +539,10 @@ export default {
       width: 90%;
     }
 } 
+
+.validate_feedback{
+  color:red;
+}
+
 </style>
 

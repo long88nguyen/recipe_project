@@ -5,20 +5,23 @@
     <h1>Đăng nhập</h1>
     <form action="" @submit.prevent="login">
       <div class="txt_field">
-        <input type="text" v-model="form.email" required>
+        <input type="text" v-model="form.email" @blur="validate()">
         <span></span>
         <label>Email</label>
       </div>
+      <div class="feedback_validation">{{ errors.email }}</div>
       <div class="txt_field">
-        <input type="password" v-model="form.password" required >
+        <input type="password" v-model="form.password" @blur="validate()" class="is-invalid">
         <span></span>
         <label>Password</label>
       </div>
-      <div class="pass">
+      <div class="feedback_validation">{{ errors.password }}</div>
+
+      <!-- <div class="pass">
         Forgot Password ?
-      </div>
-      <input type="submit" name="" id="">
-      <div class="signup_link">Not a Member ?<a href=""> Signup</a></div>
+      </div> -->
+      <input type="submit" name="" id="" value="Đăng nhập">
+      <div class="signup_link">Bạn chưa có tài khoản ?<router-link to="/register"> Đăng ký</router-link></div>
     </form> 
   </div>
   </div>
@@ -30,6 +33,10 @@ import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
+      errors:{
+        email:'',
+        password:'',
+      },
       form: {
         email: '',
         password:''
@@ -42,13 +49,25 @@ export default {
     })
   },
   methods: {
+    validate(){
+      if(!this.form.email){
+        this.errors.email = "Email is required"
+      }
+
+      if(!this.form.password){
+        this.errors.password = "Password is required"
+      }
+
+
+    },
     async login() {
+      this.validate();
       await this.$store.dispatch('auth/login', this.form)
         .then(() => {
           const check_role = this.accountInfo.is_admin;
           if(check_role === 1)
           {  
-            this.$router.push({path: "/categories"}).then(() => {
+            this.$router.push({path: "/categories"}).then((response) => {
               this.$toast.success('Đăng nhập thành công !');
             });
             
@@ -57,12 +76,12 @@ export default {
           {   
             this.$router.push({path: "/home-page"});
             this.$toast.success('Đăng nhập thành công!');
+
           }
         })
-        .catch(() => {
+        .catch((error) => {
          
-          console.log("errrrrrrrrrrrrrrr")
-          this.$toast.error('Đăng nhập thất bại !');
+          this.$toast.error('Đăng nhập không thành công! Vui lòng kiểm tra lại thông tin đăng nhập');
         });
     },
   }
@@ -101,7 +120,7 @@ export default {
     .txt_field{
       position: relative;
       border-bottom: 2px solid #adadad;
-      margin: 30px 0;
+      margin: 30px 0 10px 0;
       input{
         width:100%;
         padding:0 5px;
@@ -187,4 +206,7 @@ export default {
   width:100%
 }
 
+.feedback_validation{
+  color:red;
+}
 </style>

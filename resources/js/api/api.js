@@ -23,6 +23,7 @@ const MY_POST = '/api/post/my-post'
 const LIST_FAVOURITE_POST = '/api/post/list-favourite'
 const YOUR_POST = '/api/post/your-post'
 const UPDATE_POST = '/api/post/update'
+const DELETE_POST = '/api/post'
 
 //rate 
 
@@ -86,6 +87,7 @@ export default {
     YOUR_POST,
     LIST_FAVOURITE_POST,
     UPDATE_POST,
+    DELETE_POST,
 
     //favourite
 

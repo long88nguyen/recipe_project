@@ -19,7 +19,11 @@
                                     <i class="fa-solid fa-heart" v-if="post.rateable == true" @click="unsubmitFavourite(post.id)"></i>
                                     <i class="fa-regular fa-heart" v-else @click="submitFavourite(post.id)"></i>
                                 </div>
-                                <button class="btn_post">Xem bài viết</button>
+                               <router-link :to="{
+                                        path: `/post-detail/${post.id}`
+                                        }" class="btn_post">Xem bài viết
+                                        
+                            </router-link>
                             </div>
                         </a-col>
                         </template>  
@@ -131,7 +135,7 @@ export default {
                 background: #d54215;
                 position: absolute;
                 top:15px;
-                left:10px;
+                left:20px;
                 font-size: 14px;
                 color:white;
                 border-radius: 50%;
@@ -151,6 +155,8 @@ export default {
                 border: none;
                 text-align: center;
                 line-height: 30px;
+                background:white;
+                color:black;
             
                     }
             .btn_post:hover{
