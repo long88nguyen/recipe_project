@@ -22,7 +22,7 @@
                     <div class="filter_post-more">
                         
                         <h5 class="filter_post-title">
-                            {{ categoryList.length }}+ Danh mục
+                            {{ categoryList.length }}+ <span>Danh mục</span>
                         </h5>
                 </div>
                 </router-link>
@@ -532,11 +532,48 @@ export default {
 
 
 @media (max-width: 414px) {
+    .filter_container{
+        .filter_post{
+            width: 96%;
+            .filter_post-option{
+
+                .filter_post-item{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 20px;
+                    .filter_post-title{
+                    display: none;
+                }
+                img{
+                    margin: 0;
+                    padding: 6px;
+                }
+                }
+                .filter_post-more{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 20px;
+                    .filter_post-title{
+                        span{
+                            display: none;
+                        }
+                }
+                }
+               
+            }
+        }
+
+    }
     .banner_food{
         .banner_food-container{
             width: 100%;
         }
+
+        .newfood-container{
+        width: 90%;
     }
+    }
+    
 }
  
 </style>

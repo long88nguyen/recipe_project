@@ -36,7 +36,7 @@
                         1
                   }}</td>
                         <td>{{ category.name }}</td>
-                        <td> <img :src="`uploads/category/${category.image}`" class="img-thumbnail" alt="" @click="showImage(category.image)"/></td>
+                        <td> <img :src="category.image" class="img-thumbnail" alt="" @click="showImage(category.image)"/></td>
                         <td>{{ dateFormat(category.created_at) }}</td>
                         <td>
                           <i class="fa-solid fa-pen-to-square" style="color:blue" @click="categoryDetail(category.id)"></i>
