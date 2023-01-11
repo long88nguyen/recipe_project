@@ -6,7 +6,7 @@
             <form action=""  @submit.prevent="registerOverTimeRequest">
               <div class="create_post-header">
                 <a-row>
-                    <a-col :xxl="14" :xl="14" :lg="14">
+                    <a-col :xxl="14" :xl="14" :lg="14" :xs="24">
 
                      <div class="form-ingredient"> 
                         <label for="">Tiêu đề <span class="validate_feedback">*</span></label>
@@ -134,7 +134,7 @@
                         </div>
                       </div>
                     </a-col>
-                    <a-col :xxl="10" :xl="10" :lg="10">
+                  <a-col :xxl="10" :xl="10" :lg="10" :xs="24">
                       <div class="form-image">
                         <div class="form-upload">
                             <label for="">Ảnh sản phẩm <span class="validate_feedback">*</span></label>
@@ -532,16 +532,38 @@ export default {
            
 }
 
-@media (max-width: 780px)
+@media (max-width: 414px)
 {
-  .create_post_container
-    {
-      width: 90%;
+  .create_post_new{
+    .create_post_container{
+      width: 96%;
+      .create_post_detail{
+        padding: 10px;
+        .form-ingredient {
+          width: 100%;
+          .validate_feedback{
+              color:red;
+              font-size: 12px;
+            }
+          .form-group{
+           
+            textarea{
+              width: 100%;
+            }
+            input{
+              width: 100%;
+            }
+            select{
+              width: 100%;
+            }
+            span{
+              width: 20px;
+            };
+          }
+        }
+      }
     }
-} 
-
-.validate_feedback{
-  color:red;
+  }
 }
 
 </style>

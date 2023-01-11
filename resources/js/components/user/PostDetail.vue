@@ -569,4 +569,57 @@ export default {
         
     }
 }
+
+@media (max-width: 414px)
+{
+    .post_detail{
+        .post_detail-container{
+            width: 95%;
+            .post_infomation{
+                .post_detail-img{
+                .image_panel{
+                    display: inline-block;
+                    img{
+                        width: 100%;
+
+                    }
+                }
+                }
+                .post_detail-time{
+                    width: 200px;
+                    .save_post
+                    {
+                        span{
+                            display: none;
+                        }
+                    }
+                    .favourite_post{
+                        span{
+                            display: none;
+                        }
+                    }
+
+                    .share_post{
+                        span{
+                            display: none;
+                        }
+                    }
+
+                }
+            }
+           .post_suggest{
+            height: auto;
+            margin-left: 0;
+            padding: 0;
+            .post_suggest-list{
+                img{
+                    height: 300px;
+                }
+            }
+           } 
+
+        }   
+    }
+
+}
 </style>

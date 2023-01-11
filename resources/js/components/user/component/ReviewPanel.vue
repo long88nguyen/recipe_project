@@ -242,7 +242,6 @@ export default {
     .rating_infomation{
         .rating_avg_list{
             width: 50%;
-            margin: 0 auto;
             .rating_avg_detail{
                 margin-top:5px;
                 display: flex;
