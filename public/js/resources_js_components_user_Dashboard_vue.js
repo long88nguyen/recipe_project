@@ -192,7 +192,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _uploads_images_logofood_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../uploads/images/logofood.png */ "./resources/js/uploads/images/logofood.png");
-/* harmony import */ var _uploads_images_filter_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../uploads/images/filter.png */ "./resources/js/uploads/images/filter.png");
+/* harmony import */ var _uploads_images_homeicon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../uploads/images/homeicon.png */ "./resources/js/uploads/images/homeicon.png");
+/* harmony import */ var _uploads_images_searchicon_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../uploads/images/searchicon.png */ "./resources/js/uploads/images/searchicon.png");
+/* harmony import */ var _uploads_images_foodicon_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../uploads/images/foodicon.png */ "./resources/js/uploads/images/foodicon.png");
+/* harmony import */ var _uploads_images_filter_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../uploads/images/filter.png */ "./resources/js/uploads/images/filter.png");
+
+
+
 
 
 
@@ -219,11 +225,43 @@ var _hoisted_3 = {
   "class": "nav_menu-list"
 };
 var _hoisted_4 = {
-  "class": "nav-account"
+  "class": "text_list"
 };
-var _hoisted_5 = ["src"];
+var _hoisted_5 = {
+  "class": "icon_list"
+};
 
 var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: _uploads_images_homeicon_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: ""
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: _uploads_images_searchicon_png__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: _uploads_images_foodicon_png__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_9 = {
+  "class": "nav-account"
+};
+var _hoisted_10 = ["src"];
+
+var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "fa-solid fa-address-card"
   }, null, -1
@@ -231,7 +269,7 @@ var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "fa-solid fa-right-from-bracket"
   }, null, -1
@@ -239,31 +277,22 @@ var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Đăng xuất", -1
   /* HOISTED */
   );
 });
 
-var _hoisted_9 = [_hoisted_7, _hoisted_8];
-
-var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "nav-language"
-  }, null, -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_11 = {
+var _hoisted_14 = [_hoisted_12, _hoisted_13];
+var _hoisted_15 = {
   "class": "nav-search"
 };
-var _hoisted_12 = {
+var _hoisted_16 = {
   action: "",
   "class": "search-bar"
 };
 
-var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "fa-solid fa-magnifying-glass"
   }, null, -1
@@ -271,18 +300,18 @@ var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_14 = [_hoisted_13];
+var _hoisted_18 = [_hoisted_17];
 
-var _hoisted_15 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_19 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: _uploads_images_filter_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    src: _uploads_images_filter_png__WEBPACK_IMPORTED_MODULE_5__["default"],
     alt: ""
   }, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_20 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "popup_confirm-content"
   }, " Bạn có muốn đăng xuất không ? ", -1
@@ -290,10 +319,10 @@ var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_17 = {
+var _hoisted_21 = {
   "class": "button_cofirm"
 };
-var _hoisted_18 = {
+var _hoisted_22 = {
   "class": "body_view"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -347,7 +376,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         xs: 12
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
             to: "/home-page",
             "active-class": "active"
           }, {
@@ -377,20 +406,47 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
+          })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+            to: "/home-page"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_6];
+            }),
+            _: 1
+            /* STABLE */
+
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+            to: "/search-result"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_7];
+            }),
+            _: 1
+            /* STABLE */
+
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+            to: "/all-post"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_8];
+            }),
+            _: 1
+            /* STABLE */
+
           })])])])])];
         }),
         _: 1
         /* STABLE */
 
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_col, {
-        xxl: 3,
-        xl: 3,
-        lg: 3,
-        md: 3,
-        xs: 3
+        xxl: 5,
+        xl: 5,
+        lg: 5,
+        md: 5,
+        xs: 5
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
             src: _ctx.userCommon.avatar,
             alt: "",
             onClick: _cache[0] || (_cache[0] = function () {
@@ -398,13 +454,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             })
           }, null, 8
           /* PROPS */
-          , _hoisted_5), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.userCommon.name), 1
+          , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.userCommon.name), 1
           /* TEXT */
           ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
             "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["nav-account-menu", {
               activce: $data.isActiveVisible
             }])
-          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
             to: "/profile",
             onClick: $options.toggleProfile
           }, {
@@ -420,22 +476,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onClick: _cache[1] || (_cache[1] = function () {
               return $options.showModal && $options.showModal.apply($options, arguments);
             })
-          }, _hoisted_9)])], 2
+          }, _hoisted_14)])], 2
           /* CLASS */
           )])];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_col, {
-        xxl: 3,
-        xl: 3,
-        lg: 3,
-        md: 3,
-        xs: 3
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_10];
         }),
         _: 1
         /* STABLE */
@@ -448,7 +491,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         xs: 24
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
             type: "text",
             placeholder: "Nhập thông tin tìm kiếm ... ",
             onInput: _cache[2] || (_cache[2] = function () {
@@ -463,12 +506,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
               return $options.search && $options.search.apply($options, arguments);
             }, ["prevent"]))
-          }, _hoisted_14)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+          }, _hoisted_18)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
             "class": "nav_filter",
             onClick: _cache[5] || (_cache[5] = function () {
               return $options.openModalFilter && $options.openModalFilter.apply($options, arguments);
             })
-          }, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Filter ")])], 512
+          }, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Filter ")])], 512
           /* NEED_PATCH */
           ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.scrollEvent < 100]])];
         }),
@@ -492,7 +535,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     centered: ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      return [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         "class": "btn btn-primary",
         onClick: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
           return $options.logoutHandler();
@@ -511,7 +554,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["visible", "onOk"])], 2
   /* CLASS */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view, {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view, {
     items: _ctx.getAllPost
   }, null, 8
   /* PROPS */
@@ -672,7 +715,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0px;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n  text-decoration: none;\n  list-style: none;\n}\n.container-layout {\n  background: white;\n  z-index: 1;\n  position: fixed;\n  top: 0;\n  width: 100%;\n  box-shadow: 0 0 5px 0 gray;\n  height: 180px;\n}\n.container-layout nav {\n  height: 100%;\n  margin: 0px auto;\n  width: 80%;\n}\n.container-layout nav label {\n  color: darkblue;\n  font-size: 35px;\n  line-height: 80px;\n  display: flex;\n  justify-content: center;\n  font-weight: bold;\n}\n.container-layout nav .logo_food {\n  width: 100%;\n  height: 80px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.container-layout nav .logo_food img {\n  height: 80px;\n}\n.container-layout nav .nav-menu {\n  display: flex;\n}\n.container-layout nav .nav-menu .nav_menu-list {\n  width: 100%;\n  text-align: center;\n}\n.container-layout nav .nav-menu .nav_menu-list ul {\n  padding-left: 0;\n}\n.container-layout nav .nav-menu .nav_menu-list ul li {\n  display: inline-block;\n  line-height: 80px;\n  margin: 0 10px;\n}\n.container-layout nav .nav-menu .nav_menu-list ul li a {\n  color: darkcyan;\n  font-size: 17px;\n}\n.container-layout nav .nav-menu .nav_menu-list li a:hover, .container-layout nav .nav-menu .nav_menu-list li a.active {\n  border-bottom: 3px solid #D424A9;\n  transition: 0.2s ease-in-out;\n}\n.container-layout nav .nav-menu .checkbtn {\n  font-size: 30px;\n  color: black;\n  float: right;\n  line-height: 80px;\n  cursor: pointer;\n  display: none;\n}\n.container-layout nav .nav-search {\n  transition: 0.5s;\n  width: 100%;\n  display: flex;\n}\n.container-layout nav .nav-search .search-bar {\n  width: 60%;\n  margin: 0 auto;\n  max-width: 700;\n  background: white;\n  border: 2px solid #3027e6;\n  display: flex;\n  align-items: center;\n  border-radius: 60px;\n  padding: 5px 5px 5px 15px;\n  margin-top: 13px;\n  -webkit-backdrop-filter: blur(4px) saturate(180%);\n          backdrop-filter: blur(4px) saturate(180%);\n}\n.container-layout nav .nav-search .search-bar input {\n  background: transparent;\n  width: 100%;\n  flex: 1;\n  border: 0;\n  outline: none;\n  padding: 5px;\n  color: black;\n  font-size: 14px;\n}\n.container-layout nav .nav-search .search-bar ::-moz-placeholder {\n  color: rgba(0, 0, 0, 0.4);\n}\n.container-layout nav .nav-search .search-bar ::placeholder {\n  color: rgba(0, 0, 0, 0.4);\n}\n.container-layout nav .nav-search .search-bar button {\n  border: none;\n  right: 5px;\n  border-radius: 50%;\n  font-size: 20px;\n  width: 40px;\n  height: 40px;\n  background: white;\n  line-height: 40px;\n  cursor: pointer;\n}\n.container-layout nav .nav-search .nav_filter {\n  cursor: pointer;\n  width: 20%;\n  text-align: start;\n  display: flex;\n  align-items: center;\n}\n.container-layout nav .nav-search .nav_filter img {\n  width: 20px;\n  height: 20px;\n  margin-right: 10px;\n}\n.container-layout nav .nav-search .active {\n  display: none;\n}\n.container-layout nav .nav-account {\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: center;\n  height: 80px;\n}\n.container-layout nav .nav-account img {\n  vertical-align: middle;\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n}\n.container-layout nav .nav-account span {\n  margin-left: 5px;\n}\n.container-layout nav .nav-account .nav-account-menu {\n  position: absolute;\n  top: 72px;\n  background: #2E4053;\n  width: 200px;\n  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);\n  border-radius: 15px;\n  max-height: 0;\n  transition: max-height 0.5s;\n  overflow: hidden;\n  z-index: 1;\n}\n.container-layout nav .nav-account .nav-account-menu h3 {\n  widows: 100%;\n  font-size: 18px;\n  text-align: center;\n  padding: 20px 0;\n  font-weight: 500;\n  color: #555;\n  line-height: 1.2rem;\n}\n.container-layout nav .nav-account .nav-account-menu h3 span {\n  font-size: 14px;\n  color: #cecece;\n  font-weight: 400;\n}\n.container-layout nav .nav-account .nav-account-menu ul {\n  padding-left: 10px;\n}\n.container-layout nav .nav-account .nav-account-menu ul li {\n  list-style: none;\n  padding: 10px;\n  border-top: 1px solid rgba(255, 255, 255, 0.2);\n  display: flex;\n  align-items: center;\n}\n.container-layout nav .nav-account .nav-account-menu ul li i {\n  color: white;\n  margin-right: 10px;\n  display: flex;\n  width: 30px;\n  height: 30px;\n  justify-content: center;\n  background: red;\n  align-items: center;\n  border-radius: 50%;\n}\n.container-layout nav .nav-account .nav-account-menu ul li span {\n  cursor: pointer;\n  display: inline-block;\n  text-decoration: none;\n  color: white;\n  font-weight: bold;\n  transition: 0.5s;\n}\n.container-layout nav .nav-account .nav-account-menu ul li span:hover {\n  transition: 0.4s;\n  border-bottom: 3px solid white;\n}\n.container-layout nav .nav-account .nav-account-menu ul li a {\n  cursor: pointer;\n  display: inline-block;\n  text-decoration: none;\n  color: white;\n  font-weight: bold;\n  transition: 0.5s;\n}\n.container-layout nav .nav-account .nav-account-menu ul li a:hover {\n  transition: 0.4s;\n  border-bottom: 3px solid white;\n}\n.container-layout nav .nav-account .nav-account-menu ul li:first-child {\n  border-top: none;\n}\n.container-layout nav .nav-account .activce {\n  max-height: 300px;\n  transition: 0.5s;\n}\n.container-layout nav .nav-icon {\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: center;\n  height: 80px;\n}\n.container-layout nav .nav-icon i {\n  font-size: 30px;\n  display: none;\n}\n.layout_active {\n  height: 80px;\n}\n.body_view {\n  min-height: 650px;\n}\n@media (max-width: 1220px) {\nnav .nav-menu ul {\n    display: none;\n}\nnav .nav-icon i {\n    display: block;\n}\n}\n@media (max-width: 952px) {\n.logo {\n    font-size: 30px;\n    padding-left: 50px;\n}\nnav ul li a {\n    font-size: 16px;\n}\nnav .nav-account .nav-account-menu {\n    width: 170px;\n}\nnav .nav-account .nav-account-menu ul li i {\n    font-size: 13px;\n    display: flex;\n    width: 25px;\n    height: 25px;\n    justify-content: center;\n    background: red;\n    align-items: center;\n    border-radius: 50%;\n}\nnav .nav-account .nav-account-menu ul li a {\n    font-weight: 400;\n    font-size: 13px;\n}\nnav .nav-account .nav-account-menu ul li a:hover {\n    transition: 0.4s;\n    border-bottom: 3px solid white;\n}\n}\n@media (max-width: 858px) {\nnav .checkbtn {\n    display: block;\n}\nnav .nav_menu-list ul {\n    display: none;\n}\n}\n@media (max-width: 700px) {\nnav .nav-menu .logo {\n    font-size: 22px;\n}\nnav .nav-search .search-bar {\n    padding: 3px 0 3px 10px;\n    margin-top: 20px;\n}\nnav .nav-search .search-bar input {\n    font-size: 13px;\n}\nnav .nav-search .search-bar button {\n    border: none;\n    right: 5px;\n    border-radius: 50%;\n    font-size: 15px;\n    width: 30px;\n    height: 30px;\n    background: white;\n    line-height: 30px;\n    cursor: pointer;\n}\nnav .nav-account span {\n    display: none;\n}\nnav .nav-account .nav-account-menu {\n    width: 130px;\n    border-radius: 10px;\n}\nnav .nav-account .nav-account-menu ul {\n    padding-left: 0;\n}\nnav .nav-account .nav-account-menu ul li {\n    padding-top: 5px;\n    display: flex;\n}\nnav .nav-account .nav-account-menu ul li i {\n    margin-right: 5px;\n    font-size: 10px;\n    display: flex;\n    width: 20px;\n    height: 20px;\n    justify-content: center;\n    background: red;\n    align-items: center;\n    border-radius: 50%;\n}\nnav .nav-account .nav-account-menu ul li a {\n    font-weight: 300;\n    transition: 0.5s;\n    font-size: 10px;\n}\nnav .nav-account .nav-account-menu ul li a:hover {\n    transition: 0.4s;\n    border-bottom: 3px solid white;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0px;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n  text-decoration: none;\n  list-style: none;\n}\n.container-layout {\n  background: white;\n  z-index: 1;\n  position: fixed;\n  top: 0;\n  width: 100%;\n  box-shadow: 0 0 5px 0 gray;\n  height: 180px;\n}\n.container-layout nav {\n  height: 100%;\n  margin: 0px auto;\n  width: 80%;\n}\n.container-layout nav label {\n  color: darkblue;\n  font-size: 35px;\n  line-height: 80px;\n  display: flex;\n  justify-content: center;\n  font-weight: bold;\n}\n.container-layout nav .logo_food {\n  width: 100%;\n  height: 80px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.container-layout nav .logo_food img {\n  height: 80px;\n}\n.container-layout nav .nav-menu {\n  display: flex;\n}\n.container-layout nav .nav-menu .nav_menu-list {\n  width: 100%;\n  text-align: center;\n}\n.container-layout nav .nav-menu .nav_menu-list .text_list {\n  padding-left: 0;\n}\n.container-layout nav .nav-menu .nav_menu-list .text_list li {\n  display: inline-block;\n  line-height: 80px;\n  margin: 0 10px;\n}\n.container-layout nav .nav-menu .nav_menu-list .text_list li a {\n  color: darkcyan;\n  font-size: 17px;\n}\n.container-layout nav .nav-menu .nav_menu-list .text_list li a:hover, .container-layout nav .nav-menu .nav_menu-list .text_list li a.active {\n  border-bottom: 3px solid #D424A9;\n  transition: 0.2s ease-in-out;\n}\n.container-layout nav .nav-menu .nav_menu-list .icon_list {\n  display: none;\n}\n.container-layout nav .nav-menu .nav_menu-list .icon_list img {\n  width: 30px;\n  height: 30px;\n}\n.container-layout nav .nav-menu .checkbtn {\n  font-size: 30px;\n  color: black;\n  float: right;\n  line-height: 80px;\n  cursor: pointer;\n  display: none;\n}\n.container-layout nav .nav-search {\n  transition: 0.5s;\n  width: 100%;\n  display: flex;\n}\n.container-layout nav .nav-search .search-bar {\n  width: 60%;\n  margin: 0 auto;\n  max-width: 700;\n  background: white;\n  border: 2px solid #3027e6;\n  display: flex;\n  align-items: center;\n  border-radius: 60px;\n  padding: 5px 5px 5px 15px;\n  margin-top: 13px;\n  -webkit-backdrop-filter: blur(4px) saturate(180%);\n          backdrop-filter: blur(4px) saturate(180%);\n}\n.container-layout nav .nav-search .search-bar input {\n  background: transparent;\n  width: 100%;\n  flex: 1;\n  border: 0;\n  outline: none;\n  padding: 5px;\n  color: black;\n  font-size: 14px;\n}\n.container-layout nav .nav-search .search-bar ::-moz-placeholder {\n  color: rgba(0, 0, 0, 0.4);\n}\n.container-layout nav .nav-search .search-bar ::placeholder {\n  color: rgba(0, 0, 0, 0.4);\n}\n.container-layout nav .nav-search .search-bar button {\n  border: none;\n  right: 5px;\n  border-radius: 50%;\n  font-size: 20px;\n  width: 40px;\n  height: 40px;\n  background: white;\n  line-height: 40px;\n  cursor: pointer;\n}\n.container-layout nav .nav-search .nav_filter {\n  cursor: pointer;\n  width: 20%;\n  text-align: start;\n  display: flex;\n  align-items: center;\n}\n.container-layout nav .nav-search .nav_filter img {\n  width: 20px;\n  height: 20px;\n  margin-right: 10px;\n}\n.container-layout nav .nav-search .active {\n  display: none;\n}\n.container-layout nav .nav-account {\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: center;\n  height: 80px;\n}\n.container-layout nav .nav-account img {\n  vertical-align: middle;\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n}\n.container-layout nav .nav-account span {\n  margin-left: 5px;\n}\n.container-layout nav .nav-account .nav-account-menu {\n  position: absolute;\n  top: 72px;\n  background: #2E4053;\n  width: 200px;\n  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);\n  border-radius: 15px;\n  max-height: 0;\n  transition: max-height 0.5s;\n  overflow: hidden;\n  z-index: 1;\n}\n.container-layout nav .nav-account .nav-account-menu h3 {\n  widows: 100%;\n  font-size: 18px;\n  text-align: center;\n  padding: 20px 0;\n  font-weight: 500;\n  color: #555;\n  line-height: 1.2rem;\n}\n.container-layout nav .nav-account .nav-account-menu h3 span {\n  font-size: 14px;\n  color: #cecece;\n  font-weight: 400;\n}\n.container-layout nav .nav-account .nav-account-menu ul {\n  padding-left: 10px;\n}\n.container-layout nav .nav-account .nav-account-menu ul li {\n  list-style: none;\n  padding: 10px;\n  border-top: 1px solid rgba(255, 255, 255, 0.2);\n  display: flex;\n  align-items: center;\n}\n.container-layout nav .nav-account .nav-account-menu ul li i {\n  color: white;\n  margin-right: 10px;\n  display: flex;\n  width: 30px;\n  height: 30px;\n  justify-content: center;\n  background: red;\n  align-items: center;\n  border-radius: 50%;\n}\n.container-layout nav .nav-account .nav-account-menu ul li span {\n  cursor: pointer;\n  display: inline-block;\n  text-decoration: none;\n  color: white;\n  font-weight: bold;\n  transition: 0.5s;\n}\n.container-layout nav .nav-account .nav-account-menu ul li span:hover {\n  transition: 0.4s;\n  border-bottom: 3px solid white;\n}\n.container-layout nav .nav-account .nav-account-menu ul li a {\n  cursor: pointer;\n  display: inline-block;\n  text-decoration: none;\n  color: white;\n  font-weight: bold;\n  transition: 0.5s;\n}\n.container-layout nav .nav-account .nav-account-menu ul li a:hover {\n  transition: 0.4s;\n  border-bottom: 3px solid white;\n}\n.container-layout nav .nav-account .nav-account-menu ul li:first-child {\n  border-top: none;\n}\n.container-layout nav .nav-account .activce {\n  max-height: 300px;\n  transition: 0.5s;\n}\n.container-layout nav .nav-icon {\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: center;\n  height: 80px;\n}\n.container-layout nav .nav-icon i {\n  font-size: 30px;\n  display: none;\n}\n.layout_active {\n  height: 80px;\n}\n.body_view {\n  min-height: 650px;\n}\n@media (max-width: 1220px) {\nnav .nav-menu .text_list {\n    display: none;\n}\nnav .nav-menu .icon_list {\n    display: block;\n}\nnav .nav_icon i {\n    display: block;\n}\n}\n@media (max-width: 952px) {\n.logo {\n    font-size: 30px;\n    padding-left: 50px;\n}\nnav ul li a {\n    font-size: 16px;\n}\nnav .nav-account .nav-account-menu {\n    width: 170px;\n}\nnav .nav-account .nav-account-menu ul li i {\n    font-size: 13px;\n    display: flex;\n    width: 25px;\n    height: 25px;\n    justify-content: center;\n    background: red;\n    align-items: center;\n    border-radius: 50%;\n}\nnav .nav-account .nav-account-menu ul li a {\n    font-weight: 400;\n    font-size: 13px;\n}\nnav .nav-account .nav-account-menu ul li a:hover {\n    transition: 0.4s;\n    border-bottom: 3px solid white;\n}\n}\n@media (max-width: 858px) {\nnav .checkbtn {\n    display: block;\n}\nnav .nav_menu-list .text_list {\n    display: none;\n}\nnav .nav_menu-list .icon_list {\n    margin: 0;\n    padding: 0;\n    display: flex;\n    justify-content: space-around;\n}\n}\n@media (max-width: 700px) {\n.container-layout nav .nav-menu .logo {\n    font-size: 22px;\n}\n.container-layout nav .nav-search .search-bar {\n    padding: 3px 0 3px 10px;\n    margin-top: 20px;\n}\n.container-layout nav .nav-search .search-bar input {\n    font-size: 13px;\n}\n.container-layout nav .nav-search .search-bar button {\n    border: none;\n    right: 5px;\n    border-radius: 50%;\n    font-size: 15px;\n    width: 30px;\n    height: 30px;\n    background: white;\n    line-height: 30px;\n    cursor: pointer;\n}\n.container-layout nav .nav-account span {\n    display: none;\n}\n.container-layout nav .nav-account .nav-account-menu {\n    width: 130px;\n    border-radius: 10px;\n}\n.container-layout nav .nav-account .nav-account-menu ul {\n    padding-left: 0;\n}\n.container-layout nav .nav-account .nav-account-menu ul li {\n    padding-top: 5px;\n    display: flex;\n}\n.container-layout nav .nav-account .nav-account-menu ul li i {\n    margin-right: 5px;\n    font-size: 10px;\n    display: flex;\n    width: 20px;\n    height: 20px;\n    justify-content: center;\n    background: red;\n    align-items: center;\n    border-radius: 50%;\n}\n.container-layout nav .nav-account .nav-account-menu ul li a {\n    font-weight: 300;\n    transition: 0.5s;\n    font-size: 10px;\n}\n.container-layout nav .nav-account .nav-account-menu ul li a:hover {\n    transition: 0.4s;\n    border-bottom: 3px solid white;\n}\n}\n@media (max-width: 414px) {\n.container-layout {\n    height: 150px;\n}\n.container-layout nav {\n    width: 100%;\n}\n.container-layout nav .nav-menu {\n    height: 100%;\n    display: flex;\n    align-items: center;\n}\n.container-layout nav .nav-menu .nav_menu-list .icon_list {\n    display: block;\n    margin: 0;\n    padding: 0;\n    display: flex;\n    justify-content: space-around;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -762,6 +805,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/uploads/images/foodicon.png":
+/*!**************************************************!*\
+  !*** ./resources/js/uploads/images/foodicon.png ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/foodicon.png?46b3ff9aa079c6add426a35f0457c685");
+
+/***/ }),
+
+/***/ "./resources/js/uploads/images/homeicon.png":
+/*!**************************************************!*\
+  !*** ./resources/js/uploads/images/homeicon.png ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/homeicon.png?3187162dadfe5eca9f15b39c15a17405");
+
+/***/ }),
+
 /***/ "./resources/js/uploads/images/logofood.png":
 /*!**************************************************!*\
   !*** ./resources/js/uploads/images/logofood.png ***!
@@ -773,6 +844,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logofood.png?690ebe29e705de7fc6f5c9f5103fe780");
+
+/***/ }),
+
+/***/ "./resources/js/uploads/images/searchicon.png":
+/*!****************************************************!*\
+  !*** ./resources/js/uploads/images/searchicon.png ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/searchicon.png?2132128c9bb1b1c45367fc53ee7b582b");
 
 /***/ }),
 

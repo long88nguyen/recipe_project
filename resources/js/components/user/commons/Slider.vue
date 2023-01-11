@@ -17,10 +17,10 @@
               <a-row>
                 <a-col :xxl="12" :xl="12" :lg="12" :md="24" :xs="24">
                   <div class="slider_video">
-                    <video autoplay="" loop="" playsinline="" muted="" class="mntl-gif__video card__img universal-image__image"  aria-label="Allrecipes Top 10 Recipes of All Time"
-                      data-src="https://www.allrecipes.com/thmb/vcm8Ff7c96TR72MKiD1SHTPjnYw=/800x533/filters:gifv(webm)/top_10-a764d3b60a8e418092a46685861edf06.gif" 
-                      src="https://www.allrecipes.com/thmb/vcm8Ff7c96TR72MKiD1SHTPjnYw=/800x533/filters:gifv(webm)/top_10-a764d3b60a8e418092a46685861edf06.gif">
-                      </video>
+                    <img src="../../../uploads/images/banner.jpg" alt="">
+                    <router-link to="/all-post" class="btn-explorer">
+                      Khám phá
+                    </router-link>
                   </div>
                 </a-col>
                 <a-col :xxl="12" :xl="12" :lg="12" :md="24" :xs="24">
@@ -121,15 +121,37 @@ import { mapGetters } from 'vuex'
           .slider_video{
             width: 100%;
             height: 100%;
-            video{
-            width: 90%;
-            height: 90%;
+            img{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            }
+            .btn-explorer{
+              position: absolute;
+              top: 60%;
+              right: 40%;
+              width: 150px;
+              height: 40px;
+              line-height: 40px;
+              text-align: center;
+              border: none;
+              border-radius: 20px;
+              background: #d54215;
+              color: white;
+              font-weight: bold;
+            }
+            .btn-explorer:hover{
+              color:black;
+              background: white;
+              transition:0.5s;
             }
           }
           .slider_intro
           {
             background: #f5f6ea;
             padding: 20px;
+            width: 100%;
+                height: 100%;
             .most_favourite{
               font-family: Arial, Helvetica, sans-serif;
               .favourite_item{
@@ -137,6 +159,7 @@ import { mapGetters } from 'vuex'
                 display: flex;
                 align-items: center;
                 width: 100%;
+                height: 100%;
                 img{
                   width: 100px;
                   height: 100px;
@@ -182,4 +205,5 @@ import { mapGetters } from 'vuex'
        }     
     }
 }
+
 </style>

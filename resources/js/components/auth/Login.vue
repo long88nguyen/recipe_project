@@ -50,19 +50,23 @@ export default {
   },
   methods: {
     validate(){
+      let isValid = true;
       if(!this.form.email){
         this.errors.email = "Email is required"
+        isValid = false;
       }
 
       if(!this.form.password){
         this.errors.password = "Password is required"
-      }
+        isValid = false;
 
+      }
+      return isValid
 
     },
     async login() {
-      this.validate();
-      await this.$store.dispatch('auth/login', this.form)
+      if(this.validate()){
+        await this.$store.dispatch('auth/login', this.form)
         .then(() => {
           const check_role = this.accountInfo.is_admin;
           if(check_role === 1)
@@ -83,6 +87,8 @@ export default {
          
           this.$toast.error('Đăng nhập không thành công! Vui lòng kiểm tra lại thông tin đăng nhập');
         });
+      }
+      
     },
   }
 }

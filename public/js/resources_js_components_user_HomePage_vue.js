@@ -730,6 +730,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _uploads_images_banner2_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../uploads/images/banner2.png */ "./resources/js/uploads/images/banner2.png");
 /* harmony import */ var _uploads_images_banner3_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../uploads/images/banner3.png */ "./resources/js/uploads/images/banner3.png");
 /* harmony import */ var _uploads_images_banner4_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../uploads/images/banner4.png */ "./resources/js/uploads/images/banner4.png");
+/* harmony import */ var _uploads_images_banner_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../uploads/images/banner.jpg */ "./resources/js/uploads/images/banner.jpg");
+
 
 
 
@@ -781,65 +783,60 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_7 = {
   "class": "new-product"
 };
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_8 = {
   "class": "slider_video"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("video", {
-  autoplay: "",
-  loop: "",
-  playsinline: "",
-  muted: "",
-  "class": "mntl-gif__video card__img universal-image__image",
-  "aria-label": "Allrecipes Top 10 Recipes of All Time",
-  "data-src": "https://www.allrecipes.com/thmb/vcm8Ff7c96TR72MKiD1SHTPjnYw=/800x533/filters:gifv(webm)/top_10-a764d3b60a8e418092a46685861edf06.gif",
-  src: "https://www.allrecipes.com/thmb/vcm8Ff7c96TR72MKiD1SHTPjnYw=/800x533/filters:gifv(webm)/top_10-a764d3b60a8e418092a46685861edf06.gif"
-})], -1
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: _uploads_images_banner_jpg__WEBPACK_IMPORTED_MODULE_5__["default"],
+  alt: ""
+}, null, -1
 /* HOISTED */
 );
 
-var _hoisted_9 = {
+var _hoisted_10 = {
   "class": "slider_intro"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Thịnh hành", -1
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Thịnh hành", -1
 /* HOISTED */
 );
 
-var _hoisted_11 = {
+var _hoisted_12 = {
   "class": "most_favourite"
 };
-var _hoisted_12 = ["src"];
-var _hoisted_13 = {
+var _hoisted_13 = ["src"];
+var _hoisted_14 = {
   "class": "favourite_content"
 };
-var _hoisted_14 = {
+var _hoisted_15 = {
   "class": "favourite_title"
 };
-var _hoisted_15 = {
+var _hoisted_16 = {
   key: 0
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-clock"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_17 = {
+var _hoisted_18 = {
   key: 1
 };
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-clock"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_19 = {
+var _hoisted_20 = {
   key: 2
 };
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-clock"
 }, null, -1
 /* HOISTED */
@@ -848,9 +845,9 @@ var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_a_carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-carousel");
 
-  var _component_a_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-col");
-
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
+  var _component_a_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-col");
 
   var _component_a_row = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-row");
 
@@ -875,7 +872,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         xs: 24
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_8];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+            to: "/all-post",
+            "class": "btn-explorer"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Khám phá ")];
+            }),
+            _: 1
+            /* STABLE */
+
+          })])];
         }),
         _: 1
         /* STABLE */
@@ -888,7 +895,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         xs: 24
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.getMostFavourite, function (post, index) {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.getMostFavourite, function (post, index) {
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
               key: index,
               "class": "favourite_item"
@@ -898,13 +905,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "class": "rounded"
             }, null, 8
             /* PROPS */
-            , _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+            , _hoisted_13), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
               to: {
                 path: "/post-detail/".concat(post.id)
               }
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.title), 1
+                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.title), 1
                 /* TEXT */
                 )];
               }),
@@ -913,11 +920,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
             }, 1032
             /* PROPS, DYNAMIC_SLOTS */
-            , ["to"]), post.duration > 86400 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h6", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(Math.round(post.duration / 86400)) + " ngày trước", 1
+            , ["to"]), post.duration > 86400 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h6", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(Math.round(post.duration / 86400)) + " ngày trước", 1
             /* TEXT */
-            )])) : post.duration < 86400 && post.duration > 3600 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h6", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(Math.round(post.duration / 3600)) + " giờ trước", 1
+            )])) : post.duration < 86400 && post.duration > 3600 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h6", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(Math.round(post.duration / 3600)) + " giờ trước", 1
             /* TEXT */
-            )])) : post.duration < 3600 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h6", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(Math.round(post.duration / 60)) + " phút trước", 1
+            )])) : post.duration < 3600 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h6", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(Math.round(post.duration / 60)) + " phút trước", 1
             /* TEXT */
             )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
           }), 128
@@ -1056,7 +1063,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".slider_container {\n  padding-top: 200px;\n  width: 100%;\n}\n.slider_container .slider_food {\n  width: 70%;\n  margin: 0 auto;\n}\n.slider_container .slider_food .hello {\n  text-align: center;\n  height: 200px;\n  line-height: 160px;\n  background: #364d79;\n  overflow: hidden;\n  border-radius: 5px;\n}\n.slider_container .slider_food .hello img {\n  width: 100%;\n  height: 100%;\n}\n.slider_container .slider_food .ant-carousel > > > .slick-slide {\n  text-align: center;\n  height: 160px;\n  line-height: 160px;\n  background: #364d79;\n  overflow: hidden;\n}\n.slider_container .slider_food .ant-carousel > > > .slick-slide h3 {\n  color: #fff;\n}\n.slider_container .slider_food .new-product {\n  margin-top: 20px;\n}\n.slider_container .slider_food .new-product .slider_video {\n  width: 100%;\n  height: 100%;\n}\n.slider_container .slider_food .new-product .slider_video video {\n  width: 90%;\n  height: 90%;\n}\n.slider_container .slider_food .new-product .slider_intro {\n  background: #f5f6ea;\n  padding: 20px;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite {\n  font-family: Arial, Helvetica, sans-serif;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite .favourite_item {\n  padding: 5px 0;\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite .favourite_item img {\n  width: 100px;\n  height: 100px;\n  border-radius: 50px;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite .favourite_item .favourite_content {\n  margin-left: 20px;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite .favourite_item .favourite_content h4 {\n  width: 100%;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite .favourite_item .favourite_content .favourite_title:hover {\n  border-bottom: 1px solid #d54215;\n  transition: 0.5s;\n  cursor: pointer;\n}\n.slider_container .slider_food .new-product .slider_intro h1 {\n  font-size: 24px;\n  font-family: 'Roboto', sans-serif;\n  color: #d54215;\n  font-weight: bold;\n}\n.slider_container .slider_food .new-product .slider_intro button {\n  height: 40px;\n  width: 150px;\n  margin-top: 20px;\n  outline: none;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n  border-radius: 20px;\n  background: white;\n}\n.slider_container .slider_food .new-product .slider_intro button:hover {\n  background: #d54215;\n  color: white;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".slider_container {\n  padding-top: 200px;\n  width: 100%;\n}\n.slider_container .slider_food {\n  width: 70%;\n  margin: 0 auto;\n}\n.slider_container .slider_food .hello {\n  text-align: center;\n  height: 200px;\n  line-height: 160px;\n  background: #364d79;\n  overflow: hidden;\n  border-radius: 5px;\n}\n.slider_container .slider_food .hello img {\n  width: 100%;\n  height: 100%;\n}\n.slider_container .slider_food .ant-carousel > > > .slick-slide {\n  text-align: center;\n  height: 160px;\n  line-height: 160px;\n  background: #364d79;\n  overflow: hidden;\n}\n.slider_container .slider_food .ant-carousel > > > .slick-slide h3 {\n  color: #fff;\n}\n.slider_container .slider_food .new-product {\n  margin-top: 20px;\n}\n.slider_container .slider_food .new-product .slider_video {\n  width: 100%;\n  height: 100%;\n}\n.slider_container .slider_food .new-product .slider_video img {\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n.slider_container .slider_food .new-product .slider_video .btn-explorer {\n  position: absolute;\n  top: 60%;\n  right: 40%;\n  width: 150px;\n  height: 40px;\n  line-height: 40px;\n  text-align: center;\n  border: none;\n  border-radius: 20px;\n  background: #d54215;\n  color: white;\n  font-weight: bold;\n}\n.slider_container .slider_food .new-product .slider_video .btn-explorer:hover {\n  color: black;\n  background: white;\n  transition: 0.5s;\n}\n.slider_container .slider_food .new-product .slider_intro {\n  background: #f5f6ea;\n  padding: 20px;\n  width: 100%;\n  height: 100%;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite {\n  font-family: Arial, Helvetica, sans-serif;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite .favourite_item {\n  padding: 5px 0;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  height: 100%;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite .favourite_item img {\n  width: 100px;\n  height: 100px;\n  border-radius: 50px;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite .favourite_item .favourite_content {\n  margin-left: 20px;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite .favourite_item .favourite_content h4 {\n  width: 100%;\n}\n.slider_container .slider_food .new-product .slider_intro .most_favourite .favourite_item .favourite_content .favourite_title:hover {\n  border-bottom: 1px solid #d54215;\n  transition: 0.5s;\n  cursor: pointer;\n}\n.slider_container .slider_food .new-product .slider_intro h1 {\n  font-size: 24px;\n  font-family: 'Roboto', sans-serif;\n  color: #d54215;\n  font-weight: bold;\n}\n.slider_container .slider_food .new-product .slider_intro button {\n  height: 40px;\n  width: 150px;\n  margin-top: 20px;\n  outline: none;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n  border-radius: 20px;\n  background: white;\n}\n.slider_container .slider_food .new-product .slider_intro button:hover {\n  background: #d54215;\n  color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1084,6 +1091,21 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".stat_container {\n  width: 100%;\n  m
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
+
+/***/ }),
+
+/***/ "./resources/js/uploads/images/banner.jpg":
+/*!************************************************!*\
+  !*** ./resources/js/uploads/images/banner.jpg ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/banner.jpg?82d7d5a63e72ab06021b7b11ab7e18b3");
 
 /***/ }),
 

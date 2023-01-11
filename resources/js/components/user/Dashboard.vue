@@ -13,16 +13,22 @@
             <a-col  :xxl="12" :xl="12" :lg="12" :md="12" :xs="12">
               <div class="nav-menu">
               <div class="nav_menu-list">
-                    <ul>
+                    <ul class="text_list">
                         <li ><router-link to="/home-page" active-class="active" >Trang chủ</router-link></li>
                         <li><router-link to="/search-result" active-class="active">Tìm kiếm</router-link></li>
                         <li><router-link to="/all-post" active-class="active">Bài viết</router-link></li>
                         
                     </ul>
+                    <ul class="icon_list">
+                        <li ><router-link to="/home-page" ><img src="../../uploads/images/homeicon.png" alt=""></router-link></li>
+                        <li><router-link to="/search-result"><img src="../../uploads/images/searchicon.png"></router-link></li>
+                        <li><router-link to="/all-post"><img src="../../uploads/images/foodicon.png"></router-link></li>
+                        
+                    </ul>
                 </div>
               </div>
             </a-col>
-            <a-col :xxl="3" :xl="3" :lg="3" :md="3" :xs="3">
+            <a-col :xxl="5" :xl="5" :lg="5" :md="5" :xs="5">
                 <div class="nav-account">
                     <img :src="userCommon.avatar" alt="" @click="toggleProfile">
                     <span> {{ userCommon.name}} </span>
@@ -35,10 +41,6 @@
                     </div>
                 </div>
             </a-col >
-            <a-col :xxl="3" :xl="3" :lg="3" :md="3" :xs="3">
-                <div class="nav-language">
-                </div>
-            </a-col>
             <a-col :xxl="24" :xl="24" :lg="24" :md="24" :xs="24">
                  <div class="nav-search"   v-show="scrollEvent < 100">
                       <form action="" class="search-bar">
@@ -207,7 +209,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 * {
   margin: 0;
   padding: 0px;
@@ -259,7 +261,7 @@ export default {
     .nav_menu-list {
       width: 100%;
       text-align: center;
-      ul {
+      .text_list {
         padding-left: 0;
         li {
           display: inline-block;
@@ -270,9 +272,7 @@ export default {
             font-size: 17px;
           }
         }
-      }
-
-      li
+        li
       {
         a:hover,a.active{
         border-bottom: 3px solid #D424A9;
@@ -280,6 +280,18 @@ export default {
 
       }
       }
+        
+      }
+      .icon_list{
+        display: none;
+        
+          img{
+            width: 30px;
+            height: 30px;
+          }
+         
+        }
+     
     }
 
     .checkbtn {
@@ -475,11 +487,14 @@ export default {
 @media (max-width: 1220px) {
   nav {
     .nav-menu {
-      ul {
+      .text_list {
         display: none;
       }
+      .icon_list{
+        display: block;
+      }
     }
-    .nav-icon{
+    .nav_icon{
         i
         {
             display: block;
@@ -544,14 +559,23 @@ export default {
       display: block;
     }
 
-    .nav_menu-list ul {
-      display: none;
+    .nav_menu-list  {
+      .text_list{
+        display: none;
+      }
+      .icon_list{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+      }
     }
   }
 }
 
 @media (max-width: 700px) {
-  nav {
+.container-layout{
+   nav {
     .nav-menu {
       .logo {
         font-size: 22px;
@@ -620,6 +644,35 @@ export default {
     }
   }
 }
+ 
+}
+
+@media (max-width: 414px) {
+  .container-layout{
+    height: 150px;
+    nav{
+      width: 100%;
+      .nav-menu{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        .nav_menu-list{
+          .icon_list{
+            display: block;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
 
 
 

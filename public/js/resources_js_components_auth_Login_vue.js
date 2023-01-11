@@ -45,13 +45,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   })),
   methods: {
     validate: function validate() {
+      var isValid = true;
+
       if (!this.form.email) {
         this.errors.email = "Email is required";
+        isValid = false;
       }
 
       if (!this.form.password) {
         this.errors.password = "Password is required";
+        isValid = false;
       }
+
+      return isValid;
     },
     login: function login() {
       var _this = this;
@@ -61,7 +67,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _this.validate();
+                if (!_this.validate()) {
+                  _context.next = 3;
+                  break;
+                }
 
                 _context.next = 3;
                 return _this.$store.dispatch('auth/login', _this.form).then(function () {

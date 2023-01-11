@@ -64,7 +64,7 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         if ($request->file('image')) {
             $image = $request->file('image');
             $destinationPath = public_path('uploads/category');
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $profileImage = '/uploads/category/' . date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $data['image'] = "$profileImage";
         }
@@ -93,7 +93,7 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
             }
             $image = $request->file('image');
             $destinationPath = public_path('uploads/category');
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $profileImage = '/uploads/category/' . date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $data['image'] = "$profileImage";
         }
