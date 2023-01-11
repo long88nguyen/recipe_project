@@ -79,6 +79,7 @@
         :visible="visibleModal"
         @closeModal="(visibleModal = !visibleModal)"
         @fetchData="fetchCategoryList"
+        @ok = "closeModal"
         >
 
         </CategoryCreateModalVue>
@@ -213,6 +214,10 @@ export default {
     changePage(page) {
         this.passParamUrl();
         this.fetchCategoryList(this.searchData.itemsPerPage, page);
+    },
+    closeModal(){
+      this.visibleModal = false;
+      this.fetchCategoryList();
     },
     showImage(imageLink) {
         if (imageLink) {

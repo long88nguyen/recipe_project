@@ -256,7 +256,7 @@ export default {
         margin:0 auto;
         .card_item{
             width: 90%;
-            max-height: 400px;
+            max-height: 500px;
             border-radius:5px;
             transition: 0.3s;
             background: white; 
@@ -566,7 +566,13 @@ export default {
     }
     .banner_food{
         .banner_food-container{
-            width: 100%;
+            width: 90%;
+            .card_item{
+                width: 100%;
+                img{
+                    height: 250px;
+                }
+            }
         }
 
         .newfood-container{
