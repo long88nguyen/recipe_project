@@ -531,6 +531,12 @@ export default {
 }
 
 
-
+@media (max-width: 414px) {
+    .banner_food{
+        .banner_food-container{
+            width: 100%;
+        }
+    }
+}
  
 </style>

@@ -27,11 +27,52 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         password: '',
         password_confirmation: ''
       },
-      errMessage: ""
+      errors: {
+        email: '',
+        password: '',
+        password_confirmation: ''
+      }
     };
   },
   computed: {},
   methods: {
+    validate: function validate() {
+      this.errors = {
+        email: '',
+        password: '',
+        password_confirmation: ''
+      };
+      var isValid = true;
+
+      if (!this.form_register.email) {
+        this.errors.email = "Vui lòng nhập email!";
+        isValid = false;
+      } else if (!this.isEmail(this.form_register.email)) {
+        this.errors.email = "Email đã nhập không đúng định dạng!";
+        isValid = false;
+      }
+
+      if (!this.form_register.password) {
+        this.errors.password = "Vui lòng nhập mật khẩu!";
+        isValid = false;
+      } else if (this.form_register.password.length < 6) {
+        this.errors.password = "Mật khẩu phải chứa ít nhất 6 ký tự!";
+        isValid = false;
+      }
+
+      if (!this.form_register.password_confirmation) {
+        this.errors.password_confirmation = "Vui lòng nhập lại mật khẩu!";
+        isValid = false;
+      } else if (this.form_register.password_confirmation != this.form_register.password) {
+        this.errors.password_confirmation = "Mật khẩu nhập lại không đúng!";
+        isValid = false;
+      }
+
+      return isValid;
+    },
+    isEmail: function isEmail(value) {
+      return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+    },
     registerForm: function registerForm() {
       var _this = this;
 
@@ -40,10 +81,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (_this.form_register.password == '' || _this.form_register.password_confirmation == 1 || _this.form_register.email == '') {
-                  _this.errMessage = "Please fill all field!";
-                } else if (_this.form_register.password != _this.form_register.password_confirmation) {
-                  _this.errMessage = "Password confirmation not match!";
+                if (!_this.validate()) {
+                  _context.next = 3;
+                  break;
                 }
 
                 _context.next = 3;
@@ -52,9 +92,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     name: "Login"
                   });
 
-                  _this.$toast.success('Register Account Successful');
+                  _this.$toast.success('Đăng ký tài khoản thành công!');
                 })["catch"](function () {
-                  _this.$toast.error('Register Account Failed');
+                  _this.$toast.error('Đăng ký không thành công vui lòng kiểm tra lại!');
                 });
 
               case 3:
@@ -112,24 +152,24 @@ var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_5 = {
-  "class": "error"
-};
-var _hoisted_6 = {
   "class": "txt_field"
 };
 
-var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Email", -1
   /* HOISTED */
   );
 });
 
+var _hoisted_8 = {
+  "class": "feedback_validation"
+};
 var _hoisted_9 = {
   "class": "txt_field"
 };
@@ -141,36 +181,35 @@ var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Password", -1
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Mật khẩu", -1
   /* HOISTED */
   );
 });
 
 var _hoisted_12 = {
+  "class": "feedback_validation"
+};
+var _hoisted_13 = {
   "class": "txt_field"
 };
 
-var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Password Confirmation", -1
-  /* HOISTED */
-  );
-});
-
 var _hoisted_15 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "pass"
-  }, " Forgot Password ? ", -1
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Nhập lại mật khẩu", -1
   /* HOISTED */
   );
 });
 
-var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_16 = {
+  "class": "feedback_validation"
+};
+
+var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "submit",
     name: "",
@@ -180,49 +219,63 @@ var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "signup_link"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: ""
-  }, " Quay lại đăng nhập")], -1
-  /* HOISTED */
-  );
-});
-
+var _hoisted_18 = {
+  "class": "signup_link"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     action: "",
-    onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.registerForm && $options.registerForm.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errMessage), 1
-  /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $data.form_register.email = $event;
     }),
-    required: ""
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form_register.email]]), _hoisted_7, _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "password",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $data.form_register.password = $event;
-    }),
-    required: ""
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form_register.password]]), _hoisted_10, _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    onBlur: _cache[1] || (_cache[1] = function ($event) {
+      return $options.validate();
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form_register.email]]), _hoisted_6, _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.email), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "password",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.form_register.password = $event;
+    }),
+    onBlur: _cache[3] || (_cache[3] = function ($event) {
+      return $options.validate();
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form_register.password]]), _hoisted_10, _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.password), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "password",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.form_register.password_confirmation = $event;
     }),
-    required: ""
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form_register.password_confirmation]]), _hoisted_13, _hoisted_14]), _hoisted_15, _hoisted_16, _hoisted_17], 32
+    onBlur: _cache[5] || (_cache[5] = function ($event) {
+      return $options.validate();
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form_register.password_confirmation]]), _hoisted_14, _hoisted_15]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.password_confirmation), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"pass\">\n        Forgot Password ?\n      </div> "), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/login"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Quay lại đăng nhập ")];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])], 32
   /* HYDRATE_EVENTS */
   )])]);
 }
@@ -245,7 +298,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".login_layout[data-v-d4f9cbe2] {\n  margin: 0;\n  padding: 0;\n  font-family: montserrat;\n  background: rgba(0, 0, 0, 0.6);\n  height: 100vh;\n  overflow: hidden;\n}\n.login_layout img[data-v-d4f9cbe2] {\n  width: 100%;\n  height: 100vh;\n  opacity: 0.4;\n}\n.center[data-v-d4f9cbe2] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 400px;\n  background: white;\n  border-radius: 10px;\n}\n.center h1[data-v-d4f9cbe2] {\n  text-align: center;\n  padding: 20px 0 20px 0;\n}\n.center form[data-v-d4f9cbe2] {\n  padding: 0 40px;\n  box-sizing: border-box;\n}\n.center form .txt_field[data-v-d4f9cbe2] {\n  position: relative;\n  border-bottom: 2px solid #adadad;\n  margin: 30px 0;\n}\n.center form .txt_field input[data-v-d4f9cbe2] {\n  width: 100%;\n  padding: 0 5px;\n  height: 40px;\n  font-size: 16px;\n  border: none;\n  background: none;\n  outline: none;\n}\n.center form .txt_field label[data-v-d4f9cbe2] {\n  position: absolute;\n  top: 50%;\n  left: 5px;\n  color: #989696;\n  transform: translateY(-50%);\n  font-size: 16px;\n  pointer-events: none;\n  transition: .5s;\n}\n.center form .txt_field span[data-v-d4f9cbe2]::before {\n  content: '';\n  position: absolute;\n  top: 40px;\n  left: 0;\n  width: 0%;\n  height: 2px;\n  background: #2691d9;\n  transition: 0.5s;\n}\n.center .pass[data-v-d4f9cbe2] {\n  margin: -5xp 0 20px 5px;\n  color: #a6a6a6;\n  cursor: pointer;\n}\n.center .pass[data-v-d4f9cbe2]:hover {\n  text-decoration: underline;\n}\n.center input[type=\"submit\"][data-v-d4f9cbe2] {\n  width: 100%;\n  height: 50px;\n  border: 1px solid;\n  background: #2691d9;\n  border-radius: 25px;\n  font-size: 18px;\n  color: #e9f4fb;\n  font-weight: 700;\n  cursor: pointer;\n  outline: none;\n  margin-top: 30px;\n}\n.center input[type=\"submit\"][data-v-d4f9cbe2]:hover {\n  border-color: #2691d9;\n  transition: .5s;\n}\n.center .signup_link[data-v-d4f9cbe2] {\n  margin: 30px 0;\n  text-align: center;\n  font-size: 16px;\n  color: #666666;\n}\n.center .signup_link a[data-v-d4f9cbe2] {\n  color: #2691d9;\n  text-decoration: none;\n}\n.center .signup_link a[data-v-d4f9cbe2]:hover {\n  text-decoration: underline;\n}\n.txt_field input:focus ~ label[data-v-d4f9cbe2],\n.txt_field input:valid ~ label[data-v-d4f9cbe2] {\n  top: -5px;\n  color: #2691d9;\n}\n.txt_field input:focus ~ span[data-v-d4f9cbe2]::before,\n.txt_field input:valid ~ span[data-v-d4f9cbe2]::before {\n  width: 100%;\n}\n.error[data-v-d4f9cbe2] {\n  color: red;\n  font-size: 12px;\n  font-weight: 500;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".login_layout[data-v-d4f9cbe2] {\n  margin: 0;\n  padding: 0;\n  font-family: montserrat;\n  background: rgba(0, 0, 0, 0.6);\n  height: 100vh;\n  overflow: hidden;\n}\n.login_layout img[data-v-d4f9cbe2] {\n  width: 100%;\n  height: 100vh;\n  opacity: 0.4;\n}\n.center[data-v-d4f9cbe2] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 400px;\n  background: white;\n  border-radius: 10px;\n}\n.center h1[data-v-d4f9cbe2] {\n  text-align: center;\n  padding: 20px 0 20px 0;\n}\n.center form[data-v-d4f9cbe2] {\n  padding: 0 40px;\n  box-sizing: border-box;\n}\n.center form .txt_field[data-v-d4f9cbe2] {\n  position: relative;\n  border-bottom: 2px solid #adadad;\n  margin: 30px 0 10px 0;\n}\n.center form .txt_field input[data-v-d4f9cbe2] {\n  width: 100%;\n  padding: 0 5px;\n  height: 40px;\n  font-size: 16px;\n  border: none;\n  background: none;\n  outline: none;\n}\n.center form .txt_field label[data-v-d4f9cbe2] {\n  position: absolute;\n  top: 50%;\n  left: 5px;\n  color: #989696;\n  transform: translateY(-50%);\n  font-size: 16px;\n  pointer-events: none;\n  transition: .5s;\n}\n.center form .txt_field span[data-v-d4f9cbe2]::before {\n  content: '';\n  position: absolute;\n  top: 40px;\n  left: 0;\n  width: 0%;\n  height: 2px;\n  background: #2691d9;\n  transition: 0.5s;\n}\n.center .pass[data-v-d4f9cbe2] {\n  margin: -5xp 0 20px 5px;\n  color: #a6a6a6;\n  cursor: pointer;\n}\n.center .pass[data-v-d4f9cbe2]:hover {\n  text-decoration: underline;\n}\n.center input[type=\"submit\"][data-v-d4f9cbe2] {\n  width: 100%;\n  height: 50px;\n  border: 1px solid;\n  background: #2691d9;\n  border-radius: 25px;\n  font-size: 18px;\n  color: #e9f4fb;\n  font-weight: 700;\n  cursor: pointer;\n  outline: none;\n  margin-top: 30px;\n}\n.center input[type=\"submit\"][data-v-d4f9cbe2]:hover {\n  border-color: #2691d9;\n  transition: .5s;\n}\n.center .signup_link[data-v-d4f9cbe2] {\n  margin: 30px 0;\n  text-align: center;\n  font-size: 16px;\n  color: #666666;\n}\n.center .signup_link a[data-v-d4f9cbe2] {\n  color: #2691d9;\n  text-decoration: none;\n}\n.center .signup_link a[data-v-d4f9cbe2]:hover {\n  text-decoration: underline;\n}\n.txt_field input:focus ~ label[data-v-d4f9cbe2],\n.txt_field input:valid ~ label[data-v-d4f9cbe2] {\n  top: -5px;\n  color: #2691d9;\n}\n.txt_field input:focus ~ span[data-v-d4f9cbe2]::before,\n.txt_field input:valid ~ span[data-v-d4f9cbe2]::before {\n  width: 100%;\n}\n.error[data-v-d4f9cbe2] {\n  color: red;\n  font-size: 12px;\n  font-weight: 500;\n}\n.feedback_validation[data-v-d4f9cbe2] {\n  color: red;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

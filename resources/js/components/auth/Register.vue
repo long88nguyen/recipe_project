@@ -4,29 +4,38 @@
     <div class="center" >
     <h1>Đăng ký</h1>
     <form action="" @submit.prevent="registerForm">
-      <span class="error">{{  errMessage }}</span>
+
+
       <div class="txt_field">
-        <input type="text" v-model="form_register.email" required>
+        <input type="text" v-model="form_register.email" @blur="validate()">
         <span></span>
+
         <label>Email</label>
       </div>
+      <div class="feedback_validation">{{ errors.email }}</div>
+
       <div class="txt_field">
-        <input type="password" v-model="form_register.password" required >
+        <input type="password" v-model="form_register.password"  @blur="validate()">
         <span></span>
-        <label>Password</label>
+        <label>Mật khẩu</label>
       </div>
+      <div class="feedback_validation">{{ errors.password }}</div>
+
       <div class="txt_field">
-        <input type="password" v-model="form_register.password_confirmation" required >
+        <input type="password" v-model="form_register.password_confirmation" @blur="validate()">
         <span></span>
-        <label>Password Confirmation</label>
+        <label>Nhập lại mật khẩu</label>
       </div>
+      <div class="feedback_validation">{{ errors.password_confirmation }}</div>
       
-      
-      <div class="pass">
+      <!-- <div class="pass">
         Forgot Password ?
-      </div>
+      </div> -->
       <input type="submit" name="" id="">
-      <div class="signup_link"><a href=""> Quay lại đăng nhập</a></div>
+      <div class="signup_link">
+        <router-link to="/login"> 
+          Quay lại đăng nhập
+        </router-link></div>
     </form> 
 
   </div>
@@ -43,27 +52,75 @@ export default {
         password:'',
         password_confirmation:''
       },
-      errMessage:""
+      errors:{
+        email: '',
+        password:'',
+        password_confirmation:''
+      }
     }
   },
   computed:{
    
   },
   methods: {
-    async registerForm(){
-      if(this.form_register.password == '' || this.form_register.password_confirmation==1 || this.form_register.email == ''){
-        this.errMessage = "Please fill all field!"
-      }
-      else if(this.form_register.password != this.form_register.password_confirmation)
+    validate()
+    {
+      this.errors = {
+        email: '',
+        password:'',
+        password_confirmation:''
+      };
+      let isValid = true
+      if(!this.form_register.email)
       {
-        this.errMessage = "Password confirmation not match!"
+        this.errors.email = "Vui lòng nhập email!"
+        isValid = false;
       }
-      await this.$store.dispatch('auth/register',this.form_register).then(() => {
+
+      else if(!this.isEmail(this.form_register.email))
+      {
+        this.errors.email = "Email đã nhập không đúng định dạng!"
+        isValid = false;
+      }
+
+      if(!this.form_register.password)
+      {
+        this.errors.password = "Vui lòng nhập mật khẩu!"
+        isValid = false;
+      }
+
+      else if(this.form_register.password.length < 6)
+      {
+        this.errors.password = "Mật khẩu phải chứa ít nhất 6 ký tự!"
+        isValid = false;
+      }
+
+      if(!this.form_register.password_confirmation)
+      {
+        this.errors.password_confirmation = "Vui lòng nhập lại mật khẩu!"
+        isValid = false;
+      }
+
+      else if(this.form_register.password_confirmation != this.form_register.password){
+        this.errors.password_confirmation = "Mật khẩu nhập lại không đúng!"
+        isValid = false;
+      }
+      return isValid;
+    },
+    isEmail(value){
+      return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+    },
+    async registerForm(){
+      if(this.validate())
+      {
+        await this.$store.dispatch('auth/register',this.form_register).then(() => {
         this.$router.push({ name: "Login"})
-        this.$toast.success('Register Account Successful')
+        this.$toast.success('Đăng ký tài khoản thành công!')
       }).catch(() =>{
-        this.$toast.error('Register Account Failed');
+        this.$toast.error('Đăng ký không thành công vui lòng kiểm tra lại!');
       })
+      }
+      
     }
   }
 }
@@ -101,7 +158,7 @@ export default {
     .txt_field{
       position: relative;
       border-bottom: 2px solid #adadad;
-      margin: 30px 0;
+      margin:30px 0 10px 0;
       input{
         width:100%;
         padding:0 5px;
@@ -190,5 +247,9 @@ export default {
   color: red;
   font-size: 12px;
   font-weight: 500;
+}
+
+.feedback_validation{
+  color: red;
 }
 </style>

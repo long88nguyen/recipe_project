@@ -206,4 +206,18 @@ import { mapGetters } from 'vuex'
     }
 }
 
+@media (max-width : 414px) {
+  .slider_container{
+    .slider_food{
+      width: 96%;
+      .new-product{
+        .slider_video{
+          .btn-explorer{
+            right: 31%;
+          }
+        }
+      }
+    }
+  }
+}
 </style>

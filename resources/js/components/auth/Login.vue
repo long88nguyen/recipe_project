@@ -50,19 +50,36 @@ export default {
   },
   methods: {
     validate(){
+      this.errors={
+        email:"",
+        password:"",
+      }
       let isValid = true;
       if(!this.form.email){
-        this.errors.email = "Email is required"
+        this.errors.email = "Vui lòng nhập email!"
         isValid = false;
       }
-
+      else if(!this.isEmail(this.form.email)){
+        this.errors.email = "Email đã nhập không đúng định dạng!"
+        isValid = false;
+      }
       if(!this.form.password){
-        this.errors.password = "Password is required"
+
+        this.errors.password = "Vui lòng nhập mật khẩu!"
         isValid = false;
 
       }
+      else if(this.form.password.length < 6)
+      {
+        this.errors.password = "Mật khẩu phải chứa ít nhất 6 ký tự"
+        isValid = false;
+      }
+
       return isValid
 
+    },
+    isEmail(value){
+      return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
     },
     async login() {
       if(this.validate()){
@@ -84,7 +101,7 @@ export default {
           }
         })
         .catch((error) => {
-         
+         console.log(error);
           this.$toast.error('Đăng nhập không thành công! Vui lòng kiểm tra lại thông tin đăng nhập');
         });
       }

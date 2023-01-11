@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Enums\ErrorType;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AuthRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\Member;
 use App\Models\User;
 use Carbon\Carbon;
@@ -23,22 +25,22 @@ class AuthController extends Controller
         return Auth::guard($guard);
     }
 
-    public function register(Request $request): JsonResponse
+    public function register(RegisterRequest $request): JsonResponse
     {
         try{
             DB::beginTransaction();
-            $data = $request->all();
-            $validator = Validator::make($request->all(), [
-                'email' => 'required|string|email|unique:users',
-                'password' => 'required|string|confirmed' // password_confimation
-            ]);
-            if ($validator->fails()) {
-                return response()->json([
-                    'status' => 'fails',
-                    'message' => $validator->errors()->first(),
-                    'errors' => $validator->errors()->toArray(),
-                ]);
-            }
+            // $data = $request->all();
+            // $validator = Validator::make($request->all(), [
+            //     'email' => 'required|string|email|unique:users',
+            //     'password' => 'required|string|confirmed' // password_confimation
+            // ]);
+            // if ($validator->fails()) {
+            //     return response()->json([
+            //         'status' => 'fails',
+            //         'message' => $validator->errors()->first(),
+            //         'errors' => $validator->errors()->toArray(),
+            //     ]);
+            // }
 
             $user = new User([
                 'email' => $request->input('email'),
@@ -74,25 +76,27 @@ class AuthController extends Controller
     }
 
 
-    public function login(Request $request): JsonResponse
+    public function login(AuthRequest $request): JsonResponse
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-            'remember_me' => 'boolean'
-        ]);
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'fails',
-                'message' => $validator->errors()->first(),
-                'errors' => $validator->errors()->toArray(),
-            ]);
-        }
+        // $validator = Validator::make($request->all(), [
+        //     'email' => 'required|string|email',
+        //     'password' => 'required|string',
+        //     'remember_me' => 'boolean'
+        // ]);
+        // if ($validator->fails()) {
+        //     return response()->json([
+        //         'status' => 'fails',
+        //         'message' => $validator->errors()->first(),
+        //         'errors' => $validator->errors()->toArray(),
+        //     ]);
+        // }
         $credentials = request(['email', 'password']);
+
         if (!Auth::attempt($credentials)) {
             return response()->json([
                 'status' => 'fails',
-                'message' => 'Unauthorized'
+                'message' => 'Unauthorized',
+                'code' => 401
             ], 401);
         }
         $user = $request->user();

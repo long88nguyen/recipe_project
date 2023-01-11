@@ -568,6 +568,7 @@ export default {
         padding: 0;
         display: flex;
         justify-content: space-around;
+        display: block;
       }
     }
   }
@@ -649,7 +650,6 @@ export default {
 
 @media (max-width: 414px) {
   .container-layout{
-    height: 150px;
     nav{
       width: 100%;
       .nav-menu{

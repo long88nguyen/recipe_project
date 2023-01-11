@@ -9,7 +9,6 @@ import store from "./store/index";
 axios.interceptors.request.use(
   request => {
     let token = store.getters["auth/token"];
-    console.log(token);
     if (token && token != undefined) {
       request.headers.common["Accept"] = "application/json";
       request.headers.common["Authorization"] = `Bearer ${token}`;
