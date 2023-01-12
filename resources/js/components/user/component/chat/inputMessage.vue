@@ -1,20 +1,17 @@
 <template>
-    <div class="relative h-10 m-1">
-        <div class="grid grid-cols-6" style="border-top:1px solid #e6e6e6">
+        <div class="chat_button_panel">
             <input type="text"
                 v-model ="message"
                 @keyup.enter="sendMessage()"
                 placeholder="Say something ..."
-                class="col-span-5 outline-none p-1"
+                class=""
             >
-            <button
-                @click="sendMessage()"
-                class="place-self-end bg-gray-500 hover:bg-blue-700 p-1 mt-1 "
-            >
-            Send
-            </button>
+            <div class="button-side">
+                <img src="../../../../uploads/send.png" @click="sendMessage()" alt="">
+                
+            </div>
+           
         </div>
-    </div>
 </template>
 
 <script>
@@ -49,6 +46,29 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+.chat_button_panel{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    input{
+        width: 90%;
+        height: 100%;
+        outline: none;
+        padding: 0 0 0 20px;
+        border-radius: 20px;
+        border: 1px solid silver;
+    }
+    .button-side{
+        width: 10%;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        img{
+            width: 30px;
+            height: auto;
+            text-align: center;
+        }
+    }
+}
 </style>

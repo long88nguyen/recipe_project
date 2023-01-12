@@ -1,21 +1,30 @@
 <template>
     <div class="chat_side">
         <div class="chat_container">
-            <chatRoomSelection
+            <!-- <chatRoomSelection
             v-if="currentRoom.id"
             :rooms="chatRooms"
             :currentRoom = "currentRoom"
             @roomchanged = setRoom($event)
-            />
-            <h1>Container</h1>
-            <messageContainer
-            :messages = "messages"
-            />
-            <inputMessage :room = "currentRoom"
-                        @messagesent = "getMessages()"
-            />
+            /> -->
+            <div class="chat_pannel">
 
-            {{getAllRoom}}
+                <div class="chat_message">
+                    <messageContainer
+                        :messages = "messages"
+                        />
+                </div>
+               
+                
+            <div class="chat_button">
+                <inputMessage :room = "currentRoom"
+                            @messagesent = "getMessages()"
+                />
+            </div>
+                
+
+            </div>
+            
         </div>
         
     </div>
@@ -107,8 +116,24 @@ export default {
     width: 100%;
     padding-top: 200px;
     .chat_container{
-        width: 70%;
+        width: 60%;
         margin: 0 auto;
+        .chat_pannel{
+            border-radius: 20px;
+            margin-top: 20px;
+            width: 100%;
+            height: 500px;
+            //background: rgb(250, 248, 248);
+            .chat_message{
+                height: 450px;
+                padding: 10px;
+                overflow-y: scroll;
+            }
+            .chat_button{
+                padding:10px;
+            }
+
+        }
     }
    }
    </style>

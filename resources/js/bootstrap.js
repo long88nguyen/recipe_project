@@ -28,8 +28,6 @@ window.Echo = new Echo({
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     forceTLS: true,
-    wsHost:window.location.hostname,
-    wsHost:6001,
     auth: {
         headers: {
             Authorization: 'Bearer ' + token

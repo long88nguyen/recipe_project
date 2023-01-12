@@ -1,13 +1,11 @@
 <template>
-    <div class="h-96 w-full">
-        <div class="h-full p-2 flex flex-col-reserse overflow-scroll">
+        <div class="list_message">
             <div v-for="(message,index) in messages" :key="index">
                 <messageItem
                 :message = "message"
                 />
             </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -17,6 +15,8 @@ export default {
     components:{
         messageItem
     },
+
+    
     props:[
         'messages'
     ]

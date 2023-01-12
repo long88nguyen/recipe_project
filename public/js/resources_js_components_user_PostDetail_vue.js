@@ -697,7 +697,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onClick: _cache[4] || (_cache[4] = function () {
               return $options.showPopup && $options.showPopup.apply($options, arguments);
             })
-          }, "Đã đánh giá"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(), _hoisted_27])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <ShareNetwork\n                            network=\"facebook\"\n                            \n                            :url=\"`https://localhost:8087/post-detail/4`\"\n                            title=\"Say hi to Vite! A brand new, extremely fast development setup for Vue.\"\n                            description=\"This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You.\"\n                            quote=\"The hot reload is so fast it\\'s near instant. - Evan You\"\n                            hashtags=\"vuejs,vite\"\n                        > "), _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </ShareNetwork> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.getPostDetail.ingredients, function (ingredient, index) {
+          }, "Đã đánh giá"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(), _hoisted_27])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <ShareNetwork\r\n                            network=\"facebook\"\r\n                            \r\n                            :url=\"`https://localhost:8087/post-detail/4`\"\r\n                            title=\"Say hi to Vite! A brand new, extremely fast development setup for Vue.\"\r\n                            description=\"This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You.\"\r\n                            quote=\"The hot reload is so fast it\\'s near instant. - Evan You\"\r\n                            hashtags=\"vuejs,vite\"\r\n                        > "), _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </ShareNetwork> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.getPostDetail.ingredients, function (ingredient, index) {
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
               key: index
             }, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(ingredient.name), 1
@@ -1196,7 +1196,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PostDetail_vue_vue_type_template_id_c7f8280c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostDetail.vue?vue&type=template&id=c7f8280c */ "./resources/js/components/user/PostDetail.vue?vue&type=template&id=c7f8280c");
 /* harmony import */ var _PostDetail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostDetail.vue?vue&type=script&lang=js */ "./resources/js/components/user/PostDetail.vue?vue&type=script&lang=js");
 /* harmony import */ var _PostDetail_vue_vue_type_style_index_0_id_c7f8280c_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostDetail.vue?vue&type=style&index=0&id=c7f8280c&lang=scss */ "./resources/js/components/user/PostDetail.vue?vue&type=style&index=0&id=c7f8280c&lang=scss");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1204,7 +1204,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PostDetail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostDetail_vue_vue_type_template_id_c7f8280c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/PostDetail.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PostDetail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostDetail_vue_vue_type_template_id_c7f8280c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/PostDetail.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1227,7 +1227,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ReviewPanel_vue_vue_type_template_id_66e19ba1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReviewPanel.vue?vue&type=template&id=66e19ba1 */ "./resources/js/components/user/component/ReviewPanel.vue?vue&type=template&id=66e19ba1");
 /* harmony import */ var _ReviewPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReviewPanel.vue?vue&type=script&lang=js */ "./resources/js/components/user/component/ReviewPanel.vue?vue&type=script&lang=js");
 /* harmony import */ var _ReviewPanel_vue_vue_type_style_index_0_id_66e19ba1_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReviewPanel.vue?vue&type=style&index=0&id=66e19ba1&lang=scss */ "./resources/js/components/user/component/ReviewPanel.vue?vue&type=style&index=0&id=66e19ba1&lang=scss");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1235,7 +1235,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_ReviewPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ReviewPanel_vue_vue_type_template_id_66e19ba1__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/component/ReviewPanel.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_ReviewPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ReviewPanel_vue_vue_type_template_id_66e19ba1__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/component/ReviewPanel.vue"]])
 /* hot reload */
 if (false) {}
 

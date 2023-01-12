@@ -2352,7 +2352,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".wrapper[data-v-31f9a5d7] {\n  position: relative;\n  background: #ffffff;\n  border: 1px solid #efefef;\n  border-radius: 10px;\n  padding: 30px 20px;\n  height: 420px;\n}\n.wrapper .header[data-v-31f9a5d7] {\n  font-family: \"-apple-system,BlinkMacSystemFont,\" Segoe UI \",Roboto,\" Helvetica Neue \",Arial,\" Noto Sans \",sans-serif,\" Apple Color Emoji \",\" Segoe UI Emoji \",\" Segoe UI Symbol \",\" Noto Color Emoji \"\";\n  font-size: 18px;\n  font-weight: 700;\n  text-align: center;\n  margin-bottom: 20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".wrapper[data-v-31f9a5d7] {\n  position: relative;\n  background: #ffffff;\n  border: 1px solid #efefef;\n  border-radius: 10px;\n  padding: 30px 20px;\n  height: 420px;\n}\n.wrapper .header[data-v-31f9a5d7] {\n  font-family: \"-apple-system,BlinkMacSystemFont,\" Segoe UI \",Roboto,\"\r Helvetica Neue \",Arial,\" Noto Sans \",sans-serif,\" Apple Color Emoji \",\"\r Segoe UI Emoji \",\" Segoe UI Symbol \",\" Noto Color Emoji \"\";\n  font-size: 18px;\n  font-weight: 700;\n  text-align: center;\n  margin-bottom: 20px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4352,832 +4352,6 @@ function pieLayout(seriesType, ecModel, api) {
     }
   });
 }
-
-/***/ }),
-
-/***/ "./node_modules/echarts/lib/component/axis/AxisBuilder.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/echarts/lib/component/axis/AxisBuilder.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! zrender/lib/core/util.js */ "./node_modules/zrender/lib/core/util.js");
-/* harmony import */ var _util_graphic_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../util/graphic.js */ "./node_modules/zrender/lib/graphic/Group.js");
-/* harmony import */ var _util_graphic_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/graphic.js */ "./node_modules/zrender/lib/graphic/shape/Line.js");
-/* harmony import */ var _util_graphic_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/graphic.js */ "./node_modules/echarts/lib/util/graphic.js");
-/* harmony import */ var _util_graphic_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../util/graphic.js */ "./node_modules/zrender/lib/graphic/Text.js");
-/* harmony import */ var _util_innerStore_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../util/innerStore.js */ "./node_modules/echarts/lib/util/innerStore.js");
-/* harmony import */ var _label_labelStyle_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../label/labelStyle.js */ "./node_modules/echarts/lib/label/labelStyle.js");
-/* harmony import */ var _model_Model_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../model/Model.js */ "./node_modules/echarts/lib/model/Model.js");
-/* harmony import */ var _util_number_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/number.js */ "./node_modules/echarts/lib/util/number.js");
-/* harmony import */ var _util_symbol_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../util/symbol.js */ "./node_modules/echarts/lib/util/symbol.js");
-/* harmony import */ var zrender_lib_core_matrix_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! zrender/lib/core/matrix.js */ "./node_modules/zrender/lib/core/matrix.js");
-/* harmony import */ var zrender_lib_core_vector_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! zrender/lib/core/vector.js */ "./node_modules/zrender/lib/core/vector.js");
-/* harmony import */ var _coord_axisHelper_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../coord/axisHelper.js */ "./node_modules/echarts/lib/coord/axisHelper.js");
-/* harmony import */ var _label_labelLayoutHelper_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../label/labelLayoutHelper.js */ "./node_modules/echarts/lib/label/labelLayoutHelper.js");
-
-/*
-* Licensed to the Apache Software Foundation (ASF) under one
-* or more contributor license agreements.  See the NOTICE file
-* distributed with this work for additional information
-* regarding copyright ownership.  The ASF licenses this file
-* to you under the Apache License, Version 2.0 (the
-* "License"); you may not use this file except in compliance
-* with the License.  You may obtain a copy of the License at
-*
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing,
-* software distributed under the License is distributed on an
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-* KIND, either express or implied.  See the License for the
-* specific language governing permissions and limitations
-* under the License.
-*/
-
-
-/**
- * AUTO-GENERATED FILE. DO NOT MODIFY.
- */
-
-/*
-* Licensed to the Apache Software Foundation (ASF) under one
-* or more contributor license agreements.  See the NOTICE file
-* distributed with this work for additional information
-* regarding copyright ownership.  The ASF licenses this file
-* to you under the Apache License, Version 2.0 (the
-* "License"); you may not use this file except in compliance
-* with the License.  You may obtain a copy of the License at
-*
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing,
-* software distributed under the License is distributed on an
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-* KIND, either express or implied.  See the License for the
-* specific language governing permissions and limitations
-* under the License.
-*/
-
-
-
-
-
-
-
-
-
-
-
-var PI = Math.PI;
-/**
- * A final axis is translated and rotated from a "standard axis".
- * So opt.position and opt.rotation is required.
- *
- * A standard axis is and axis from [0, 0] to [0, axisExtent[1]],
- * for example: (0, 0) ------------> (0, 50)
- *
- * nameDirection or tickDirection or labelDirection is 1 means tick
- * or label is below the standard axis, whereas is -1 means above
- * the standard axis. labelOffset means offset between label and axis,
- * which is useful when 'onZero', where axisLabel is in the grid and
- * label in outside grid.
- *
- * Tips: like always,
- * positive rotation represents anticlockwise, and negative rotation
- * represents clockwise.
- * The direction of position coordinate is the same as the direction
- * of screen coordinate.
- *
- * Do not need to consider axis 'inverse', which is auto processed by
- * axis extent.
- */
-
-var AxisBuilder =
-/** @class */
-function () {
-  function AxisBuilder(axisModel, opt) {
-    this.group = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-    this.opt = opt;
-    this.axisModel = axisModel; // Default value
-
-    (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.defaults)(opt, {
-      labelOffset: 0,
-      nameDirection: 1,
-      tickDirection: 1,
-      labelDirection: 1,
-      silent: true,
-      handleAutoShown: function () {
-        return true;
-      }
-    }); // FIXME Not use a seperate text group?
-
-    var transformGroup = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_0__["default"]({
-      x: opt.position[0],
-      y: opt.position[1],
-      rotation: opt.rotation
-    }); // this.group.add(transformGroup);
-    // this._transformGroup = transformGroup;
-
-    transformGroup.updateTransform();
-    this._transformGroup = transformGroup;
-  }
-
-  AxisBuilder.prototype.hasBuilder = function (name) {
-    return !!builders[name];
-  };
-
-  AxisBuilder.prototype.add = function (name) {
-    builders[name](this.opt, this.axisModel, this.group, this._transformGroup);
-  };
-
-  AxisBuilder.prototype.getGroup = function () {
-    return this.group;
-  };
-
-  AxisBuilder.innerTextLayout = function (axisRotation, textRotation, direction) {
-    var rotationDiff = (0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.remRadian)(textRotation - axisRotation);
-    var textAlign;
-    var textVerticalAlign;
-
-    if ((0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.isRadianAroundZero)(rotationDiff)) {
-      // Label is parallel with axis line.
-      textVerticalAlign = direction > 0 ? 'top' : 'bottom';
-      textAlign = 'center';
-    } else if ((0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.isRadianAroundZero)(rotationDiff - PI)) {
-      // Label is inverse parallel with axis line.
-      textVerticalAlign = direction > 0 ? 'bottom' : 'top';
-      textAlign = 'center';
-    } else {
-      textVerticalAlign = 'middle';
-
-      if (rotationDiff > 0 && rotationDiff < PI) {
-        textAlign = direction > 0 ? 'right' : 'left';
-      } else {
-        textAlign = direction > 0 ? 'left' : 'right';
-      }
-    }
-
-    return {
-      rotation: rotationDiff,
-      textAlign: textAlign,
-      textVerticalAlign: textVerticalAlign
-    };
-  };
-
-  AxisBuilder.makeAxisEventDataBase = function (axisModel) {
-    var eventData = {
-      componentType: axisModel.mainType,
-      componentIndex: axisModel.componentIndex
-    };
-    eventData[axisModel.mainType + 'Index'] = axisModel.componentIndex;
-    return eventData;
-  };
-
-  AxisBuilder.isLabelSilent = function (axisModel) {
-    var tooltipOpt = axisModel.get('tooltip');
-    return axisModel.get('silent') // Consider mouse cursor, add these restrictions.
-    || !(axisModel.get('triggerEvent') || tooltipOpt && tooltipOpt.show);
-  };
-
-  return AxisBuilder;
-}();
-
-;
-var builders = {
-  axisLine: function (opt, axisModel, group, transformGroup) {
-    var shown = axisModel.get(['axisLine', 'show']);
-
-    if (shown === 'auto' && opt.handleAutoShown) {
-      shown = opt.handleAutoShown('axisLine');
-    }
-
-    if (!shown) {
-      return;
-    }
-
-    var extent = axisModel.axis.getExtent();
-    var matrix = transformGroup.transform;
-    var pt1 = [extent[0], 0];
-    var pt2 = [extent[1], 0];
-    var inverse = pt1[0] > pt2[0];
-
-    if (matrix) {
-      (0,zrender_lib_core_vector_js__WEBPACK_IMPORTED_MODULE_3__.applyTransform)(pt1, pt1, matrix);
-      (0,zrender_lib_core_vector_js__WEBPACK_IMPORTED_MODULE_3__.applyTransform)(pt2, pt2, matrix);
-    }
-
-    var lineStyle = (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.extend)({
-      lineCap: 'round'
-    }, axisModel.getModel(['axisLine', 'lineStyle']).getLineStyle());
-    var line = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_4__["default"]({
-      shape: {
-        x1: pt1[0],
-        y1: pt1[1],
-        x2: pt2[0],
-        y2: pt2[1]
-      },
-      style: lineStyle,
-      strokeContainThreshold: opt.strokeContainThreshold || 5,
-      silent: true,
-      z2: 1
-    });
-    _util_graphic_js__WEBPACK_IMPORTED_MODULE_5__.subPixelOptimizeLine(line.shape, line.style.lineWidth);
-    line.anid = 'line';
-    group.add(line);
-    var arrows = axisModel.get(['axisLine', 'symbol']);
-
-    if (arrows != null) {
-      var arrowSize = axisModel.get(['axisLine', 'symbolSize']);
-
-      if ((0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.isString)(arrows)) {
-        // Use the same arrow for start and end point
-        arrows = [arrows, arrows];
-      }
-
-      if ((0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.isString)(arrowSize) || (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.isNumber)(arrowSize)) {
-        // Use the same size for width and height
-        arrowSize = [arrowSize, arrowSize];
-      }
-
-      var arrowOffset = (0,_util_symbol_js__WEBPACK_IMPORTED_MODULE_6__.normalizeSymbolOffset)(axisModel.get(['axisLine', 'symbolOffset']) || 0, arrowSize);
-      var symbolWidth_1 = arrowSize[0];
-      var symbolHeight_1 = arrowSize[1];
-      (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.each)([{
-        rotate: opt.rotation + Math.PI / 2,
-        offset: arrowOffset[0],
-        r: 0
-      }, {
-        rotate: opt.rotation - Math.PI / 2,
-        offset: arrowOffset[1],
-        r: Math.sqrt((pt1[0] - pt2[0]) * (pt1[0] - pt2[0]) + (pt1[1] - pt2[1]) * (pt1[1] - pt2[1]))
-      }], function (point, index) {
-        if (arrows[index] !== 'none' && arrows[index] != null) {
-          var symbol = (0,_util_symbol_js__WEBPACK_IMPORTED_MODULE_6__.createSymbol)(arrows[index], -symbolWidth_1 / 2, -symbolHeight_1 / 2, symbolWidth_1, symbolHeight_1, lineStyle.stroke, true); // Calculate arrow position with offset
-
-          var r = point.r + point.offset;
-          var pt = inverse ? pt2 : pt1;
-          symbol.attr({
-            rotation: point.rotate,
-            x: pt[0] + r * Math.cos(opt.rotation),
-            y: pt[1] - r * Math.sin(opt.rotation),
-            silent: true,
-            z2: 11
-          });
-          group.add(symbol);
-        }
-      });
-    }
-  },
-  axisTickLabel: function (opt, axisModel, group, transformGroup) {
-    var ticksEls = buildAxisMajorTicks(group, transformGroup, axisModel, opt);
-    var labelEls = buildAxisLabel(group, transformGroup, axisModel, opt);
-    fixMinMaxLabelShow(axisModel, labelEls, ticksEls);
-    buildAxisMinorTicks(group, transformGroup, axisModel, opt.tickDirection); // This bit fixes the label overlap issue for the time chart.
-    // See https://github.com/apache/echarts/issues/14266 for more.
-
-    if (axisModel.get(['axisLabel', 'hideOverlap'])) {
-      var labelList = (0,_label_labelLayoutHelper_js__WEBPACK_IMPORTED_MODULE_7__.prepareLayoutList)((0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.map)(labelEls, function (label) {
-        return {
-          label: label,
-          priority: label.z2,
-          defaultAttr: {
-            ignore: label.ignore
-          }
-        };
-      }));
-      (0,_label_labelLayoutHelper_js__WEBPACK_IMPORTED_MODULE_7__.hideOverlap)(labelList);
-    }
-  },
-  axisName: function (opt, axisModel, group, transformGroup) {
-    var name = (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.retrieve)(opt.axisName, axisModel.get('name'));
-
-    if (!name) {
-      return;
-    }
-
-    var nameLocation = axisModel.get('nameLocation');
-    var nameDirection = opt.nameDirection;
-    var textStyleModel = axisModel.getModel('nameTextStyle');
-    var gap = axisModel.get('nameGap') || 0;
-    var extent = axisModel.axis.getExtent();
-    var gapSignal = extent[0] > extent[1] ? -1 : 1;
-    var pos = [nameLocation === 'start' ? extent[0] - gapSignal * gap : nameLocation === 'end' ? extent[1] + gapSignal * gap : (extent[0] + extent[1]) / 2, // Reuse labelOffset.
-    isNameLocationCenter(nameLocation) ? opt.labelOffset + nameDirection * gap : 0];
-    var labelLayout;
-    var nameRotation = axisModel.get('nameRotate');
-
-    if (nameRotation != null) {
-      nameRotation = nameRotation * PI / 180; // To radian.
-    }
-
-    var axisNameAvailableWidth;
-
-    if (isNameLocationCenter(nameLocation)) {
-      labelLayout = AxisBuilder.innerTextLayout(opt.rotation, nameRotation != null ? nameRotation : opt.rotation, // Adapt to axis.
-      nameDirection);
-    } else {
-      labelLayout = endTextLayout(opt.rotation, nameLocation, nameRotation || 0, extent);
-      axisNameAvailableWidth = opt.axisNameAvailableWidth;
-
-      if (axisNameAvailableWidth != null) {
-        axisNameAvailableWidth = Math.abs(axisNameAvailableWidth / Math.sin(labelLayout.rotation));
-        !isFinite(axisNameAvailableWidth) && (axisNameAvailableWidth = null);
-      }
-    }
-
-    var textFont = textStyleModel.getFont();
-    var truncateOpt = axisModel.get('nameTruncate', true) || {};
-    var ellipsis = truncateOpt.ellipsis;
-    var maxWidth = (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.retrieve)(opt.nameTruncateMaxWidth, truncateOpt.maxWidth, axisNameAvailableWidth);
-    var textEl = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_8__["default"]({
-      x: pos[0],
-      y: pos[1],
-      rotation: labelLayout.rotation,
-      silent: AxisBuilder.isLabelSilent(axisModel),
-      style: (0,_label_labelStyle_js__WEBPACK_IMPORTED_MODULE_9__.createTextStyle)(textStyleModel, {
-        text: name,
-        font: textFont,
-        overflow: 'truncate',
-        width: maxWidth,
-        ellipsis: ellipsis,
-        fill: textStyleModel.getTextColor() || axisModel.get(['axisLine', 'lineStyle', 'color']),
-        align: textStyleModel.get('align') || labelLayout.textAlign,
-        verticalAlign: textStyleModel.get('verticalAlign') || labelLayout.textVerticalAlign
-      }),
-      z2: 1
-    });
-    _util_graphic_js__WEBPACK_IMPORTED_MODULE_5__.setTooltipConfig({
-      el: textEl,
-      componentModel: axisModel,
-      itemName: name
-    });
-    textEl.__fullText = name; // Id for animation
-
-    textEl.anid = 'name';
-
-    if (axisModel.get('triggerEvent')) {
-      var eventData = AxisBuilder.makeAxisEventDataBase(axisModel);
-      eventData.targetType = 'axisName';
-      eventData.name = name;
-      (0,_util_innerStore_js__WEBPACK_IMPORTED_MODULE_10__.getECData)(textEl).eventData = eventData;
-    } // FIXME
-
-
-    transformGroup.add(textEl);
-    textEl.updateTransform();
-    group.add(textEl);
-    textEl.decomposeTransform();
-  }
-};
-
-function endTextLayout(rotation, textPosition, textRotate, extent) {
-  var rotationDiff = (0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.remRadian)(textRotate - rotation);
-  var textAlign;
-  var textVerticalAlign;
-  var inverse = extent[0] > extent[1];
-  var onLeft = textPosition === 'start' && !inverse || textPosition !== 'start' && inverse;
-
-  if ((0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.isRadianAroundZero)(rotationDiff - PI / 2)) {
-    textVerticalAlign = onLeft ? 'bottom' : 'top';
-    textAlign = 'center';
-  } else if ((0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.isRadianAroundZero)(rotationDiff - PI * 1.5)) {
-    textVerticalAlign = onLeft ? 'top' : 'bottom';
-    textAlign = 'center';
-  } else {
-    textVerticalAlign = 'middle';
-
-    if (rotationDiff < PI * 1.5 && rotationDiff > PI / 2) {
-      textAlign = onLeft ? 'left' : 'right';
-    } else {
-      textAlign = onLeft ? 'right' : 'left';
-    }
-  }
-
-  return {
-    rotation: rotationDiff,
-    textAlign: textAlign,
-    textVerticalAlign: textVerticalAlign
-  };
-}
-
-function fixMinMaxLabelShow(axisModel, labelEls, tickEls) {
-  if ((0,_coord_axisHelper_js__WEBPACK_IMPORTED_MODULE_11__.shouldShowAllLabels)(axisModel.axis)) {
-    return;
-  } // If min or max are user set, we need to check
-  // If the tick on min(max) are overlap on their neighbour tick
-  // If they are overlapped, we need to hide the min(max) tick label
-
-
-  var showMinLabel = axisModel.get(['axisLabel', 'showMinLabel']);
-  var showMaxLabel = axisModel.get(['axisLabel', 'showMaxLabel']); // FIXME
-  // Have not consider onBand yet, where tick els is more than label els.
-
-  labelEls = labelEls || [];
-  tickEls = tickEls || [];
-  var firstLabel = labelEls[0];
-  var nextLabel = labelEls[1];
-  var lastLabel = labelEls[labelEls.length - 1];
-  var prevLabel = labelEls[labelEls.length - 2];
-  var firstTick = tickEls[0];
-  var nextTick = tickEls[1];
-  var lastTick = tickEls[tickEls.length - 1];
-  var prevTick = tickEls[tickEls.length - 2];
-
-  if (showMinLabel === false) {
-    ignoreEl(firstLabel);
-    ignoreEl(firstTick);
-  } else if (isTwoLabelOverlapped(firstLabel, nextLabel)) {
-    if (showMinLabel) {
-      ignoreEl(nextLabel);
-      ignoreEl(nextTick);
-    } else {
-      ignoreEl(firstLabel);
-      ignoreEl(firstTick);
-    }
-  }
-
-  if (showMaxLabel === false) {
-    ignoreEl(lastLabel);
-    ignoreEl(lastTick);
-  } else if (isTwoLabelOverlapped(prevLabel, lastLabel)) {
-    if (showMaxLabel) {
-      ignoreEl(prevLabel);
-      ignoreEl(prevTick);
-    } else {
-      ignoreEl(lastLabel);
-      ignoreEl(lastTick);
-    }
-  }
-}
-
-function ignoreEl(el) {
-  el && (el.ignore = true);
-}
-
-function isTwoLabelOverlapped(current, next) {
-  // current and next has the same rotation.
-  var firstRect = current && current.getBoundingRect().clone();
-  var nextRect = next && next.getBoundingRect().clone();
-
-  if (!firstRect || !nextRect) {
-    return;
-  } // When checking intersect of two rotated labels, we use mRotationBack
-  // to avoid that boundingRect is enlarge when using `boundingRect.applyTransform`.
-
-
-  var mRotationBack = zrender_lib_core_matrix_js__WEBPACK_IMPORTED_MODULE_12__.identity([]);
-  zrender_lib_core_matrix_js__WEBPACK_IMPORTED_MODULE_12__.rotate(mRotationBack, mRotationBack, -current.rotation);
-  firstRect.applyTransform(zrender_lib_core_matrix_js__WEBPACK_IMPORTED_MODULE_12__.mul([], mRotationBack, current.getLocalTransform()));
-  nextRect.applyTransform(zrender_lib_core_matrix_js__WEBPACK_IMPORTED_MODULE_12__.mul([], mRotationBack, next.getLocalTransform()));
-  return firstRect.intersect(nextRect);
-}
-
-function isNameLocationCenter(nameLocation) {
-  return nameLocation === 'middle' || nameLocation === 'center';
-}
-
-function createTicks(ticksCoords, tickTransform, tickEndCoord, tickLineStyle, anidPrefix) {
-  var tickEls = [];
-  var pt1 = [];
-  var pt2 = [];
-
-  for (var i = 0; i < ticksCoords.length; i++) {
-    var tickCoord = ticksCoords[i].coord;
-    pt1[0] = tickCoord;
-    pt1[1] = 0;
-    pt2[0] = tickCoord;
-    pt2[1] = tickEndCoord;
-
-    if (tickTransform) {
-      (0,zrender_lib_core_vector_js__WEBPACK_IMPORTED_MODULE_3__.applyTransform)(pt1, pt1, tickTransform);
-      (0,zrender_lib_core_vector_js__WEBPACK_IMPORTED_MODULE_3__.applyTransform)(pt2, pt2, tickTransform);
-    } // Tick line, Not use group transform to have better line draw
-
-
-    var tickEl = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_4__["default"]({
-      shape: {
-        x1: pt1[0],
-        y1: pt1[1],
-        x2: pt2[0],
-        y2: pt2[1]
-      },
-      style: tickLineStyle,
-      z2: 2,
-      autoBatch: true,
-      silent: true
-    });
-    _util_graphic_js__WEBPACK_IMPORTED_MODULE_5__.subPixelOptimizeLine(tickEl.shape, tickEl.style.lineWidth);
-    tickEl.anid = anidPrefix + '_' + ticksCoords[i].tickValue;
-    tickEls.push(tickEl);
-  }
-
-  return tickEls;
-}
-
-function buildAxisMajorTicks(group, transformGroup, axisModel, opt) {
-  var axis = axisModel.axis;
-  var tickModel = axisModel.getModel('axisTick');
-  var shown = tickModel.get('show');
-
-  if (shown === 'auto' && opt.handleAutoShown) {
-    shown = opt.handleAutoShown('axisTick');
-  }
-
-  if (!shown || axis.scale.isBlank()) {
-    return;
-  }
-
-  var lineStyleModel = tickModel.getModel('lineStyle');
-  var tickEndCoord = opt.tickDirection * tickModel.get('length');
-  var ticksCoords = axis.getTicksCoords();
-  var ticksEls = createTicks(ticksCoords, transformGroup.transform, tickEndCoord, (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.defaults)(lineStyleModel.getLineStyle(), {
-    stroke: axisModel.get(['axisLine', 'lineStyle', 'color'])
-  }), 'ticks');
-
-  for (var i = 0; i < ticksEls.length; i++) {
-    group.add(ticksEls[i]);
-  }
-
-  return ticksEls;
-}
-
-function buildAxisMinorTicks(group, transformGroup, axisModel, tickDirection) {
-  var axis = axisModel.axis;
-  var minorTickModel = axisModel.getModel('minorTick');
-
-  if (!minorTickModel.get('show') || axis.scale.isBlank()) {
-    return;
-  }
-
-  var minorTicksCoords = axis.getMinorTicksCoords();
-
-  if (!minorTicksCoords.length) {
-    return;
-  }
-
-  var lineStyleModel = minorTickModel.getModel('lineStyle');
-  var tickEndCoord = tickDirection * minorTickModel.get('length');
-  var minorTickLineStyle = (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.defaults)(lineStyleModel.getLineStyle(), (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.defaults)(axisModel.getModel('axisTick').getLineStyle(), {
-    stroke: axisModel.get(['axisLine', 'lineStyle', 'color'])
-  }));
-
-  for (var i = 0; i < minorTicksCoords.length; i++) {
-    var minorTicksEls = createTicks(minorTicksCoords[i], transformGroup.transform, tickEndCoord, minorTickLineStyle, 'minorticks_' + i);
-
-    for (var k = 0; k < minorTicksEls.length; k++) {
-      group.add(minorTicksEls[k]);
-    }
-  }
-}
-
-function buildAxisLabel(group, transformGroup, axisModel, opt) {
-  var axis = axisModel.axis;
-  var show = (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.retrieve)(opt.axisLabelShow, axisModel.get(['axisLabel', 'show']));
-
-  if (!show || axis.scale.isBlank()) {
-    return;
-  }
-
-  var labelModel = axisModel.getModel('axisLabel');
-  var labelMargin = labelModel.get('margin');
-  var labels = axis.getViewLabels(); // Special label rotate.
-
-  var labelRotation = ((0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.retrieve)(opt.labelRotate, labelModel.get('rotate')) || 0) * PI / 180;
-  var labelLayout = AxisBuilder.innerTextLayout(opt.rotation, labelRotation, opt.labelDirection);
-  var rawCategoryData = axisModel.getCategories && axisModel.getCategories(true);
-  var labelEls = [];
-  var silent = AxisBuilder.isLabelSilent(axisModel);
-  var triggerEvent = axisModel.get('triggerEvent');
-  (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.each)(labels, function (labelItem, index) {
-    var tickValue = axis.scale.type === 'ordinal' ? axis.scale.getRawOrdinalNumber(labelItem.tickValue) : labelItem.tickValue;
-    var formattedLabel = labelItem.formattedLabel;
-    var rawLabel = labelItem.rawLabel;
-    var itemLabelModel = labelModel;
-
-    if (rawCategoryData && rawCategoryData[tickValue]) {
-      var rawCategoryItem = rawCategoryData[tickValue];
-
-      if ((0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.isObject)(rawCategoryItem) && rawCategoryItem.textStyle) {
-        itemLabelModel = new _model_Model_js__WEBPACK_IMPORTED_MODULE_13__["default"](rawCategoryItem.textStyle, labelModel, axisModel.ecModel);
-      }
-    }
-
-    var textColor = itemLabelModel.getTextColor() || axisModel.get(['axisLine', 'lineStyle', 'color']);
-    var tickCoord = axis.dataToCoord(tickValue);
-    var textEl = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_8__["default"]({
-      x: tickCoord,
-      y: opt.labelOffset + opt.labelDirection * labelMargin,
-      rotation: labelLayout.rotation,
-      silent: silent,
-      z2: 10 + (labelItem.level || 0),
-      style: (0,_label_labelStyle_js__WEBPACK_IMPORTED_MODULE_9__.createTextStyle)(itemLabelModel, {
-        text: formattedLabel,
-        align: itemLabelModel.getShallow('align', true) || labelLayout.textAlign,
-        verticalAlign: itemLabelModel.getShallow('verticalAlign', true) || itemLabelModel.getShallow('baseline', true) || labelLayout.textVerticalAlign,
-        fill: (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.isFunction)(textColor) ? textColor( // (1) In category axis with data zoom, tick is not the original
-        // index of axis.data. So tick should not be exposed to user
-        // in category axis.
-        // (2) Compatible with previous version, which always use formatted label as
-        // input. But in interval scale the formatted label is like '223,445', which
-        // maked user repalce ','. So we modify it to return original val but remain
-        // it as 'string' to avoid error in replacing.
-        axis.type === 'category' ? rawLabel : axis.type === 'value' ? tickValue + '' : tickValue, index) : textColor
-      })
-    });
-    textEl.anid = 'label_' + tickValue; // Pack data for mouse event
-
-    if (triggerEvent) {
-      var eventData = AxisBuilder.makeAxisEventDataBase(axisModel);
-      eventData.targetType = 'axisLabel';
-      eventData.value = rawLabel;
-      eventData.tickIndex = index;
-
-      if (axis.type === 'category') {
-        eventData.dataIndex = tickValue;
-      }
-
-      (0,_util_innerStore_js__WEBPACK_IMPORTED_MODULE_10__.getECData)(textEl).eventData = eventData;
-    } // FIXME
-
-
-    transformGroup.add(textEl);
-    textEl.updateTransform();
-    labelEls.push(textEl);
-    group.add(textEl);
-    textEl.decomposeTransform();
-  });
-  return labelEls;
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AxisBuilder);
-
-/***/ }),
-
-/***/ "./node_modules/echarts/lib/component/axis/AxisView.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/echarts/lib/component/axis/AxisView.js ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/echarts/node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _axisPointer_modelHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../axisPointer/modelHelper.js */ "./node_modules/echarts/lib/component/axisPointer/modelHelper.js");
-/* harmony import */ var _view_Component_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../view/Component.js */ "./node_modules/echarts/lib/view/Component.js");
-
-/*
-* Licensed to the Apache Software Foundation (ASF) under one
-* or more contributor license agreements.  See the NOTICE file
-* distributed with this work for additional information
-* regarding copyright ownership.  The ASF licenses this file
-* to you under the Apache License, Version 2.0 (the
-* "License"); you may not use this file except in compliance
-* with the License.  You may obtain a copy of the License at
-*
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing,
-* software distributed under the License is distributed on an
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-* KIND, either express or implied.  See the License for the
-* specific language governing permissions and limitations
-* under the License.
-*/
-
-
-/**
- * AUTO-GENERATED FILE. DO NOT MODIFY.
- */
-
-/*
-* Licensed to the Apache Software Foundation (ASF) under one
-* or more contributor license agreements.  See the NOTICE file
-* distributed with this work for additional information
-* regarding copyright ownership.  The ASF licenses this file
-* to you under the Apache License, Version 2.0 (the
-* "License"); you may not use this file except in compliance
-* with the License.  You may obtain a copy of the License at
-*
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing,
-* software distributed under the License is distributed on an
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-* KIND, either express or implied.  See the License for the
-* specific language governing permissions and limitations
-* under the License.
-*/
-
-
-
-var axisPointerClazz = {};
-/**
- * Base class of AxisView.
- */
-
-var AxisView =
-/** @class */
-function (_super) {
-  (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__extends)(AxisView, _super);
-
-  function AxisView() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
-
-    _this.type = AxisView.type;
-    return _this;
-  }
-  /**
-   * @override
-   */
-
-
-  AxisView.prototype.render = function (axisModel, ecModel, api, payload) {
-    // FIXME
-    // This process should proformed after coordinate systems updated
-    // (axis scale updated), and should be performed each time update.
-    // So put it here temporarily, although it is not appropriate to
-    // put a model-writing procedure in `view`.
-    this.axisPointerClass && _axisPointer_modelHelper_js__WEBPACK_IMPORTED_MODULE_1__.fixValue(axisModel);
-
-    _super.prototype.render.apply(this, arguments);
-
-    this._doUpdateAxisPointerClass(axisModel, api, true);
-  };
-  /**
-   * Action handler.
-   */
-
-
-  AxisView.prototype.updateAxisPointer = function (axisModel, ecModel, api, payload) {
-    this._doUpdateAxisPointerClass(axisModel, api, false);
-  };
-  /**
-   * @override
-   */
-
-
-  AxisView.prototype.remove = function (ecModel, api) {
-    var axisPointer = this._axisPointer;
-    axisPointer && axisPointer.remove(api);
-  };
-  /**
-   * @override
-   */
-
-
-  AxisView.prototype.dispose = function (ecModel, api) {
-    this._disposeAxisPointer(api);
-
-    _super.prototype.dispose.apply(this, arguments);
-  };
-
-  AxisView.prototype._doUpdateAxisPointerClass = function (axisModel, api, forceRender) {
-    var Clazz = AxisView.getAxisPointerClass(this.axisPointerClass);
-
-    if (!Clazz) {
-      return;
-    }
-
-    var axisPointerModel = _axisPointer_modelHelper_js__WEBPACK_IMPORTED_MODULE_1__.getAxisPointerModel(axisModel);
-    axisPointerModel ? (this._axisPointer || (this._axisPointer = new Clazz())).render(axisModel, axisPointerModel, api, forceRender) : this._disposeAxisPointer(api);
-  };
-
-  AxisView.prototype._disposeAxisPointer = function (api) {
-    this._axisPointer && this._axisPointer.dispose(api);
-    this._axisPointer = null;
-  };
-
-  AxisView.registerAxisPointerClass = function (type, clazz) {
-    if (true) {
-      if (axisPointerClazz[type]) {
-        throw new Error('axisPointer ' + type + ' exists');
-      }
-    }
-
-    axisPointerClazz[type] = clazz;
-  };
-
-  ;
-
-  AxisView.getAxisPointerClass = function (type) {
-    return type && axisPointerClazz[type];
-  };
-
-  ;
-  AxisView.type = 'axis';
-  return AxisView;
-}(_view_Component_js__WEBPACK_IMPORTED_MODULE_2__["default"]);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AxisView);
 
 /***/ }),
 
@@ -7495,6 +6669,832 @@ function makeSectorShape(cx, cy, r0, r, startAngle, endAngle) {
     clockwise: true
   };
 }
+
+/***/ }),
+
+/***/ "./node_modules/echarts/lib/component/axis/AxisBuilder.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/echarts/lib/component/axis/AxisBuilder.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! zrender/lib/core/util.js */ "./node_modules/zrender/lib/core/util.js");
+/* harmony import */ var _util_graphic_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../util/graphic.js */ "./node_modules/zrender/lib/graphic/Group.js");
+/* harmony import */ var _util_graphic_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/graphic.js */ "./node_modules/zrender/lib/graphic/shape/Line.js");
+/* harmony import */ var _util_graphic_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/graphic.js */ "./node_modules/echarts/lib/util/graphic.js");
+/* harmony import */ var _util_graphic_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../util/graphic.js */ "./node_modules/zrender/lib/graphic/Text.js");
+/* harmony import */ var _util_innerStore_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../util/innerStore.js */ "./node_modules/echarts/lib/util/innerStore.js");
+/* harmony import */ var _label_labelStyle_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../label/labelStyle.js */ "./node_modules/echarts/lib/label/labelStyle.js");
+/* harmony import */ var _model_Model_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../model/Model.js */ "./node_modules/echarts/lib/model/Model.js");
+/* harmony import */ var _util_number_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/number.js */ "./node_modules/echarts/lib/util/number.js");
+/* harmony import */ var _util_symbol_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../util/symbol.js */ "./node_modules/echarts/lib/util/symbol.js");
+/* harmony import */ var zrender_lib_core_matrix_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! zrender/lib/core/matrix.js */ "./node_modules/zrender/lib/core/matrix.js");
+/* harmony import */ var zrender_lib_core_vector_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! zrender/lib/core/vector.js */ "./node_modules/zrender/lib/core/vector.js");
+/* harmony import */ var _coord_axisHelper_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../coord/axisHelper.js */ "./node_modules/echarts/lib/coord/axisHelper.js");
+/* harmony import */ var _label_labelLayoutHelper_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../label/labelLayoutHelper.js */ "./node_modules/echarts/lib/label/labelLayoutHelper.js");
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+
+
+
+
+
+
+
+
+
+var PI = Math.PI;
+/**
+ * A final axis is translated and rotated from a "standard axis".
+ * So opt.position and opt.rotation is required.
+ *
+ * A standard axis is and axis from [0, 0] to [0, axisExtent[1]],
+ * for example: (0, 0) ------------> (0, 50)
+ *
+ * nameDirection or tickDirection or labelDirection is 1 means tick
+ * or label is below the standard axis, whereas is -1 means above
+ * the standard axis. labelOffset means offset between label and axis,
+ * which is useful when 'onZero', where axisLabel is in the grid and
+ * label in outside grid.
+ *
+ * Tips: like always,
+ * positive rotation represents anticlockwise, and negative rotation
+ * represents clockwise.
+ * The direction of position coordinate is the same as the direction
+ * of screen coordinate.
+ *
+ * Do not need to consider axis 'inverse', which is auto processed by
+ * axis extent.
+ */
+
+var AxisBuilder =
+/** @class */
+function () {
+  function AxisBuilder(axisModel, opt) {
+    this.group = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+    this.opt = opt;
+    this.axisModel = axisModel; // Default value
+
+    (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.defaults)(opt, {
+      labelOffset: 0,
+      nameDirection: 1,
+      tickDirection: 1,
+      labelDirection: 1,
+      silent: true,
+      handleAutoShown: function () {
+        return true;
+      }
+    }); // FIXME Not use a seperate text group?
+
+    var transformGroup = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_0__["default"]({
+      x: opt.position[0],
+      y: opt.position[1],
+      rotation: opt.rotation
+    }); // this.group.add(transformGroup);
+    // this._transformGroup = transformGroup;
+
+    transformGroup.updateTransform();
+    this._transformGroup = transformGroup;
+  }
+
+  AxisBuilder.prototype.hasBuilder = function (name) {
+    return !!builders[name];
+  };
+
+  AxisBuilder.prototype.add = function (name) {
+    builders[name](this.opt, this.axisModel, this.group, this._transformGroup);
+  };
+
+  AxisBuilder.prototype.getGroup = function () {
+    return this.group;
+  };
+
+  AxisBuilder.innerTextLayout = function (axisRotation, textRotation, direction) {
+    var rotationDiff = (0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.remRadian)(textRotation - axisRotation);
+    var textAlign;
+    var textVerticalAlign;
+
+    if ((0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.isRadianAroundZero)(rotationDiff)) {
+      // Label is parallel with axis line.
+      textVerticalAlign = direction > 0 ? 'top' : 'bottom';
+      textAlign = 'center';
+    } else if ((0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.isRadianAroundZero)(rotationDiff - PI)) {
+      // Label is inverse parallel with axis line.
+      textVerticalAlign = direction > 0 ? 'bottom' : 'top';
+      textAlign = 'center';
+    } else {
+      textVerticalAlign = 'middle';
+
+      if (rotationDiff > 0 && rotationDiff < PI) {
+        textAlign = direction > 0 ? 'right' : 'left';
+      } else {
+        textAlign = direction > 0 ? 'left' : 'right';
+      }
+    }
+
+    return {
+      rotation: rotationDiff,
+      textAlign: textAlign,
+      textVerticalAlign: textVerticalAlign
+    };
+  };
+
+  AxisBuilder.makeAxisEventDataBase = function (axisModel) {
+    var eventData = {
+      componentType: axisModel.mainType,
+      componentIndex: axisModel.componentIndex
+    };
+    eventData[axisModel.mainType + 'Index'] = axisModel.componentIndex;
+    return eventData;
+  };
+
+  AxisBuilder.isLabelSilent = function (axisModel) {
+    var tooltipOpt = axisModel.get('tooltip');
+    return axisModel.get('silent') // Consider mouse cursor, add these restrictions.
+    || !(axisModel.get('triggerEvent') || tooltipOpt && tooltipOpt.show);
+  };
+
+  return AxisBuilder;
+}();
+
+;
+var builders = {
+  axisLine: function (opt, axisModel, group, transformGroup) {
+    var shown = axisModel.get(['axisLine', 'show']);
+
+    if (shown === 'auto' && opt.handleAutoShown) {
+      shown = opt.handleAutoShown('axisLine');
+    }
+
+    if (!shown) {
+      return;
+    }
+
+    var extent = axisModel.axis.getExtent();
+    var matrix = transformGroup.transform;
+    var pt1 = [extent[0], 0];
+    var pt2 = [extent[1], 0];
+    var inverse = pt1[0] > pt2[0];
+
+    if (matrix) {
+      (0,zrender_lib_core_vector_js__WEBPACK_IMPORTED_MODULE_3__.applyTransform)(pt1, pt1, matrix);
+      (0,zrender_lib_core_vector_js__WEBPACK_IMPORTED_MODULE_3__.applyTransform)(pt2, pt2, matrix);
+    }
+
+    var lineStyle = (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.extend)({
+      lineCap: 'round'
+    }, axisModel.getModel(['axisLine', 'lineStyle']).getLineStyle());
+    var line = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_4__["default"]({
+      shape: {
+        x1: pt1[0],
+        y1: pt1[1],
+        x2: pt2[0],
+        y2: pt2[1]
+      },
+      style: lineStyle,
+      strokeContainThreshold: opt.strokeContainThreshold || 5,
+      silent: true,
+      z2: 1
+    });
+    _util_graphic_js__WEBPACK_IMPORTED_MODULE_5__.subPixelOptimizeLine(line.shape, line.style.lineWidth);
+    line.anid = 'line';
+    group.add(line);
+    var arrows = axisModel.get(['axisLine', 'symbol']);
+
+    if (arrows != null) {
+      var arrowSize = axisModel.get(['axisLine', 'symbolSize']);
+
+      if ((0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.isString)(arrows)) {
+        // Use the same arrow for start and end point
+        arrows = [arrows, arrows];
+      }
+
+      if ((0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.isString)(arrowSize) || (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.isNumber)(arrowSize)) {
+        // Use the same size for width and height
+        arrowSize = [arrowSize, arrowSize];
+      }
+
+      var arrowOffset = (0,_util_symbol_js__WEBPACK_IMPORTED_MODULE_6__.normalizeSymbolOffset)(axisModel.get(['axisLine', 'symbolOffset']) || 0, arrowSize);
+      var symbolWidth_1 = arrowSize[0];
+      var symbolHeight_1 = arrowSize[1];
+      (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.each)([{
+        rotate: opt.rotation + Math.PI / 2,
+        offset: arrowOffset[0],
+        r: 0
+      }, {
+        rotate: opt.rotation - Math.PI / 2,
+        offset: arrowOffset[1],
+        r: Math.sqrt((pt1[0] - pt2[0]) * (pt1[0] - pt2[0]) + (pt1[1] - pt2[1]) * (pt1[1] - pt2[1]))
+      }], function (point, index) {
+        if (arrows[index] !== 'none' && arrows[index] != null) {
+          var symbol = (0,_util_symbol_js__WEBPACK_IMPORTED_MODULE_6__.createSymbol)(arrows[index], -symbolWidth_1 / 2, -symbolHeight_1 / 2, symbolWidth_1, symbolHeight_1, lineStyle.stroke, true); // Calculate arrow position with offset
+
+          var r = point.r + point.offset;
+          var pt = inverse ? pt2 : pt1;
+          symbol.attr({
+            rotation: point.rotate,
+            x: pt[0] + r * Math.cos(opt.rotation),
+            y: pt[1] - r * Math.sin(opt.rotation),
+            silent: true,
+            z2: 11
+          });
+          group.add(symbol);
+        }
+      });
+    }
+  },
+  axisTickLabel: function (opt, axisModel, group, transformGroup) {
+    var ticksEls = buildAxisMajorTicks(group, transformGroup, axisModel, opt);
+    var labelEls = buildAxisLabel(group, transformGroup, axisModel, opt);
+    fixMinMaxLabelShow(axisModel, labelEls, ticksEls);
+    buildAxisMinorTicks(group, transformGroup, axisModel, opt.tickDirection); // This bit fixes the label overlap issue for the time chart.
+    // See https://github.com/apache/echarts/issues/14266 for more.
+
+    if (axisModel.get(['axisLabel', 'hideOverlap'])) {
+      var labelList = (0,_label_labelLayoutHelper_js__WEBPACK_IMPORTED_MODULE_7__.prepareLayoutList)((0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.map)(labelEls, function (label) {
+        return {
+          label: label,
+          priority: label.z2,
+          defaultAttr: {
+            ignore: label.ignore
+          }
+        };
+      }));
+      (0,_label_labelLayoutHelper_js__WEBPACK_IMPORTED_MODULE_7__.hideOverlap)(labelList);
+    }
+  },
+  axisName: function (opt, axisModel, group, transformGroup) {
+    var name = (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.retrieve)(opt.axisName, axisModel.get('name'));
+
+    if (!name) {
+      return;
+    }
+
+    var nameLocation = axisModel.get('nameLocation');
+    var nameDirection = opt.nameDirection;
+    var textStyleModel = axisModel.getModel('nameTextStyle');
+    var gap = axisModel.get('nameGap') || 0;
+    var extent = axisModel.axis.getExtent();
+    var gapSignal = extent[0] > extent[1] ? -1 : 1;
+    var pos = [nameLocation === 'start' ? extent[0] - gapSignal * gap : nameLocation === 'end' ? extent[1] + gapSignal * gap : (extent[0] + extent[1]) / 2, // Reuse labelOffset.
+    isNameLocationCenter(nameLocation) ? opt.labelOffset + nameDirection * gap : 0];
+    var labelLayout;
+    var nameRotation = axisModel.get('nameRotate');
+
+    if (nameRotation != null) {
+      nameRotation = nameRotation * PI / 180; // To radian.
+    }
+
+    var axisNameAvailableWidth;
+
+    if (isNameLocationCenter(nameLocation)) {
+      labelLayout = AxisBuilder.innerTextLayout(opt.rotation, nameRotation != null ? nameRotation : opt.rotation, // Adapt to axis.
+      nameDirection);
+    } else {
+      labelLayout = endTextLayout(opt.rotation, nameLocation, nameRotation || 0, extent);
+      axisNameAvailableWidth = opt.axisNameAvailableWidth;
+
+      if (axisNameAvailableWidth != null) {
+        axisNameAvailableWidth = Math.abs(axisNameAvailableWidth / Math.sin(labelLayout.rotation));
+        !isFinite(axisNameAvailableWidth) && (axisNameAvailableWidth = null);
+      }
+    }
+
+    var textFont = textStyleModel.getFont();
+    var truncateOpt = axisModel.get('nameTruncate', true) || {};
+    var ellipsis = truncateOpt.ellipsis;
+    var maxWidth = (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.retrieve)(opt.nameTruncateMaxWidth, truncateOpt.maxWidth, axisNameAvailableWidth);
+    var textEl = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_8__["default"]({
+      x: pos[0],
+      y: pos[1],
+      rotation: labelLayout.rotation,
+      silent: AxisBuilder.isLabelSilent(axisModel),
+      style: (0,_label_labelStyle_js__WEBPACK_IMPORTED_MODULE_9__.createTextStyle)(textStyleModel, {
+        text: name,
+        font: textFont,
+        overflow: 'truncate',
+        width: maxWidth,
+        ellipsis: ellipsis,
+        fill: textStyleModel.getTextColor() || axisModel.get(['axisLine', 'lineStyle', 'color']),
+        align: textStyleModel.get('align') || labelLayout.textAlign,
+        verticalAlign: textStyleModel.get('verticalAlign') || labelLayout.textVerticalAlign
+      }),
+      z2: 1
+    });
+    _util_graphic_js__WEBPACK_IMPORTED_MODULE_5__.setTooltipConfig({
+      el: textEl,
+      componentModel: axisModel,
+      itemName: name
+    });
+    textEl.__fullText = name; // Id for animation
+
+    textEl.anid = 'name';
+
+    if (axisModel.get('triggerEvent')) {
+      var eventData = AxisBuilder.makeAxisEventDataBase(axisModel);
+      eventData.targetType = 'axisName';
+      eventData.name = name;
+      (0,_util_innerStore_js__WEBPACK_IMPORTED_MODULE_10__.getECData)(textEl).eventData = eventData;
+    } // FIXME
+
+
+    transformGroup.add(textEl);
+    textEl.updateTransform();
+    group.add(textEl);
+    textEl.decomposeTransform();
+  }
+};
+
+function endTextLayout(rotation, textPosition, textRotate, extent) {
+  var rotationDiff = (0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.remRadian)(textRotate - rotation);
+  var textAlign;
+  var textVerticalAlign;
+  var inverse = extent[0] > extent[1];
+  var onLeft = textPosition === 'start' && !inverse || textPosition !== 'start' && inverse;
+
+  if ((0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.isRadianAroundZero)(rotationDiff - PI / 2)) {
+    textVerticalAlign = onLeft ? 'bottom' : 'top';
+    textAlign = 'center';
+  } else if ((0,_util_number_js__WEBPACK_IMPORTED_MODULE_2__.isRadianAroundZero)(rotationDiff - PI * 1.5)) {
+    textVerticalAlign = onLeft ? 'top' : 'bottom';
+    textAlign = 'center';
+  } else {
+    textVerticalAlign = 'middle';
+
+    if (rotationDiff < PI * 1.5 && rotationDiff > PI / 2) {
+      textAlign = onLeft ? 'left' : 'right';
+    } else {
+      textAlign = onLeft ? 'right' : 'left';
+    }
+  }
+
+  return {
+    rotation: rotationDiff,
+    textAlign: textAlign,
+    textVerticalAlign: textVerticalAlign
+  };
+}
+
+function fixMinMaxLabelShow(axisModel, labelEls, tickEls) {
+  if ((0,_coord_axisHelper_js__WEBPACK_IMPORTED_MODULE_11__.shouldShowAllLabels)(axisModel.axis)) {
+    return;
+  } // If min or max are user set, we need to check
+  // If the tick on min(max) are overlap on their neighbour tick
+  // If they are overlapped, we need to hide the min(max) tick label
+
+
+  var showMinLabel = axisModel.get(['axisLabel', 'showMinLabel']);
+  var showMaxLabel = axisModel.get(['axisLabel', 'showMaxLabel']); // FIXME
+  // Have not consider onBand yet, where tick els is more than label els.
+
+  labelEls = labelEls || [];
+  tickEls = tickEls || [];
+  var firstLabel = labelEls[0];
+  var nextLabel = labelEls[1];
+  var lastLabel = labelEls[labelEls.length - 1];
+  var prevLabel = labelEls[labelEls.length - 2];
+  var firstTick = tickEls[0];
+  var nextTick = tickEls[1];
+  var lastTick = tickEls[tickEls.length - 1];
+  var prevTick = tickEls[tickEls.length - 2];
+
+  if (showMinLabel === false) {
+    ignoreEl(firstLabel);
+    ignoreEl(firstTick);
+  } else if (isTwoLabelOverlapped(firstLabel, nextLabel)) {
+    if (showMinLabel) {
+      ignoreEl(nextLabel);
+      ignoreEl(nextTick);
+    } else {
+      ignoreEl(firstLabel);
+      ignoreEl(firstTick);
+    }
+  }
+
+  if (showMaxLabel === false) {
+    ignoreEl(lastLabel);
+    ignoreEl(lastTick);
+  } else if (isTwoLabelOverlapped(prevLabel, lastLabel)) {
+    if (showMaxLabel) {
+      ignoreEl(prevLabel);
+      ignoreEl(prevTick);
+    } else {
+      ignoreEl(lastLabel);
+      ignoreEl(lastTick);
+    }
+  }
+}
+
+function ignoreEl(el) {
+  el && (el.ignore = true);
+}
+
+function isTwoLabelOverlapped(current, next) {
+  // current and next has the same rotation.
+  var firstRect = current && current.getBoundingRect().clone();
+  var nextRect = next && next.getBoundingRect().clone();
+
+  if (!firstRect || !nextRect) {
+    return;
+  } // When checking intersect of two rotated labels, we use mRotationBack
+  // to avoid that boundingRect is enlarge when using `boundingRect.applyTransform`.
+
+
+  var mRotationBack = zrender_lib_core_matrix_js__WEBPACK_IMPORTED_MODULE_12__.identity([]);
+  zrender_lib_core_matrix_js__WEBPACK_IMPORTED_MODULE_12__.rotate(mRotationBack, mRotationBack, -current.rotation);
+  firstRect.applyTransform(zrender_lib_core_matrix_js__WEBPACK_IMPORTED_MODULE_12__.mul([], mRotationBack, current.getLocalTransform()));
+  nextRect.applyTransform(zrender_lib_core_matrix_js__WEBPACK_IMPORTED_MODULE_12__.mul([], mRotationBack, next.getLocalTransform()));
+  return firstRect.intersect(nextRect);
+}
+
+function isNameLocationCenter(nameLocation) {
+  return nameLocation === 'middle' || nameLocation === 'center';
+}
+
+function createTicks(ticksCoords, tickTransform, tickEndCoord, tickLineStyle, anidPrefix) {
+  var tickEls = [];
+  var pt1 = [];
+  var pt2 = [];
+
+  for (var i = 0; i < ticksCoords.length; i++) {
+    var tickCoord = ticksCoords[i].coord;
+    pt1[0] = tickCoord;
+    pt1[1] = 0;
+    pt2[0] = tickCoord;
+    pt2[1] = tickEndCoord;
+
+    if (tickTransform) {
+      (0,zrender_lib_core_vector_js__WEBPACK_IMPORTED_MODULE_3__.applyTransform)(pt1, pt1, tickTransform);
+      (0,zrender_lib_core_vector_js__WEBPACK_IMPORTED_MODULE_3__.applyTransform)(pt2, pt2, tickTransform);
+    } // Tick line, Not use group transform to have better line draw
+
+
+    var tickEl = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_4__["default"]({
+      shape: {
+        x1: pt1[0],
+        y1: pt1[1],
+        x2: pt2[0],
+        y2: pt2[1]
+      },
+      style: tickLineStyle,
+      z2: 2,
+      autoBatch: true,
+      silent: true
+    });
+    _util_graphic_js__WEBPACK_IMPORTED_MODULE_5__.subPixelOptimizeLine(tickEl.shape, tickEl.style.lineWidth);
+    tickEl.anid = anidPrefix + '_' + ticksCoords[i].tickValue;
+    tickEls.push(tickEl);
+  }
+
+  return tickEls;
+}
+
+function buildAxisMajorTicks(group, transformGroup, axisModel, opt) {
+  var axis = axisModel.axis;
+  var tickModel = axisModel.getModel('axisTick');
+  var shown = tickModel.get('show');
+
+  if (shown === 'auto' && opt.handleAutoShown) {
+    shown = opt.handleAutoShown('axisTick');
+  }
+
+  if (!shown || axis.scale.isBlank()) {
+    return;
+  }
+
+  var lineStyleModel = tickModel.getModel('lineStyle');
+  var tickEndCoord = opt.tickDirection * tickModel.get('length');
+  var ticksCoords = axis.getTicksCoords();
+  var ticksEls = createTicks(ticksCoords, transformGroup.transform, tickEndCoord, (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.defaults)(lineStyleModel.getLineStyle(), {
+    stroke: axisModel.get(['axisLine', 'lineStyle', 'color'])
+  }), 'ticks');
+
+  for (var i = 0; i < ticksEls.length; i++) {
+    group.add(ticksEls[i]);
+  }
+
+  return ticksEls;
+}
+
+function buildAxisMinorTicks(group, transformGroup, axisModel, tickDirection) {
+  var axis = axisModel.axis;
+  var minorTickModel = axisModel.getModel('minorTick');
+
+  if (!minorTickModel.get('show') || axis.scale.isBlank()) {
+    return;
+  }
+
+  var minorTicksCoords = axis.getMinorTicksCoords();
+
+  if (!minorTicksCoords.length) {
+    return;
+  }
+
+  var lineStyleModel = minorTickModel.getModel('lineStyle');
+  var tickEndCoord = tickDirection * minorTickModel.get('length');
+  var minorTickLineStyle = (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.defaults)(lineStyleModel.getLineStyle(), (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.defaults)(axisModel.getModel('axisTick').getLineStyle(), {
+    stroke: axisModel.get(['axisLine', 'lineStyle', 'color'])
+  }));
+
+  for (var i = 0; i < minorTicksCoords.length; i++) {
+    var minorTicksEls = createTicks(minorTicksCoords[i], transformGroup.transform, tickEndCoord, minorTickLineStyle, 'minorticks_' + i);
+
+    for (var k = 0; k < minorTicksEls.length; k++) {
+      group.add(minorTicksEls[k]);
+    }
+  }
+}
+
+function buildAxisLabel(group, transformGroup, axisModel, opt) {
+  var axis = axisModel.axis;
+  var show = (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.retrieve)(opt.axisLabelShow, axisModel.get(['axisLabel', 'show']));
+
+  if (!show || axis.scale.isBlank()) {
+    return;
+  }
+
+  var labelModel = axisModel.getModel('axisLabel');
+  var labelMargin = labelModel.get('margin');
+  var labels = axis.getViewLabels(); // Special label rotate.
+
+  var labelRotation = ((0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.retrieve)(opt.labelRotate, labelModel.get('rotate')) || 0) * PI / 180;
+  var labelLayout = AxisBuilder.innerTextLayout(opt.rotation, labelRotation, opt.labelDirection);
+  var rawCategoryData = axisModel.getCategories && axisModel.getCategories(true);
+  var labelEls = [];
+  var silent = AxisBuilder.isLabelSilent(axisModel);
+  var triggerEvent = axisModel.get('triggerEvent');
+  (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.each)(labels, function (labelItem, index) {
+    var tickValue = axis.scale.type === 'ordinal' ? axis.scale.getRawOrdinalNumber(labelItem.tickValue) : labelItem.tickValue;
+    var formattedLabel = labelItem.formattedLabel;
+    var rawLabel = labelItem.rawLabel;
+    var itemLabelModel = labelModel;
+
+    if (rawCategoryData && rawCategoryData[tickValue]) {
+      var rawCategoryItem = rawCategoryData[tickValue];
+
+      if ((0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.isObject)(rawCategoryItem) && rawCategoryItem.textStyle) {
+        itemLabelModel = new _model_Model_js__WEBPACK_IMPORTED_MODULE_13__["default"](rawCategoryItem.textStyle, labelModel, axisModel.ecModel);
+      }
+    }
+
+    var textColor = itemLabelModel.getTextColor() || axisModel.get(['axisLine', 'lineStyle', 'color']);
+    var tickCoord = axis.dataToCoord(tickValue);
+    var textEl = new _util_graphic_js__WEBPACK_IMPORTED_MODULE_8__["default"]({
+      x: tickCoord,
+      y: opt.labelOffset + opt.labelDirection * labelMargin,
+      rotation: labelLayout.rotation,
+      silent: silent,
+      z2: 10 + (labelItem.level || 0),
+      style: (0,_label_labelStyle_js__WEBPACK_IMPORTED_MODULE_9__.createTextStyle)(itemLabelModel, {
+        text: formattedLabel,
+        align: itemLabelModel.getShallow('align', true) || labelLayout.textAlign,
+        verticalAlign: itemLabelModel.getShallow('verticalAlign', true) || itemLabelModel.getShallow('baseline', true) || labelLayout.textVerticalAlign,
+        fill: (0,zrender_lib_core_util_js__WEBPACK_IMPORTED_MODULE_1__.isFunction)(textColor) ? textColor( // (1) In category axis with data zoom, tick is not the original
+        // index of axis.data. So tick should not be exposed to user
+        // in category axis.
+        // (2) Compatible with previous version, which always use formatted label as
+        // input. But in interval scale the formatted label is like '223,445', which
+        // maked user repalce ','. So we modify it to return original val but remain
+        // it as 'string' to avoid error in replacing.
+        axis.type === 'category' ? rawLabel : axis.type === 'value' ? tickValue + '' : tickValue, index) : textColor
+      })
+    });
+    textEl.anid = 'label_' + tickValue; // Pack data for mouse event
+
+    if (triggerEvent) {
+      var eventData = AxisBuilder.makeAxisEventDataBase(axisModel);
+      eventData.targetType = 'axisLabel';
+      eventData.value = rawLabel;
+      eventData.tickIndex = index;
+
+      if (axis.type === 'category') {
+        eventData.dataIndex = tickValue;
+      }
+
+      (0,_util_innerStore_js__WEBPACK_IMPORTED_MODULE_10__.getECData)(textEl).eventData = eventData;
+    } // FIXME
+
+
+    transformGroup.add(textEl);
+    textEl.updateTransform();
+    labelEls.push(textEl);
+    group.add(textEl);
+    textEl.decomposeTransform();
+  });
+  return labelEls;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AxisBuilder);
+
+/***/ }),
+
+/***/ "./node_modules/echarts/lib/component/axis/AxisView.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/echarts/lib/component/axis/AxisView.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/echarts/node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _axisPointer_modelHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../axisPointer/modelHelper.js */ "./node_modules/echarts/lib/component/axisPointer/modelHelper.js");
+/* harmony import */ var _view_Component_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../view/Component.js */ "./node_modules/echarts/lib/view/Component.js");
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+
+var axisPointerClazz = {};
+/**
+ * Base class of AxisView.
+ */
+
+var AxisView =
+/** @class */
+function (_super) {
+  (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__extends)(AxisView, _super);
+
+  function AxisView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = AxisView.type;
+    return _this;
+  }
+  /**
+   * @override
+   */
+
+
+  AxisView.prototype.render = function (axisModel, ecModel, api, payload) {
+    // FIXME
+    // This process should proformed after coordinate systems updated
+    // (axis scale updated), and should be performed each time update.
+    // So put it here temporarily, although it is not appropriate to
+    // put a model-writing procedure in `view`.
+    this.axisPointerClass && _axisPointer_modelHelper_js__WEBPACK_IMPORTED_MODULE_1__.fixValue(axisModel);
+
+    _super.prototype.render.apply(this, arguments);
+
+    this._doUpdateAxisPointerClass(axisModel, api, true);
+  };
+  /**
+   * Action handler.
+   */
+
+
+  AxisView.prototype.updateAxisPointer = function (axisModel, ecModel, api, payload) {
+    this._doUpdateAxisPointerClass(axisModel, api, false);
+  };
+  /**
+   * @override
+   */
+
+
+  AxisView.prototype.remove = function (ecModel, api) {
+    var axisPointer = this._axisPointer;
+    axisPointer && axisPointer.remove(api);
+  };
+  /**
+   * @override
+   */
+
+
+  AxisView.prototype.dispose = function (ecModel, api) {
+    this._disposeAxisPointer(api);
+
+    _super.prototype.dispose.apply(this, arguments);
+  };
+
+  AxisView.prototype._doUpdateAxisPointerClass = function (axisModel, api, forceRender) {
+    var Clazz = AxisView.getAxisPointerClass(this.axisPointerClass);
+
+    if (!Clazz) {
+      return;
+    }
+
+    var axisPointerModel = _axisPointer_modelHelper_js__WEBPACK_IMPORTED_MODULE_1__.getAxisPointerModel(axisModel);
+    axisPointerModel ? (this._axisPointer || (this._axisPointer = new Clazz())).render(axisModel, axisPointerModel, api, forceRender) : this._disposeAxisPointer(api);
+  };
+
+  AxisView.prototype._disposeAxisPointer = function (api) {
+    this._axisPointer && this._axisPointer.dispose(api);
+    this._axisPointer = null;
+  };
+
+  AxisView.registerAxisPointerClass = function (type, clazz) {
+    if (true) {
+      if (axisPointerClazz[type]) {
+        throw new Error('axisPointer ' + type + ' exists');
+      }
+    }
+
+    axisPointerClazz[type] = clazz;
+  };
+
+  ;
+
+  AxisView.getAxisPointerClass = function (type) {
+    return type && axisPointerClazz[type];
+  };
+
+  ;
+  AxisView.type = 'axis';
+  return AxisView;
+}(_view_Component_js__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AxisView);
 
 /***/ }),
 
@@ -44890,7 +44890,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Dashboard_vue_vue_type_template_id_2077e484__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=template&id=2077e484 */ "./resources/js/components/admin/dashboard/Dashboard.vue?vue&type=template&id=2077e484");
 /* harmony import */ var _Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=script&lang=js */ "./resources/js/components/admin/dashboard/Dashboard.vue?vue&type=script&lang=js");
 /* harmony import */ var _Dashboard_vue_vue_type_style_index_0_id_2077e484_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=style&index=0&id=2077e484&lang=scss */ "./resources/js/components/admin/dashboard/Dashboard.vue?vue&type=style&index=0&id=2077e484&lang=scss");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -44898,7 +44898,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dashboard_vue_vue_type_template_id_2077e484__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/admin/dashboard/Dashboard.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dashboard_vue_vue_type_template_id_2077e484__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/admin/dashboard/Dashboard.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -44918,11 +44918,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 const script = {}
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__["default"])(script, [['__file',"resources/js/components/admin/dashboard/components/MemberJoinAMonth.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__["default"])(script, [['__file',"resources/js/components/admin/dashboard/components/MemberJoinAMonth.vue"]])
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
 
@@ -44939,11 +44939,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 const script = {}
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__["default"])(script, [['__file',"resources/js/components/admin/dashboard/components/PostAMonth.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__["default"])(script, [['__file',"resources/js/components/admin/dashboard/components/PostAMonth.vue"]])
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
 
@@ -44963,7 +44963,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _StatRatePost_vue_vue_type_template_id_31f9a5d7_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StatRatePost.vue?vue&type=template&id=31f9a5d7&scoped=true */ "./resources/js/components/admin/dashboard/components/StatRatePost.vue?vue&type=template&id=31f9a5d7&scoped=true");
 /* harmony import */ var _StatRatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StatRatePost.vue?vue&type=script&lang=js */ "./resources/js/components/admin/dashboard/components/StatRatePost.vue?vue&type=script&lang=js");
 /* harmony import */ var _StatRatePost_vue_vue_type_style_index_0_id_31f9a5d7_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StatRatePost.vue?vue&type=style&index=0&id=31f9a5d7&lang=scss&scoped=true */ "./resources/js/components/admin/dashboard/components/StatRatePost.vue?vue&type=style&index=0&id=31f9a5d7&lang=scss&scoped=true");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -44971,7 +44971,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_StatRatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_StatRatePost_vue_vue_type_template_id_31f9a5d7_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-31f9a5d7"],['__file',"resources/js/components/admin/dashboard/components/StatRatePost.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_StatRatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_StatRatePost_vue_vue_type_template_id_31f9a5d7_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-31f9a5d7"],['__file',"resources/js/components/admin/dashboard/components/StatRatePost.vue"]])
 /* hot reload */
 if (false) {}
 
