@@ -6,7 +6,7 @@ import AppVue from "./AppVue.vue"
 import store from "./store";
 import Toaster from '@meforma/vue-toaster';
 import VueSocialSharing from 'vue-social-sharing'
-
+import "../css/app.css"
 import router from './router'
 
 import Antd from "ant-design-vue";

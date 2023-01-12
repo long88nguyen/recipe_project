@@ -36,6 +36,10 @@ export const AUTH = {
     GET_MEMBER_DETAIL: "GET_MEMBER_DETAIL",
   }
 
+  export const CHAT = {
+    FETCH_ALL_ROOM: "FETCH_ALL_ROOM",
+    FETCH_ROOM_SELECTED: "FETCH_ROOM_SELECTED",
+  }
 
   export const RATE = {
     RATE_POST_LIST: "RATE_POST_LIST",

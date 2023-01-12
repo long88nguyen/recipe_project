@@ -106,6 +106,18 @@ const routes =
                     path:"/all-post",
                     component:import('../components/user/GetAllPost.vue'),
                     name : "all-post",
+                },
+
+                {
+                    path:"/post-by-author/:id",
+                    component:import('../components/user/PostByAuthor.vue'),
+                    name : "post-by-author",
+                },
+
+                {
+                    path:"/chat-room",
+                    component:import('../components/user/component/chat/container.vue'),
+                    name : "chat-room",
                 }
             ]
         }

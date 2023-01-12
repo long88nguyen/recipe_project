@@ -108,4 +108,16 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::group(['prefix' => 'post-image'], function () {
         Route::get('/',[\App\Http\Controllers\Api\PostImageController::class,'getAll']);
     });
+
+
+    //chat
+
+    Route::group(['prefix' => 'chat'], function () {
+        Route::get('/rooms',[\App\Http\Controllers\Api\ChatController::class,'rooms']);
+        Route::get('/room/messages/{roomId}',[\App\Http\Controllers\Api\ChatController::class,'messages']);
+        Route::post('/room/message/{roomId}',[\App\Http\Controllers\Api\ChatController::class,'newMessage']);
+
+    });
+
+
 });

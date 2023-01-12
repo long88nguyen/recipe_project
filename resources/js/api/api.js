@@ -25,6 +25,12 @@ const YOUR_POST = '/api/post/your-post'
 const UPDATE_POST = '/api/post/update'
 const DELETE_POST = '/api/post'
 
+//chat
+
+const ALL_ROOM = "/api/chat/rooms"
+const ROOM_SELECTED = "/api/chat/room/messages"
+const CHAT_POST = "/api/chat/room/message"
+
 //rate 
 
 const POST_RATE_LIST = '/api/rate/list-rate'
@@ -74,6 +80,11 @@ export default {
     CATEGORY_UPDATE,
     CATEGORY_DELETE,
     CATEGORY_POST,
+
+    //chat
+    ALL_ROOM,
+    ROOM_SELECTED,
+    CHAT_POST,
 
     //post
     LIST_ALL_POST,
