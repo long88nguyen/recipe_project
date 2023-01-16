@@ -146,7 +146,6 @@ export default {
     },
 
     changePage(page) {
-        console.log(page);
         this.fetchRatingList(this.searchData.itemsPerPage, page);
     },
 

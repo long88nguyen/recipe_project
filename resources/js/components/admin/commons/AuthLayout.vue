@@ -42,7 +42,6 @@ export default {
         },
         logout()
         {
-            console.log(123);
         }
     },
 

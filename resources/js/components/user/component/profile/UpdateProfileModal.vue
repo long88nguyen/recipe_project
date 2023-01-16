@@ -100,7 +100,6 @@ export default {
 
         if ( /\.(jpe?g|png|gif)$/i.test( this.forms.avatar.name ) ) {
 
-            console.log("here");
             reader.readAsDataURL( this.forms.avatar );
         }
             }
@@ -123,7 +122,6 @@ export default {
                 this.$store.dispatch('common/getUserCommon')
             }).catch(() =>{
                 this.$toast.error('Đã xảy ra lỗi !');
-                console.log("errorr");
             })
         } 
     }

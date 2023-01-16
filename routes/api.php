@@ -26,7 +26,7 @@ Route::get('test-api/{id}', [\App\Http\Controllers\Api\TestApiController::class,
 Route::delete('test-api/{id}', [\App\Http\Controllers\Api\TestApiController::class,'delete']);
 
 
-
+// Route::post('email/verification-notification',)
 
 Route::post('/login',[\App\Http\Controllers\Api\AuthController::class,'login']);
 Route::post('/register',[\App\Http\Controllers\Api\AuthController::class,'register']);
@@ -37,6 +37,9 @@ Route::group(['middleware' => 'auth:api'], function() {
 
     //common
     Route::get('/common',[\App\Http\Controllers\Api\CommonController::class,'common']);
+
+    //account
+    Route::get('/account',[\App\Http\Controllers\Api\AuthController::class,'GetAccountLogin']);
 
     //post
     Route::group(['prefix' => 'post'], function () {
@@ -64,7 +67,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::post('/',[\App\Http\Controllers\Api\CategoryController::class,'store']);
         Route::get('/detail/{id}',[\App\Http\Controllers\Api\CategoryController::class,'show']);
         Route::post('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'updateCategory']);
-        Route::delete('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'delete']);
+        Route::delete('/{id}',[\App\Http\Controllers\Api\CategoryController::class,'delete'])->name('category.delete');
 
     });
 

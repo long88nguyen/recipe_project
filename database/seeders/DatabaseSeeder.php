@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
         //  \App\Models\Member::factory(10)->create();
 
         $this->call([
-            ChatRoomSeeder::class
+            ChatRoomSeeder::class,
+            AdminPermissionSeeder::class
         ]);
     }
 }

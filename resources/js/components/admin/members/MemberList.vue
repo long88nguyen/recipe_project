@@ -125,7 +125,6 @@ export default {
     },
 
     changePage(page) {
-        console.log(page);
         this.fetchDataMember(this.searchData.itemsPerPage, page);
     },
 

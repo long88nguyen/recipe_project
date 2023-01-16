@@ -222,7 +222,6 @@
         tempData.img_evidence.push(this.getPostDetail.post_image[0].image);
       }
       if (this.getPostDetail.post_image[1]) {
-        console.log(1);
         this.image_evidence.push(this.getPostDetail.post_image[1].image);
         this.image_name.push(this.getPostDetail.post_image[1].image);
         tempData.img_evidence.push(this.getPostDetail.post_image[1].image);
@@ -268,7 +267,6 @@
         e.target.files[0] &&
         !this.imageType.includes(e.target.files[0].type)
       ) {
-        console.log(2);
 
         this.isImage = false;
         this.forms.img_evidence = [];
@@ -285,11 +283,9 @@
         return;
       }
       if (file !== undefined) {
-        console.log(1);
         let fileName = file.name;
         this.image_evidence.push(URL.createObjectURL(file));
         this.forms.img_evidence.push(file);
-        console.log(this.image_evidence);
         this.image_name.push(fileName);
       }
       if (file2 !== undefined) {
@@ -326,7 +322,6 @@
    
     async updatePost()
     {
-      console.log(this.forms);
       let formData = new FormData();
       for (let key in this.forms) {
         if (key === "img_evidence") {
@@ -346,7 +341,6 @@
             formData.append(`directions[${i}]`, this.forms.directions[i].description);
         }
       }
-      console.log(this.forms);
       await this.$store
         .dispatch("posts/updateDataPost", {
           id:this.$route.params.id,

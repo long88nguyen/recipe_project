@@ -2,8 +2,11 @@
     <div class="side_user">
         <Slider></Slider>
         <ButtonCreatePostVue></ButtonCreatePostVue>
-        <BannerFood></BannerFood>
+        <BannerFood>
+
+        </BannerFood>
         <StatPost/>
+
     </div>
     
 </template>
@@ -14,13 +17,24 @@ import BannerFood from "./commons/BannerFood.vue"
 import Slider from "./commons/Slider.vue"
 import StatPost from "./commons/StatPost.vue"
 import ButtonCreatePostVue from "./commons/ButtonCreatePost.vue"
+import store from "../../store"
+// import { mapGetters } from 'vuex'
 export default {
     components:{
         BannerFood,
         Slider,
         StatPost,
         ButtonCreatePostVue
-    }
+    },
+    created()
+    {
+        // console.log(store.getters["auth/accountInfo"]);
+    },
+//    computed:{
+    // ...mapGetters({
+    //     accountInfo : "auth/accountInfo"
+    // })
+//    }
 }
 </script>
 

@@ -55,7 +55,6 @@ import axios from 'axios';
 
         if ( /\.(jpe?g|png|gif)$/i.test( this.category.image.name ) ) {
 
-            console.log("here");
             reader.readAsDataURL( this.category.image );
         }
     }
@@ -72,7 +71,6 @@ import axios from 'axios';
             })
             .catch(() => {
                 this.$toast.error('Đã xảy ra lỗi !');
-                console.log("errorr");
             })
         }
     }

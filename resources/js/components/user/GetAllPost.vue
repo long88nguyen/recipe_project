@@ -20,7 +20,7 @@
                                     <i class="fa-regular fa-heart" v-else @click="submitFavourite(post.id)"></i>
                                 </div>
                                <router-link :to="{
-                                        path: `/post-detail/${post.id}`
+                                        path: `/postdetail/${post.id}`
                                         }" class="btn_post">Xem bài viết
                                         
                             </router-link>
@@ -52,7 +52,6 @@ export default {
 
         async submitFavourite(value)
         {
-            console.log(1);
             const account = this.$store.getters['common/userCommon'];
             this.$store.dispatch("favourites/submitFavourite",{
                 id: value,

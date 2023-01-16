@@ -3,6 +3,8 @@ import { createRouter,createWebHistory } from "vue-router";
 import CategoryList from '../components/admin/categories/CategoryList.vue'
 import middlewareAuth from "./middleware/auth";
 import redirectCallback from './middleware/redirect-callback'
+import store from "../store"
+
 const routes =
     [
         {
@@ -21,8 +23,14 @@ const routes =
                 requiresAuth: false
               },
         },
+
         {
-            path:"/",
+            path:'/:pathMatch(.*)*',
+            component:import('../components/PageNotFound.vue'),
+            name: "Not-Found",
+        },
+        {
+            path:"/admin",
             component:import("../components/admin/commons/AuthLayout.vue"),
             meta: {
                 requiresAuth: true,
@@ -74,7 +82,7 @@ const routes =
             children:
             [
                 {
-                    path:'/home-page',
+                    path:'/',
                     component:import('../components/user/HomePage.vue')
                 },
                 {
@@ -82,7 +90,7 @@ const routes =
                     component:import('../components/user/PostList.vue')
                 },
                 {
-                    path:"/post-detail/:id",
+                    path:"/postdetail/:id",
                     component:import('../components/user/PostDetail.vue')
                 },
                 {
@@ -136,7 +144,8 @@ function globalMiddleware() {
     return [middlewareAuth, redirectCallback];
   }
 
-function nextFactory(context, middleware, index) {
+ function nextFactory(context, middleware, index) {
+    
     const subsequentMiddleware = middleware[index];
     if (!subsequentMiddleware) return context.next;
 
@@ -148,25 +157,65 @@ function nextFactory(context, middleware, index) {
   }
 
   router.beforeEach((to, from, next) => {
-    var middleware = null;
-    var routeMiddleware = null;
+    async function call(){
+        if( store.getters['auth/token'] != '')
+        {
+            let ok = null;
+            await store.dispatch('auth/getAccountInfo');
+            console.log(store.getters['auth/accountInfo']);
+            // ok = store.getters['auth/accountInfo'].is_admin;
+            // if(to.meta.requiresAuth)
+            // {
+            //     if(ok == 0 && ((window.location.pathname.includes('categories')) || 
+            //     (window.location.pathname.includes('posts'))
+            //     || 
+            //     (window.location.pathname.includes('dashboard'))
+                
+            //     || 
+            //     (window.location.pathname.includes('rates'))
+            //     ||
+                
+            //     (window.location.pathname.includes('members'))
+            //     || 
+            //     (window.location.pathname.includes('admin'))
+            //     ))
+            //     {
+            //         next({name:"Not-Found"})
+            //     }
+            //     else{
+            //         next()
+            // }
+            // }
+            // else
+            // {
+            //     next()
+            // }
+        }
+        else
+        {
+            next();
+        }
 
-    if (to.meta.middleware) {
-      routeMiddleware = Array.isArray(to.meta.middleware)
-        ? to.meta.middleware
-        : [to.meta.middleware];
-    }
-    middleware = routeMiddleware
-      ? globalMiddleware().concat(routeMiddleware)
-      : globalMiddleware();
-
-    if (middleware.length > 0) {
-      const context = { to, from, next, router };
-      const nextMiddleware = nextFactory(context, middleware, 1);
-
-      return middleware[0]({ ...context, next: nextMiddleware });
-    }
-
-    return next();
+        var middleware = null;
+        var routeMiddleware = null;
+        if (to.meta.middleware) {
+        routeMiddleware = Array.isArray(to.meta.middleware)
+            ? to.meta.middleware
+            : [to.meta.middleware];
+        }
+        middleware = routeMiddleware
+        ? globalMiddleware().concat(routeMiddleware)
+        : globalMiddleware();
+       
+        if (middleware.length > 0) {
+        const context = { to, from, next, router };
+        const nextMiddleware = nextFactory(context, middleware, 1);
+        return middleware[0]({ ...context, next: nextMiddleware });
+        }
+        
+        return next();
+        }
+    return call();
   });
+
 export default router

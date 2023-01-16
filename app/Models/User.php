@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'is_admin'
+        'is_admin',
+        'is_active'
     ];
 
     /**
@@ -47,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Member::class, 'user_id');
     }
+
+    // public function getPermissions($id)
+    // {
+    //     return Permission::where
+    // }
 }

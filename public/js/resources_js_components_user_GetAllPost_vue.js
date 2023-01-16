@@ -60,7 +60,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log(1);
                 account = _this2.$store.getters['common/userCommon'];
 
                 _this2.$store.dispatch("favourites/submitFavourite", {
@@ -74,7 +73,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.$toast.error("Erorr!");
                 });
 
-              case 3:
+              case 2:
               case "end":
                 return _context2.stop();
             }
@@ -214,7 +213,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               /* PROPS */
               , _hoisted_13))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
                 to: {
-                  path: "/post-detail/".concat(post.id)
+                  path: "/postdetail/".concat(post.id)
                 },
                 "class": "btn_post"
               }, {

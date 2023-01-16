@@ -16,7 +16,7 @@
                         </div>
                         <router-link
                         :to="{
-                          path: `/post-detail/${post.id}`
+                          path: `/postdetail/${post.id}`
                         }">
                         <h5 class="card_title">
                            {{ post.title.substring(0,20) + "..."}}
@@ -41,6 +41,7 @@
                                 <h5>{{ post.count_favourite }}</h5>
                             </div>
                         </div>
+                        {{  post.id }}
                         <div class="card_action">
                             <router-link
                                 :to="{

@@ -86,8 +86,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               }
 
               if (_this.getPostDetail.post_image[1]) {
-                console.log(1);
-
                 _this.image_evidence.push(_this.getPostDetail.post_image[1].image);
 
                 _this.image_name.push(_this.getPostDetail.post_image[1].image);
@@ -139,7 +137,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var file2 = e.target.files[1];
 
       if (e.target.files[0] && !this.imageType.includes(e.target.files[0].type)) {
-        console.log(2);
         this.isImage = false;
         this.forms.img_evidence = [];
         this.errorFileMessage = this.$t("error.img_type");
@@ -154,11 +151,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       if (file !== undefined) {
-        console.log(1);
         var fileName = file.name;
         this.image_evidence.push(URL.createObjectURL(file));
         this.forms.img_evidence.push(file);
-        console.log(this.image_evidence);
         this.image_name.push(fileName);
       }
 
@@ -200,7 +195,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log(_this2.forms);
                 formData = new FormData();
 
                 for (key in _this2.forms) {
@@ -223,8 +217,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
                 }
 
-                console.log(_this2.forms);
-                _context2.next = 6;
+                _context2.next = 4;
                 return _this2.$store.dispatch("posts/updateDataPost", {
                   id: _this2.$route.params.id,
                   data: formData
@@ -238,7 +231,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   _this2.$toast.error("Error! Please check again !");
                 });
 
-              case 6:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -720,7 +713,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UpdatePost_vue_vue_type_template_id_6c272d80__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdatePost.vue?vue&type=template&id=6c272d80 */ "./resources/js/components/user/component/posts/UpdatePost.vue?vue&type=template&id=6c272d80");
 /* harmony import */ var _UpdatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdatePost.vue?vue&type=script&lang=js */ "./resources/js/components/user/component/posts/UpdatePost.vue?vue&type=script&lang=js");
 /* harmony import */ var _UpdatePost_vue_vue_type_style_index_0_id_6c272d80_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdatePost.vue?vue&type=style&index=0&id=6c272d80&lang=scss */ "./resources/js/components/user/component/posts/UpdatePost.vue?vue&type=style&index=0&id=6c272d80&lang=scss");
-/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -728,7 +721,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_UpdatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UpdatePost_vue_vue_type_template_id_6c272d80__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/component/posts/UpdatePost.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_UpdatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UpdatePost_vue_vue_type_template_id_6c272d80__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/component/posts/UpdatePost.vue"]])
 /* hot reload */
 if (false) {}
 

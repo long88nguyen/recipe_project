@@ -33,7 +33,7 @@
                             <div class="favourite_content">
                               <router-link 
                                 :to="{
-                                path: `/post-detail/${post.id}`
+                                path: `/postdetail/${post.id}`
                                 }" >
                               <h4 class="favourite_title">{{ post.title }}</h4>
                               </router-link>

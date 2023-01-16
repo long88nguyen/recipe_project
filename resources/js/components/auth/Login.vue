@@ -95,13 +95,12 @@ export default {
           }
           else
           {   
-            this.$router.push({path: "/home-page"});
+            this.$router.push({path: "/"});
             this.$toast.success('Đăng nhập thành công!');
 
           }
         })
         .catch((error) => {
-         console.log(error);
           this.$toast.error('Đăng nhập không thành công! Vui lòng kiểm tra lại thông tin đăng nhập');
         });
       }

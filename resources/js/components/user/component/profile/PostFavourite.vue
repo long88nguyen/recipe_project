@@ -26,7 +26,7 @@
                         </div>
                         <router-link
                         :to="{
-                          path: `/post-detail/${post.id}`
+                          path: `/postdetail/${post.id}`
                         }">
                         <h5 class="card_title">
                            {{ post.title.substring(0,20) + "..."}}
@@ -77,7 +77,6 @@ export default {
         },
         async submitFavourite(value)
         {
-            console.log(1);
             const account = this.$store.getters['common/userCommon'];
             this.$store.dispatch("favourites/submitFavourite",{
                 id: value,

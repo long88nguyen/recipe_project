@@ -208,7 +208,6 @@ export default {
     {
         this.idPost = params;
         this.ApproveVisible = !this.ApproveVisible;
-        console.log(params);
     },
     async handleEditOk() {
         this.ApproveVisible = false;

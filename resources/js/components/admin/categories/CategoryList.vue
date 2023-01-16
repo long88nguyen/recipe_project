@@ -178,7 +178,6 @@ export default {
    methods: {
     ...mapActions("categories", ["deleteCategory"]),
     openModal() {
-        console.log(1);
         this.visibleModal = !this.visibleModal
     },
     dateFormat(value) {

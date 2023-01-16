@@ -88,7 +88,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.currentRoom.id) {
         var vm = this;
         this.getMessages();
-        console.log(this.getRoomById);
         Echo["private"]("chat." + this.currentRoom.id).listen('.message.new', function (e) {
           vm.getMessages();
         });
@@ -137,9 +136,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 _context2.next = 3;
                 return _this2.$store.dispatch('chats/getRoomByID', roomId).then(function () {
                   _this2.messages = _this2.getRoomById;
-                })["catch"](function (error) {
-                  console.log(error);
-                });
+                })["catch"](function (error) {});
 
               case 3:
               case "end":
@@ -210,9 +207,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.message = '';
 
                   _this.$emit('messagesent');
-                })["catch"](function (error) {
-                  console.log(error);
-                });
+                })["catch"](function (error) {});
 
               case 4:
               case "end":

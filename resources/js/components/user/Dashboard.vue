@@ -3,7 +3,7 @@
     <nav>
         <a-row>
             <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">     <router-link 
-                  to="/home-page"
+                  to="/"
                   >        
                 <div class="logo_food">
                   <img src="../../uploads/images/logofood.png" alt="">
@@ -14,13 +14,13 @@
               <div class="nav-menu">
               <div class="nav_menu-list">
                     <ul class="text_list">
-                        <li ><router-link to="/home-page" active-class="active" >Trang chủ</router-link></li>
+                        <li ><router-link to="/" active-class="active" >Trang chủ</router-link></li>
                         <li><router-link to="/search-result" active-class="active">Tìm kiếm</router-link></li>
                         <li><router-link to="/all-post" active-class="active">Bài viết</router-link></li>
                         
                     </ul>
                     <ul class="icon_list">
-                        <li ><router-link to="/home-page" ><img src="../../uploads/images/homeicon.png" alt=""></router-link></li>
+                        <li ><router-link to="/" ><img src="../../uploads/images/homeicon.png" alt=""></router-link></li>
                         <li><router-link to="/search-result"><img src="../../uploads/images/searchicon.png"></router-link></li>
                         <li><router-link to="/all-post"><img src="../../uploads/images/foodicon.png"></router-link></li>
                         
@@ -156,7 +156,6 @@ export default {
       this.visible = true;
       },
       handleOk(e) {
-        console.log(e);
         this.visible = false;
       }, 
       cancelPopup()
@@ -204,7 +203,6 @@ export default {
     },
     SubmitValue()
     {
-      console.log(12);
     }
 }
 </script>

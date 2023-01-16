@@ -7,6 +7,7 @@ import api from "../../api/api";
 export const state = {
   token: Cookies.get("access_token"),
   account: [],
+  accountInfo:null,
   redirectPath: "",
   callback: null
 };
@@ -15,7 +16,8 @@ export const state = {
 export const getters = {
   token: state => state.token,
   account: state => state.account,
-  callback: state => state.callback
+  callback: state => state.callback,
+  accountInfo: state => state.accountInfo
 };
 
 // mutations
@@ -43,8 +45,9 @@ export const mutations = {
     });
   },
 
-  [types.AUTH.FETCH_AUTH](state, account) {
-    state.account = account;
+  [types.AUTH.FETCH_AUTH](state, data) {
+    state.accountInfo = data;
+    // console.log(state.accountInfo);
   },
   [types.AUTH.SET_PATH](state, path) {
     state.redirectPath = path;
@@ -94,9 +97,13 @@ export const actions = {
 //     });
 //   },
 
-//   accountInfo({ commit }) {
-//     if (state.account.length === 0) {
-//       return new Promise((resolve, reject) => {
+   async getAccountInfo({ commit },payload) {
+    const response =  await axios.get(api.ACCOUNT);
+    commit(types.AUTH.FETCH_AUTH, response.data.data);
+  },
+//  async accountInfo({ commit }) {
+    
+//       await 
 //         axios
 //           .get(api.ACCOUNT)
 //           .then(response => {
@@ -106,8 +113,6 @@ export const actions = {
 //           .catch(error => {
 //             reject(error);
 //           });
-//       });
-//     }
 //   },
 
   // eslint-disable-next-line

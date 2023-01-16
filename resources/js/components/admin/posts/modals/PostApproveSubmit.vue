@@ -70,7 +70,6 @@ export default {
     },
     created()
     {
-        console.log(this.$props.id);
         this.$store.dispatch('posts/getApprovePost',this.$props.id);    
     },
     methods:{

@@ -4,7 +4,7 @@
         <div class="create_post_detail">
             <div class="breadcumb-field">
               <a-breadcrumb>
-              <a-breadcrumb-item><router-link to="/home-page">Trang chủ</router-link></a-breadcrumb-item>
+              <a-breadcrumb-item><router-link to="/">Trang chủ</router-link></a-breadcrumb-item>
               <a-breadcrumb-item><router-link to="/create-post">Tạo mới bài viết</router-link></a-breadcrumb-item>
               </a-breadcrumb>
           </div>
@@ -295,7 +295,6 @@ export default {
         e.target.files[0] &&
         !this.imageType.includes(e.target.files[0].type)
       ) {
-        console.log(2);
 
         this.isImage = false;
         this.forms.img_evidence = [];
@@ -312,11 +311,9 @@ export default {
         return;
       }
       if (file !== undefined) {
-        console.log(1);
         let fileName = file.name;
         this.image_evidence.push(URL.createObjectURL(file));
         this.forms.img_evidence.push(file);
-        console.log(this.image_evidence);
         this.image_name.push(fileName);
       }
       if (file2 !== undefined) {
@@ -405,7 +402,6 @@ export default {
           this.errors.directions = "Các bước thực hiện quá dài ( tối đa 255 ký tự)"
           isValid = false
         }
-        console.log(this.forms.directions[0].desc.length)
 
         if(this.forms.ingredients[0].name == "")
         {
@@ -422,11 +418,9 @@ export default {
     },
     async registerOverTimeRequest()
     {
-      console.log(this.validate());
       if(this.validate()){
         let formData = new FormData();
       for (let key in this.forms) {
-        // console.log(key);
         if (key === "img_evidence") {
           if (this.forms.img_evidence && this.forms.img_evidence.length > 0) {
             for (let i = 0; i < this.forms.img_evidence.length; i++) {
@@ -446,7 +440,7 @@ export default {
       await this.$store
         .dispatch("posts/createPost", formData)
         .then(() => {
-          this.$router.push({ path : "/home-page"})
+          this.$router.push({ path : "/"})
           this.$toast.success("Tạo mới bài viết thành công, vui lòng chờ duyệt!")
         })
         .catch(() => {

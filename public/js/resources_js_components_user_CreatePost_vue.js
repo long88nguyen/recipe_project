@@ -97,7 +97,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var file2 = e.target.files[1];
 
       if (e.target.files[0] && !this.imageType.includes(e.target.files[0].type)) {
-        console.log(2);
         this.isImage = false;
         this.forms.img_evidence = [];
         this.errorFileMessage = this.$t("error.img_type");
@@ -112,11 +111,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       if (file !== undefined) {
-        console.log(1);
         var fileName = file.name;
         this.image_evidence.push(URL.createObjectURL(file));
         this.forms.img_evidence.push(file);
-        console.log(this.image_evidence);
         this.image_name.push(fileName);
       }
 
@@ -191,8 +188,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         isValid = false;
       }
 
-      console.log(this.forms.directions[0].desc.length);
-
       if (this.forms.ingredients[0].name == "") {
         this.errors.ingredients = "Vui lòng nhập nguyên liệu";
         isValid = false;
@@ -213,17 +208,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(_this.validate());
-
                 if (!_this.validate()) {
-                  _context.next = 6;
+                  _context.next = 5;
                   break;
                 }
 
                 formData = new FormData();
 
                 for (key in _this.forms) {
-                  // console.log(key);
                   if (key === "img_evidence") {
                     if (_this.forms.img_evidence && _this.forms.img_evidence.length > 0) {
                       for (i = 0; i < _this.forms.img_evidence.length; i++) {
@@ -243,10 +235,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
                 }
 
-                _context.next = 6;
+                _context.next = 5;
                 return _this.$store.dispatch("posts/createPost", formData).then(function () {
                   _this.$router.push({
-                    path: "/home-page"
+                    path: "/"
                   });
 
                   _this.$toast.success("Tạo mới bài viết thành công, vui lòng chờ duyệt!");
@@ -254,7 +246,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   _this.$toast.error("Error! Please check again !");
                 });
 
-              case 6:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -526,7 +518,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_breadcrumb_item, null, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-            to: "/home-page"
+            to: "/"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Trang chủ")];

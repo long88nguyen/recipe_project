@@ -66,7 +66,6 @@ export default {
 
         if ( /\.(jpe?g|png|gif)$/i.test( this.forms.image.name ) ) {
 
-            console.log("here");
             reader.readAsDataURL( this.forms.image );
         }
             }
@@ -90,7 +89,6 @@ export default {
             })
             .catch(() => {
                 this.$toast.error('Đã xảy ra lỗi !');
-                console.log("errorr");
                 
             })
         }

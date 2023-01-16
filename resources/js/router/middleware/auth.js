@@ -9,6 +9,7 @@ export default async function auth({
   const tokenStore = store.getters["auth/token"];
   const account = store.getters["auth/account"];
   const requiredAuth = to.matched.some(record => record.meta.requiresAuth);
+  
   if (requiredAuth) {
     if (!token && !tokenStore) {
       next({
@@ -16,6 +17,7 @@ export default async function auth({
       });
     } else if (token && tokenStore) {
       await store.dispatch("common/getUserCommon");
+
     }
     next();
   } else {
@@ -28,3 +30,4 @@ export default async function auth({
   }
   next();
 }
+

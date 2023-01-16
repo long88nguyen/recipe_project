@@ -69,7 +69,6 @@ export default {
             {
                 let vm = this;
                 this.getMessages();
-                console.log(this.getRoomById);
                 Echo.private("chat." + this.currentRoom.id).listen('.message.new',e =>{
                     vm.getMessages()
                 });
@@ -98,7 +97,6 @@ export default {
                 this.messages = this.getRoomById
             })
             .catch(error =>{
-                console.log(error);
             })
         },
     },

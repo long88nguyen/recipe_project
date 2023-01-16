@@ -69,7 +69,7 @@
                         <!-- <ShareNetwork
                             network="facebook"
                             
-                            :url="`https://localhost:8087/post-detail/4`"
+                            :url="`https://localhost:8087/postdetail/4`"
                             title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
                             description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
                             quote="The hot reload is so fast it\'s near instant. - Evan You"
@@ -218,7 +218,6 @@ export default {
       },  
       async submitFavourite(value)
         {
-            console.log(1);
             const account = this.$store.getters['common/userCommon'];
             this.$store.dispatch("favourites/submitFavourite",{
                 id: value,

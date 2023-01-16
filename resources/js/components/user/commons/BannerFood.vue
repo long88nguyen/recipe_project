@@ -47,7 +47,7 @@
                            
                         <router-link
                         :to="{
-                          path: `/post-detail/${post.id}`
+                          path: `/postdetail/${post.id}`
                         }">
                         <h5 class="card_title">
                            {{ post.title.substring(0,20) + "..."}}
@@ -124,7 +124,7 @@
                                 </div>
                                 <router-link 
                                 :to="{
-                                path: `/post-detail/${post_order.id}`
+                                path: `/postdetail/${post_order.id}`
                                 }" >
                                 <span>{{post_order.title.substring(0,20) + "..."}}</span>
                             </router-link>
@@ -177,7 +177,6 @@ export default {
     },
      
     created(){
-        console.log(this.$store.getters['common/userCommon'].id);
         this.$store.dispatch("categories/getAllCategories")
         this.fecthDataPost();
     },
@@ -203,13 +202,11 @@ export default {
         },
         search(value){
             this.searchData.category_id = value ? value : null,
-            console.log(this.searchData.category_id);
             this.searchData.paginate.currentPage = 1;
             this.fecthDataPost();
         },
         async submitFavourite(value)
         {
-            console.log(1);
             const account = this.$store.getters['common/userCommon'];
             this.$store.dispatch("favourites/submitFavourite",{
                 id: value,

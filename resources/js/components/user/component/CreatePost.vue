@@ -242,7 +242,6 @@ export default {
         e.target.files[0] &&
         !this.imageType.includes(e.target.files[0].type)
       ) {
-        console.log(2);
 
         this.isImage = false;
         this.forms.img_evidence = [];
@@ -259,11 +258,9 @@ export default {
         return;
       }
       if (file !== undefined) {
-        console.log(1);
         let fileName = file.name;
         this.image_evidence.push(URL.createObjectURL(file));
         this.forms.img_evidence.push(file);
-        console.log(this.image_evidence);
         this.image_name.push(fileName);
       }
       if (file2 !== undefined) {
@@ -285,7 +282,6 @@ export default {
     {
       let formData = new FormData();
       for (let key in this.forms) {
-        console.log(key);
         if (key === "img_evidence") {
           if (this.forms.img_evidence && this.forms.img_evidence.length > 0) {
             for (let i = 0; i < this.forms.img_evidence.length; i++) {
@@ -305,7 +301,7 @@ export default {
       await this.$store
         .dispatch("posts/createPost", formData)
         .then(() => {
-          this.$router.push({ path : "/home-page"})
+          this.$router.push({ path : "/"})
           this.$toast.success("Add new post successful!")
         })
         .catch(() => {

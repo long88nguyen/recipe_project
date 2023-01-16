@@ -13,7 +13,7 @@
                              <img :src="post.post_image[0].image" alt="" class="card_img">
                              <router-link
                              :to="{
-                               path: `/post-detail/${post.id}`
+                               path: `/postdetail/${post.id}`
                              }">
                              <h5 class="card_title">
                                 {{ post.title.substring(0,20) + "..."}}
@@ -49,7 +49,7 @@
             </div>
             <div v-else>
                 <center><h5 style="color:red">Không có kết quả tìm kiếm !</h5>
-                <router-link to="/home-page" class="back_page">Quay lại trang chủ</router-link>
+                <router-link to="/" class="back_page">Quay lại trang chủ</router-link>
                 </center>
             </div>
         </div>

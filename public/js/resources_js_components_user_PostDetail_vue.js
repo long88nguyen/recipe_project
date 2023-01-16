@@ -111,7 +111,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                console.log(1);
                 account = _this3.$store.getters['common/userCommon'];
 
                 _this3.$store.dispatch("favourites/submitFavourite", {
@@ -125,7 +124,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this3.$toast.error("Erorr!");
                 });
 
-              case 3:
+              case 2:
               case "end":
                 return _context3.stop();
             }
@@ -367,13 +366,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                console.log(value);
                 _this4.visible = true;
                 rateId = value;
-                _context3.next = 5;
+                _context3.next = 4;
                 return _this4.$store.dispatch("rates/detailRate", rateId);
 
-              case 5:
+              case 4:
               case "end":
                 return _context3.stop();
             }
@@ -387,7 +385,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     updateRate: function updateRate(value) {
       var _this5 = this;
 
-      // console.log( this.rateDetail.id,
       //     this.number_rating,
       //  this.rateDetail.review);
       this.$store.dispatch("rates/updateRate", {
@@ -704,7 +701,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onClick: _cache[4] || (_cache[4] = function () {
               return $options.showPopup && $options.showPopup.apply($options, arguments);
             })
-          }, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(), _hoisted_29])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <ShareNetwork\n                            network=\"facebook\"\n                            \n                            :url=\"`https://localhost:8087/post-detail/4`\"\n                            title=\"Say hi to Vite! A brand new, extremely fast development setup for Vue.\"\n                            description=\"This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You.\"\n                            quote=\"The hot reload is so fast it\\'s near instant. - Evan You\"\n                            hashtags=\"vuejs,vite\"\n                        > "), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </ShareNetwork> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.getPostDetail.ingredients, function (ingredient, index) {
+          }, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(), _hoisted_29])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <ShareNetwork\n                            network=\"facebook\"\n                            \n                            :url=\"`https://localhost:8087/postdetail/4`\"\n                            title=\"Say hi to Vite! A brand new, extremely fast development setup for Vue.\"\n                            description=\"This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You.\"\n                            quote=\"The hot reload is so fast it\\'s near instant. - Evan You\"\n                            hashtags=\"vuejs,vite\"\n                        > "), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </ShareNetwork> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.getPostDetail.ingredients, function (ingredient, index) {
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
               key: index
             }, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(ingredient.name), 1

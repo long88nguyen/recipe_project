@@ -62,5 +62,6 @@ export const AUTH = {
   }
 
   export const COMMON = {
-    USER_INFO: "USER_INFO"
+    USER_INFO: "USER_INFO",
+    ACCOUNT_INFO: "ACCOUNT_INFO"
   }

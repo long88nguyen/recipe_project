@@ -69,14 +69,12 @@ export default {
 
         if ( /\.(jpe?g|png|gif)$/i.test( this.category.image.name ) ) {
 
-            console.log("here");
             reader.readAsDataURL( this.category.image );
         }
             }
         },
         async addCategory()     
         {
-            console.log(1);
             let formData = new FormData();
             formData.append('name', this.category.name);
             formData.append('image', this.category.image);
@@ -90,7 +88,6 @@ export default {
             })
             .catch(() => {
                 this.$toast.error('Đã xảy ra lỗi !');
-                console.log("errorr");
                 
             })
         }

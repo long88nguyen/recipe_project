@@ -131,7 +131,6 @@ export default {
       this.visible = true;
     },
     handleOk(e) {
-      console.log(e);
       this.visible = false;
     }, 
     cancelPopup()
@@ -141,7 +140,7 @@ export default {
     logoutHandler() {
       this.$store.dispatch("auth/logout").then(() => {
         
-        this.$router.push({ name: "Login" });
+        this.$router.push("/");
       });
     },
    },

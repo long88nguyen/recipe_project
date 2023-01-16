@@ -1,6 +1,7 @@
 //authentication
 const LOGIN = '/api/login'
 const REGISTER = '/api/register'
+const ACCOUNT = '/api/account'
 
 // category
 const LIST_CATEGORY = '/api/category';
@@ -130,6 +131,7 @@ export default {
 
     //authentication
     LOGIN,
-    REGISTER
+    REGISTER,
+    ACCOUNT
 
 }

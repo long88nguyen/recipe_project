@@ -193,7 +193,6 @@ export default {
 
         async DetailRate(value)
         {
-            console.log(value);
             this.visible = true;
             let rateId = value;
             await this.$store.dispatch("rates/detailRate",rateId);
@@ -204,7 +203,6 @@ export default {
         },  
 
         updateRate(value){
-            // console.log( this.rateDetail.id,
             //     this.number_rating,
             //  this.rateDetail.review);
 

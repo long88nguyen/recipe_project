@@ -15,9 +15,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _commons_Slider_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./commons/Slider.vue */ "./resources/js/components/user/commons/Slider.vue");
 /* harmony import */ var _commons_StatPost_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./commons/StatPost.vue */ "./resources/js/components/user/commons/StatPost.vue");
 /* harmony import */ var _commons_ButtonCreatePost_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./commons/ButtonCreatePost.vue */ "./resources/js/components/user/commons/ButtonCreatePost.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../store */ "./resources/js/store/index.js");
 
 
 
+
+ // import { mapGetters } from 'vuex'
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -25,7 +28,14 @@ __webpack_require__.r(__webpack_exports__);
     Slider: _commons_Slider_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     StatPost: _commons_StatPost_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     ButtonCreatePostVue: _commons_ButtonCreatePost_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }
+  },
+  created: function created() {// console.log(store.getters["auth/accountInfo"]);
+  } //    computed:{
+  // ...mapGetters({
+  //     accountInfo : "auth/accountInfo"
+  // })
+  //    }
+
 });
 
 /***/ }),
@@ -89,7 +99,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   created: function created() {
-    console.log(this.$store.getters['common/userCommon'].id);
     this.$store.dispatch("categories/getAllCategories");
     this.fecthDataPost();
   },
@@ -111,8 +120,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.searchData.paginate = this.pagination;
     },
     search: function search(value) {
-      this.searchData.category_id = value ? value : null, console.log(this.searchData.category_id);
-      this.searchData.paginate.currentPage = 1;
+      this.searchData.category_id = value ? value : null, this.searchData.paginate.currentPage = 1;
       this.fecthDataPost();
     },
     submitFavourite: function submitFavourite(value) {
@@ -124,7 +132,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(1);
                 account = _this.$store.getters['common/userCommon'];
 
                 _this.$store.dispatch("favourites/submitFavourite", {
@@ -138,7 +145,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   _this.$toast.error("Erorr!");
                 });
 
-              case 3:
+              case 2:
               case "end":
                 return _context.stop();
             }
@@ -516,7 +523,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* PROPS */
             , _hoisted_18))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
               to: {
-                path: "/post-detail/".concat(post.id)
+                path: "/postdetail/".concat(post.id)
               }
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -644,7 +651,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* PROPS */
             , _hoisted_35))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
               to: {
-                path: "/post-detail/".concat(post_order.id)
+                path: "/postdetail/".concat(post_order.id)
               }
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -914,7 +921,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* PROPS */
             , _hoisted_13), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
               to: {
-                path: "/post-detail/".concat(post.id)
+                path: "/postdetail/".concat(post.id)
               }
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
