@@ -2,6 +2,12 @@
   <div class="create_post_new">
     <div class="create_post_container">
         <div class="create_post_detail">
+            <div class="breadcumb-field">
+              <a-breadcrumb>
+              <a-breadcrumb-item><router-link to="/home-page">Trang chủ</router-link></a-breadcrumb-item>
+              <a-breadcrumb-item><router-link to="/create-post">Tạo mới bài viết</router-link></a-breadcrumb-item>
+              </a-breadcrumb>
+          </div>
             <h4>Tạo bài viết mới</h4>
             <form action=""  @submit.prevent="registerOverTimeRequest">
               <div class="create_post-header">
@@ -85,7 +91,7 @@
                       <div class="form-ingredient">
                         <label for="">Các bước thực hiện <span class="validate_feedback">*</span></label>
                         <div class="form-group" v-for="(input,k) in forms.directions" :key="k">
-                          <textarea :placeholder="'Step ' + (k+1)" :rows="4" type="text" class="form-control" v-model="input.desc"       
+                          <textarea :placeholder="'Bước ' + (k+1)" :rows="4" type="text" class="form-control" v-model="input.desc"       
                           @blur="validate()"
                           :class="{'is-invalid' : errors.directions }"></textarea>
                               <span>
@@ -150,7 +156,7 @@
                             <div class="file_input_button">
                               <label for="fileImage" class="">
                                   <div class="">
-                                    Click upload <i class="fa-solid fa-cloud-arrow-up"></i>
+                                    Tải ảnh lên  <i class="fa-solid fa-cloud-arrow-up"></i>
                                   </div>
                               </label>
                             </div>
@@ -360,13 +366,13 @@ export default {
 
         if(!this.forms.content)
         {
-          this.errors.content = "Tiêu đề là bắt buộc"
+          this.errors.content = "Mô tả là bắt buộc"
           isValid = false
         }  
 
         else if(this.forms.content.length > 255)
         {
-          this.errors.content = "Tiêu đề quá dài (tối đa 255 ký tư)"
+          this.errors.content = "Mô tả quá dài (tối đa 255 ký tư)"
           isValid = false
         }
 
@@ -392,6 +398,14 @@ export default {
           this.errors.directions = "Vui lòng nhập các bước thực hiện"
           isValid = false 
         }
+        
+        
+        else if(this.forms.directions[0].desc.length > 255)
+        {
+          this.errors.directions = "Các bước thực hiện quá dài ( tối đa 255 ký tự)"
+          isValid = false
+        }
+        console.log(this.forms.directions[0].desc.length)
 
         if(this.forms.ingredients[0].name == "")
         {
@@ -453,10 +467,14 @@ export default {
     font-family: 'Roboto', sans-serif ;;
     .create_post_container
     {
+
         width: 70%;
         margin:0 auto;
         background: white;
         .create_post_detail{
+          .breadcumb-field{
+            margin-bottom : 10px;
+          }
           padding: 30px;
           .form-ingredient{
             margin:20px 0;
@@ -531,8 +549,11 @@ export default {
     }
            
 }
-
-@media (max-width: 414px)
+.validate_feedback{
+              color:red;
+              font-size: 12px;
+            }
+@media (max-width: 520px)
 {
   .create_post_new{
     .create_post_container{

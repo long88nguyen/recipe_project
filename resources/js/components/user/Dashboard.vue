@@ -31,11 +31,11 @@
             <a-col :xxl="5" :xl="5" :lg="5" :md="5" :xs="5">
                 <div class="nav-account">
                     <img :src="userCommon.avatar" alt="" @click="toggleProfile">
-                    <span> {{ userCommon.name}} </span>
+                    <span> &nbsp; {{ userCommon.name}} </span>
                     <div class="nav-account-menu" :class="{activce:isActiveVisible}">
                        
                         <ul>
-                            <li><i class="fa-solid fa-address-card"></i><router-link to="/profile" @click="toggleProfile">Thông tin cá nhân</router-link></li>
+                            <li><i class="fa-solid fa-address-card"></i><router-link to="/profile" @click="toggleProfile">Thông tin</router-link></li>
                             <li @click="showModal"><i class="fa-solid fa-right-from-bracket"></i><span>Đăng xuất</span></li>
                         </ul>
                     </div>
@@ -375,7 +375,7 @@ export default {
     }
     span
     {
-        margin-left:5px;
+        // margin-left:5px;
     }
     .nav-account-menu{
         position:absolute;
@@ -428,7 +428,6 @@ export default {
                     display: inline-block;
                     text-decoration: none;
                     color:white;
-                    font-weight: bold;
                     transition:0.5s;
                 }
                 span:hover{
@@ -440,7 +439,6 @@ export default {
                     display: inline-block;
                     text-decoration: none;
                     color:white;
-                    font-weight: bold;
                     transition:0.5s;
                 }
                 a:hover{
@@ -488,11 +486,11 @@ export default {
   nav {
     .nav-menu {
       .text_list {
-        display: none;
-      }
-      .icon_list{
         display: block;
       }
+      // .icon_list{
+      //   display: block;
+      // }
     }
     .nav_icon{
         i
@@ -536,15 +534,6 @@ export default {
                 align-items: center;
                 border-radius: 50%;
 
-            }
-            a{
-                font-weight: 400;
-                font-size: 13px;
-
-            }
-            a:hover{
-              transition: 0.4s;
-              border-bottom:3px solid white;
             }
           }
         }
@@ -632,7 +621,7 @@ export default {
             a{
                 font-weight: 300;
                 transition:0.5s;
-            font-size: 10px;
+            font-size: 11px;
 
             }
             a:hover{
@@ -648,7 +637,7 @@ export default {
  
 }
 
-@media (max-width: 414px) {
+@media (max-width: 520px) {
   .container-layout{
     nav{
       width: 100%;
@@ -666,6 +655,53 @@ export default {
           }
         }
       }
+
+
+      .nav-account
+    {
+        span{
+            display: none;
+        }
+        .nav-account-menu{
+        width: 130px;
+        right:-10px;
+        border-radius: 10px;
+        height: 100%;
+        ul
+        {
+          padding-left:0;
+          height: 100%;
+          li
+          {
+            font-size: 11px;
+            padding-top:10px;
+            display: flex;
+            i{
+                margin-right:5px;
+               font-size: 10px;
+               display: flex;
+                width: 20px;
+                height: 20px;
+                justify-content: center;
+                background: red;
+                align-items: center;
+                border-radius: 50%;
+
+            }
+            // a{
+            //     font-weight: 300;
+            //     transition:0.5s;
+            //   font-size: 10px;
+
+            // }
+            // a:hover{
+            //   transition: 0.4s;
+            //   border-bottom:3px solid white;
+            // }
+          }
+        }
+      }
+    }
     }
   }
 }

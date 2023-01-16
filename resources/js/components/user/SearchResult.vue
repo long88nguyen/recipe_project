@@ -87,7 +87,7 @@ export default {
    width: 100%;
     .banner_food-container
     {
-        width: 70%;
+        width: 80%;
         margin:0 auto;
         .card_item{
             width: 90%;
@@ -234,5 +234,20 @@ export default {
 }
 .back_page:hover{
     text-decoration: underline;
+}
+
+@media (max-width:520px){
+    .banner_food {
+        .banner_food-container{
+            width: 90%;
+            .card_item{
+                width: 100%;
+                max-height: 500px;
+                img{
+                    height: 250px;
+                }
+            }
+        }
+    }
 }
 </style>

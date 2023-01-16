@@ -531,7 +531,7 @@ export default {
 }
 
 
-@media (max-width: 414px) {
+@media (max-width: 520px) {
     .filter_container{
         .filter_post{
             width: 96%;

@@ -82,6 +82,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         $memberId = Auth::user()->member->id;
         $dataPost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
         ->with("PostImage:id,post_id,image","member:id,name,avatar")
+        ->where('posts.status',2)
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -116,6 +117,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
 
         $postOrder = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
         ->with("PostImage:id,post_id,image")
+        ->where('posts.status',2)
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -151,6 +153,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         $memberId = Auth::user()->member->id;
         $searchPost = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
         ->with("PostImage:id,post_id,image","Ingredients:id,name,post_id","member:id,name,avatar")
+        ->where('posts.status',2)
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -205,6 +208,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
 
         $getFavourite = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
         ->with("PostImage:id,post_id,image")
+        ->where('posts.status',2)
         ->select([
             "posts.*",
             DB::raw('(select count(*) from favourites where favourites.post_id = posts.id) as count_favourite' ),
@@ -546,6 +550,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
         ])
         ->with("PostImage")
+        ->where('posts.status',2)
         ->groupBy("id","title","content",
         "category_id","member_id",
         "time","status","created_at",
@@ -600,6 +605,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             DB::raw('(select round(avg(number_rating),1) from rates where rates.post_id = posts.id) as number_rating' )
         ])
         ->with("PostImage")
+        ->where('posts.status',2)
         ->groupBy("id","title","content",
         "category_id","member_id",
         "time","status","created_at",

@@ -48,7 +48,7 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         {
             $getCategory->where('name', 'like', '%' . $request->name . '%');
         }
-        $getAllcategory =  $getCategory->limit(7)->get();
+        $getAllcategory =  $getCategory->limit(5)->get();
 
         $getCategory =  $getCategory->paginate($perPage);
         return [
@@ -117,7 +117,10 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     public function getPostByCategory($request)
     {
         $memberId =  Auth::user()->member->id;
-        $getCategoryPost = $this->model->with("Posts.PostImage:id,post_id,image","Posts:id,category_id")->get();
+        $getCategoryPost = $this->model
+        ->join('posts','posts.category_id','categories.id')
+        ->where('posts.status',2)
+        ->with("Posts.PostImage:id,post_id,image","Posts:id,category_id")->get();
         foreach($getCategoryPost as $value)
         {
             foreach($value['Posts'] as $item)

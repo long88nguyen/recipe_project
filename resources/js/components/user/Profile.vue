@@ -9,9 +9,17 @@
             </div>
             
         </div>
-        <button class="btn btn-outline-primary" @click="openModal">
-                Chỉnh sửa thông tin cá nhân
-        </button>
+        <div class="button_ac">
+            <button class="btn btn-outline-primary button_update_profile" @click="openModal">
+                Chỉnh sửa thông tin
+            </button>
+
+            <router-link to="/create-post" class="btn btn-outline-secondary button_update_profile">
+                    Thêm mới bài viết
+            </router-link>
+        </div>
+       
+
         <div class="profile_tab">
         <a-tabs default-active-key="1" @change="callback">
             <a-tab-pane key="1" tab="Bài viết đã đăng">
@@ -25,7 +33,7 @@
         </a-tabs>
         </div>
         <UpdateProfile :visibleProfile="visible"
-                                @ok="handleEditOk"
+                            @ok="handleEditOk"
                             @cancel="handleEditCancel"
                             :id = "memberId"
 
@@ -81,12 +89,15 @@ export default {
 <style lang="scss">
 .profile_page{
     width: 100%;
-    margin-top:200px;
+    min-height:650px;
+    background: #f4f9f6;
+    padding-top:200px;
    font-family: Arial, Helvetica, sans-serif;
     .profile_container
     {
         border-radius:10px;
-        background: white;
+        background: #f4f9f6;
+
         width: 70%;
         margin:0 auto;
         .profile_tab{
@@ -114,12 +125,29 @@ export default {
             }
            
         }
-        .profile_button{
-            position: absolute;
-            right: 241px;
-             top: 210px;
+        .button_ac{
+            .button_update_profile{
+            margin-left: 20px;
         }
+        }
+        
+        
+
     }
     
+}
+
+@media (max-width:520px)
+{
+    .profile_page{
+        .profile_container{
+            width: 96%;
+            .button_update_profile{
+
+            }
+        }        
+    }
+
+
 }
 </style>

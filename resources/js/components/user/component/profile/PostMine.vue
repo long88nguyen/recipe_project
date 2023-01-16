@@ -5,8 +5,14 @@
                 <div 
                     class="card_item">
                         <img :src="post.post_image[0].image" alt="" class="card_img">
-                        <div class="card_status">
+                        <div class="card_status confirm" v-if="post.status == 2">
                             <span>Đã duyệt</span>
+                        </div>
+                        <div class="card_status pending" v-if="post.status == 1">
+                            <span>Đang chờ</span>
+                        </div>
+                        <div class="card_status reject" v-if="post.status == 3">
+                            <span>Từ chối</span>
                         </div>
                         <router-link
                         :to="{
@@ -117,10 +123,11 @@ export default {
 <style lang="scss" scoped>
 .card_item{
             width: 90%;
-            height: 350px;
+            max-height: 500px;
             border-radius:5px;
             transition: 0.3s;
             background: white; 
+            margin-top:15px;
 
             img{
                 width: 100%;
@@ -138,13 +145,25 @@ export default {
             font-weight: bold;
             width: 100px;
             height: 30px;
-            background: #198754;
             position: absolute;
-            top: -2px;
-            right: 10px;
+            top:-15px;
+            right: 30px;
             color: white;
             font-size: 14px;
             border-radius: 15px;
+            
+            }
+            .confirm{
+                background: #198754;
+
+            }
+            .reject{
+                background: red;
+
+            }
+            .pending{
+                background: orange;
+                
             }
             h4{
                 font-size: 24px;
@@ -223,4 +242,18 @@ export default {
                 }
             }
         }
+@media (max-width:520px)
+{
+    .card_item{
+        width: 100%;
+        max-height: 500px;
+        img{
+            height: 250px;
+        }
+        .card_status{
+            top: -3px;
+            right: 0;
+        }
+    }
+}
 </style>

@@ -172,4 +172,28 @@ export default {
         }
     }
 }
+
+@media (max-width:520px)
+{
+    .get_all_post{ 
+        .get_all_post_container
+        {
+            width: 90%;
+            .list_all_post{
+                .list_post{
+                    .post_by_category{
+                        .post_item{
+                            height: 250px;
+                            img{
+                                height: 100%;
+                                // height: 250px;
+                                // margin:10px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        }
+}
 </style>

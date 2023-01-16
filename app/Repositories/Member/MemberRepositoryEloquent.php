@@ -64,7 +64,7 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
         $data['name'] = $request->name;
         $data['phone'] = $request->phone;
         $data['birthday'] = $request->birthday;
-        $data['gender'] = $request->gender;
+        $data['gender'] = $request->gender ? $request->gender != null : null ;
         if ($request->file('avatar'))
         {
             if(File::exists("uploads/avatars/".$updateData->avatar))

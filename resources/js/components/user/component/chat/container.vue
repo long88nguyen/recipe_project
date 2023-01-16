@@ -1,12 +1,12 @@
 <template>
     <div class="chat_side">
         <div class="chat_container">
-            <!-- <chatRoomSelection
+            <chatRoomSelection
             v-if="currentRoom.id"
             :rooms="chatRooms"
             :currentRoom = "currentRoom"
             @roomchanged = setRoom($event)
-            /> -->
+            />
             <div class="chat_pannel">
 
                 <div class="chat_message">
@@ -22,7 +22,6 @@
                 />
             </div>
                 
-
             </div>
             
         </div>
@@ -35,7 +34,6 @@ import messageContainer from './messageContainer.vue';
 import inputMessage from './inputMessage.vue';
 import chatRoomSelection from './chatRoomSelection.vue';
 
-import axios from 'axios';
 import { mapGetters } from 'vuex';
 export default {
     components:{
@@ -71,14 +69,15 @@ export default {
             {
                 let vm = this;
                 this.getMessages();
-                window.Echo.private("chat." + this.currentRoom.id).listen('.message.new',e =>{
+                console.log(this.getRoomById);
+                Echo.private("chat." + this.currentRoom.id).listen('.message.new',e =>{
                     vm.getMessages()
                 });
             }
         },
         disconnect(room)
         {
-            window.Echo.leave("chat." + room.id);
+            Echo.leave("chat." + room.id);
         },
         async getRooms(){
            await this.$store.dispatch('chats/listAllRoom').then(() =>{
@@ -89,14 +88,12 @@ export default {
 
         setRoom( room)
         {
-            console.log(room);
             this.currentRoom = room;
             this.getMessages();
         },
 
         async getMessages(){
             let roomId = this.currentRoom.id;
-            console.log(roomId);
             await this.$store.dispatch('chats/getRoomByID',roomId).then(() =>{
                 this.messages = this.getRoomById
             })

@@ -2,7 +2,7 @@
   <div class="post_detail">
     <div class="post_detail-container">
         <a-row >
-            <a-col :xxl="18" :xl="18" :lg="18">
+            <a-col :xxl="18" :xl="18" :lg="18" :xs="24">
                 <div class="post_infomation">
                     <div class="post_detail-title">
                         <h1>{{ getPostDetail.title }}</h1>
@@ -53,12 +53,19 @@
                     </div>
                    </div>
                    <div class="post_detail-time">
-                        <div class="option save_post" v-if="getPostDetail.favouriteable  == true" @click="submitFavourite(getPostDetail.id)"> <span >Lưu bài viết</span>  <i class="fa-regular fa-heart"></i></div>
-                        <div class="option save_post" v-else @click="unsubmitFavourite(getPostDetail.id)" > <span >Bỏ lưu</span>  <i class="fa-solid fa-heart"></i></div>
+                        <div class="option save_post" v-if="getPostDetail.favouriteable  == true" @click="submitFavourite(getPostDetail.id)"> 
+                            <span >Lưu bài viết</span>  
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <div class="option save_post" v-else @click="unsubmitFavourite(getPostDetail.id)" > 
+                            <span >Bỏ lưu</span> 
+                            <i class="fa-solid fa-heart"></i>
+                            
+                        </div>
                         
                     
-                        <div class="option favourite_post" v-if="getPostDetail.rateable==false" ><span @click="showPopup">Đánh giá</span> <i class="fa-regular fa-star"></i></div>
-                        <div class="option favourite_post" v-else><span @click="showPopup" >Đã đánh giá</span> <i class="fa-solid fa-star"></i></div>
+                        <div class="option favourite_post" v-if="getPostDetail.rateable==false" @click="showPopup"><span >Đánh giá</span> <i class="fa-regular fa-star"></i></div>
+                        <div class="option favourite_post" v-else  @click="showPopup"><span >Đã đánh giá</span> <i class="fa-solid fa-star"></i></div>
                         <!-- <ShareNetwork
                             network="facebook"
                             
@@ -111,7 +118,7 @@
                 </div>
             </a-col>
 
-            <a-col :xxl="6" :xl="6" :lg="6"> 
+            <a-col :xxl="6" :xl="6" :lg="6" :xs="24"> 
                
                     
                               
@@ -373,6 +380,7 @@ export default {
                     background: #d54215;
                     color: white;
                     font-weight: 500;
+                    cursor: pointer;
                     i{
                         margin-left: 5px;
                     }
@@ -380,7 +388,7 @@ export default {
                     span:hover{
                         border-bottom : 3px solid white;
                         transition: 0.5s;                        
-                        cursor: pointer;
+                        
                     }
                 }
                 
@@ -570,7 +578,7 @@ export default {
     }
 }
 
-@media (max-width: 414px)
+@media (max-width: 520px)
 {
     .post_detail{
         .post_detail-container{

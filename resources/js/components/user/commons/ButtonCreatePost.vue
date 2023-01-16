@@ -1,7 +1,7 @@
 <template>
     <div class="add_panel_container">
         <div class="add_panel_food">
-            <router-link to="/create-post" class="btn btn-outline-secondary">Add new my post</router-link>
+            <router-link to="/create-post" class="btn btn-outline-secondary">Tạo mới bài viết</router-link>
         </div>
     </div>
 </template>
