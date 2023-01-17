@@ -61,7 +61,7 @@
                :closable = false
                centered
                >
-               <img :src="`uploads/category/${selectedImg}`" class="img-thumbnail" alt=""/>
+               <img :src="selectedImg" class="img-thumbnail" alt=""/>
         </a-modal>
 
         <a-modal 
