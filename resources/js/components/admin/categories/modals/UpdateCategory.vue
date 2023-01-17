@@ -2,27 +2,28 @@
     <div class="form_input-category">
             <form @submit.prevent="updateCategory" enctype="multipart/form-data">
                 <div class="form_group">
-                    <label for="">Name</label>
+                    <label for="">Tên danh mục</label>
                     <input type="text" class="form-control" v-model="CategoryDetail.name">
                 </div>
                 <div class="form-image-cate">
                     <div class="form_group">
-                        <label for="">image</label>
+                        <label for="">Ảnh mô tả</label>
                         <input type="file" class="form-control" id="imageCate" style="display:none"  @change ="onChange">
                     </div>
                     <div class="show-image">
                         <div class="show-image-upload">
                             <label for="imageCate">
-                                Upload
+                                Tải ảnh lên
                             </label>
                         </div>
-                        <img :src="`uploads/category/${CategoryDetail.image}`" width="100" height="100" class="img-thumbnail" alt="" v-if="(showPreview == false)"/>
+                        <img :src="CategoryDetail.image" width="100" height="100" class="img-thumbnail" alt="" v-if="(showPreview == false)"/>
                         <img v-bind:src="imagePreview" width="100" height="100" v-show="showPreview"/>
                     </div>
                 </div>
                 
                 <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success">Lưu</button>
+                    <!-- <button class="btn btn-danger" style="margin-left:20px" @click="$emit('cancel')">Huỷ tạo</button> -->
                 </div>
             </form>
         </div>

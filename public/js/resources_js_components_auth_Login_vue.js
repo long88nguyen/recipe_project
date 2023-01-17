@@ -91,7 +91,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   if (check_role === 1) {
                     _this.$router.push({
-                      path: "/categories"
+                      path: "/dashboard"
                     }).then(function (response) {
                       _this.$toast.success('Đăng nhập thành công !');
                     });

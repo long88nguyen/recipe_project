@@ -22,7 +22,7 @@ class ImageHelper
     {
         try {
             $disk = Storage::disk('s3');
-            if ($disk->exists($path)) {
+            if ($disk->exists($path) ) {
                 $s3Client = $disk->getDriver()->getAdapter()->getClient();
                 $command = $s3Client->getCommand(
                     'GetObject',
@@ -49,6 +49,28 @@ class ImageHelper
             Storage::disk('s3')->delete($path);
         }
     }
+
+    public static function updateFileFromS3($file,$pathUpdate,$path)
+    {
+        if($file)
+        {
+            $disk = Storage::disk('s3');
+            if ($disk->exists($pathUpdate)) {
+                if($pathUpdate != "images/avatars/avatar.png")
+                {
+                    Storage::disk('s3')->delete($pathUpdate);
+                }
+                
+            }
+
+            $extension  = $file->getClientOriginalExtension(); 
+            $image_name = time() .  '.' . $extension;
+            $urlPath = $path . '/' .$image_name;
+            Storage::disk('s3')->putFileAs($path, $file, $image_name);
+            return $urlPath;
+        }
+        
+    } 
 }
 
 ?>

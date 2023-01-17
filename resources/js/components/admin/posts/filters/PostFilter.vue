@@ -5,7 +5,7 @@
                         <a-col :xl = "8" :lg = "8" :md = "8">
                             <div class="form-input">
                                 <label for="">
-                                    member name
+                                    Nguời đăng
                                 </label> 
                                 <input type="text" class="form-control" 
                                 v-model="member_name"
@@ -19,7 +19,7 @@
                         <a-col :xl = "8" :lg = "8" :md = "8">
                             <div class="form-input">
                                 <label for="">
-                                    category name
+                                    Danh mục
                                 </label>
                                 <input type="text" class="form-control" 
                                 v-model="category_name"
@@ -32,7 +32,7 @@
                         <a-col :xl = "8" :lg = "8" :md = "8">
                             <div class="form-input">
                                 <label for="">
-                                    status
+                                    Trạng thá<i></i>
                                 </label>
                                 <select name="" id="" class="form-control" v-model="status" @change="search">
                                     <option value="">Tất cả</option>

@@ -10,21 +10,25 @@
                 </div>
             </div>
             <div class="post_layout post_image">
-              
+                <div class="image_item">
+                    <template v-for="(image,index) in showApprove.post_image" :key="index">
+                        <img :src="image.image" alt="">
+                    </template>
+                </div>
                </div> 
             <div class="post_layout post_title">
-                <label for="">Title</label>
+                <label for="">Tiêu đề</label>
                 <input type="text" class="form-control" disabled :value="showApprove.title">
             </div>
             <div class="post_layout post_content">
-                <label for="">Content</label>
+                <label for="">Mô tả</label>
                 <textarea name="" id="" cols="30" rows="5" class="form-control" disabled :value="showApprove.content" >
                    
 
                 </textarea>
             </div>
             <div class="post_layout post_ingredient">
-                <label for="">Ingredient</label>
+                <label for="">Nguyên liệu</label>
                 <!-- {{ showApprove }} -->
                 <template v-for="(ingre,index) in showApprove.ingredients" :key="index">
                     <input type="text" class="form-control input_direction" disabled  :value="'+ '+ingre.name">
@@ -32,20 +36,20 @@
                 
             </div>
             <div class="post_layout post_direction">
-                <label for="">Direction</label>
+                <label for="">Các bước thực hiện</label>
                 <br>
                 <template v-for="(direc,index) in showApprove.directions" :key="index">
-                    <span>Step {{index+1}}</span>
+                    <span>Bước {{index+1}}</span>
                     <textarea name="" id="" cols="30" rows="3"  class="form-control input_ingredient" :value = "direc.description" disabled></textarea>
                 </template>    
             </div>
             <div class="post_layout post_time">
-                <label for="">Time</label>
-                <input type="text" class="form-control" disabled :value="showApprove.time + 'minute'">
+                <label for="">Thời gian thực hiện</label>
+                <input type="text" class="form-control" disabled :value="showApprove.time + ' Phút'">
             </div>
             <div class="btn_event" v-if = "(showApprove.status == 1)">
-                <button class="btn btn-primary" @click="Approve(2)">Approved</button>
-                <button class="btn btn-success" @click="Reject(3)">Reject</button>
+                <button class="btn btn-primary" @click="Approve(2)">Duyệt</button>
+                <button class="btn btn-success" @click="Reject(3)">Tù chối</button>
             </div>
         </div>    
     </div>
@@ -104,13 +108,16 @@ export default {
     .post_description{
         padding:10px;
         .post_layout{
-            margin: 10px 0px;
+            margin: 15px 0px;
         }
         .post_image{
-            img{
-                width: 150px;
-                height: 150px;
+            .image_item{
+                img{
+                width: 50%;
+                height: 200px;
             }
+            }
+            
         }
         .input_ingredient{
             margin:5px 0px;

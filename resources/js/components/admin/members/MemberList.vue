@@ -5,26 +5,26 @@
         <div class="table-wrapper">
           <div class="breadcumb-field">
             <a-breadcrumb>
-            <a-breadcrumb-item><router-link to="/dashboard">Home</router-link></a-breadcrumb-item>
-            <a-breadcrumb-item><router-link to="/members">Member</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item><router-link to="/dashboard">Trang chủ</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item><router-link to="/members">Quản lý người dùng</router-link></a-breadcrumb-item>
             </a-breadcrumb>
         </div>
         <MemberFilterVue @search="updateSearch"/>
           <table class="content-table">
                 <thead>
                     <tr>
-                        <th>Member id</th>
-                        <th>Name</th>
-                        <th>Avatar</th>
-                        <th>Join Date</th>
-                        <th >Action</th>
+                        <th>Mã người dùng</th>
+                        <th>Tên người dùng</th>
+                        <th>Ảnh đại diện</th>
+                        <th>Ngày tham gia</th>
+                        <th >Hoạt động</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(member, index) in listDataMember.data" :key="index">
                         <td>{{  member.id }}</td>
                         <td>{{ member.name }}</td>
-                        <td><img src="../../../uploads/avatar.png" alt=""></td>
+                        <td><img :src="member.avatar" alt=""></td>
                         <td>{{ dateFormat(member.created_at) }} </td>
                         <td>
                           <i class="fa-solid fa-trash" style="color:red" @click="DeleteRate(member.id)"></i>
@@ -212,7 +212,6 @@ export default {
               height: 70px;
               width: 70px;
               border-radius: 35px;
-              border: 2px solid silver;
             }
             i{
               font-size:15px;

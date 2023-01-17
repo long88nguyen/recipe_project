@@ -196,8 +196,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _uploads_avatar_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../uploads/avatar.png */ "./resources/js/uploads/avatar.png");
-
 
 
 var _withScopeId = function _withScopeId(n) {
@@ -218,20 +216,12 @@ var _hoisted_4 = {
 };
 
 var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Member id"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Avatar"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Join Date"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Action")])], -1
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Mã người dùng"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Tên người dùng"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Ảnh đại diện"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Ngày tham gia"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Hoạt động")])], -1
   /* HOISTED */
   );
 });
 
-var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: _uploads_avatar_png__WEBPACK_IMPORTED_MODULE_1__["default"],
-    alt: ""
-  })], -1
-  /* HOISTED */
-  );
-});
-
+var _hoisted_6 = ["src"];
 var _hoisted_7 = ["onClick"];
 
 var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
@@ -263,7 +253,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             to: "/dashboard"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Home")];
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Trang chủ")];
             }),
             _: 1
             /* STABLE */
@@ -279,7 +269,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             to: "/members"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Member")];
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Quản lý người dùng")];
             }),
             _: 1
             /* STABLE */
@@ -305,7 +295,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.name), 1
     /* TEXT */
-    ), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.dateFormat(member.created_at)), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+      src: member.avatar,
+      alt: ""
+    }, null, 8
+    /* PROPS */
+    , _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.dateFormat(member.created_at)), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
       "class": "fa-solid fa-trash",
@@ -392,7 +387,7 @@ var _hoisted_2 = {
 var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "for": ""
-  }, " Name ", -1
+  }, " Tên người dùng ", -1
   /* HOISTED */
   );
 });
@@ -463,7 +458,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".rate-product[data-v-945c6f8e] {\n  width: 100%;\n}\n.rate-product .table-wrapper[data-v-945c6f8e] {\n  width: 90%;\n  margin: 0 auto;\n  padding-top: 20px;\n}\n.rate-product .table-wrapper .breadcumb-field[data-v-945c6f8e] {\n  padding: 30px 0;\n  font-family: Arial, Helvetica, sans-serif;\n}\n.rate-product .table-wrapper .content-table[data-v-945c6f8e] {\n  border-collapse: collapse;\n  margin: 25px 0;\n  font-size: 15px;\n  width: 100%;\n  margin: 0 auto;\n  border-radius: 15px 15px 0 0;\n  overflow: hidden;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);\n}\n.rate-product .table-wrapper .content-table thead tr[data-v-945c6f8e] {\n  background-color: #009879;\n  color: #ffffff;\n  font-weight: bold;\n}\n.rate-product .table-wrapper .content-table thead tr th[data-v-945c6f8e] {\n  padding: 12px 15px;\n  border: 2px solid white;\n  text-align: center;\n}\n.rate-product .table-wrapper .content-table thead tr th[data-v-945c6f8e]:first-child {\n  border-top-left-radius: 15px;\n}\n.rate-product .table-wrapper .content-table thead tr th[data-v-945c6f8e]:last-child {\n  border-top-right-radius: 15px;\n}\n.rate-product .table-wrapper .content-table tbody tr[data-v-945c6f8e] {\n  border-bottom: 1px solid #dddddd;\n}\n.rate-product .table-wrapper .content-table tbody tr td[data-v-945c6f8e] {\n  padding: 12px 15px;\n  text-align: center;\n  border: 2px solid white;\n}\n.rate-product .table-wrapper .content-table tbody tr td img[data-v-945c6f8e] {\n  height: 70px;\n  width: 70px;\n  border-radius: 35px;\n  border: 2px solid silver;\n}\n.rate-product .table-wrapper .content-table tbody tr td i[data-v-945c6f8e] {\n  font-size: 15px;\n  margin: 0px 10px;\n  padding: 15px;\n  background: #efeded;\n  border-radius: 50%;\n  color: white;\n}\n.rate-product .table-wrapper .content-table tbody tr[data-v-945c6f8e]:nth-of-type(even) {\n  background-color: #f3f3f3;\n}\n.rate-product .table-wrapper .content-table tbody tr[data-v-945c6f8e]:last-of-type {\n  border-bottom: 2px solid #009879;\n}\n.paginate[data-v-945c6f8e] {\n  margin-top: 30px;\n  text-align: center;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".rate-product[data-v-945c6f8e] {\n  width: 100%;\n}\n.rate-product .table-wrapper[data-v-945c6f8e] {\n  width: 90%;\n  margin: 0 auto;\n  padding-top: 20px;\n}\n.rate-product .table-wrapper .breadcumb-field[data-v-945c6f8e] {\n  padding: 30px 0;\n  font-family: Arial, Helvetica, sans-serif;\n}\n.rate-product .table-wrapper .content-table[data-v-945c6f8e] {\n  border-collapse: collapse;\n  margin: 25px 0;\n  font-size: 15px;\n  width: 100%;\n  margin: 0 auto;\n  border-radius: 15px 15px 0 0;\n  overflow: hidden;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);\n}\n.rate-product .table-wrapper .content-table thead tr[data-v-945c6f8e] {\n  background-color: #009879;\n  color: #ffffff;\n  font-weight: bold;\n}\n.rate-product .table-wrapper .content-table thead tr th[data-v-945c6f8e] {\n  padding: 12px 15px;\n  border: 2px solid white;\n  text-align: center;\n}\n.rate-product .table-wrapper .content-table thead tr th[data-v-945c6f8e]:first-child {\n  border-top-left-radius: 15px;\n}\n.rate-product .table-wrapper .content-table thead tr th[data-v-945c6f8e]:last-child {\n  border-top-right-radius: 15px;\n}\n.rate-product .table-wrapper .content-table tbody tr[data-v-945c6f8e] {\n  border-bottom: 1px solid #dddddd;\n}\n.rate-product .table-wrapper .content-table tbody tr td[data-v-945c6f8e] {\n  padding: 12px 15px;\n  text-align: center;\n  border: 2px solid white;\n}\n.rate-product .table-wrapper .content-table tbody tr td img[data-v-945c6f8e] {\n  height: 70px;\n  width: 70px;\n  border-radius: 35px;\n}\n.rate-product .table-wrapper .content-table tbody tr td i[data-v-945c6f8e] {\n  font-size: 15px;\n  margin: 0px 10px;\n  padding: 15px;\n  background: #efeded;\n  border-radius: 50%;\n  color: white;\n}\n.rate-product .table-wrapper .content-table tbody tr[data-v-945c6f8e]:nth-of-type(even) {\n  background-color: #f3f3f3;\n}\n.rate-product .table-wrapper .content-table tbody tr[data-v-945c6f8e]:last-of-type {\n  border-bottom: 2px solid #009879;\n}\n.paginate[data-v-945c6f8e] {\n  margin-top: 30px;\n  text-align: center;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

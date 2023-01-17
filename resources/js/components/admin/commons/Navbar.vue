@@ -1,8 +1,8 @@
 <template>
     <div class="sidebar" :class="{active:isActive}">
        <div class="logo_content">
-           <div class="logo">
-               <i class="bx bxl-c-plus-plus"></i>
+           <div class="logo_admin">
+            <img src="../../../uploads/images/logofood.png" alt="">
                <div class="logo-name">
                    WorldRecipes
                </div>
@@ -17,7 +17,7 @@
                 "
                >
                <i class="fa-solid fa-chart-line"></i>
-                   <span class="links_name">Dashboard</span>
+                   <span class="links_name">Trang chủ</span>
                </router-link>
                    
            </li>
@@ -28,7 +28,7 @@
                 "
                >
                <i class="fa-solid fa-list"></i>
-                   <span class="links_name">Category</span>
+                   <span class="links_name">Quản lý danh mục</span>
                </router-link>
                   
            </li>
@@ -38,7 +38,7 @@
                   url.includes('posts') ? 'active-router' : ''
                 ">
                 <i class="fa-solid fa-signs-post"></i>
-                   <span class="links_name">Post</span>
+                   <span class="links_name">Quản lý bài viết</span>
                </router-link>
                   
            </li>
@@ -48,7 +48,7 @@
                   url.includes('rates') ? 'active-router' : ''
                 ">
                 <i class="fa-solid fa-image"></i>
-                   <span class="links_name">Rating</span>
+                   <span class="links_name">Quản lý đánh giá</span>
                </router-link>
                    
            </li>
@@ -59,7 +59,7 @@
                 "
                >
                 <i class="fa-solid fa-user"></i>
-                   <span class="links_name">User</span>
+                   <span class="links_name">Quản lý người dùng</span>
                </router-link>
                   
            </li>
@@ -68,7 +68,7 @@
        <div class="profile_content">
            <div class="profile">
                <div class="profile_details">
-                   <img src="../../../uploads/avatar.png" alt="">
+                   <img :src="memberInfo.avatar" alt="">
                    <div class="name_job">
                        <div class="name">
                            {{ memberInfo.name }}
@@ -191,7 +191,7 @@ export default {
    .sidebar.active {
        width: 240px;
    }
-   .sidebar .logo_content .logo{
+   .sidebar .logo_content .logo_admin{
        color:#FFF;
        display: flex;
        height: 50px;
@@ -202,16 +202,16 @@ export default {
        transition: all 0.5s ease;
    }
 
-   .sidebar.active .logo_content .logo
+   .sidebar.active .logo_content .logo_admin
    {
        opacity: 1;
        pointer-events: none;
    }
-   .logo_content .logo i {
+   .logo_content .logo_admin i {
        font-size: 28px;
        margin-right:5px ;
    }
-   .logo_content .logo .logo_name
+   .logo_content .logo_admin .logo_name
    {
        font-size:20px;
        font-weight:bold;
@@ -497,6 +497,13 @@ export default {
     border-radius: 10px;
     // box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
     pointer-events: auto;
+   }
+
+   .logo_admin img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 20px;
    }
 </style>
 

@@ -5,7 +5,7 @@
                         <a-col :xl = "8" :lg = "8" :md = "8">
                             <div class="form-input">
                                 <label for="">
-                                    post title
+                                    Tiêu đề bài viết
                                 </label> 
                                 <input type="text" class="form-control" 
                                 v-model="post_title"
@@ -19,7 +19,7 @@
                         <a-col :xl = "8" :lg = "8" :md = "8">
                             <div class="form-input">
                                 <label for="">
-                                    Member name
+                                    Người đánh giá
                                 </label>
                                 <input type="text" class="form-control" 
                                 v-model="member_name"

@@ -5,8 +5,8 @@
         <div class="table-wrapper">
           <div class="breadcumb-field">
             <a-breadcrumb>
-            <a-breadcrumb-item><router-link to="/categories">Home</router-link></a-breadcrumb-item>
-            <a-breadcrumb-item><router-link to="/categories">Categories</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item><router-link to="/dashboard">Trang chủ</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item><router-link to="/categories">Quản lý danh mục</router-link></a-breadcrumb-item>
             </a-breadcrumb>
         </div>
           <CategoryFilterVue @search = "updateSearch">
@@ -20,21 +20,21 @@
           <table class="content-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th style="width:20%">Image</th>
-                        <th>Created at</th>
-                        <th style="width:20%">Action</th>
+                        <th>STT</th>
+                        <th>Tên danh mục</th>
+                        <th >Ảnh mô tả</th>
+                        <th>Ngày tạo</th>
+                        <th >Hoạt động</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(category, index) in categoryList.data" :key="index">
                         <td>{{
-                      (categoryList.current_page - 1) *
-                      categoryList.per_page +
-                        index +
-                        1
-                  }}</td>
+                            (categoryList.current_page - 1) *
+                            categoryList.per_page +
+                              index +
+                              1
+                        }}</td>
                         <td>{{ category.name }}</td>
                         <td> <img :src="category.image" class="img-thumbnail" alt="" @click="showImage(category.image)"/></td>
                         <td>{{ dateFormat(category.created_at) }}</td>
@@ -67,11 +67,12 @@
         <a-modal 
               :header = null
                v-model:visible="visibleConfirmDetele" 
-               title="Xác nhận xóa ? "
+               title="Xác nhận xóa danh mục? "
                :footer = null
                centered
                >
-               <button class="btn btn-success" @click="categoryDelete()">Xoa</button>
+               <button class="btn btn-success" @click="categoryDelete()">Xóa danh mục</button>
+               <button class="btn btn-danger" style="margin-left:20px" @click="cancalDelete()">Hủy xóa</button>
         </a-modal>
 
 
@@ -268,10 +269,14 @@ export default {
         await this.deleteCategory(this.idCategory).then(() => {
                 this.visibleConfirmDetele = false,
                 this.fetchCategoryList();
-            this.$toast.success("xoa du lieu thanh cong");
+            this.$toast.success("Xóa dữ liệu thành công!");
         }).catch(() => {
-            this.$toast.error("Xoa that bai")
+            this.$toast.error("Đã xảy ra lỗi!")
         })
+    },
+
+    cancalDelete(){
+      this.visibleConfirmDetele =  false;
     }
   },   
 }

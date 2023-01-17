@@ -5,7 +5,7 @@
                         <a-col :xl = "8" :lg = "8" :md = "8">
                             <div class="form-input">
                                 <label for="">
-                                    Name
+                                    Tên người dùng
                                 </label>
                                 <input type="text" class="form-control" 
                                 v-model="name"

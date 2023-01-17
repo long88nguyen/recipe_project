@@ -19,6 +19,7 @@ use Exception;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use ImageHelper;
 
 /**
  * Class PostRepositoryEloquent.
@@ -289,15 +290,17 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 $arrImage = $request->file('img_evidence');
                 foreach ($arrImage as $key => $item)
                 {
+
+
                     // $extension = $item->getClientOriginalName();
                     // $fileName = time().'-' .$request->name.'.'.$extension;
-                        $destinationPath = public_path('uploads/posts');
-                        $profileImage = random_int(100000000,99999999999) . "." . $item->getClientOriginalExtension();
-                        $item->move($destinationPath, $profileImage);
-                        $data['image'] = "$profileImage";
+                        // $destinationPath = public_path('uploads/posts');
+                        // $profileImage = random_int(100000000,99999999999) . "." . $item->getClientOriginalExtension();
+                        // $item->move($destinationPath, $profileImage);
+                        $data['image'] = ImageHelper::uploadFileToS3($item,'images/posts');
                         $dataImage  = [
                             'post_id' => $postSave->id,
-                            'image' =>  "/uploads/posts/".$data['image'],
+                            'image' => $data['image'] ,
                             'created_at' => $timeNow,
                             'updated_at'=> $timeNow,
                         ];
@@ -346,6 +349,10 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         ->where('posts.id',$id)
         ->first();
 
+        foreach($dataApprove['PostImage'] as $image)
+        {
+            $image->image = ImageHelper::getS3FileUrl($image->image);
+        }
         return $dataApprove;
     }
 

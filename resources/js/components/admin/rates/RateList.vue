@@ -5,21 +5,21 @@
         <div class="table-wrapper">
           <div class="breadcumb-field">
             <a-breadcrumb>
-            <a-breadcrumb-item><router-link to="/dashboard">Home</router-link></a-breadcrumb-item>
-            <a-breadcrumb-item><router-link to="/rate-list">Rating</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item><router-link to="/dashboard">Trang chủ</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item><router-link to="/rate-list">Đánh giá</router-link></a-breadcrumb-item>
             </a-breadcrumb>
         </div>
         <RateFilterVue @search="updateSearch"/>
           <table class="content-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Post title</th>
-                        <th>Number Rating</th>
-                        <th>Review</th>
-                        <th>Created at</th>
-                        <th >Action</th>
+                        <th>STT</th>
+                        <th>Người đánh giá</th>
+                        <th>Tiêu đề</th>
+                        <th>Đánh giá</th>
+                        <th>Nhận xét</th>
+                        <th>Thời gian</th>
+                        <th >Hoạt động</th>
                     </tr>
                 </thead>
                 <tbody>

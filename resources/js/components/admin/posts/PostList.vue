@@ -4,8 +4,8 @@
        <div class="table-wrapper">
         <div class="breadcumb-field">
             <a-breadcrumb>
-            <a-breadcrumb-item><router-link to="/dashboard">Home</router-link></a-breadcrumb-item>
-            <a-breadcrumb-item><router-link to="/posts">Post</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item><router-link to="/dashboard">Trang chủ</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item><router-link to="/posts">Quản lý bài viết</router-link></a-breadcrumb-item>
             </a-breadcrumb>
         </div>
         <PostFilter @search="updateSearch"/>
@@ -13,20 +13,25 @@
         <table class="content-table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th style="width:15%">Member Name</th>
-                        <th style="width:15%">Category Name</th>   
-                        <th>Title</th>
-                        <th style="width:20%">Content</th>
-                        <th style="width:10%">Status</th>
-                        <th style="width:10%">Time</th>
-                        <th style="width:15%">Created at</th>
-                        <th style="width:5%">Action</th>
+                        <th>STT</th>
+                        <th style="width:15%">Người đăng</th>
+                        <th style="width:15%">Danh mục</th>   
+                        <th>Tiêu đề</th>
+                        <th style="width:20%">Mô tả</th>
+                        <th style="width:10%">Trạng thái</th>
+                        <th style="width:10%">Thời gian</th>
+                        <th style="width:15%">Ngày tạo</th>
+                        <th style="width:5%">Hoạt động</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(post,index) in dataPost.data" :key="index">
-                        <td>1</td>
+                        <td>{{
+                      (dataPost.current_page - 1) *
+                      dataPost.per_page +
+                        index +
+                        1
+                  }}</td>
                         <td>{{ post.member.name }}</td>
                         <td>{{ post.category.name }}</td>   
                         <td>{{ post.title }}</td>
@@ -42,7 +47,7 @@
                                 Từ chối
                             </div>
                         </td>
-                        <td>{{ post.time }} minute</td>
+                        <td>{{ post.time }} phút</td>
                         <td>{{ post.created_at }}</td>
                         <td>
                           <i class="fa-solid fa-pen-to-square" style="color:blue" @click="approveModal(post.id)"></i>

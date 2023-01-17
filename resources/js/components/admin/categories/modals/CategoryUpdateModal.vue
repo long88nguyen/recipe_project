@@ -4,7 +4,7 @@
         v-model:visible="visible" 
         :footer = null
         centered
-        title="Thêm mới danh mục" 
+        title="Chỉnh sửa thông tin danh mục" 
         @ok="handleOk" @cancel="handleCancel" :destroyOnClose="true"
         >
             <UpdateCategory

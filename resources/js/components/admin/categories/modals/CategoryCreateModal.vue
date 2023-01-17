@@ -9,26 +9,31 @@
         <div class="form_input-category">
             <form @submit.prevent="addCategory" enctype="multipart/form-data">
                 <div class="form_group">
-                <label for="">Name</label>
-                <input type="text" class="form-control" v-model="category.name">
+                <label for="">Tên danh mục</label>
+                <input type="text" class="form-control" v-model="category.name" @blur="validate()">
+                <div class="validate_text">
+                    {{ errors.name  }}
+                </div>
                 </div>
                 <div class="form-image-cate">
                     <div class="form_group">
-                        <label for="">image</label>
+                        <label for="">Ảnh mô tả</label>
                         <input type="file" class="form-control" id="imageCate" style="display:none"  @change ="onChange">
                     </div>
                     <div class="show-image">
                         <div class="show-image-upload">
                             <label for="imageCate">
-                                Upload
+                                Tải ảnh lên
                             </label>
                         </div>
                         <img v-bind:src="imagePreview" width="100" height="100" v-show="showPreview"/>
                     </div>
                 </div>
-                
+                <div class="validate_text">
+                    {{ errors.image  }}
+                </div>
                 <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success">Lưu bài viết</button>
                 </div>
             </form>
             
@@ -44,6 +49,11 @@ export default {
                 name:null,
                 image:null,
             },
+
+            errors:{
+                name:'',
+                image:'',
+            },
             imagePreview: null,
             showPreview: false,
         }
@@ -55,8 +65,37 @@ export default {
         }
     },
     methods: {
+        validate(){
+            this.errors={
+                name:'',
+                image:'',
+            };
+            
+            let isValid = true;
+            
+            if(!this.category.name)
+            {   
+                this.errors.name = "Vui lòng nhập tên danh mục";
+                isValid = false;
+            }
+
+            else if(this.category.name.length > 255)
+            {
+                this.errors.name = "Tên danh mục đã nhập quá dài (tối đa 255 ký tư)";
+                isValid = false;
+            }
+
+            if(!this.category.image)
+            {   
+                this.errors.image = "Vui lòng chọn ảnh mô tả";
+                isValid = false;
+            }
+
+            return isValid;
+        },  
         onChange(e)
         {
+        
            this.category.image = e.target.files[0];
            let reader  = new FileReader();
 
@@ -72,24 +111,30 @@ export default {
             reader.readAsDataURL( this.category.image );
         }
             }
+            this.validate();
         },
         async addCategory()     
         {
-            let formData = new FormData();
-            formData.append('name', this.category.name);
-            formData.append('image', this.category.image);
-            await this.$store.dispatch("categories/createCategory",formData)
-            .then(() =>{
-                this.$toast.success('Thêm mới thành công !');
-                this.$emit("ok");
-                this.$router.push({ path: "/categories" });
-                this.category.name = null;
-                this.category.image = null;
-            })
-            .catch(() => {
-                this.$toast.error('Đã xảy ra lỗi !');
-                
-            })
+            console.log(this.validate());
+            if(this.validate())
+            {
+                let formData = new FormData();
+                formData.append('name', this.category.name);
+                formData.append('image', this.category.image);
+                await this.$store.dispatch("categories/createCategory",formData)
+                .then(() =>{
+                    this.$toast.success('Thêm mới thành công !');
+                    this.$emit("ok");
+                    this.$router.push({ path: "/categories" });
+                    this.category.name = null;
+                    this.category.image = null;
+                })
+                .catch(() => {
+                    this.$toast.error('Đã xảy ra lỗi !');
+                    
+                })
+            }
+            
         }
     },
 }
@@ -118,6 +163,10 @@ export default {
                 transition: 0.5s;
         }
         }
+    }
+    .validate_text{
+        color:red;
+        font-size:12px;
     }
 }
 </style>

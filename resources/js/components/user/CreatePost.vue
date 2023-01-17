@@ -324,6 +324,8 @@ export default {
       }
       this.errorFileMessage = null;
       this.isImage = true;
+      this.validate();
+
     },
     removeImage(index) {
       this.forms.img_evidence.splice(index, 1);

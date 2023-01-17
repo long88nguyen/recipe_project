@@ -830,20 +830,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/uploads/images/logofood.png":
-/*!**************************************************!*\
-  !*** ./resources/js/uploads/images/logofood.png ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logofood.png?690ebe29e705de7fc6f5c9f5103fe780");
-
-/***/ }),
-
 /***/ "./resources/js/uploads/images/searchicon.png":
 /*!****************************************************!*\
   !*** ./resources/js/uploads/images/searchicon.png ***!

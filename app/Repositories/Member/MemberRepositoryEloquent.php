@@ -9,6 +9,7 @@ use App\Repositories\Member\MemberRepository;
 use Illuminate\Support\Facades\File;
 use FormatHelper;
 use App\Validators\Member\MemberValidator;
+use ImageHelper;
 
 /**
  * Class MemberRepositoryEloquent.
@@ -45,6 +46,11 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
         }
 
         $listMember = $listMember->paginate(5);
+        foreach($listMember as $item)
+        {
+            $item->avatar = ImageHelper::getS3FileUrl($item->avatar);
+        }
+        
         return [
             "listMember" => $listMember,
         ];
@@ -53,6 +59,7 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
     public function detail($id)
     {
         $memberId = $this->model->find($id);
+        $memberId->avatar = ImageHelper::getS3FileUrl($memberId->avatar);
         return [
             "memberId" => $memberId,
         ];
@@ -67,15 +74,16 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
         $data['gender'] = $request->gender ? $request->gender != null : null ;
         if ($request->file('avatar'))
         {
-            if(File::exists("uploads/avatars/".$updateData->avatar))
-            {
-                File::delete("uploads/avatars/".$updateData->avatar);
-            }
-            $image = $request->file('avatar');
-            $destinationPath = public_path('uploads/avatars');
-            $profileImage = "/uploads/avatars/".date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $data['avatar'] = $profileImage;
+            $data['avatar'] = ImageHelper::updateFileFromS3($request->file('avatar'),$updateData->avatar,'images/avatars');
+            // if(File::exists("uploads/avatars/".$updateData->avatar))
+            // {
+            //     File::delete("uploads/avatars/".$updateData->avatar);
+            // }
+            // $image = $request->file('avatar');
+            // $destinationPath = public_path('uploads/avatars');
+            // $profileImage = "/uploads/avatars/".date('YmdHis') . "." . $image->getClientOriginalExtension();
+            // $image->move($destinationPath, $profileImage);
+            // $data['avatar'] = $profileImage;
         }
 
         return $updateData->update($data);

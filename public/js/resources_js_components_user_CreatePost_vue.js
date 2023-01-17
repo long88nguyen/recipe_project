@@ -126,6 +126,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.errorFileMessage = null;
       this.isImage = true;
+      this.validate();
     },
     removeImage: function removeImage(index) {
       this.forms.img_evidence.splice(index, 1);
