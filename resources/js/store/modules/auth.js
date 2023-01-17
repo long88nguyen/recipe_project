@@ -5,7 +5,7 @@ import api from "../../api/api";
 // const api = "http://localhost:8000/api"
 
 export const state = {
-  token: Cookies.get("access_token"),
+  token: Cookies.get("access_token") ? Cookies.get("access_token") : '',
   account: [],
   accountInfo:null,
   redirectPath: "",

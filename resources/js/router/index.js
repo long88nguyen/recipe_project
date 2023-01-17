@@ -162,38 +162,33 @@ function globalMiddleware() {
         {
             let ok = null;
             await store.dispatch('auth/getAccountInfo');
-            console.log(store.getters['auth/accountInfo']);
-            // ok = store.getters['auth/accountInfo'].is_admin;
-            // if(to.meta.requiresAuth)
-            // {
-            //     if(ok == 0 && ((window.location.pathname.includes('categories')) || 
-            //     (window.location.pathname.includes('posts'))
-            //     || 
-            //     (window.location.pathname.includes('dashboard'))
+            ok = store.getters['auth/accountInfo'].is_admin;
+            if(to.meta.requiresAuth)
+            {
+                if(ok == 0 && ((window.location.pathname.includes('categories')) || 
+                (window.location.pathname.includes('posts'))
+                || 
+                (window.location.pathname.includes('dashboard'))
                 
-            //     || 
-            //     (window.location.pathname.includes('rates'))
-            //     ||
+                || 
+                (window.location.pathname.includes('rates'))
+                ||
                 
-            //     (window.location.pathname.includes('members'))
-            //     || 
-            //     (window.location.pathname.includes('admin'))
-            //     ))
-            //     {
-            //         next({name:"Not-Found"})
-            //     }
-            //     else{
-            //         next()
-            // }
-            // }
-            // else
-            // {
-            //     next()
-            // }
-        }
-        else
-        {
-            next();
+                (window.location.pathname.includes('members'))
+                || 
+                (window.location.pathname.includes('admin'))
+                ))
+                {
+                    next({name:"Not-Found"})
+                }
+                else{
+                    next()
+            }
+            }
+            else
+            {
+                next()
+            }
         }
 
         var middleware = null;
