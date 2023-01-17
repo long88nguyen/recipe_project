@@ -41,7 +41,6 @@
                                 <h5>{{ post.count_favourite }}</h5>
                             </div>
                         </div>
-                        {{  post.id }}
                         <div class="card_action">
                             <router-link
                                 :to="{
@@ -147,8 +146,8 @@ export default {
             width: 100px;
             height: 30px;
             position: absolute;
-            top:-15px;
-            right: 30px;
+            top:0;
+            right: 27px;
             color: white;
             font-size: 14px;
             border-radius: 15px;

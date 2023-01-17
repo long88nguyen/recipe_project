@@ -43,7 +43,5 @@ body{
   width: 100% !important;
   overflow: visible !important;
 }
-.side_user{
-    background:#f4f9f6;
-}
+
 </style>

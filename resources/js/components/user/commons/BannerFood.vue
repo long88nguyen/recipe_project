@@ -34,7 +34,7 @@
         <div class="banner_food-container">
             <a-row>
                 <template v-for="(post,index) in getPostApproved.data" :key="index">
-                    <a-col :xxl="6" :xl="6" :lg="8" :md="12" :xs="24">
+                    <a-col :xxl="8" :xl="8" :lg="8" :md="12" :xs="24">
                         
                    <div 
                     class="card_item">
@@ -263,8 +263,6 @@ export default {
             img{
                 width: 100%;
                 height: 200px;
-                border-top-left-radius: 5px;
-                border-top-right-radius: 5px;
                 top:0;
                 position: relative;
 
