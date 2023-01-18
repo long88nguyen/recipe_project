@@ -460,7 +460,7 @@ export default {
     width: 100%;
     padding-top:200px;
     background: #f4f9f6;
-    font-family: 'Roboto', sans-serif ;;
+    font-family: 'Roboto', sans-serif ;
     .create_post_container
     {
 

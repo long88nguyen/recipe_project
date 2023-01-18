@@ -16,6 +16,10 @@ class Member extends Model
         return $this->hasMany(Post::class, 'member_id');
     }
 
+    public function UserMember(){
+        return $this->belongsTo(User::class,'user_id');
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
     return $date->format('Y-m-d H:i:s');

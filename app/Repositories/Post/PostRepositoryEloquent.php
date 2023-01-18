@@ -114,8 +114,17 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             {
                 $value->favouriteable = true;
             }
+            
+            // foreach($value['PostImage'] as $item){
+            //     $item->image = ImageHelper::getS3FileUrl($item->image);
+            // }
         });
 
+        // foreach($getList as $item)
+        // {
+        //     $item->member->avatar = ImageHelper::getS3FileUrl($item->member->avatar);
+        // }
+       
         $postOrder = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
         ->with("PostImage:id,post_id,image")
         ->where('posts.status',2)
@@ -140,6 +149,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             {
                 $value->favouriteable = true;
             }
+            // foreach($value['PostImage'] as $item){
+            //     $item->image = ImageHelper::getS3FileUrl($item->image);
+            // }
         });
        
         return [
@@ -205,6 +217,12 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             {
                 $value->favouriteable = true;
             }
+
+            // $value->member->avatar = ImageHelper::getS3FileUrl($value->member->avatar);
+            
+            // foreach($value['PostImage'] as $item){
+            //     $item->image = ImageHelper::getS3FileUrl($item->image);
+            // }
         });
 
         $getFavourite = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
@@ -232,6 +250,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             {
                 $value->favouriteable = true;
             }
+            // foreach($value['PostImage'] as $item){
+            //     $item->image = ImageHelper::getS3FileUrl($item->image);
+            // }
         });
          
         return [
@@ -292,15 +313,15 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 {
 
 
-                    // $extension = $item->getClientOriginalName();
-                    // $fileName = time().'-' .$request->name.'.'.$extension;
-                        // $destinationPath = public_path('uploads/posts');
-                        // $profileImage = random_int(100000000,99999999999) . "." . $item->getClientOriginalExtension();
-                        // $item->move($destinationPath, $profileImage);
-                        $data['image'] = ImageHelper::uploadFileToS3($item,'images/posts');
+                        $extension = $item->getClientOriginalName();
+                        $fileName = time().'-' .$request->name.'.'.$extension;
+                        $destinationPath = public_path('uploads/posts');
+                        $profileImage = random_int(100000000,99999999999) . "." . $item->getClientOriginalExtension();
+                        $item->move($destinationPath, $profileImage);
+                        // $data['image'] = ImageHelper::uploadFileToS3($item,'images/posts');
                         $dataImage  = [
                             'post_id' => $postSave->id,
-                            'image' => $data['image'] ,
+                            'image' => "/uploads/posts".$fileName ,
                             'created_at' => $timeNow,
                             'updated_at'=> $timeNow,
                         ];
@@ -349,10 +370,10 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         ->where('posts.id',$id)
         ->first();
 
-        foreach($dataApprove['PostImage'] as $image)
-        {
-            $image->image = ImageHelper::getS3FileUrl($image->image);
-        }
+        // foreach($dataApprove['PostImage'] as $image)
+        // {
+        //     $image->image = ImageHelper::getS3FileUrl($image->image);
+        // }
         return $dataApprove;
     }
 
@@ -384,7 +405,11 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         {
             $postDetail->favouriteable = true;
         }
-    
+        // foreach( $postDetail['PostImage'] as $value)
+        // {
+        //     $value->image = ImageHelper::getS3FileUrl($value->image);
+        // }
+        // $postDetail['member']['avatar'] = ImageHelper::getS3FileUrl($postDetail['member']['avatar']);
         $postDetail->rateable = Rate::where("member_id",$memberId)->where("post_id",$id)->first() ? true : false;
         return [
             "postDetail" => $postDetail
@@ -575,6 +600,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             {
                 $value->favouriteable = true;
             }
+            // foreach($value['PostImage'] as $item){
+            //     $item->image = ImageHelper::getS3FileUrl($item->image);
+            // }
         }
        
         return [
@@ -598,6 +626,12 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "updated_at","nutrition_facts",
         "note","deleted_at")
         ->where("posts.member_id",$memberId)->get();
+        // foreach($myPost as $value)
+        // {
+        //     foreach($value['PostImage'] as $item){
+        //         $item->image = ImageHelper::getS3FileUrl($item->image);
+        //     }
+        // }
         return [
             'listMyPost' => $myPost
         ]; 
@@ -619,6 +653,13 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "updated_at","nutrition_facts",
         "note","deleted_at")
         ->where("posts.member_id",$id)->limit(5)->get();
+        // foreach($YourPost as $value)
+        // {
+        //     foreach($value['PostImage'] as $item){
+        //         $item->image = ImageHelper::getS3FileUrl($item->image);
+        //     }
+        // }
+        
         return [
             'listYourPost' => $YourPost
         ];

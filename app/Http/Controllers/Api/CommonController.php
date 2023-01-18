@@ -14,7 +14,7 @@ class CommonController extends ApiController
     public function common()
     {
        $dataCommon = Auth::user()->member;
-       $dataCommon->avatar = ImageHelper::getS3FileUrl( $dataCommon->avatar);
+    //    $dataCommon->avatar = ImageHelper::getS3FileUrl( $dataCommon->avatar);
        return $this->sendSuccess([
         'member_info' => $dataCommon
        ]);

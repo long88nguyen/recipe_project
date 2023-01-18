@@ -16,7 +16,7 @@
                         <th>STT</th>
                         <th style="width:15%">Người đăng</th>
                         <th style="width:15%">Danh mục</th>   
-                        <th>Tiêu đề</th>
+                        <th style="width:15%">Tiêu đề</th>
                         <th style="width:20%">Mô tả</th>
                         <th style="width:10%">Trạng thái</th>
                         <th style="width:10%">Thời gian</th>

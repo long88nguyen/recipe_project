@@ -86,8 +86,9 @@ Route::group(['middleware' => 'auth:api'], function() {
     //member
     Route::group(['prefix' => 'member'], function () {
         Route::get('/',[\App\Http\Controllers\Api\MemberController::class,'getAll']);
-        Route::get('/{id}',[\App\Http\Controllers\Api\MemberController::class,'detail']);
+        Route::get('/detail/{id}',[\App\Http\Controllers\Api\MemberController::class,'detail']);
         Route::post('/{id}',[\App\Http\Controllers\Api\MemberController::class,'updateMember']);
+        Route::get('/posts',[\App\Http\Controllers\Api\MemberController::class,'PostsByMember']);
     });
 
     //favourite

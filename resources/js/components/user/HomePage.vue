@@ -5,6 +5,7 @@
         <BannerFood>
 
         </BannerFood>
+        <Community/>
         <StatPost/>
 
     </div>
@@ -17,6 +18,7 @@ import BannerFood from "./commons/BannerFood.vue"
 import Slider from "./commons/Slider.vue"
 import StatPost from "./commons/StatPost.vue"
 import ButtonCreatePostVue from "./commons/ButtonCreatePost.vue"
+import Community from "./commons/Community.vue"
 import store from "../../store"
 // import { mapGetters } from 'vuex'
 export default {
@@ -24,7 +26,8 @@ export default {
         BannerFood,
         Slider,
         StatPost,
-        ButtonCreatePostVue
+        ButtonCreatePostVue,
+        Community
     },
     created()
     {

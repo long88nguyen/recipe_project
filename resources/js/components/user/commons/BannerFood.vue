@@ -33,6 +33,7 @@
   <div class="banner_food">
         <div class="banner_food-container">
             <a-row>
+          
                 <template v-for="(post,index) in getPostApproved.data" :key="index">
                     <a-col :xxl="8" :xl="8" :lg="8" :md="12" :xs="24">
                         
@@ -50,10 +51,15 @@
                           path: `/postdetail/${post.id}`
                         }">
                         <h5 class="card_title">
-                           {{ post.title.substring(0,20) + "..."}}
+                           <span v-if="post.title.length > 30">
+                            {{ post.title.substring(0,30) + "..."}}
+                           </span>
+                           <span v-else>
+                            {{ post.title}}
+                           </span>
                         </h5>
                         <h4 class="card_category">
-                            {{ post.content.substring(0,20) + "..." }}
+                            {{ post.content.substring(0,30) + "..." }}
                         </h4>
                         </router-link> 
                         <div class="card-rating">
@@ -95,7 +101,7 @@
             @change = "changePage"
             show-less-items />
             <div class="container_showmore"> 
-                <router-link to="/all-post"><div class="show_more"><span>Show more category</span></div></router-link>
+                <router-link to="/all-post"><div class="show_more"><span>Xem thêm bài viết</span></div></router-link>
             </div>
             
             
@@ -126,7 +132,7 @@
                                 :to="{
                                 path: `/postdetail/${post_order.id}`
                                 }" >
-                                <span>{{post_order.title.substring(0,20) + "..."}}</span>
+                                <span>{{post_order.title.substring(0,30) + "..."}}</span>
                             </router-link>
                             </div>
                            
@@ -247,11 +253,13 @@ export default {
 <style lang="scss" scoped>
 .banner_food{
    width: 100%;
+   font-family: 'Roboto', sans-serif ;
     .banner_food-container
     {
         width: 70%;
         margin:0 auto;
         .card_item{
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
             width: 90%;
             max-height: 500px;
             border-radius:5px;
@@ -262,7 +270,7 @@ export default {
 
             img{
                 width: 100%;
-                height: 200px;
+                height: 250px;
                 top:0;
                 position: relative;
 
@@ -289,9 +297,8 @@ export default {
             
             .card_category{
                 font-size: 24px;
-                height: 30px;
-                line-height: 30px;
-                margin:0px 10px 10px 10px;
+                font-weight: 600;
+                margin:0px 10px 0 10px;
                
             }
             .card_category:hover{
@@ -301,8 +308,9 @@ export default {
 
             .card_title{
                 font-size:18px;
-                height:45px;
-                padding:10px
+                color: rgba(0,0,0,.65);
+                padding:20px 0 10px 10px;
+                font-weight: bold;
             }
             .card-rating
             {
@@ -364,7 +372,7 @@ export default {
             }
         }
         .card_item:hover{
-            box-shadow:2px 1px gray;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.2), 0 1px 2px 0 rgba(0, 0, 0,0.1);
             transition: 0.3s;
         }
         .container_showmore{
@@ -392,7 +400,7 @@ export default {
         .newpost_cartd
         {
             cursor: pointer;
-            height: 250px;
+            height: 270px;
             width: 100%;
             background: none;;
             position: relative;
@@ -444,7 +452,7 @@ export default {
         }
         .hello{
             width: 100%;
-            height: 250px;
+            height: 270px;
             padding: 10px 10px;
 
             img{

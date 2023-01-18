@@ -54,11 +54,15 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         }
         $getAllcategory =  $getCategory->limit(5)->get();
 
+        // foreach($getAllcategory as $item)
+        // {
+        //     $item->image = ImageHelper::getS3FileUrl($item->image);
+        // }
         $getCategory =  $getCategory->paginate($perPage);
-        foreach($getCategory as $category)
-        {
-            $category->image = ImageHelper::getS3FileUrl($category->image);
-        }
+        // foreach($getCategory as $category)
+        // {
+        //     $category->image = ImageHelper::getS3FileUrl($category->image);
+        // }
         return [
             'listCategory' =>  $getCategory,
             'getAllcategory' => $getAllcategory
@@ -84,14 +88,16 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         //     // $path = Storage::disk('s3')->put('images', $request->image);
         //     // $path = Storage::disk('s3')->url($path);
 
-        //     // $destinationPath = public_path('uploads/category');
-        //     // $profileImage = '/uploads/category/' . date('YmdHis') . "." . $image->getClientOriginalExtension();
-        //     // $image->move($destinationPath, $profileImage);
-        //     $data['image'] = $urlPath;
+      
         // }
         if($request->file('image'))
         {
-            $data['image'] = ImageHelper::uploadFileToS3($request->file('image'),'images/category');
+            $image = $request->file('image');
+            $destinationPath = public_path('uploads/category');
+            $profileImage = '/uploads/category/' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data['image'] = $profileImage;
+            // $data['image'] = ImageHelper::uploadFileToS3($request->file('image'),'images/category');
         }
         $data['name'] = $request->name;
         $data['created_at'] = $timeNow;
@@ -102,7 +108,7 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     public function show($id)
     {
         $getCategoryById = $this->model->find($id);
-        $getCategoryById->image = ImageHelper::getS3FileUrl($getCategoryById->image);
+        // $getCategoryById->image = ImageHelper::getS3FileUrl($getCategoryById->image);
         return [
             "getCategoryById" => $getCategoryById
         ];
@@ -113,15 +119,16 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         $category = $this->model->findOrFail($id);
         if ($request->file('image'))
         {
-            // if(File::exists("uploads/category/".$category->image))
-            // {
-            //     File::delete("uploads/category/".$category->image);
-            // }
-            // $image = $request->file('image');
-            // $destinationPath = public_path('uploads/category');
-            // $profileImage = '/uploads/category/' . date('YmdHis') . "." . $image->getClientOriginalExtension();
-            // $image->move($destinationPath, $profileImage);
-            $data['image'] = ImageHelper::updateFileFromS3($request->file('image'),$category->image,'images/category');
+            if(File::exists(mb_substr($category->image,strpos($category->image, "_") + 1)))
+            {
+                File::delete(mb_substr($category->image,strpos($category->image, "_") + 1));
+            }
+            $image = $request->file('image');
+            $destinationPath = public_path('uploads/category');
+            $profileImage = '/uploads/category/' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data['image'] = $profileImage;
+            // $data['image'] = ImageHelper::updateFileFromS3($request->file('image'),$category->image,'images/category');
         }
         $timeNow = now();
         $timeNow = now();
@@ -134,7 +141,12 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     {
         $categoryId = $this->model->find($id);
         Post::where('category_id',$id)->delete();
-        ImageHelper::deleteFileFromS3($categoryId->image);
+        // dd(File::exists(mb_substr($categoryId->image,strpos($categoryId->image, "_") + 1)));
+        if(File::exists(mb_substr($categoryId->image,strpos($categoryId->image, "_") + 1)))
+            {
+                File::delete((mb_substr($categoryId->image,strpos($categoryId->image, "_") + 1)));
+            }
+        // ImageHelper::deleteFileFromS3($categoryId->image);
         return $categoryId->delete($id);
     }
 

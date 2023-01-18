@@ -113,8 +113,10 @@
                         <p>{{ getPostDetail.time  }} phút</p>
                    </div>
 
-                   
+                   <div class="post_feedback">
                    <rating-panel :id="getPostDetail.id"/>
+
+                   </div>
                 </div>
             </a-col>
 
@@ -287,7 +289,8 @@ export default {
 }
 .post_detail{
     width: 100%;
-    margin-top:200px;
+    padding-top:200px;
+    background: #f8f6f2;
     .post_detail-container
     {
         width: 70%;
@@ -297,10 +300,17 @@ export default {
             .post_detail-title{
                 padding: 20px 20px 10px 20px;
                 background: white;
+                margin-bottom: 10px;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
             }
 
             .post_list_info
             {
+            
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
+                margin-bottom: 10px;
                background: white;
                padding: 20px;
                display: flex;
@@ -317,12 +327,17 @@ export default {
             }
 
             .post_detail-content{
-                padding: 0px 20px 20px 20px;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
+                padding: 20px 20px 20px 20px;
                 background: white;
             }
             .post_account{
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
                 background: white;
                 padding: 20px;
+                margin-bottom: 10px;
                 display: flex;
                 img{
                     width: 40px;
@@ -343,6 +358,8 @@ export default {
                 } 
             }
             .post_detail-img{
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
                 width: 100%;
                 background: white;
                 .image_panel{
@@ -356,6 +373,8 @@ export default {
                 }
             }
             .post_detail-time{
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
                 margin-top:20px;
                 width: 480px;
                 height:60px;
@@ -433,6 +452,8 @@ export default {
             }
 
             .post_ingre{
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
                 margin-top:20px;
                 width: 100%;
                 background: white;
@@ -457,6 +478,8 @@ export default {
                 }
             }
             .post_direction{
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
                 margin-top:20px;
                 width: 100%;
                 background: white;
@@ -479,6 +502,8 @@ export default {
                
             }
             .post_nutrition_fact{
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
                 h4{
                     padding: 20px;
                 }
@@ -488,6 +513,8 @@ export default {
                 }
             }
             .post_note{
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
                 h4{
                     padding: 20px;
                 }
@@ -498,6 +525,8 @@ export default {
             }
 
             .post_time_make{
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
                 background: #f5f6ea;
                 width: 300px;
                 margin-top:10px;
@@ -514,18 +543,21 @@ export default {
                 }
             }
 
-            .post-feedback{
+            .post_feedback{
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
                 margin-top:20px;
                 width: 100%;
-                height: 200px;
                 background: white;
                 border-radius: 10px;
+                margin-bottom: 20px;
             }
            
         }
         .post_suggest{
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
+                border-radius: 5px;
             width: 100%;
-            height:1000px;
             background: white;
             margin-left:10px;
             padding: 20px;

@@ -34,4 +34,10 @@ class MemberController extends ApiController
         $result = $this->memberRepository->updateMember($request,$id);
         return $this->sendSuccess($result);
     }
+
+    public function PostsByMember()
+    {
+        $result = $this->memberRepository->PostsByMember();
+        return $this->sendSuccess($result);
+    }
 }

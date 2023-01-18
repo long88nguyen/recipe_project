@@ -45,7 +45,8 @@ const GET_STAT_RATE = '/api/rate/stat-rate'
 //member 
 
 const MEMBER_LIST = '/api/member'
-const MEMBER_DETAIL = '/api/member'
+const MEMBER_DETAIL = '/api/member/detail'
+const MEMBER_POSTS = '/api/member/posts'
 const UPDATE_MEMBER = '/api/member'
 
 //ingredient 
@@ -119,6 +120,7 @@ export default {
     MEMBER_LIST,
     MEMBER_DETAIL,
     UPDATE_MEMBER,
+    MEMBER_POSTS,
 
     //ingredient
     LIST_ALL_INGREDIENT,

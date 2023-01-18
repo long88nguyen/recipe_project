@@ -14,12 +14,14 @@ export const state = {
         perPage: 0
     },
     memberDetail:{},
+    memberPosts:{},
 }
 
 export const getters = {
     listDataMember : state => state.listDataMember,
     memberDetail : state => state.memberDetail,
     pagination: state => state.pagination,
+    memberPosts: state => state.memberPosts,
 
 }
 
@@ -39,6 +41,11 @@ export const mutations = {
     {
       state.memberDetail = data.memberId;
     },
+
+    [types.MEMBER.FETCH_MEMBER_POST](state, data)
+    {
+      state.memberPosts = data.postsMember;
+    },
 }
 
 
@@ -56,6 +63,15 @@ export const actions = {
           } );
         commit(
           types.MEMBER.GET_ALL_MEMBER,
+          response.data.data
+        );
+      },
+
+      async getMemberPosts({ commit }, payload) {
+        const response = await axios.get(
+          api.MEMBER_POSTS);
+        commit(
+          types.MEMBER.FETCH_MEMBER_POST,
           response.data.data
         );
       },

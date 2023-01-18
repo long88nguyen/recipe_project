@@ -94,7 +94,7 @@ import { mapGetters } from 'vuex'
         margin:0 auto;
         .hello{
           text-align: center;
-          height: 200px;
+          height: 250px;
           line-height: 160px;
           background: #364d79;
           overflow: hidden;

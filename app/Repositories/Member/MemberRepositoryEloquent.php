@@ -6,6 +6,7 @@ use App\Models\Member;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Member\MemberRepository;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use FormatHelper;
 use App\Validators\Member\MemberValidator;
@@ -46,10 +47,10 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
         }
 
         $listMember = $listMember->paginate(5);
-        foreach($listMember as $item)
-        {
-            $item->avatar = ImageHelper::getS3FileUrl($item->avatar);
-        }
+        // foreach($listMember as $item)
+        // {
+        //     $item->avatar = ImageHelper::getS3FileUrl($item->avatar);
+        // }
         
         return [
             "listMember" => $listMember,
@@ -59,7 +60,7 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
     public function detail($id)
     {
         $memberId = $this->model->find($id);
-        $memberId->avatar = ImageHelper::getS3FileUrl($memberId->avatar);
+        // $memberId->avatar = ImageHelper::getS3FileUrl($memberId->avatar);
         return [
             "memberId" => $memberId,
         ];
@@ -74,19 +75,35 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
         $data['gender'] = $request->gender ? $request->gender != null : null ;
         if ($request->file('avatar'))
         {
-            $data['avatar'] = ImageHelper::updateFileFromS3($request->file('avatar'),$updateData->avatar,'images/avatars');
-            // if(File::exists("uploads/avatars/".$updateData->avatar))
-            // {
-            //     File::delete("uploads/avatars/".$updateData->avatar);
-            // }
-            // $image = $request->file('avatar');
-            // $destinationPath = public_path('uploads/avatars');
-            // $profileImage = "/uploads/avatars/".date('YmdHis') . "." . $image->getClientOriginalExtension();
-            // $image->move($destinationPath, $profileImage);
-            // $data['avatar'] = $profileImage;
+            // $data['avatar'] = ImageHelper::updateFileFromS3($request->file('avatar'),$updateData->avatar,'images/avatars');
+            if(File::exists("uploads/avatars/".$updateData->avatar))
+            {
+                File::delete("uploads/avatars/".$updateData->avatar);
+            }
+            $image = $request->file('avatar');
+            $destinationPath = public_path('uploads/avatars');
+            $profileImage = "/uploads/avatars/".date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data['avatar'] = $profileImage;
         }
 
         return $updateData->update($data);
+
+    }
+
+    public function PostsByMember(){
+         $postsMember = $this->model->with('UserMember:id,email')
+         
+         ->select('members.avatar','members.name','members.user_id',DB::raw('(select count(*) from posts where posts.member_id = members.id) as count_posts'))->get();
+         foreach($postsMember as $item)
+         {
+            // $item->avatar = ImageHelper::getS3FileUrl($item->avatar);
+            // dd(ImageHelper::getS3FileUrl($item->avatar));
+            $item['UserMember']['email'] = '@'.substr($item['UserMember']['email'],'0',strpos($item['UserMember']['email'],'@'));
+         }
+         return [
+            'postsMember' => $postsMember 
+         ];
 
     }
 }
