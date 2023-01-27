@@ -86,7 +86,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 }
 
                 _context.next = 3;
-                return _this.$store.dispatch('auth/login', _this.form).then(function () {
+                return _this.$store.dispatch('auth/login', _this.form).then(function (response) {
                   var check_role = _this.accountInfo.is_admin;
 
                   if (check_role === 1) {
@@ -103,7 +103,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     _this.$toast.success('Đăng nhập thành công!');
                   }
                 })["catch"](function (error) {
-                  _this.$toast.error('Đăng nhập không thành công! Vui lòng kiểm tra lại thông tin đăng nhập');
+                  if (error.response.data.code == 401) {
+                    _this.$toast.error('Đăng nhập không thành công! Vui lòng kiểm tra lại thông tin đăng nhập');
+                  }
+
+                  if (error.response.data.code == 402) {
+                    _this.$toast.error('Tài khoản hiện không hoạt động, vui lòng tạo tài khoản mới!');
+                  }
                 });
 
               case 3:

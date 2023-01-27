@@ -47,7 +47,10 @@ const GET_STAT_RATE = '/api/rate/stat-rate'
 const MEMBER_LIST = '/api/member'
 const MEMBER_DETAIL = '/api/member/detail'
 const MEMBER_POSTS = '/api/member/posts'
+const YOUR_MEMBER_DETAIL = '/api/member/member-detail'
 const UPDATE_MEMBER = '/api/member'
+const LOCK_ACCOUNT = '/api/lock'
+const UNLOCK_ACCOUNT = '/api/unlock'
 
 //ingredient 
 
@@ -121,6 +124,9 @@ export default {
     MEMBER_DETAIL,
     UPDATE_MEMBER,
     MEMBER_POSTS,
+    YOUR_MEMBER_DETAIL,
+    LOCK_ACCOUNT,
+    UNLOCK_ACCOUNT,
 
     //ingredient
     LIST_ALL_INGREDIENT,

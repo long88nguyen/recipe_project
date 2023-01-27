@@ -207,12 +207,11 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 * {
   margin: 0;
   padding: 0px;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
   text-decoration: none;
   list-style: none;
 }
@@ -220,6 +219,8 @@ export default {
 
 .container-layout
 {
+  font-family: 'Roboto', sans-serif ;
+
   background: white;
   z-index: 1;
   position: fixed;

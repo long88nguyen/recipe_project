@@ -84,7 +84,7 @@ export default {
     async login() {
       if(this.validate()){
         await this.$store.dispatch('auth/login', this.form)
-        .then(() => {
+        .then((response) => {
           const check_role = this.accountInfo.is_admin;
           if(check_role === 1)
           {  
@@ -101,7 +101,13 @@ export default {
           }
         })
         .catch((error) => {
-          this.$toast.error('Đăng nhập không thành công! Vui lòng kiểm tra lại thông tin đăng nhập');
+          if(error.response.data.code == 401){
+            this.$toast.error('Đăng nhập không thành công! Vui lòng kiểm tra lại thông tin đăng nhập');
+          }
+          if(error.response.data.code == 402){
+            this.$toast.error('Tài khoản hiện không hoạt động, vui lòng tạo tài khoản mới!');
+          }
+          
         });
       }
       

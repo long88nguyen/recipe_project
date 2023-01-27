@@ -9,7 +9,11 @@
             <a-breadcrumb-item><router-link to="/members">Quản lý người dùng</router-link></a-breadcrumb-item>
             </a-breadcrumb>
         </div>
+        
         <MemberFilterVue @search="updateSearch"/>
+        <button class="btn btn-outline-success mb-3" @click="openModalADD">
+          Thêm mới tài khoản admin
+        </button>
           <table class="content-table">
                 <thead>
                     <tr>
@@ -17,6 +21,7 @@
                         <th>Tên người dùng</th>
                         <th>Ảnh đại diện</th>
                         <th>Ngày tham gia</th>
+                        <th>Trạng thái</th>
                         <th >Hoạt động</th>
                     </tr>
                 </thead>
@@ -24,10 +29,20 @@
                     <tr v-for="(member, index) in listDataMember.data" :key="index">
                         <td>{{  member.id }}</td>
                         <td>{{ member.name }}</td>
+                       
                         <td><img :src="member.avatar" alt=""></td>
                         <td>{{ dateFormat(member.created_at) }} </td>
+                        <td >
+                        
+                          <div class="title approved" v-if = " member.user_member.is_active == 1">
+                                Hoạt động
+                            </div>
+                            <div class="title reject" v-if = " member.user_member.is_active == 0">
+                                Không hoạt động
+                            </div></td>
                         <td>
-                          <i class="fa-solid fa-trash" style="color:red" @click="DeleteRate(member.id)"></i>
+                          <i class="fa-solid fa-lock" style="color:red"  v-if = " member.user_member.is_active == 1" @click="lock(member.user_id)"></i>
+                          <i class="fa-solid fa-lock-open" style="color:blue" v-if = " member.user_member.is_active == 0" @click="unLock(member.user_id)"></i>
                         </td>
                     </tr>
                 </tbody>
@@ -43,20 +58,49 @@
          />
          <a-modal 
             class="add-timesheet-modal"
-            v-model:visible="visibleDelete" 
-            title="Xác nhận xóa đánh giá" 
+            v-model:visible="visibleLock" 
+            title="Xác nhận khóa tài khoản" 
             @ok="handleOk"
             :footer = null
             centered
             >
             <div class="delete_confirm">
-                <h5>Bạn có muốn xóa đánh giá này không ?</h5>
+                <h5>Bạn có muốn khóa tài khoản này không ?</h5>
             </div>
 
-            <button class="btn btn-success text-center mt-3" @click="DeleteSubmit">Xác nhận</button>
+            <button class="btn btn-success text-center mt-3" @click="lockSubmit">Xác nhận</button>
 
-            <button class="btn btn-danger text-center mt-3 mr-2" @click="unsubmit">Hủy</button>
+            <button class="btn btn-danger text-center mt-3 mr-2" style="margin-left:10px" >Hủy</button>
 
+          </a-modal>
+
+          <a-modal 
+            class="add-timesheet-modal"
+            v-model:visible="visibleunLock" 
+            title="Xác nhận mở khóa tài khoản" 
+            @ok="handleOk"
+            :footer = null
+            centered
+            >
+            <div class="delete_confirm">
+                <h5>Bạn có muốn mở khóa tài khoản này không ?</h5>
+            </div>
+
+            <button class="btn btn-success text-center mt-3" @click="unLockSumit">Xác nhận</button>
+
+            <button class="btn btn-danger text-center mt-3 mr-2" style="margin-left:10px" @click="unSubmit" >Hủy</button>
+
+          </a-modal>
+
+          <a-modal 
+            class="add-timesheet-modal"
+            v-model:visible="visibleAddnew" 
+            title="Thêm mới tài khoản admin" 
+            @ok="handleOk"
+            :footer = null
+            centered
+            >
+          <AddNewAdmin  @ok="handleOk"/>
           </a-modal>
         
     </div>
@@ -65,16 +109,22 @@
 
 <script>
 import moment from "moment"
+import AddNewAdmin from "./components/AddNewAdmin.vue"
 import MemberFilterVue from "./filter/MemberFilter.vue";
 import {  mapGetters } from 'vuex';
 export default {
     components:{
-        MemberFilterVue
+        MemberFilterVue,
+        AddNewAdmin
     },
     data()
     {
-        return {     
-            visibleDelete:false,
+        return {  
+          UserIdLock:null,
+          UserIdUnLock:null,
+          visibleAddnew :false,   
+          visibleunLock:false,
+          visibleLock:false,
             member_id :null,
             searchData: {
               name:"",
@@ -107,6 +157,13 @@ export default {
    
    methods: {
     openModal() {
+    },
+    openModalADD(){
+      this.visibleAddnew = true;
+    },
+    handleOk(){
+      this.visibleAddnew = false;
+      this.fetchDataMember();
     },
     dateFormat(value) {
         if (value) {
@@ -142,22 +199,43 @@ export default {
         this.fetchDataMember();
     },
     
-    DeleteRate(value){
-            this.visibleDelete = true;
-            this.member_id = value;
-    },
-    DeleteSubmit()
-        {
-            let member_id = this.member_id;
-            this.$store.dispatch("rates/deleteRate",rateId).then(() => {
-                this.$toast.success('Rating deleted!')
-                this.fetchRatingList()
-             }
-            ).catch(() => {
-                this.$toast.error('error')
-            })
-            this.visibleDelete = false;
-        },
+   lock(value){
+    this.UserIdLock = value;
+    this.visibleLock = true;
+   },
+
+   unLock(value)
+   {
+    this.UserIdUnLock=value;
+    this.visibleunLock= true;
+   },
+   async lockSubmit(){
+    let userId = this.UserIdLock;
+    await this.$store.dispatch('members/lockAccount',userId).then(()=>{
+      this.$toast.success("Khóa tài khoản thành công")
+      this.fetchDataMember();
+    this.visibleLock = false;
+
+      this.UserIdLock = null;
+    }).catch(()=>{
+      this.$toast.error("Đã xảy ra lỗi!")
+      
+    })
+   },
+
+   async unLockSumit(){
+    let userId = this.UserIdUnLock;
+    await this.$store.dispatch('members/unlockAccount',userId).then(()=>{
+      this.$toast.success("Mở khóa tài khoản thành công")
+      this.fetchDataMember();
+      this.UserId = null;
+    this.visibleunLock= false;
+
+    }).catch(()=>{
+      this.$toast.error("Đã xảy ra lỗi!")
+      
+    })
+   }
   },   
 }
 </script>
@@ -203,11 +281,32 @@ export default {
   tbody{
     tr{
         border-bottom : 1px solid #dddddd;
+        text-align: center;
         td{
             padding:12px 15px;
             text-align: center;
              border:2px solid white;
 
+          .title{
+                width: 120px;
+                height: 30px;
+                border-radius: 15px;
+                text-align: center;
+                line-height: 30px;
+                font-size: 12px;
+                font-weight: bold; 
+                font-family: Arial, Helvetica, sans-serif;          
+            }
+            .reject{
+              color:white;
+
+                background: red;
+            }
+            .approved
+            {
+                background: #009879;
+                color:white;
+            }
             img{
               height: 70px;
               width: 70px;
@@ -240,7 +339,6 @@ export default {
   margin-top:30px;
   text-align: center;
 }
-
 
 
 

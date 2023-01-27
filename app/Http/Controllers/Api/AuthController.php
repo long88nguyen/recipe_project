@@ -42,11 +42,10 @@ class AuthController extends ApiController
             //         'errors' => $validator->errors()->toArray(),
             //     ]);
             // }
-
             $user = new User([
                 'email' => $request->input('email'),
                 'password' => bcrypt($request->input('password')),
-                'is_admin' => 0
+                'is_admin' => $request->is_admin ,
             ]);
 
             $user->save();
@@ -92,8 +91,8 @@ class AuthController extends ApiController
         //     ]);
         // }
         $credentials = request(['email', 'password']);
-
         if (!Auth::attempt($credentials)) {
+
             return response()->json([
                 'status' => 'fails',
                 'message' => 'Unauthorized',
@@ -101,6 +100,14 @@ class AuthController extends ApiController
             ], 401);
         }
         $user = $request->user();
+        if ($user->is_active != 1) {
+
+            return response()->json([
+                'status' => 'fails',
+                'message' => 'Unauthorized',
+                'code' => 402
+            ], 402);
+        }
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if ($request->input('remember_me')) {
@@ -127,6 +134,49 @@ class AuthController extends ApiController
     public function GetAccountLogin(){
         $accountInfo = Auth::user();
         return $this->sendSuccess( $accountInfo);
+    }
+
+    public function lockAccount($id)
+    {
+        $dataMember = User::where('id',$id)->first();
+        if($dataMember->is_active == 0)
+        {
+            return response()->json([
+                'status' => 'fails',
+                'message' => 'Unable lock account',
+            ], 500);
+        }
+        User::where('id',$id)->update([
+            'is_active' => 0,
+        ]);
+
+
+        return response()->json([
+            'status' => 'success',
+        ]);
+
+
+    }
+
+    public function unlockAccount($id)
+    {
+        $dataMember = User::where('id',$id)->first();
+        if($dataMember->is_active == 1)
+        {
+            return response()->json([
+                'status' => 'fails',
+                'message' => 'Unable unlock account',
+            ], 500);
+        }
+        User::where('id',$id)->update([
+            'is_active' => 1,
+        ]);
+
+
+        return response()->json([
+            'status' => 'success',
+        ]);
+
     }
 
 }

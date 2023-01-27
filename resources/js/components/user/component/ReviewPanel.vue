@@ -27,7 +27,7 @@
         <template  v-for = "(rate,index) in rateListByPost" :key="index">
             <div class="member_rating_list">
             <div class="rating_account">
-                <img src="../../../uploads/avatar.png" alt="">
+                <img :src="rate.member.avatar" alt="">
                 <span>{{ rate.member.name }}</span>
             </div>
             <div class="rating_number_side">
@@ -229,8 +229,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .review_list{
+    font-family: Arial, Helvetica, sans-serif !important;
     background: white;
     padding: 20px;
     margin-top: 10px;

@@ -25,7 +25,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       form_register: {
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        is_admin: 0
       },
       errors: {
         email: '',

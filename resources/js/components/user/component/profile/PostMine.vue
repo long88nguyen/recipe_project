@@ -42,12 +42,12 @@
                             </div>
                         </div>
                         <div class="card_action">
-                            <router-link
+                            <router-link v-if="post.status == 1"
                                 :to="{
                                 path: `/update-post/${post.id}`
                                 }">
                             <i class="fa-solid fa-pen-to-square blue"></i>
-                            </router-link>
+                            </router-link >
 
                             <i class="fa-solid fa-trash red" @click="openConfirm(post.id)"></i>
                         </div>

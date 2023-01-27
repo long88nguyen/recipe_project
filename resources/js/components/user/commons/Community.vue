@@ -6,8 +6,12 @@
             <div class="community_list">
                 <a-row>
                     <template v-for="(posts,index) in memberPosts" :key="index">
+
                         <a-col :xxl="4" :xl="4" :lg="4" v-if="posts.count_posts > 0">
-                        
+
+                      <router-link :to="{
+                        path:`/post-by-author/${posts.id}`
+                      }">
                         <div class="community_card" >
                             <h3>World Recipe</h3>
                             <img :src="posts.avatar" alt="" class="rounded">
@@ -15,6 +19,9 @@
                                 <span>{{posts.user_member.email }}</span>
                             </div>
                         </div>
+
+                      </router-link>
+                        
                         <div class="community_posts">
                             
                             <span>
@@ -62,6 +69,8 @@ export default {
             max-height: 300px;
 
             .community_card{
+            cursor: pointer;
+
                 width: 96%;
                 max-height: 300px;
                 text-align: center;

@@ -19,4 +19,6 @@ interface MemberRepository extends RepositoryInterface
 
     public function PostsByMember();
 
+    public function memberDetail($id);
+
 }

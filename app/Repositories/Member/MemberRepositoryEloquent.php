@@ -40,7 +40,7 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
     }
 
     public function getAll($request){
-        $listMember = $this->model;
+        $listMember = $this->model->with('UserMember');
         if(isset($request->name))
         {
             $listMember=$listMember->where('name', 'like', '%' . $request->name . '%');
@@ -94,7 +94,7 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
     public function PostsByMember(){
          $postsMember = $this->model->with('UserMember:id,email')
          
-         ->select('members.avatar','members.name','members.user_id',DB::raw('(select count(*) from posts where posts.member_id = members.id) as count_posts'))->get();
+         ->select('members.avatar','members.id','members.name','members.user_id',DB::raw('(select count(*) from posts where posts.member_id = members.id) as count_posts'))->get();
          foreach($postsMember as $item)
          {
             // $item->avatar = ImageHelper::getS3FileUrl($item->avatar);
@@ -105,5 +105,14 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
             'postsMember' => $postsMember 
          ];
 
+    }
+
+    public function memberDetail($id)
+    {
+        $dataMemberDetail = Member::where('id',$id)->with('UserMember:id,email')->first();
+        $dataMemberDetail['UserMember']['email'] = '@'.substr($dataMemberDetail['UserMember']['email'],'0',strpos($dataMemberDetail['UserMember']['email'],'@'));
+        return [
+            'dataMemberDetail' =>  $dataMemberDetail 
+        ];
     }
 }

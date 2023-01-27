@@ -34,6 +34,8 @@ Route::post('/register',[\App\Http\Controllers\Api\AuthController::class,'regist
 Route::group(['middleware' => 'auth:api'], function() {
     //logout
     Route::post('logout',[\App\Http\Controllers\Api\AuthController::class,'logout']);
+    Route::post('/lock/{id}',[\App\Http\Controllers\Api\AuthController::class,'lockAccount']);
+    Route::post('/unlock/{id}',[\App\Http\Controllers\Api\AuthController::class,'unlockAccount']);
 
     //common
     Route::get('/common',[\App\Http\Controllers\Api\CommonController::class,'common']);
@@ -89,6 +91,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::get('/detail/{id}',[\App\Http\Controllers\Api\MemberController::class,'detail']);
         Route::post('/{id}',[\App\Http\Controllers\Api\MemberController::class,'updateMember']);
         Route::get('/posts',[\App\Http\Controllers\Api\MemberController::class,'PostsByMember']);
+        Route::get('/member-detail/{id}',[\App\Http\Controllers\Api\MemberController::class,'memberDetail']);
     });
 
     //favourite

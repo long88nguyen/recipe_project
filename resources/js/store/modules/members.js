@@ -15,6 +15,8 @@ export const state = {
     },
     memberDetail:{},
     memberPosts:{},
+    yourMemberDetail:{},
+    yourMemberEmail:{},
 }
 
 export const getters = {
@@ -22,6 +24,8 @@ export const getters = {
     memberDetail : state => state.memberDetail,
     pagination: state => state.pagination,
     memberPosts: state => state.memberPosts,
+    yourMemberDetail: state => state.yourMemberDetail,
+    yourMemberEmail: state => state.yourMemberEmail,
 
 }
 
@@ -45,6 +49,11 @@ export const mutations = {
     [types.MEMBER.FETCH_MEMBER_POST](state, data)
     {
       state.memberPosts = data.postsMember;
+    },
+    [types.MEMBER.YOUR_MEMBER_DETAIL](state, data)
+    {
+      state.yourMemberDetail = data.dataMemberDetail;
+      state.yourMemberEmail = data.dataMemberDetail.user_member.email;
     },
 }
 
@@ -85,9 +94,28 @@ export const actions = {
         );
       },
 
+      async getYourMemberDetail({ commit }, member_id) {
+        const response = await axios.get(
+          api.YOUR_MEMBER_DETAIL + "/" + member_id);
+        commit(
+          types.MEMBER.YOUR_MEMBER_DETAIL,
+          response.data.data
+        );
+      },
+
       async updateMember({ commit }, params) {
         let url = `${api.UPDATE_MEMBER}/${params.get("id")}`;
         await axios.post(url, params);
+      },
+
+      async lockAccount({ commit }, userId) {
+        let url = api.LOCK_ACCOUNT + '/' +userId;
+        await axios.post(url);
+      },
+
+      async unlockAccount({ commit }, userId) {
+        let url = api.UNLOCK_ACCOUNT + '/' +userId;
+        await axios.post(url);
       },
 }
 

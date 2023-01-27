@@ -5,7 +5,8 @@
             <img :src="userCommon.avatar" alt="">
             <div class="profile_account-detail">
                 <h1> {{userCommon.name}} </h1>
-                <h3>@longnguyen</h3>
+                <h3> {{  userEmail }}</h3>
+               
             </div>
             
         </div>
@@ -64,6 +65,7 @@ export default {
     computed:{
         ...mapGetters({
             userCommon:"common/userCommon",
+            userEmail:"common/userEmail",
            
         })
     },

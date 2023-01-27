@@ -40,4 +40,10 @@ class MemberController extends ApiController
         $result = $this->memberRepository->PostsByMember();
         return $this->sendSuccess($result);
     }
+
+    public function memberDetail($id)
+    {
+        $result = $this->memberRepository->memberDetail($id);
+        return $this->sendSuccess($result);
+    }
 }

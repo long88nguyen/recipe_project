@@ -15,6 +15,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Post\PostRepository;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 use Exception;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
@@ -311,17 +312,21 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 $arrImage = $request->file('img_evidence');
                 foreach ($arrImage as $key => $item)
                 {
+                    // $image = $item;
+                    $destinationPath = public_path('uploads/posts');
+                    $profileImage = '/uploads/posts/' . date('YmdHis') . "." . $item->getClientOriginalExtension();
+                    $item->move($destinationPath, $profileImage);
+                    $data['image'] = $profileImage;
 
-
-                        $extension = $item->getClientOriginalName();
-                        $fileName = time().'-' .$request->name.'.'.$extension;
-                        $destinationPath = public_path('uploads/posts');
-                        $profileImage = random_int(100000000,99999999999) . "." . $item->getClientOriginalExtension();
-                        $item->move($destinationPath, $profileImage);
+                        // $extension = $item->getClientOriginalName();
+                        // $fileName = time().'-' .$request->name.'.'.$extension;
+                        // $destinationPath = public_path('uploads/posts');
+                        // $profileImage = random_int(100000000,99999999999) . "." . $item->getClientOriginalExtension();
+                        // $item->move($destinationPath, $profileImage);
                         // $data['image'] = ImageHelper::uploadFileToS3($item,'images/posts');
                         $dataImage  = [
                             'post_id' => $postSave->id,
-                            'image' => "/uploads/posts".$fileName ,
+                            'image' =>  $data['image'] ,
                             'created_at' => $timeNow,
                             'updated_at'=> $timeNow,
                         ];
@@ -514,10 +519,17 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         DB::beginTransaction();
         try {
             $this->model->destroy($id);
-
-
-            Ingredient::where('post_id',$id)->delete();
+             Ingredient::where('post_id',$id)->delete();
+             $listPost = PostImage::where('post_id',$id)->get();
+            foreach($listPost as $item)
+            {
+                if(File::exists(mb_substr($item->image,strpos($item->image, "_") + 1)))
+                {
+                    File::delete((mb_substr($item->image,strpos($item->image, "_") + 1)));
+                }
+            }
             PostImage::where('post_id',$id)->delete();
+            
             Direction::where('post_id',$id)->delete();
 
             DB::commit();

@@ -50,12 +50,14 @@ export default {
       form_register: {
         email: '',
         password:'',
-        password_confirmation:''
+        password_confirmation:'',
+        is_admin:0,
+
       },
       errors:{
         email: '',
         password:'',
-        password_confirmation:''
+        password_confirmation:'',
       }
     }
   },

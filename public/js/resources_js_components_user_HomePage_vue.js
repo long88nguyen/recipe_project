@@ -858,6 +858,8 @@ var _hoisted_10 = {
   "class": "community_posts"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
   var _component_a_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-col");
 
   var _component_a_row = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-row");
@@ -874,15 +876,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           lg: 4
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-              src: posts.avatar,
-              alt: "",
-              "class": "rounded"
-            }, null, 8
-            /* PROPS */
-            , _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(posts.user_member.email), 1
-            /* TEXT */
-            )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(posts.count_posts) + " bài viết ", 1
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+              to: {
+                path: "/post-by-author/".concat(posts.id)
+              }
+            }, {
+              "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+                  src: posts.avatar,
+                  alt: "",
+                  "class": "rounded"
+                }, null, 8
+                /* PROPS */
+                , _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(posts.user_member.email), 1
+                /* TEXT */
+                )])])];
+              }),
+              _: 2
+              /* DYNAMIC */
+
+            }, 1032
+            /* PROPS, DYNAMIC_SLOTS */
+            , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(posts.count_posts) + " bài viết ", 1
             /* TEXT */
             )])];
           }),
@@ -1255,7 +1270,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".community_container[data-v-34ee6629] {\n  margin-top: 20px;\n  width: 100%;\n}\n.community_container .community_food[data-v-34ee6629] {\n  width: 70%;\n  margin: 0 auto;\n}\n.community_container .community_food .community_list[data-v-34ee6629] {\n  max-height: 300px;\n}\n.community_container .community_food .community_list .community_card[data-v-34ee6629] {\n  width: 96%;\n  max-height: 300px;\n  text-align: center;\n  border-radius: 5px;\n}\n.community_container .community_food .community_list .community_card img[data-v-34ee6629] {\n  width: 120px;\n  height: 120px;\n  border-radius: 5px;\n  border: 3px solid white;\n}\n.community_container .community_food .community_list .community_card h3[data-v-34ee6629] {\n  font-family: 'Dancing Script';\n  font-size: 22px;\n  font-weight: bold;\n  padding: 10px;\n  color: white;\n}\n.community_container .community_food .community_list .community_card .community_member[data-v-34ee6629] {\n  padding: 10px;\n}\n.community_container .community_food .community_list .community_card .community_member .img_avatar[data-v-34ee6629] {\n  width: 30px;\n  height: 30px;\n  border-radius: 15px;\n}\n.community_container .community_food .community_list .community_card .community_member span[data-v-34ee6629] {\n  margin-left: 10px;\n  font-weight: bold;\n  color: white;\n}\n.community_container .community_food .community_list .ant-col:nth-child(1) .community_card[data-v-34ee6629] {\n  background-image: linear-gradient(90deg, #faa301, #f8b12d);\n}\n.community_container .community_food .community_list .ant-col:nth-child(2) .community_card[data-v-34ee6629] {\n  background-image: linear-gradient(90deg, #660303, #a51a1a);\n}\n.community_container .community_food .community_list .ant-col:nth-child(3) .community_card[data-v-34ee6629] {\n  background-image: linear-gradient(90deg, #013001, darkgreen);\n}\n.community_container .community_food .community_list .community_posts[data-v-34ee6629] {\n  display: flex;\n  margin-top: 10px;\n  /* text-align: center; */\n  align-items: center;\n  justify-content: center;\n}\n.community_container .community_food .community_list .community_posts .posts_img img[data-v-34ee6629] {\n  width: 30px;\n  height: 30px;\n  border-radius: 15px;\n}\n.community_container .community_food .community_list .community_posts span[data-v-34ee6629] {\n  margin-left: 10px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".community_container[data-v-34ee6629] {\n  margin-top: 20px;\n  width: 100%;\n}\n.community_container .community_food[data-v-34ee6629] {\n  width: 70%;\n  margin: 0 auto;\n}\n.community_container .community_food .community_list[data-v-34ee6629] {\n  max-height: 300px;\n}\n.community_container .community_food .community_list .community_card[data-v-34ee6629] {\n  cursor: pointer;\n  width: 96%;\n  max-height: 300px;\n  text-align: center;\n  border-radius: 5px;\n}\n.community_container .community_food .community_list .community_card img[data-v-34ee6629] {\n  width: 120px;\n  height: 120px;\n  border-radius: 5px;\n  border: 3px solid white;\n}\n.community_container .community_food .community_list .community_card h3[data-v-34ee6629] {\n  font-family: 'Dancing Script';\n  font-size: 22px;\n  font-weight: bold;\n  padding: 10px;\n  color: white;\n}\n.community_container .community_food .community_list .community_card .community_member[data-v-34ee6629] {\n  padding: 10px;\n}\n.community_container .community_food .community_list .community_card .community_member .img_avatar[data-v-34ee6629] {\n  width: 30px;\n  height: 30px;\n  border-radius: 15px;\n}\n.community_container .community_food .community_list .community_card .community_member span[data-v-34ee6629] {\n  margin-left: 10px;\n  font-weight: bold;\n  color: white;\n}\n.community_container .community_food .community_list .ant-col:nth-child(1) .community_card[data-v-34ee6629] {\n  background-image: linear-gradient(90deg, #faa301, #f8b12d);\n}\n.community_container .community_food .community_list .ant-col:nth-child(2) .community_card[data-v-34ee6629] {\n  background-image: linear-gradient(90deg, #660303, #a51a1a);\n}\n.community_container .community_food .community_list .ant-col:nth-child(3) .community_card[data-v-34ee6629] {\n  background-image: linear-gradient(90deg, #013001, darkgreen);\n}\n.community_container .community_food .community_list .community_posts[data-v-34ee6629] {\n  display: flex;\n  margin-top: 10px;\n  /* text-align: center; */\n  align-items: center;\n  justify-content: center;\n}\n.community_container .community_food .community_list .community_posts .posts_img img[data-v-34ee6629] {\n  width: 30px;\n  height: 30px;\n  border-radius: 15px;\n}\n.community_container .community_food .community_list .community_posts span[data-v-34ee6629] {\n  margin-left: 10px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

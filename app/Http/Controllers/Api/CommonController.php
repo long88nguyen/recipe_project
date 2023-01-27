@@ -14,9 +14,18 @@ class CommonController extends ApiController
     public function common()
     {
        $dataCommon = Auth::user()->member;
+       $member_email = Auth::user()->email = '@'.substr(Auth::user()->email,'0',strpos(Auth::user()->email,'@'));
+      //  foreach($dataCommon as $item)
+      //  {
+      //    $item['UserMember']['email'] = 1;
+      //  }
+        
+         // $item['UserMember']['email'] = '@'.substr($item['UserMember']['email'],'0',strpos($item['UserMember']['email'],'@'));
+       
     //    $dataCommon->avatar = ImageHelper::getS3FileUrl( $dataCommon->avatar);
        return $this->sendSuccess([
-        'member_info' => $dataCommon
+        'member_info' => $dataCommon,
+        'member_email' => $member_email
        ]);
     }
 }

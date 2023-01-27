@@ -283,11 +283,10 @@ export default {
 }
 </script>
 
-<style lang="scss" >
-*{
-    font-family: 'Roboto', sans-serif ;
-}
+<style lang="scss">
+
 .post_detail{
+    font-family: 'Roboto', sans-serif ;
     width: 100%;
     padding-top:200px;
     background: #f8f6f2;
@@ -466,6 +465,7 @@ export default {
                     li{
                         margin: 20px 0;
                         font-size: 18px;
+                        list-style: none;
                         i{
                             font-size:10px;
                             color:red;
@@ -493,6 +493,7 @@ export default {
                     li{
                         margin: 20px 0;
                         font-size: 16px;
+                        list-style: none;
                         span{
                             font-weight: bold;
                         }
@@ -502,6 +503,8 @@ export default {
                
             }
             .post_nutrition_fact{
+                background: white;
+                margin: 10px 0;
                 box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
                 border-radius: 5px;
                 h4{
@@ -513,6 +516,8 @@ export default {
                 }
             }
             .post_note{
+                background: white;
+                margin: 10px 0;
                 box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
                 border-radius: 5px;
                 h4{

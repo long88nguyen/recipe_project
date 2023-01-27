@@ -154,9 +154,11 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     {
         $memberId =  Auth::user()->member->id;
         $getCategoryPost = $this->model
-        ->join('posts','posts.category_id','categories.id')
-        ->where('posts.status',2)
-        ->with("Posts.PostImage:id,post_id,image","Posts:id,category_id")->get();
+        // ->rightjoin('posts','posts.category_id','categories.id')
+        // ->where('posts.status',2)
+        ->with("Posts.PostImage:id,post_id,image","Posts:id,category_id,status")->get();
+        
+        
         foreach($getCategoryPost as $value)
         {
             foreach($value['Posts'] as $item)
