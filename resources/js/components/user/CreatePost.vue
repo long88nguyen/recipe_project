@@ -112,7 +112,7 @@
                       </div>
 
                       <div class="form-ingredient">
-                        <label for="">Thời gian thực hiện <span class="validate_feedback">*</span></label>
+                        <label for="">Thời gian thực hiện (phút) <span class="validate_feedback">*</span></label>
                         <div class="form-group">
                           <input  type="text" 
                           class="form-control" 

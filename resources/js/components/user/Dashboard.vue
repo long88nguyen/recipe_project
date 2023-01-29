@@ -52,7 +52,7 @@
                           </button>
                       </form>
                       <div class="nav_filter" @click="openModalFilter">
-                        <img src="../../uploads/images/filter.png" alt=""> Filter
+                        <img src="../../uploads/images/filter.png" alt=""> Bộ lọc
                       </div>
                   </div>
                   

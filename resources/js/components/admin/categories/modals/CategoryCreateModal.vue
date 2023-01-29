@@ -128,6 +128,8 @@ export default {
                     this.$router.push({ path: "/categories" });
                     this.category.name = null;
                     this.category.image = null;
+                    this.imagePreview= null;
+                    this.showPreview = false;
                 })
                 .catch(() => {
                     this.$toast.error('Đã xảy ra lỗi !');

@@ -314,7 +314,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 {
                     // $image = $item;
                     $destinationPath = public_path('uploads/posts');
-                    $profileImage = '/uploads/posts/' . date('YmdHis') . "." . $item->getClientOriginalExtension();
+                    $profileImage = '/uploads/posts/' . random_int(100000,999999) . "." . $item->getClientOriginalExtension();
                     $item->move($destinationPath, $profileImage);
                     $data['image'] = $profileImage;
 
