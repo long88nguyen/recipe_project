@@ -52,7 +52,13 @@ const UPDATE_MEMBER = '/api/member'
 const LOCK_ACCOUNT = '/api/lock'
 const UNLOCK_ACCOUNT = '/api/unlock'
 
-//ingredient 
+//banner
+
+const GET_ALL_BANNER = '/api/banner/get-all'
+const GET_BANNER_DETAIL = '/api/detail'
+const CREATE_BANNER = '/api/banner/create'
+const UPDATE_BANNER = '/api/banner/update'
+const DELETE_BANNER = '/api/banner/delete'
 
 
 
@@ -140,6 +146,13 @@ export default {
     //authentication
     LOGIN,
     REGISTER,
-    ACCOUNT
+    ACCOUNT,
+
+    //banner 
+    GET_ALL_BANNER,
+    GET_BANNER_DETAIL,
+    CREATE_BANNER,
+    UPDATE_BANNER,
+    DELETE_BANNER,
 
 }

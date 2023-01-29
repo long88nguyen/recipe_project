@@ -22,10 +22,11 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Direction::factory(100)->create();
         // \App\Models\PostImage::factory(100)->create();
         //  \App\Models\Member::factory(10)->create();
+         \App\Models\Banner::factory(30)->create();
 
-        $this->call([
-            ChatRoomSeeder::class,
-            AdminPermissionSeeder::class
-        ]);
+        // $this->call([
+        //     ChatRoomSeeder::class,
+        //     AdminPermissionSeeder::class
+        // ]);
     }
 }

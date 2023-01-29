@@ -71,6 +71,12 @@ const routes =
                     component: import("../components/admin/comments/CommentList.vue"),
                     name:'comment-list',
                 },
+
+                {
+                    path:'/banner',
+                    component: import("../components/admin/banners/BannerList.vue"),
+                    name:'banner-list',
+                },
             ]
         },
         {

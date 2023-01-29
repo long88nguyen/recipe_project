@@ -25,7 +25,7 @@ export const mutations = {
   [types.AUTH.AUTH_LOGIN](state, account) {
     state.token = account.data.access_token;
     state.account = account.data
-    let cookieOptions = { expires: account.data.expires_in  }
+    let cookieOptions = { expires: account.data.expires_in / 86400  }
     Cookies.set("access_token", account.data.access_token, cookieOptions);
   },
 
@@ -40,7 +40,7 @@ export const mutations = {
   [types.AUTH.AUTH_REFRESH_TOKEN](state, account) {
     state.token = account.data.token;
     Cookies.set("access_token", account.data.token, {
-      expires: account.data.expires_in
+      expires: account.data.expires_in  / 86400
 
     });
   },

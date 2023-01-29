@@ -15,6 +15,12 @@ export const AUTH = {
     
   };
 
+  export const BANNER = {
+    GET_BANNER_LIST : "GET_BANNER_LIST",
+    GET_BANNER_DETAIL: "GET_BANNER_DETAIL",
+    
+  };
+
   export const POST = {
     GET_POST_LIST : "GET_POST_LIST",
     GET_POST_DETAIL: "GET_POST_DETAIL",

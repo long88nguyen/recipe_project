@@ -116,6 +116,18 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::get('/',[\App\Http\Controllers\Api\PostImageController::class,'getAll']);
     });
 
+    //banner
+
+    Route::group(['prefix' => 'banner'], function () {
+        Route::get('/get-all',[\App\Http\Controllers\Api\BannerController::class,'getAll']);
+        Route::get('/detail/{id}',[\App\Http\Controllers\Api\BannerController::class,'bannerDetail']);
+        Route::post('/create',[\App\Http\Controllers\Api\BannerController::class,'store']);
+        Route::post('/update/{id}',[\App\Http\Controllers\Api\BannerController::class,'updateBanner']);
+        Route::delete('/delete/{id}',[\App\Http\Controllers\Api\BannerController::class,'deleteBanner']);
+        // Route::post('/lock/{id}',[\App\Http\Controllers\Api\BannerController::class,'store']);
+        // Route::post('/unlock/{id}',[\App\Http\Controllers\Api\BannerController::class,'store']);
+
+    });
 
     //chat
 

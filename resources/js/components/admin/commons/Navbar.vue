@@ -63,6 +63,18 @@
                </router-link>
                   
            </li>
+
+           <li>
+               <router-link to="/banner" class="router-class"
+               :class="
+                  url.includes('banner') ? 'active-router' : ''
+                "
+               >
+                <i class="fa-solid fa-user"></i>
+                   <span class="links_name">Quản lý banner</span>
+               </router-link>
+                  
+           </li>
            
        </ul>
        <div class="profile_content">
@@ -174,7 +186,7 @@ export default {
        height: 1000vh;
        background: gray;
        width: 100%;
-       overflow: hidden;
+       overflow: scroll;
    }
    .sidebar
    {
