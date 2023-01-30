@@ -60,7 +60,9 @@ const CREATE_BANNER = '/api/banner/create'
 const UPDATE_BANNER = '/api/banner/update'
 const DELETE_BANNER = '/api/banner/delete'
 
+// dashboard
 
+const GET_STAR_RATE = '/api/dashboard/star-rate'
 
 const LIST_ALL_INGREDIENT = '/api/ingredient'
 
@@ -154,5 +156,8 @@ export default {
     CREATE_BANNER,
     UPDATE_BANNER,
     DELETE_BANNER,
+
+    //dashboard 
+    GET_STAR_RATE,
 
 }

@@ -129,6 +129,12 @@ Route::group(['middleware' => 'auth:api'], function() {
 
     });
 
+    // dashboard
+
+    Route::group(['prefix' => 'dashboard'], function () {
+        Route::get('/star-rate',[\App\Http\Controllers\Api\DashboardController::class,'StarRate']);
+    });
+
     //chat
 
     // Route::group(['prefix' => 'chat'], function () {

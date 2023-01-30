@@ -37,6 +37,10 @@ export const AUTH = {
     SUBMIT: "SUBMIT",
   }
 
+  export const DASHBOOARD = {
+    STAR_RATE: "STAR_RATE",
+  }
+
   export const MEMBER = {
     GET_ALL_MEMBER: "GET_ALL_MEMBER",
     GET_MEMBER_DETAIL: "GET_MEMBER_DETAIL",
