@@ -66,17 +66,17 @@
                     
                         <div class="option favourite_post" v-if="getPostDetail.rateable==false" @click="showPopup"><span >Đánh giá</span> <i class="fa-regular fa-star"></i></div>
                         <div class="option favourite_post" v-else  @click="showPopup"><span >Đã đánh giá</span> <i class="fa-solid fa-star"></i></div>
-                        <!-- <ShareNetwork
+                        <ShareNetwork
                             network="facebook"
                             
-                            :url="`https://localhost:8087/postdetail/4`"
+                            :url="`https://worldrecipe21.herokuapp.com/postdetail/${getPostDetail.id}`"
                             title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
                             description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
                             quote="The hot reload is so fast it\'s near instant. - Evan You"
                             hashtags="vuejs,vite"
-                        > -->
+                        >
                         <div class="option share_post"><span>Chia sẻ</span> <i class="fa-solid fa-share"></i></div>
-                        <!-- </ShareNetwork> -->
+                        </ShareNetwork>
                    </div>
                    <div class="post_ingre">
                         <h3>Nguyên Liệu</h3>
