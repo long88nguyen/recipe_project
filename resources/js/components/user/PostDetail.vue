@@ -70,10 +70,10 @@
                             network="facebook"
                             
                             :url="`https://worldrecipe21.herokuapp.com/postdetail/${getPostDetail.id}`"
-                            title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
-                            description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+                            :title="`${getPostDetail.title}`"
+                            :description="`${getPostDetail.content}`"
                             quote="The hot reload is so fast it\'s near instant. - Evan You"
-                            hashtags="vuejs,vite"
+                            hashtags="worldrecipe"
                         >
                         <div class="option share_post"><span>Chia sẻ</span> <i class="fa-solid fa-share"></i></div>
                         </ShareNetwork>
