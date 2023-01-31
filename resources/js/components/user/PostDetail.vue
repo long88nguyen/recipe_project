@@ -63,12 +63,11 @@
                             
                         </div>
                         
-                    
                         <div class="option favourite_post" v-if="getPostDetail.rateable==false" @click="showPopup"><span >Đánh giá</span> <i class="fa-regular fa-star"></i></div>
                         <div class="option favourite_post" v-else  @click="showPopup"><span >Đã đánh giá</span> <i class="fa-solid fa-star"></i></div>
                         <ShareNetwork
                             network="facebook"
-                            :image="`${getPostDetail.post_image[0].image}`"
+                            
                             :url="`https://worldrecipe21.herokuapp.com/postdetail/${getPostDetail.id}`"
                             :title="`${getPostDetail.title}`"
                             :description="`${getPostDetail.content}`"
