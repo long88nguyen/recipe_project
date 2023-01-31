@@ -14,7 +14,11 @@
     <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
     {{-- <link rel="icon" href="{{ asset('public/images/avatar.png') }}" type="image/icon type"> --}}
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    <meta property="og:image" content="URL_TO_IMAGE" />
+    <meta property="og:url" content="YOUR_PAGE_URL" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="PAGE_TITLE" />
+    <meta property="og:description" content="PAGE_DESCRIPTION" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>World Recipe</title>
 </head>
