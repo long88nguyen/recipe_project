@@ -17,7 +17,7 @@ class CreateDirectionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('post_id');
             $table->integer('step');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

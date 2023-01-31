@@ -94,7 +94,7 @@ class MemberRepositoryEloquent extends BaseRepository implements MemberRepositor
     public function PostsByMember(){
          $postsMember = $this->model->with('UserMember:id,email')
          
-         ->select('members.avatar','members.id','members.name','members.user_id',DB::raw('(select count(*) from posts where posts.member_id = members.id) as count_posts'))->get();
+         ->select('members.avatar','members.id','members.name','members.user_id',DB::raw('(select count(*) from posts where posts.member_id = members.id and posts.status = 2) as count_posts'))->get();
          foreach($postsMember as $item)
          {
             // $item->avatar = ImageHelper::getS3FileUrl($item->avatar);

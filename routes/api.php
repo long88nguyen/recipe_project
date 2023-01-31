@@ -121,6 +121,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::group(['prefix' => 'banner'], function () {
         Route::get('/get-all',[\App\Http\Controllers\Api\BannerController::class,'getAll']);
         Route::get('/detail/{id}',[\App\Http\Controllers\Api\BannerController::class,'bannerDetail']);
+        Route::get('/banner-user',[\App\Http\Controllers\Api\BannerController::class,'bannerUser']);
+    
         Route::post('/create',[\App\Http\Controllers\Api\BannerController::class,'store']);
         Route::post('/update/{id}',[\App\Http\Controllers\Api\BannerController::class,'updateBanner']);
         Route::delete('/delete/{id}',[\App\Http\Controllers\Api\BannerController::class,'deleteBanner']);

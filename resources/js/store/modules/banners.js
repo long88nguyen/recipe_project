@@ -14,12 +14,14 @@ export const state = {
         perPage: 0
       },
     categoryDetail: {},
+    getBannerUser:{},
 }
 
 export const getters = {
     bannerList: state => state.bannerList,
     pagination: state => state.pagination,
     categoryDetail: state => state.categoryDetail,
+    getBannerUser: state => state.getBannerUser,
 }
 
 export const mutations = {
@@ -36,8 +38,14 @@ export const mutations = {
    
       [types.CATEGORY.GET_CATEGOTY_DETAIL](state, data)
       {
-        state.categoryDetail = data.data.getCategoryById
+        state.categoryDetail = data.data.getCabannerUsertegoryById
         return state.categoryDetail
+      },
+
+
+      [types.BANNER.GET_BANNER_USER](state, data)
+      {
+        state.getBannerUser = data.bannerUserList
       },
 
 }
@@ -51,6 +59,11 @@ export const actions = {
               }
         });
         commit(types.BANNER.GET_BANNER_LIST, response.data.data);
+      },
+
+      async getBannersUser({ commit }) {
+        const response = await axios.get(api.GET_BANNER_USER);
+        commit(types.BANNER.GET_BANNER_USER, response.data.data);
       },
      
     async creataBanner({ commit }, params) {

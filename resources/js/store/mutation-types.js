@@ -18,6 +18,7 @@ export const AUTH = {
   export const BANNER = {
     GET_BANNER_LIST : "GET_BANNER_LIST",
     GET_BANNER_DETAIL: "GET_BANNER_DETAIL",
+    GET_BANNER_USER: "GET_BANNER_USER",
     
   };
 

@@ -532,6 +532,10 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             
             Direction::where('post_id',$id)->delete();
 
+            Rate::where('post_id',$id)->delete();
+
+            Favourite::where('post_id',$id)->delete();
+
             DB::commit();
             return [
                 'success' => true
@@ -560,11 +564,12 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
 
             $dataPostById = $this->model->findOrFail($id);
 
-            $dataPost = [      
+            $dataPost = [    
+                'reason' => $request->reason,  
                 'status' => $request->status,
+                
                 'updated_at' => $timeNow
             ];
-            
             $dataPostById->update($dataPost);  
 
             DB::commit();

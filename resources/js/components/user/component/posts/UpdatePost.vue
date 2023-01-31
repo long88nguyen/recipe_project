@@ -2,26 +2,26 @@
     <div class="create_post">
       <div class="create_post_container">
           <div class="create_post_detail">
-              <h4>Tạo mới món ăn</h4>
+              <h4>Chỉnh sửa bài viết</h4>
               <form action=""  @submit.prevent="updatePost">
                 <div class="create_post-header">
                   <a-row>
                       <a-col :xxl="14" :xl="14" :lg="14">
                         <div class="form-ingredient">
-                          <label for="">title</label>
+                          <label for="">Tiêu đề</label>
                           <div class="form-group">
                             <textarea :rows="2" type="text" class="form-control" v-model="forms.title"></textarea>
                             
                           </div>
                         </div>
                         <div class="form-ingredient">
-                          <label for="">content</label>
+                          <label for="">Mô tả</label>
                           <div class="form-group">
                             <textarea :rows="4" type="text" class="form-control" v-model="forms.content"></textarea>
                           </div>
                         </div>
                         <div class="form-ingredient">
-                          <label for="">Cateogry</label>
+                          <label for="">Danh mục bài viết</label>
                           <div class="form-group">
                             <select class="form-control" v-model="forms.category_id">
                               <template v-for="(option,index) in getAllcategory" :key="index">
@@ -34,7 +34,7 @@
                         </div>
                        
                         <div class="form-ingredient">
-                          <label for="">Ingredient</label>
+                          <label for="">Nguyên liệu</label>
                           <div class="form-group" v-for="(input,k) in forms.ingredients" :key="k">
                             
                             <input type="text" class="form-control" v-model="input.name" />
@@ -54,7 +54,7 @@
                           </div>
                         </div>
                         <div class="form-ingredient">
-                          <label for="">Direction</label>
+                          <label for="">Các bước thực hiệnr</label>
                           <div class="form-group" v-for="(input,k) in forms.directions" :key="k">
                             <textarea :placeholder="'Step ' + k" :rows="4" type="text" class="form-control" v-model="input.description" ></textarea>
                                 <span>
@@ -74,7 +74,7 @@
                         </div>
   
                         <div class="form-ingredient">
-                          <label for="">Time</label>
+                          <label for="">Thời gian thực hiện</label>
                           <div class="form-group">
                             <input  type="text" class="form-control" v-model="forms.time"/>
                             
@@ -82,14 +82,14 @@
                         </div>
 
                         <div class="form-ingredient">
-                          <label for="">Nutritions fact</label>
+                          <label for="">Giá trị dinh dưỡng</label>
                           <div class="form-group">
                             <textarea :rows="2" type="text" class="form-control" v-model="forms.nutrition_facts"></textarea>
                             
                           </div>
                         </div>
                         <div class="form-ingredient">
-                          <label for="">Note</label>
+                          <label for="">Ghi chú</label>
                           <div class="form-group">
                             <textarea :rows="2" type="text" class="form-control" v-model="forms.note"></textarea>
                             
@@ -99,7 +99,7 @@
                       <a-col :xxl="10" :xl="10" :lg="10">
                         <div class="form-image">
                           <div class="form-upload">
-                              <label for="">Image</label>
+                              <label for="">Ảnh mô tả</label>
                               <div class="file_input_wrap" style="display: none">
                                 <input
                                     type="file"
@@ -149,7 +149,7 @@
                       </a-col>
                   </a-row>
                   <button type="submit" class="btn btn-outline-success text-center">
-                      Tạo mới món ăn
+                      Lưu bài viết
                   </button>
               </div>
               </form>
@@ -347,10 +347,10 @@
           data:formData})
         .then(() => {
           this.$router.push({ path : "/profile"})
-          this.$toast.success("Add new post successful!")
+          this.$toast.success("Cập nhật bài viết thành công!")
         })
         .catch(() => {
-          this.$toast.error("Error! Please check again !")
+          this.$toast.error("Đã xảy ra lỗi!")
         });
     }, 
     }

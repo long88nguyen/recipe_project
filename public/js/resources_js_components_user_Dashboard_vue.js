@@ -374,8 +374,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-            to: "/",
-            "active-class": "active"
+            to: "/"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Trang chủ")];
@@ -384,7 +383,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* STABLE */
 
           })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-            to: "/search-result",
+            to: "search-result",
             "active-class": "active"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -394,7 +393,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* STABLE */
 
           })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-            to: "/all-post",
+            to: "all-post",
             "active-class": "active"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -580,12 +579,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _uploads_images_logofood_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../uploads/images/logofood.png */ "./resources/js/uploads/images/logofood.png");
+
 
 var _hoisted_1 = {
   "class": "footer_side"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"footer-title\"><img src=\"\" alt=\"\"> Good food </h1><ul class=\"footer-network\"><i class=\"fa-brands fa-instagram\"></i><i class=\"fa-brands fa-facebook\"></i><i class=\"fa-brands fa-google\"></i><i class=\"fa-brands fa-google\"></i><i class=\"fa-brands fa-youtube\"></i></ul><h4>2022 © by Long</h4>", 3);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"footer-title\"><img src=\"" + _uploads_images_logofood_png__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"\"> World Recipes </h1><ul class=\"footer-network\"><i class=\"fa-brands fa-instagram\"></i><i class=\"fa-brands fa-facebook\"></i><i class=\"fa-brands fa-google\"></i><i class=\"fa-brands fa-google\"></i><i class=\"fa-brands fa-youtube\"></i></ul><h4>2022 © by Nguyen Van Long</h4>", 3);
 
 var _hoisted_5 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {

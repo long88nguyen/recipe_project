@@ -8,14 +8,14 @@
                 <a-row>
                     <a-col :xxl="14" :xl="14" :lg="14">
                       <div class="form-ingredient">
-                        <label for="">title</label>
+                        <label for="">Nhập mô tải</label>
                         <div class="form-group">
                           <textarea :rows="2" type="text" class="form-control" v-model="forms.title"></textarea>
                           
                         </div>
                       </div>
                       <div class="form-ingredient">
-                        <label for="">content</label>
+                        <label for="">Nhập</label>
                         <div class="form-group">
                           <textarea :rows="2" type="text" class="form-control" v-model="forms.content"></textarea>
                           

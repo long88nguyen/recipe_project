@@ -171,11 +171,11 @@ export default {
         {
             let rateId = this.rateId;
             this.$store.dispatch("rates/deleteRate",rateId).then(() => {
-                this.$toast.success('Rating deleted!')
+                this.$toast.success('Xóa đánh giá thành công!')
                 this.fetchRatingList()
              }
             ).catch(() => {
-                this.$toast.error('error')
+                this.$toast.error('Đã xảy ra lỗi')
             })
             this.visibleDelete = false;
         },

@@ -214,7 +214,7 @@ export default {
         }
         else
         {
-            return this.$toast.error("This post has been rated by you!")
+            return this.$toast.error("Bạn đã đánh giá bài viết này!")
         }
         
       },  
@@ -225,10 +225,10 @@ export default {
                 id: value,
                 member_id: account.id, 
             }).then(() => {
-                this.$toast.success("Add wish list successful !");
+                this.$toast.success("Lưu bài viết thành công !");
                 this.fetchPostDetail();
             }).catch(() =>{
-                this.$toast.error("Erorr!");    
+                this.$toast.error("Đã xảy ra lỗi!");    
             })
         },
 
@@ -236,10 +236,10 @@ export default {
             this.$store.dispatch("favourites/deleteFavourite",{
                 id: value,
             }).then(() => {
-                this.$toast.success("delete wish list successful !");
+                this.$toast.success("Bỏ lưu bài viết thành công!");
                 this.fetchPostDetail();
             }).catch(() =>{
-                this.$toast.error("Erorr!");    
+                this.$toast.error("Đã xảy ra lỗi!");    
             })
         },  
       handleOk(){
@@ -258,9 +258,9 @@ export default {
             number_rating : this.rating,
             review : this.review
         }).then(() =>{
-            this.$toast.success("Rating successful!");
+            this.$toast.success("Đánh giá bài viết thành công!");
         }).catch(() =>{
-            this.$toast.error("error");
+            this.$toast.error("Đã xảy ra lỗi!");
         })
         this.rating = 1;
         this.review = "",

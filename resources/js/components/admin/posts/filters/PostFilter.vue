@@ -32,7 +32,7 @@
                         <a-col :xl = "8" :lg = "8" :md = "8">
                             <div class="form-input">
                                 <label for="">
-                                    Trạng thá<i></i>
+                                    Trạng thái
                                 </label>
                                 <select name="" id="" class="form-control" v-model="status" @change="search">
                                     <option value="">Tất cả</option>

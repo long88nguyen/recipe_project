@@ -84,7 +84,7 @@ export default {
             formData.append('image', this.forms.image); 
             await this.$store.dispatch("categories/updateCategory",formData)
             .then(() =>{
-                this.$toast.success('Thêm mới thành công !');
+                this.$toast.success('Chỉnh sửa thành công !');
                 this.$emit("ok");
                 this.$router.push({ path: "/categories" });
             })

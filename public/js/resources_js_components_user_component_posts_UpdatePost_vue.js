@@ -226,9 +226,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     path: "/profile"
                   });
 
-                  _this2.$toast.success("Add new post successful!");
+                  _this2.$toast.success("Cập nhật bài viết thành công!");
                 })["catch"](function () {
-                  _this2.$toast.error("Error! Please check again !");
+                  _this2.$toast.error("Đã xảy ra lỗi!");
                 });
 
               case 4:
@@ -266,7 +266,7 @@ var _hoisted_3 = {
   "class": "create_post_detail"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Tạo mới món ăn", -1
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Chỉnh sửa bài viết", -1
 /* HOISTED */
 );
 
@@ -279,7 +279,7 @@ var _hoisted_6 = {
 
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "title", -1
+}, "Tiêu đề", -1
 /* HOISTED */
 );
 
@@ -292,7 +292,7 @@ var _hoisted_9 = {
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "content", -1
+}, "Mô tả", -1
 /* HOISTED */
 );
 
@@ -305,7 +305,7 @@ var _hoisted_12 = {
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Cateogry", -1
+}, "Danh mục bài viết", -1
 /* HOISTED */
 );
 
@@ -319,7 +319,7 @@ var _hoisted_16 = {
 
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Ingredient", -1
+}, "Nguyên liệu", -1
 /* HOISTED */
 );
 
@@ -332,7 +332,7 @@ var _hoisted_21 = {
 
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Direction", -1
+}, "Các bước thực hiệnr", -1
 /* HOISTED */
 );
 
@@ -345,7 +345,7 @@ var _hoisted_26 = {
 
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Time", -1
+}, "Thời gian thực hiện", -1
 /* HOISTED */
 );
 
@@ -358,7 +358,7 @@ var _hoisted_29 = {
 
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Nutritions fact", -1
+}, "Giá trị dinh dưỡng", -1
 /* HOISTED */
 );
 
@@ -371,7 +371,7 @@ var _hoisted_32 = {
 
 var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Note", -1
+}, "Ghi chú", -1
 /* HOISTED */
 );
 
@@ -387,7 +387,7 @@ var _hoisted_36 = {
 
 var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Image", -1
+}, "Ảnh mô tả", -1
 /* HOISTED */
 );
 
@@ -438,7 +438,7 @@ var _hoisted_46 = {
 var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
   "class": "btn btn-outline-success text-center"
-}, " Tạo mới món ăn ", -1
+}, " Lưu bài viết ", -1
 /* HOISTED */
 );
 
@@ -713,7 +713,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UpdatePost_vue_vue_type_template_id_6c272d80__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdatePost.vue?vue&type=template&id=6c272d80 */ "./resources/js/components/user/component/posts/UpdatePost.vue?vue&type=template&id=6c272d80");
 /* harmony import */ var _UpdatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdatePost.vue?vue&type=script&lang=js */ "./resources/js/components/user/component/posts/UpdatePost.vue?vue&type=script&lang=js");
 /* harmony import */ var _UpdatePost_vue_vue_type_style_index_0_id_6c272d80_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdatePost.vue?vue&type=style&index=0&id=6c272d80&lang=scss */ "./resources/js/components/user/component/posts/UpdatePost.vue?vue&type=style&index=0&id=6c272d80&lang=scss");
-/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -721,7 +721,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_UpdatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UpdatePost_vue_vue_type_template_id_6c272d80__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/component/posts/UpdatePost.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_UpdatePost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UpdatePost_vue_vue_type_template_id_6c272d80__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/component/posts/UpdatePost.vue"]])
 /* hot reload */
 if (false) {}
 

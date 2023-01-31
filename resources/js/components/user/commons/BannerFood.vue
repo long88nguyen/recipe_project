@@ -218,7 +218,7 @@ export default {
                 id: value,
                 member_id: account.id, 
             }).then(() => {
-                this.$toast.success("Add wish list successful !");
+                this.$toast.success("Lưu bài viết thành công !");
                 this.fecthDataPost();
             }).catch(() =>{
                 this.$toast.error("Erorr!");    
@@ -229,10 +229,10 @@ export default {
             this.$store.dispatch("favourites/deleteFavourite",{
                 id: value,
             }).then(() => {
-                this.$toast.success("delete wish list successful !");
+                this.$toast.success("Bỏ lưu bài viết thành công!");
                 this.fecthDataPost();
             }).catch(() =>{
-                this.$toast.error("Erorr!");    
+                this.$toast.error("Đã có lỗi xảy ra!");    
             })
         },
 

@@ -1,16 +1,22 @@
 <template>
+
     <div class="slider_container">
+
         <div class="slider_food">
           <a-carousel 
           effect="fade"
           dotsClass = "slick-dots"
           autoplay>
+          <template v-for="(image,index) in getBannerUser" :key="index">
             <div class="hello">
-              <img src="../../../uploads/images/banner1.png" alt="">
+              <img :src="image.image" alt="">
             </div>
-            <div class="hello"><img src="../../../uploads/images/banner2.png" alt=""></div>
+
+          </template>
+            
+            <!-- <div class="hello"><img src="../../../uploads/images/banner2.png" alt=""></div>
             <div class="hello"><img src="../../../uploads/images/banner3.png" alt=""></div>
-            <div class="hello"><img src="../../../uploads/images/banner4.png" alt=""></div>
+            <div class="hello"><img src="../../../uploads/images/banner4.png" alt=""></div> -->
           </a-carousel>
          
             <div class="new-product">
@@ -67,15 +73,21 @@ import { mapGetters } from 'vuex'
         isFavourite:false,
       }
     },
+   
     created(){
+      this.getDataBanner();
       this.$store.dispatch('posts/getAllPost')
     },
     computed:{
        ...mapGetters({
-        getMostFavourite : "posts/getMostFavourite"
+        getMostFavourite : "posts/getMostFavourite",
+        getBannerUser:'banners/getBannerUser'
        })
     },
     methods: {
+      async getDataBanner(){
+        await this.$store.dispatch('banners/getBannersUser')
+      },
       onContext(ctx) {
         this.context = ctx
       },
@@ -94,7 +106,7 @@ import { mapGetters } from 'vuex'
         margin:0 auto;
         .hello{
           text-align: center;
-          height: 250px;
+          height: 300px;
           line-height: 160px;
           background: #364d79;
           overflow: hidden;

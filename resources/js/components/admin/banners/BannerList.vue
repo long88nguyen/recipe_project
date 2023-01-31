@@ -69,7 +69,7 @@
                :footer = null
                centered
                >
-               <button class="btn btn-success" @click="categoryDelete()">Xóa danh mục</button>
+               <button class="btn btn-success" @click="categoryDelete()">Xóa banner</button>
                <button class="btn btn-danger" style="margin-left:20px" @click="cancalDelete()">Hủy xóa</button>
         </a-modal>
 

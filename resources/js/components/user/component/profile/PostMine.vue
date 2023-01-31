@@ -1,7 +1,76 @@
 <template>
   <a-row>
         <template v-for="(post,index) in getMyPostUser" :key="index">
-            <a-col :xxl="6" :xl="6" :lg="8" :md="12" :xs="24">
+            <a-col :xxl="8" :xl="8" :lg="8" :md="12" :xs="24">
+                        
+                        <div 
+                         class="card_item">
+                             <img :src="post.post_image[0].image" alt="" class="card_img">
+                             <div class="card_status confirm" v-if="post.status == 2">
+                            <span>Đã duyệt</span>
+                            </div>
+                            <div class="card_status pending" v-if="post.status == 1">
+                                <span>Đang chờ</span>
+                            </div>
+                            <div class="card_status reject" v-if="post.status == 3">
+                                <span>Từ chối</span>
+                            </div>
+                        
+                                
+                             
+                             <h5 class="card_title">
+                                <span v-if="post.title.length > 30">
+                                 {{ post.title.substring(0,30) + "..."}}
+                                </span>
+                                <span v-else>
+                                 {{ post.title}}
+                                </span>
+                             </h5>
+                             <h4 class="card_category">
+                                 {{ post.content.substring(0,30) + "..." }}
+                             </h4>
+                             
+                             <div class="card-rating">
+                                 <div class="rating_side">           
+                                     <h5> <star-rating 
+                                     v-model:rating="post.number_rating" 
+                                     inactive-color="#DCDCDC"
+                                     active-color="#d54215"
+                                     v-bind:star-size="20"
+                                     :read-only = true
+                                     :show-rating = false
+                                     :round-start-rating = false
+                                 /> </h5>
+                                 </div>
+                                 <div class="favourite_side">
+                                     <div class="card_wishlist">
+                                         <i class="fa-regular fa-heart"></i>
+                                     </div>
+                                 
+                                     <h5>{{ post.count_favourite }}</h5>
+                                 </div>
+                             </div>
+                             <div class="card_action">
+                            <router-link v-if="post.status == 1"
+                                :to="{
+                                path: `/update-post/${post.id}`
+                                }">
+                            <i class="fa-solid fa-pen-to-square blue"></i>
+                            </router-link >
+
+                            <i class="fa-solid fa-trash red" @click="openConfirm(post.id)"></i>
+
+                            <a-tooltip>
+                            <template #title>
+                            {{post.reason}}
+                            </template>
+                            <i class="fa-solid fa-circle-info green" v-if="post.reason"></i>
+                            </a-tooltip>
+                        </div>
+                        </div>   
+                      
+                     </a-col>
+            <!-- <a-col :xxl="6" :xl="6" :lg="8" :md="12" :xs="24">
                 <div 
                     class="card_item">
                         <img :src="post.post_image[0].image" alt="" class="card_img">
@@ -52,7 +121,7 @@
                             <i class="fa-solid fa-trash red" @click="openConfirm(post.id)"></i>
                         </div>
                    </div>   
-        </a-col>
+        </a-col> -->
         </template>
         
     </a-row>
@@ -64,15 +133,19 @@
         title="Xác nhận xóa bài viết" 
         @ok="handleOk" @cancel="handleCancel" :destroyOnClose="true"
         >
-        <h4>Bạn có chắc chắn xóa bài viết này?</h4>
+        <h5>Bạn có chắc chắn xóa bài viết này?</h5>
         <button class="btn btn-primary" @click="confirmDelete">Xác nhận </button>
         <button class="btn btn-danger" @click="cancelConfirm" style="margin-left:10px">Hủy </button>
     </a-modal>  
 </template>
 
 <script>
+import StarRating from 'vue-star-rating'
 import { mapGetters } from 'vuex'
 export default {
+    components:{
+        StarRating
+    },
     data(){
         return{
             isConfirmModal : false,
@@ -108,10 +181,10 @@ export default {
         async confirmDelete(){
             let postId = this.idPost;
             await this.$store.dispatch('posts/deletePost',postId).then(() =>{
-                this.$toast.success('ok')
+                this.$toast.success('Xóa bài viết thành công!')
                 this.fetchData()
             }).catch(()=>{
-                this.$toast.error('ok')
+                this.$toast.error('Đã xảy ra lỗi!')
             });
             this.isConfirmModal = false
 
@@ -122,18 +195,18 @@ export default {
 
 <style lang="scss" scoped>
 .card_item{
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.1), 0 1px 2px 0 rgba(0, 0, 0,0.06);
             width: 90%;
             max-height: 500px;
             border-radius:5px;
             transition: 0.3s;
             background: white; 
-            margin-top:15px;
+            // margin: 10px 5px; 
+            margin:10px 0;
 
             img{
                 width: 100%;
-                height: 150px;
-                border-top-left-radius: 5px;
-                border-top-right-radius: 5px;
+                height: 250px;
                 top:0;
                 position: relative;
 
@@ -165,16 +238,18 @@ export default {
                 background: orange;
                 
             }
-            h4{
+            .card_category{
                 font-size: 24px;
-                height: 40px;
-                padding:0px 10px 0 10px;
+                font-weight: 600;
+                margin:0px 10px 0 10px;
                
             }
+           
             .card_title{
                 font-size:18px;
-                height:45px;
-                padding:10px
+                color: rgba(0,0,0,.65);
+                padding:20px 0 10px 10px;
+                font-weight: bold;
             }
             .card-rating
             {
@@ -186,6 +261,7 @@ export default {
                     height: 40px;
                     line-height: 40px;
                     display: flex;
+                    padding: 0 15px;
                     .card_star
                     {
                         padding:0px 10px 0 10px;
@@ -205,6 +281,7 @@ export default {
                     height: 40px;
                     line-height: 40px;
                     display: flex;
+                    margin-top: 4px;
                     .card_wishlist
                     {
                         padding:0px 10px 0 10px;
@@ -231,16 +308,26 @@ export default {
             }
             .card_action{
                 font-size: 20px;
-                text-align: center;
-                margin-top: 10px;
+                text-align: end;
+                padding: 10px 10px 10px 0;
                 .blue{
-                    margin-right: 20px;
+                    margin-right: 10px;
                     color:blue;
                 }
                 .red{
                     color: red;
+                    margin-right: 10px;
+
+                }
+
+                .green{
+                    color: darkgreen;
                 }
             }
+        }
+        .card_item:hover{
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0,0.2), 0 1px 2px 0 rgba(0, 0, 0,0.1);
+            transition: 0.3s;
         }
 @media (max-width:520px)
 {

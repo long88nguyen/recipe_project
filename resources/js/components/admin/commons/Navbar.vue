@@ -10,17 +10,7 @@
            <i class="bx bx-menu" id="btn" v-on:click="$emit('ToggleNavbar')" ></i>
        </div>
        <ul class="nav_list">
-        <li>
-               <router-link to="/dashboard" class="router-class"
-               :class="
-                  url.includes('dashboard') ? 'active-router' : ''
-                "
-               >
-               <i class="fa-solid fa-chart-line"></i>
-                   <span class="links_name">Trang chủ</span>
-               </router-link>
-                   
-           </li>
+        
            <li>
                <router-link to="/categories" class="router-class"
                :class="

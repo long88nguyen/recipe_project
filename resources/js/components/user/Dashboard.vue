@@ -14,9 +14,9 @@
               <div class="nav-menu">
               <div class="nav_menu-list">
                     <ul class="text_list">
-                        <li ><router-link to="/" active-class="active" >Trang chủ</router-link></li>
-                        <li><router-link to="/search-result" active-class="active">Tìm kiếm</router-link></li>
-                        <li><router-link to="/all-post" active-class="active">Bài viết</router-link></li>
+                        <li ><router-link to="/" >Trang chủ</router-link></li>
+                        <li><router-link to="search-result" active-class="active">Tìm kiếm</router-link></li>
+                        <li><router-link to="all-post" active-class="active">Bài viết</router-link></li>
                         
                     </ul>
                     <ul class="icon_list">

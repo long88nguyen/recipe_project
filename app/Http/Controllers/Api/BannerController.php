@@ -41,5 +41,11 @@ class BannerController extends ApiController
         $result =  $this->bannerRepository->deleteBanner($id);
         return $this->sendSuccess($result);
     }
+
+    public function bannerUser(){
+        $result =  $this->bannerRepository->bannerUser();
+        return $this->sendSuccess($result);
+    }
+
     //
 }

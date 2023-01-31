@@ -88,7 +88,7 @@ export default {
           const check_role = this.accountInfo.is_admin;
           if(check_role === 1)
           {  
-            this.$router.push({path: "/dashboard"}).then((response) => {
+            this.$router.push({path: "/categories"}).then((response) => {
               this.$toast.success('Đăng nhập thành công !');
             });
             

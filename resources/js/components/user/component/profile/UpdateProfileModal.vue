@@ -116,7 +116,7 @@ export default {
             formData.append('avatar', this.forms.avatar); 
 
             await this.$store.dispatch('members/updateMember',formData).then(() => {
-                this.$toast.success("Update profile success!");
+                this.$toast.success("Cập nhập thông tin thành công!");
                 this.$emit("ok");
                 this.$router.push({ path: "/profile" });
                 this.$store.dispatch('common/getUserCommon')

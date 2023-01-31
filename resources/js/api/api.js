@@ -56,6 +56,7 @@ const UNLOCK_ACCOUNT = '/api/unlock'
 
 const GET_ALL_BANNER = '/api/banner/get-all'
 const GET_BANNER_DETAIL = '/api/detail'
+const GET_BANNER_USER = '/api/banner/banner-user'
 const CREATE_BANNER = '/api/banner/create'
 const UPDATE_BANNER = '/api/banner/update'
 const DELETE_BANNER = '/api/banner/delete'
@@ -156,6 +157,7 @@ export default {
     CREATE_BANNER,
     UPDATE_BANNER,
     DELETE_BANNER,
+    GET_BANNER_USER,
 
     //dashboard 
     GET_STAR_RATE,

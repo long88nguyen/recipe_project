@@ -34,7 +34,7 @@ export default {
     methods:{
         async saveDataMember(){
             await this.$store.dispatch('auth/register',this.form_register).then(() => {
-            this.$toast.success('Đăng ký tài khoản thành công!')
+            this.$toast.success('Thêm mới tài khoản admin thành công!')
             this.$emit("ok")
             this.form_register.email = '',
             this.form_register.password = '',

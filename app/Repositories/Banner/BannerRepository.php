@@ -22,5 +22,7 @@ interface BannerRepository extends RepositoryInterface
     public function updateBanner($request,$id);
 
     public function deleteBanner($id);
+
+    public function bannerUser();
 }
 

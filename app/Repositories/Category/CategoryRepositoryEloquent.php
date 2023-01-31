@@ -11,6 +11,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Category\CategoryRepository;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use ImageHelper;
@@ -139,6 +140,7 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
 
     public function delete($id)
     {
+        $this->deletePost($id);
         $categoryId = $this->model->find($id);
         Post::where('category_id',$id)->delete();
         // dd(File::exists(mb_substr($categoryId->image,strpos($categoryId->image, "_") + 1)));
@@ -170,5 +172,26 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         return [
             "getCategoryPost" => $getCategoryPost,
         ];
+    }
+
+    public function deletePost($value)
+    {
+        $listPostId = Post::where('category_id',$value)->select('id')->get()->toArray();
+        DB::table('posts')->whereIn('id', $listPostId)->delete();
+        DB::table('ingredients')->whereIn('post_id', $listPostId)->delete();
+        DB::table('directions')->whereIn('post_id', $listPostId)->delete();
+        DB::table('rates')->whereIn('post_id', $listPostId)->delete();
+        DB::table('favourites')->whereIn('post_id', $listPostId)->delete();
+        $listPost = DB::table('post_images')->whereIn('post_id', $listPostId)->get();
+        foreach($listPost as $item)
+        {
+            if(File::exists(mb_substr($item->image,strpos($item->image, "_") + 1)))
+            {
+                File::delete((mb_substr($item->image,strpos($item->image, "_") + 1)));
+            }
+        }
+
+        DB::table('post_images')->whereIn('post_id', $listPostId)->delete();
+
     }
 }

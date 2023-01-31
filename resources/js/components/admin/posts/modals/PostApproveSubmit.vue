@@ -47,6 +47,11 @@
                 <label for="">Thời gian thực hiện</label>
                 <input type="text" class="form-control" disabled :value="showApprove.time + ' Phút'">
             </div>
+            <div class="post_layout post_validate">
+                <label for="">ghi chú</label>
+                <textarea name="" id="" cols="30" rows="3"  class="form-control input_ingredient" v-model="reason" @blur="validate()"></textarea>
+                <div class="validate">{{ messageErr }}</div>
+            </div>
             <div class="btn_event" v-if = "(showApprove.status == 1)">
                 <button class="btn btn-primary" @click="Approve(2)">Duyệt</button>
                 <button class="btn btn-success" @click="Reject(3)">Tù chối</button>
@@ -63,6 +68,8 @@ export default {
     data(){
         return{
             status:null,
+            reason:'',
+            messageErr:'',
         }
     },
     props:["id"],
@@ -77,17 +84,40 @@ export default {
         this.$store.dispatch('posts/getApprovePost',this.$props.id);    
     },
     methods:{
+        validate(){
+            this.messageErr = '';
+            let isValid = true;
+            if(this.status == 3 && this.reason == '')
+            {
+                this.messageErr = 'Ghi chú là bắt buộc khi từ chối đơn';
+                isValid = false;
+            }
+            return isValid;
+        },
         async approvePost()
         {
-            await this.$store.dispatch("posts/updateStatusPost",{
+            if(this.validate())
+            {
+                await this.$store.dispatch("posts/updateStatusPost",{
                 id:this.$props.id,
                 status : this.status,
-            }).then(() => {
-                this.$emit("ok");
-                this.$toast.success("Duyệt thành công")
-            }).catch(() =>{
-                this.$toast.success("Đã xảy ra lỗi!");
-            });
+                reason : this.reason,
+                }).then(() => {
+                    this.$emit("ok");
+                    if(this.status == 2)
+                    {
+                        this.$toast.success("Duyệt bài viết thành công")
+                    }
+                    if(this.status == 3)
+                    {
+                        this.$toast.success("Từ chối bài viết thành công")
+                    }
+                    
+                }).catch(() =>{
+                    this.$toast.error("Đã xảy ra lỗi!");
+                });
+            }
+           
         },
         async Approve(status)
         {
@@ -129,6 +159,13 @@ export default {
             display: flex;
             justify-content: space-evenly;
         }
+        .post_validate
+        {
+            .validate{
+                color:red;
+            }
+        }
+        
     }
 }
 

@@ -1,9 +1,10 @@
 <template>
-    <div class="category-filter">
+    <div class="category-filter form-group">
         <input type="text" class="form-control"
         @change="search"
         v-model="name"
         v-on:keyup.enter="search"
+        placeholder="Nhập tên danh mục ..."
         > 
         <button class="btn btn-success" @click.prevent = "search">Tìm kiếm </button>
     </div>

@@ -102,4 +102,13 @@ class BannerRepositoryEloquent extends BaseRepository implements BannerRepositor
             }
         return $bannerId->delete($id);
     }
+
+
+    public function bannerUser()
+    {
+        $bannerUser = $this->model->orderBy('id','DESC')->where('is_active',1)->limit(4)->get();
+        return [
+            'bannerUserList' => $bannerUser
+        ];
+    }
 }

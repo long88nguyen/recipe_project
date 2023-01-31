@@ -18,6 +18,7 @@ class CreateRatesTable extends Migration
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('member_id');
             $table->integer('number_rating')->default(1);
+            $table->text('review')->nullable();
             $table->timestamps();
         });
     }

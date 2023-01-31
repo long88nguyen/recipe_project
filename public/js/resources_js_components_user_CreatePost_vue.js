@@ -184,8 +184,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.forms.directions[0].desc == "") {
         this.errors.directions = "Vui lòng nhập các bước thực hiện";
         isValid = false;
-      } else if (this.forms.directions[0].desc.length > 255) {
-        this.errors.directions = "Các bước thực hiện quá dài ( tối đa 255 ký tự)";
+      } else if (this.forms.directions[0].desc.length > 800) {
+        this.errors.directions = "Các bước thực hiện quá dài ( tối đa 800 ký tự)";
         isValid = false;
       }
 
@@ -244,7 +244,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   _this.$toast.success("Tạo mới bài viết thành công, vui lòng chờ duyệt!");
                 })["catch"](function () {
-                  _this.$toast.error("Error! Please check again !");
+                  _this.$toast.error("Đã xảy ra lỗi!");
                 });
 
               case 5:

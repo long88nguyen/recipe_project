@@ -4,6 +4,7 @@
      
         <a-col :xxl="12" :xl="12" :lg="24" :md = "24" :xs ="24" class="ok">
           <div class="dashboard_layout">
+            <PostAMonth/>
             </div>
         </a-col>
 
@@ -12,7 +13,7 @@
             <StatRatePost/>
             </div>
         </a-col>
-
+<!-- 
         <a-col :xxl="12" :xl="12" :lg="24" :md = "24" :xs ="24" class="ok">
           <div class="dashboard_layout">
             <PostAMonth/>
@@ -24,7 +25,7 @@
             <MemberJoinAMonth/>
             </div>
         </a-col>
-     
+      -->
    
      
       

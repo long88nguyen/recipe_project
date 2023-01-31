@@ -181,7 +181,7 @@ export default {
                 this.$store.dispatch('posts/detailPostUser',postId);
              }
             ).catch(() => {
-                this.$toast.error('Đã sảy ra lỗi')
+                this.$toast.error('Đã xảy ra lỗi')
             })
             this.visibleDelete = false;
         },
@@ -217,7 +217,7 @@ export default {
             this.$store.dispatch('rates/listRatePost',postId);
             this.$store.dispatch('posts/detailPostUser',postId);
         }).catch(() =>{
-            this.$toast.error('Đã sảy ra lỗi!')
+            this.$toast.error('Đã xảy ra lỗi!')
         });
         },
         DeleteRate(value){

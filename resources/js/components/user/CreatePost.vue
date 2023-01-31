@@ -399,9 +399,9 @@ export default {
         }
         
         
-        else if(this.forms.directions[0].desc.length > 255)
+        else if(this.forms.directions[0].desc.length > 800)
         {
-          this.errors.directions = "Các bước thực hiện quá dài ( tối đa 255 ký tự)"
+          this.errors.directions = "Các bước thực hiện quá dài ( tối đa 800 ký tự)"
           isValid = false
         }
 
@@ -446,7 +446,7 @@ export default {
           this.$toast.success("Tạo mới bài viết thành công, vui lòng chờ duyệt!")
         })
         .catch(() => {
-          this.$toast.error("Error! Please check again !")
+          this.$toast.error("Đã xảy ra lỗi!")
         });
       }
     }, 
