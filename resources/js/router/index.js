@@ -183,6 +183,8 @@ function globalMiddleware() {
                 (window.location.pathname.includes('members'))
                 || 
                 (window.location.pathname.includes('admin'))
+                || 
+                (window.location.pathname.includes('banner'))
                 ))
                 {
                     next({name:"Not-Found"})
