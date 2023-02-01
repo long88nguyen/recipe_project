@@ -178,9 +178,10 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "time","status","created_at",
         "updated_at","nutrition_facts",
         "note","deleted_at");
-
+        // dd($request->all());
         if ($request->has('title') && $request->title)
         {
+
             $searchPost->where('posts.title', 'LIKE', '%' . FormatHelper::escape_like($request->title) . '%');
         }
 

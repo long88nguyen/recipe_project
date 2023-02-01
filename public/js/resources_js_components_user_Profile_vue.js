@@ -1092,7 +1092,7 @@ var _hoisted_2 = {
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Name", -1
+}, "Tên người dùng", -1
 /* HOISTED */
 );
 
@@ -1102,7 +1102,7 @@ var _hoisted_4 = {
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Birthday", -1
+}, "Ngày sinh", -1
 /* HOISTED */
 );
 
@@ -1112,7 +1112,7 @@ var _hoisted_6 = {
 
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Phone number", -1
+}, "Số điện thoại", -1
 /* HOISTED */
 );
 
@@ -1122,7 +1122,7 @@ var _hoisted_8 = {
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "Gender", -1
+}, "Giới tính", -1
 /* HOISTED */
 );
 
@@ -1133,7 +1133,7 @@ var _hoisted_10 = {
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-check-label",
   "for": "flexRadioDefault1"
-}, " Male ", -1
+}, " Nam ", -1
 /* HOISTED */
 );
 
@@ -1144,7 +1144,7 @@ var _hoisted_12 = {
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-check-label",
   "for": "flexRadioDefault2"
-}, " Female ", -1
+}, " Nữ ", -1
 /* HOISTED */
 );
 
@@ -1157,7 +1157,7 @@ var _hoisted_15 = {
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
-}, "image", -1
+}, "Ảnh đại diện", -1
 /* HOISTED */
 );
 

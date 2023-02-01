@@ -116,6 +116,7 @@ export const actions = {
       },
 
       async getPostsApproved({ commit },payload) {
+        
         const response = await axios.get(api.LIST_POST_APPROVED,{
           params:{
               category_id: payload.category_id,

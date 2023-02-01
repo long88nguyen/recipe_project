@@ -91,9 +91,9 @@ export const actions = {
         await axios.post(url, params);
       },
 
-      async deleteCategory({ commit }, categoryId) {
+      async deleteBanner({ commit }, bannerId) {
         await axios.delete(
-          api.CATEGORY_DELETE + "/" + categoryId
+          api.DELETE_BANNER + "/" + bannerId
         );
       },
 }
