@@ -2,38 +2,38 @@
 <div class="form_input-category">
     <form @submit.prevent="updateProfile" enctype="multipart/form-data">
         <div class="form_group">
-            <label for="">Name</label>
+            <label for="">Tên người dùng</label>
             <input type="text" class="form-control" v-model="memberDetail.name">
         </div>
 
         <div class="form_group">
-            <label for="">Birthday</label>
+            <label for="">Ngày sinh</label>
             <input type="date" class="form-control" v-model="memberDetail.birthday" >
         </div>
 
         <div class="form_group">
-            <label for="">Phone number</label>
+            <label for="">Số điện thoại</label>
             <input type="text" class="form-control" v-model="memberDetail.phone">
         </div>
         <div class="form-group">
-            <label for="">Gender</label>
+            <label for="">Giới tính</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="0" v-model="memberDetail.gender"/>
                 <label class="form-check-label" for="flexRadioDefault1">
-                    Male
+                    Nam
                 </label>
             </div>
             <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="1" v-model="memberDetail.gender">
             <label class="form-check-label" for="flexRadioDefault2">
-                Female
+                Nữ
             </label>
             </div>
         </div>
         
         <div class="form-image-cate">
             <div class="form_group">
-                <label for="">image</label>
+                <label for="">Ảnh đại diện</label>
                 <input type="file" class="form-control" id="imageCate" style="display:none"  @change ="onChange">
             </div>
             <div class="show-image">

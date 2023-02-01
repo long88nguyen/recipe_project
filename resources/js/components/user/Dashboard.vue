@@ -105,15 +105,15 @@ export default {
     data()
     {
         return {
-          title:"",
+          title:null,
           visible:false,
           isActiveVisible : false,
           scrollEvent :0,
           visibleSearch:false,
           searchData:{
-            ingredient_name:"",
-            member_name:"",
-            category_name:"",
+            ingredient_name:null,
+            member_name:null,
+            category_name:null,
           }
         }
     },
@@ -139,14 +139,13 @@ export default {
 
         this.isActiveVisible = !this.isActiveVisible;
       },
-      fetchAllPost(){
-        this.$store.dispatch('posts/getAllPost',{
+      async fetchAllPost(){
+        await this.$store.dispatch('posts/getAllPost',{
           title:this.title,
-          ingredient_name: this.searchData.ingredient_name,
+          ingredient_name: this.searchData.ingredient_name ,
           member_name: this.searchData.member_name,
           category_name: this.searchData.category_name,
         });
-        this.title="";
       },
       onScroll(e)
       {
@@ -267,8 +266,13 @@ export default {
           line-height: 80px;
           margin: 0 10px;
           a {
-            color: darkcyan;
-            font-size: 17px;
+            color: black;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.25rem;
+            text-transform: uppercase;
+            text-underline-offset: 0.25rem;
+            
           }
         }
         li

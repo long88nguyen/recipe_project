@@ -5,7 +5,7 @@
         <div class="table-wrapper">
           <div class="breadcumb-field">
             <a-breadcrumb>
-            <a-breadcrumb-item><router-link to="/dashboard">Trang chủ</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item>Trang chủ</a-breadcrumb-item>
             <a-breadcrumb-item><router-link to="/rate-list">Đánh giá</router-link></a-breadcrumb-item>
             </a-breadcrumb>
         </div>

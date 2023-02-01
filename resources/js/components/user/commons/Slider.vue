@@ -25,8 +25,11 @@
                   <div class="slider_video">
                     <img src="../../../uploads/images/banner.jpg" alt="">
                     <router-link to="/all-post" class="btn-explorer">
-                      Khám phá
+                      Khám phá ngay !!!
                     </router-link>
+                    <div class="slogan_food">
+                      Cùng tạo ra những món ăn <sub>cho riêng bạn</sub>  <i class="fa-solid fa-bowl-food"></i>
+                    </div>
                   </div>
                 </a-col>
                 <a-col :xxl="12" :xl="12" :lg="12" :md="24" :xs="24">
@@ -76,7 +79,7 @@ import { mapGetters } from 'vuex'
    
     created(){
       this.getDataBanner();
-      this.$store.dispatch('posts/getAllPost')
+      // this.$store.dispatch('posts/getAllPost')
     },
     computed:{
        ...mapGetters({
@@ -157,6 +160,20 @@ import { mapGetters } from 'vuex'
               background: white;
               transition:0.5s;
             }
+            .slogan_food{
+              position: absolute;
+              top: 35%;
+              right: 20%;
+              font-family: 'Dancing Script';
+              font-size: 27px;
+              font-weight: bold;
+              padding: 10px;
+              color: white;
+              sub{
+                font-family: 'Dancing Script';
+              }
+            }
+            
           }
           .slider_intro
           {

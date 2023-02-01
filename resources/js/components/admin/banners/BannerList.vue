@@ -5,7 +5,7 @@
         <div class="table-wrapper">
           <div class="breadcumb-field">
             <a-breadcrumb>
-            <a-breadcrumb-item><router-link to="/dashboard">Trang chủ</router-link></a-breadcrumb-item>
+            <a-breadcrumb-item>Trang chủ</a-breadcrumb-item>
             <a-breadcrumb-item><router-link to="/banner">Quản lý Banner</router-link></a-breadcrumb-item>
             </a-breadcrumb>
         </div>
@@ -21,7 +21,6 @@
                         <th>STT</th>
                         <th>Mô tả</th>
                         <th >Hình ảnh</th>
-                        <th>Trạng thái</th>
                         <th >Hoạt động</th>
                     </tr>
                 </thead>
@@ -35,9 +34,8 @@
                         }}</td>
                         <td>{{ banner.content }}</td>
                         <td> <img :src="banner.image" class="img-thumbnail" alt="" @click="showImage(banner.image)"/></td>
-                        <td>{{ banner.is_active }}</td>
                         <td>
-                          <i class="fa-solid fa-pen-to-square" style="color:blue" @click="categoryDetail(banner.id)"></i>
+                          <!-- <i class="fa-solid fa-pen-to-square" style="color:blue" @click="categoryDetail(banner.id)"></i> -->
                           <i class="fa-solid fa-trash" style="color:red" @click="confirmClick(banner.id)"></i>
                         </td>
                     </tr>
@@ -116,7 +114,7 @@ export default {
             visibleConfirmDetele:false,
             selectedImg: "",
             visibleModalEdit : false,
-            idCategory : null,
+            idBanner : null,
             searchData: {
               name:"",
               itemsPerPage:5,
@@ -225,14 +223,15 @@ export default {
         this.visibleModalEdit = false;
         this.idCategory = null;
     },
-    confirmClick(category_id) {
-        this.idCategory = category_id;
+    confirmClick(value) {
+        this.idBanner = value;
         this.visibleConfirmDetele = true;
     },
     async categoryDelete() {
-        await this.deleteCategory(this.idCategory).then(() => {
+        await this.$store.dispatch('banners/deleteBanner',this.idBanner).then(() => {
                 this.visibleConfirmDetele = false,
                 this.fetchCategoryList();
+                this.idBanner=null;
             this.$toast.success("Xóa dữ liệu thành công!");
         }).catch(() => {
             this.$toast.error("Đã xảy ra lỗi!")
@@ -293,8 +292,8 @@ export default {
              border:2px solid white;
 
             img{
-              height: 60px;
-              width: 60px;
+              height: 100px;
+              width: 250px;
             }
             i{
               font-size:15px;

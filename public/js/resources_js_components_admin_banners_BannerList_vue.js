@@ -47,7 +47,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       visibleConfirmDetele: false,
       selectedImg: "",
       visibleModalEdit: false,
-      idCategory: null,
+      idBanner: null,
       searchData: {
         name: "",
         itemsPerPage: 5,
@@ -206,8 +206,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.visibleModalEdit = false;
       this.idCategory = null;
     },
-    confirmClick: function confirmClick(category_id) {
-      this.idCategory = category_id;
+    confirmClick: function confirmClick(value) {
+      this.idBanner = value;
       this.visibleConfirmDetele = true;
     },
     categoryDelete: function categoryDelete() {
@@ -219,8 +219,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.next = 2;
-                return _this5.deleteCategory(_this5.idCategory).then(function () {
+                return _this5.$store.dispatch('banners/deleteBanner', _this5.idBanner).then(function () {
                   _this5.visibleConfirmDetele = false, _this5.fetchCategoryList();
+                  _this5.idBanner = null;
 
                   _this5.$toast.success("Xóa dữ liệu thành công!");
                 })["catch"](function () {
@@ -411,19 +412,18 @@ var _hoisted_6 = {
 };
 
 var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "STT"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Mô tả"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Hình ảnh"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Trạng thái"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Hoạt động")])], -1
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "STT"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Mô tả"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Hình ảnh"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Hoạt động")])], -1
   /* HOISTED */
   );
 });
 
 var _hoisted_8 = ["src", "onClick"];
 var _hoisted_9 = ["onClick"];
-var _hoisted_10 = ["onClick"];
-var _hoisted_11 = ["src"];
+var _hoisted_10 = ["src"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
-
   var _component_a_breadcrumb_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-breadcrumb-item");
+
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   var _component_a_breadcrumb = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("a-breadcrumb");
 
@@ -437,16 +437,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_breadcrumb_item, null, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-            to: "/dashboard"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Trang chủ")];
-            }),
-            _: 1
-            /* STABLE */
-
-          })];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Trang chủ")];
         }),
         _: 1
         /* STABLE */
@@ -493,19 +484,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_8)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(banner.is_active), 1
-    /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-      "class": "fa-solid fa-pen-to-square",
-      style: {
-        "color": "blue"
-      },
-      onClick: function onClick($event) {
-        return $options.categoryDetail(banner.id);
-      }
-    }, null, 8
-    /* PROPS */
-    , _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    , _hoisted_8)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <i class=\"fa-solid fa-pen-to-square\" style=\"color:blue\" @click=\"categoryDetail(banner.id)\"></i> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
       "class": "fa-solid fa-trash",
       style: {
         "color": "red"
@@ -515,7 +494,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_10)])]);
+    , _hoisted_9)])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_pagination, {
@@ -547,7 +526,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         alt: ""
       }, null, 8
       /* PROPS */
-      , _hoisted_11)];
+      , _hoisted_10)];
     }),
     _: 1
     /* STABLE */
@@ -761,7 +740,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".category-product[data-v-49b8c946] {\n  width: 100%;\n}\n.category-product .table-wrapper[data-v-49b8c946] {\n  width: 90%;\n  margin: 0 auto;\n  padding-top: 20px;\n}\n.category-product .table-wrapper .breadcumb-field[data-v-49b8c946] {\n  padding: 30px 0;\n  font-family: Arial, Helvetica, sans-serif;\n}\n.category-product .table-wrapper .content-table[data-v-49b8c946] {\n  border-collapse: collapse;\n  margin: 25px 0;\n  font-size: 15px;\n  width: 100%;\n  margin: 0 auto;\n  border-radius: 15px 15px 0 0;\n  overflow: hidden;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);\n}\n.category-product .table-wrapper .content-table thead tr[data-v-49b8c946] {\n  background-color: #009879;\n  color: #ffffff;\n  font-weight: bold;\n}\n.category-product .table-wrapper .content-table thead tr th[data-v-49b8c946] {\n  padding: 12px 15px;\n  border: 2px solid white;\n  text-align: center;\n}\n.category-product .table-wrapper .content-table thead tr th[data-v-49b8c946]:first-child {\n  border-top-left-radius: 15px;\n}\n.category-product .table-wrapper .content-table thead tr th[data-v-49b8c946]:last-child {\n  border-top-right-radius: 15px;\n}\n.category-product .table-wrapper .content-table tbody tr[data-v-49b8c946] {\n  border-bottom: 1px solid #dddddd;\n}\n.category-product .table-wrapper .content-table tbody tr td[data-v-49b8c946] {\n  padding: 12px 15px;\n  text-align: center;\n  border: 2px solid white;\n}\n.category-product .table-wrapper .content-table tbody tr td img[data-v-49b8c946] {\n  height: 60px;\n  width: 60px;\n}\n.category-product .table-wrapper .content-table tbody tr td i[data-v-49b8c946] {\n  font-size: 15px;\n  margin: 0px 10px;\n  padding: 15px;\n  background: #efeded;\n  border-radius: 50%;\n  color: white;\n}\n.category-product .table-wrapper .content-table tbody tr[data-v-49b8c946]:nth-of-type(even) {\n  background-color: #f3f3f3;\n}\n.category-product .table-wrapper .content-table tbody tr[data-v-49b8c946]:last-of-type {\n  border-bottom: 2px solid #009879;\n}\n.paginate[data-v-49b8c946] {\n  margin-top: 30px;\n  text-align: center;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".category-product[data-v-49b8c946] {\n  width: 100%;\n}\n.category-product .table-wrapper[data-v-49b8c946] {\n  width: 90%;\n  margin: 0 auto;\n  padding-top: 20px;\n}\n.category-product .table-wrapper .breadcumb-field[data-v-49b8c946] {\n  padding: 30px 0;\n  font-family: Arial, Helvetica, sans-serif;\n}\n.category-product .table-wrapper .content-table[data-v-49b8c946] {\n  border-collapse: collapse;\n  margin: 25px 0;\n  font-size: 15px;\n  width: 100%;\n  margin: 0 auto;\n  border-radius: 15px 15px 0 0;\n  overflow: hidden;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);\n}\n.category-product .table-wrapper .content-table thead tr[data-v-49b8c946] {\n  background-color: #009879;\n  color: #ffffff;\n  font-weight: bold;\n}\n.category-product .table-wrapper .content-table thead tr th[data-v-49b8c946] {\n  padding: 12px 15px;\n  border: 2px solid white;\n  text-align: center;\n}\n.category-product .table-wrapper .content-table thead tr th[data-v-49b8c946]:first-child {\n  border-top-left-radius: 15px;\n}\n.category-product .table-wrapper .content-table thead tr th[data-v-49b8c946]:last-child {\n  border-top-right-radius: 15px;\n}\n.category-product .table-wrapper .content-table tbody tr[data-v-49b8c946] {\n  border-bottom: 1px solid #dddddd;\n}\n.category-product .table-wrapper .content-table tbody tr td[data-v-49b8c946] {\n  padding: 12px 15px;\n  text-align: center;\n  border: 2px solid white;\n}\n.category-product .table-wrapper .content-table tbody tr td img[data-v-49b8c946] {\n  height: 100px;\n  width: 250px;\n}\n.category-product .table-wrapper .content-table tbody tr td i[data-v-49b8c946] {\n  font-size: 15px;\n  margin: 0px 10px;\n  padding: 15px;\n  background: #efeded;\n  border-radius: 50%;\n  color: white;\n}\n.category-product .table-wrapper .content-table tbody tr[data-v-49b8c946]:nth-of-type(even) {\n  background-color: #f3f3f3;\n}\n.category-product .table-wrapper .content-table tbody tr[data-v-49b8c946]:last-of-type {\n  border-bottom: 2px solid #009879;\n}\n.paginate[data-v-49b8c946] {\n  margin-top: 30px;\n  text-align: center;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

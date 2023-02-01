@@ -36,11 +36,11 @@ const routes =
                 requiresAuth: true,
               },
             children:[
-                {
-                    path:'/dashboard',
-                    component: import("../components/admin/dashboard/Dashboard.vue"),
-                    name:'Dashboard',
-                },
+                // {
+                //     path:'/dashboard',
+                //     component: import("../components/admin/dashboard/Dashboard.vue"),
+                //     name:'Dashboard',
+                // },
                 {
                     path:'/categories',
                     component: CategoryList,
