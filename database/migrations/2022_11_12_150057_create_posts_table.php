@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->text('nutrition_facts')->nullable();
             $table->text('note')->nullable();
             $table->double('time');
+            $table->text('reason');
             $table->timestamps();
             $table->softDeletes();
         });

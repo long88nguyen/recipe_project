@@ -20,7 +20,7 @@ class CreateMembersTable extends Migration
             $table->integer('phone')->default(123456789);
             $table->integer('gender')->nullable();
             $table->date('birthday')->default('2000-01-01');
-            $table->string('avatar')->default('images/avatars/avatar.png');
+            $table->string('avatar')->default('/images/avatar.png');
             $table->timestamps();
         });
     }
