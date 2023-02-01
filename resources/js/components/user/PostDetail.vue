@@ -128,6 +128,7 @@
                     <template v-for="(post,index) in getYourPost" :key="index">
                     <div class="post_suggest-list">
                         <img :src="post.post_image[0].image" alt="">
+                        
                         <div class="post_suggest-content">{{  post.title }}</div>
                     </div>
                     </template> 

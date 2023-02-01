@@ -113,6 +113,16 @@ export default {
             .ant-col:nth-child(3) .community_card{
                 background-image: linear-gradient(90deg,rgb(1, 48, 1),darkgreen);
             }
+            .ant-col:nth-child(4) .community_card{
+                background-image: linear-gradient(90deg,rgb(250, 163, 1),rgb(248, 177, 45));
+            }
+
+            .ant-col:nth-child(5) .community_card{
+                background-image: linear-gradient(90deg,rgb(102, 3, 3),rgb(165, 26, 26));
+            }
+            .ant-col:nth-child(6) .community_card{
+                background-image: linear-gradient(90deg,rgb(1, 48, 1),darkgreen);
+            }
             .community_posts{
                 display: flex;
                 margin-top: 10px;
