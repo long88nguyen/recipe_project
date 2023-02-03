@@ -94,7 +94,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "category_id","member_id",
         "time","status","created_at",
         "updated_at","nutrition_facts",
-        "note","deleted_at","reason");
+        "note","deleted_at","reason","view_count");
 
         if ($request->has('category_id') && $request->category_id) {
             $dataPost->where('posts.category_id', $request->category_id);
@@ -138,7 +138,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "category_id","member_id",
         "time","status","created_at",
         "updated_at","nutrition_facts",
-        "note","deleted_at","reason");
+        "note","deleted_at","reason","view_count");
         $getOrder = $postOrder->orderBy("id","DESC")->limit(9)->get();
         $getOrder->map(function($value) use($memberId){
             $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$value->id)->first();
@@ -177,7 +177,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "category_id","member_id",
         "time","status","created_at",
         "updated_at","nutrition_facts",
-        "note","deleted_at","reason");
+        "note","deleted_at","reason","view_count");
         // dd($request->all());
         if ($request->has('title') && $request->title)
         {
@@ -239,7 +239,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "category_id","member_id",
         "time","status","created_at",
         "updated_at","nutrition_facts",
-        "note","deleted_at","reason");
+        "note","deleted_at","reason","view_count");
         $listMostFavourite = $getFavourite->orderBy("count_favourite","DESC")->limit(3)->get();
         $listMostFavourite->map(function($value) use($memberId){
             $value->duration = strtotime(Carbon::now()->format("Y-m-d H:i:s")) - strtotime(Carbon::parse($value->created_at)->format("Y-m-d H:i:s")); 
@@ -372,7 +372,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         ->groupBy('id','title','content',
         'category_id','note','nutrition_facts',
         'time','member_id','status','created_at',
-        'updated_at','deleted_at','reason')
+        'updated_at','deleted_at','reason',"view_count")
         ->where('posts.id',$id)
         ->first();
 
@@ -387,6 +387,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     {
 
         $memberId = Auth::user()->member->id;
+        $updateView = $this->model->find($id);
+        $updateView->view_count +=1;
+        $updateView->save();
         $postDetail = $this->model->leftjoin("favourites","favourites.post_id","posts.id")
         ->with("PostImage:id,post_id,image","Ingredients","Directions","member")
         ->select([
@@ -398,10 +401,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "category_id","member_id",
         "time","status","created_at",
         "updated_at","nutrition_facts",
-        "note","deleted_at",'reason')
+        "note","deleted_at",'reason',"view_count")
         ->where('posts.id',$id)
         ->first();
-     
         $checkFavourite = Favourite::where('member_id',$memberId)->where('post_id',$postDetail->id)->first();
         if($checkFavourite)
         {
@@ -605,7 +607,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "category_id","member_id",
         "time","status","created_at",
         "updated_at","nutrition_facts",
-        "note","deleted_at",'favourites.member_id','reason')
+        "note","deleted_at",'favourites.member_id','reason',"view_count")
         ->where("favourites.member_id",$memberId)->get();
         foreach($favouritePost as $value)
         {
@@ -642,7 +644,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "category_id","member_id",
         "time","status","created_at",
         "updated_at","nutrition_facts",
-        "note","deleted_at",'reason')
+        "note","deleted_at",'reason',"view_count")
         ->where("posts.member_id",$memberId)->get();
         // foreach($myPost as $value)
         // {
@@ -669,7 +671,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
         "category_id","member_id",
         "time","status","created_at",
         "updated_at","nutrition_facts",
-        "note","deleted_at",'reason')
+        "note","deleted_at",'reason',"view_count")
         ->where("posts.member_id",$id)->limit(5)->get();
         // foreach($YourPost as $value)
         // {

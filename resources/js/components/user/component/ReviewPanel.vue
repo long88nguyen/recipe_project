@@ -92,13 +92,13 @@
                     :border-width="1"
                 />
             </div>
-            <div class="review_side">
+            <!-- <div class="review_side">
                 <label for="">Nhận xét</label>
                 <textarea name="" :rows = "3" id=""
                 class="form-control"  v-model ="rateDetail.review"          
                 ></textarea>
             </div>
-            
+             -->
             <button class="btn btn-success text-center mt-3" @click="updateRate(rateDetail.id)">Đánh giá</button>
           </a-modal>
           <a-modal 

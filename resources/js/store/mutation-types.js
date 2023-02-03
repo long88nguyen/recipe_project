@@ -38,6 +38,10 @@ export const AUTH = {
     SUBMIT: "SUBMIT",
   }
 
+  export const COMMENT = {
+    FECTH_LIST_COMMENT: "FECTH_LIST_COMMENT",
+  }
+
   export const DASHBOOARD = {
     STAR_RATE: "STAR_RATE",
   }

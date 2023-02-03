@@ -49,5 +49,9 @@ class Post extends Model
     {
     return $date->format('Y-m-d H:i:s');
     }
+
+    public function comments(){
+        return $this->hasMany(Comment::class,'post_id')->whereNull('parent_id');
+    }
    
 }

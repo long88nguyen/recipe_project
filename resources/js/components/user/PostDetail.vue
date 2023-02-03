@@ -113,8 +113,7 @@
                    </div>
 
                    <div class="post_feedback">
-                   <rating-panel :id="getPostDetail.id"/>
-
+                    <comment-panel/>
                    </div>
                 </div>
             </a-col>
@@ -124,14 +123,15 @@
                     
                               
                 <div class="post_suggest">
-                    <h4>Bài viết cùng tác giả</h4>
-                    <template v-for="(post,index) in getYourPost" :key="index">
+                    <!-- <h4>Bài viết cùng tác giả</h4> -->
+                    <rating-panel :id="getPostDetail.id"/>
+                    <!-- <template v-for="(post,index) in getYourPost" :key="index">
                     <div class="post_suggest-list">
                         <img :src="post.post_image[0].image" alt="">
                         
                         <div class="post_suggest-content">{{  post.title }}</div>
                     </div>
-                    </template> 
+                    </template>  -->
                 </div>
             </a-col>
         </a-row>
@@ -158,12 +158,12 @@
                 />
             </div>
            
-            <div class="review_side">
+            <!-- <div class="review_side">
                 <label for="">Nhận xét</label>
                 <textarea name="" :rows = "3" id="" v-model="review"
                 class="form-control"            
                 ></textarea>
-            </div>
+            </div> -->
             
             <button class="btn btn-success text-center mt-3" @click="submitRate">Đánh giá</button>
           </a-modal>
@@ -177,6 +177,8 @@ import StarRating from 'vue-star-rating'
 import moment from 'moment'
 import { mapGetters } from 'vuex'
 import RatingPanel from "./component/ReviewPanel.vue"
+import CommentPanel from "./component/CommentPanel.vue"
+
 export default {
     data(){
         return {
@@ -187,17 +189,17 @@ export default {
     },
     components:{
         StarRating,
-        RatingPanel
+        RatingPanel,
+        CommentPanel
     },
     async created(){    
         this.fetchPostDetail();
-        this.getPostYour();
+        // this.getPostYour();
     },
     computed:{
         ...mapGetters({
             getPostDetail:"posts/getPostDetail",
             getPostDetailMember:"posts/getPostDetailMember",
-            getYourPost:"posts/getYourPost",
             idMember:"posts/idCreatePost"
         }),
        

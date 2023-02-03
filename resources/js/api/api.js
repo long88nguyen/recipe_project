@@ -83,7 +83,20 @@ const LIST_ALL_POST_IMAGE = '/api/post-image'
 
 //common
 const LIST_COMMON = '/api/common'; 
+
+//comment
+
+const COMMENT_LIST = '/api/comment/get-comment'
+const COMMENT_CREATE = '/api/comment/post'
+const COMMENT_REPLY = '/api/comment/reply'
 export default {
+
+    //comment
+    COMMENT_LIST,
+    COMMENT_CREATE,
+    COMMENT_REPLY,
+
+
     //common
     LIST_COMMON,
 

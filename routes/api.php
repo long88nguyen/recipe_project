@@ -146,5 +146,13 @@ Route::group(['middleware' => 'auth:api'], function() {
 
     // });
 
+    Route::group(['prefix' => 'comment'], function () {
+        Route::get('/get-comment/{id}',[\App\Http\Controllers\Api\CommentController::class,'getByPostId']);
+        Route::post('/post/{id}',[\App\Http\Controllers\Api\CommentController::class,'Comment']);
+        Route::post('/reply/{id}',[\App\Http\Controllers\Api\CommentController::class,'Reply']);
+        
+
+    });
+
 
 });

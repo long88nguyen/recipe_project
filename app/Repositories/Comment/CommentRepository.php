@@ -12,4 +12,11 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface CommentRepository extends RepositoryInterface
 {
     //
+
+    public function getByPostId($id);
+
+    public function Comment($request,$id);
+
+    public function Reply($request,$id);
+
 }
