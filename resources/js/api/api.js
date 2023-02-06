@@ -89,12 +89,14 @@ const LIST_COMMON = '/api/common';
 const COMMENT_LIST = '/api/comment/get-comment'
 const COMMENT_CREATE = '/api/comment/post'
 const COMMENT_REPLY = '/api/comment/reply'
+const DELETE_COMMENT = '/api/comment/delete'
 export default {
 
     //comment
     COMMENT_LIST,
     COMMENT_CREATE,
     COMMENT_REPLY,
+    DELETE_COMMENT,
 
 
     //common

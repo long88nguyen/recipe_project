@@ -31,4 +31,10 @@ class CommentController extends ApiController
         $result =  $this->commentRepository->Reply($request,$id);
         return $this->sendSuccess($result);
     }
+
+    public function DeleteComment($id)
+    {
+        $result =  $this->commentRepository->DeleteComment($id);
+        return $this->sendSuccess($result);
+    }
 }

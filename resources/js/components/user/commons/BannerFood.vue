@@ -80,8 +80,13 @@
                                 </div>
                             
                                 <h5>{{ post.count_favourite }}</h5>
+                                
+                            </div>
+                            <div class="view_count">
+                                <i class="fa-regular fa-eye"></i> {{ post.view_count }}
                             </div>
                         </div>
+                        
 
                         <div class="member_side">
                             <span>
@@ -355,6 +360,19 @@ export default {
                     h5{
                             line-height: 40px;
                         }
+                }
+                .view_count{
+                    width: 50px;
+                    margin-right: 15px;
+                    margin-top: 4px;
+                    height: 40px;
+                    line-height: 40px;
+                    display: flex;
+                    i{
+                        line-height: 40px;
+                        margin-right: 5px;
+                        
+                    }
                 }
                 
             }

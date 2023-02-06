@@ -60,4 +60,9 @@ class CommentRepositoryEloquent extends BaseRepository implements CommentReposit
         return $this->model->insert($data);
     }
 
+    public function DeleteComment($id)
+    {
+        $this->model->find($id)->delete();
+        $this->model->where('parent_id',$id)->delete();
+    }
 }

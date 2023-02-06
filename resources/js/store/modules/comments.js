@@ -37,4 +37,12 @@ export const actions = {
       async createComment({ commit }, params) {
         await axios.post(api.COMMENT_CREATE + '/' + params.id, params);
     },
-    }
+
+    async createReply({ commit }, params) {
+        await axios.post(api.COMMENT_REPLY + '/' + params.id, params);
+    },
+
+    async deleteComment({ commit }, commentId) {
+        await axios.delete(api.DELETE_COMMENT + '/' + commentId);
+    },
+}

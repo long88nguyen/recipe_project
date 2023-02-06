@@ -499,14 +499,26 @@ var _hoisted_26 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_27 = {
+  "class": "view_count"
+};
+
+var _hoisted_28 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    "class": "fa-regular fa-eye"
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_29 = {
   "class": "member_side"
 };
-var _hoisted_28 = ["src"];
-var _hoisted_29 = {
+var _hoisted_30 = ["src"];
+var _hoisted_31 = {
   "class": "container_showmore"
 };
 
-var _hoisted_30 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "show_more"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Xem thêm bài viết")], -1
@@ -514,25 +526,25 @@ var _hoisted_30 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_31 = {
+var _hoisted_33 = {
   "class": "newfood-container"
 };
 
-var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_34 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Bài viết mới", -1
   /* HOISTED */
   );
 });
 
-var _hoisted_33 = {
+var _hoisted_35 = {
   "class": "newpost_cartd"
 };
-var _hoisted_34 = ["src"];
-var _hoisted_35 = {
+var _hoisted_36 = ["src"];
+var _hoisted_37 = {
   "class": "card_heart"
 };
-var _hoisted_36 = ["onClick"];
-var _hoisted_37 = ["onClick"];
+var _hoisted_38 = ["onClick"];
+var _hoisted_39 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -653,14 +665,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* PROPS */
             , ["rating", "onUpdate:rating"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.count_favourite), 1
             /* TEXT */
-            )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.member.name), 1
+            )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.view_count), 1
+            /* TEXT */
+            )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.member.name), 1
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
               src: post.member.avatar,
               alt: ""
             }, null, 8
             /* PROPS */
-            , _hoisted_28)])])];
+            , _hoisted_30)])])];
           }),
           _: 2
           /* DYNAMIC */
@@ -687,16 +701,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "show-less-items": ""
   }, null, 8
   /* PROPS */
-  , ["current", "total", "page-size", "onChange"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  , ["current", "total", "page-size", "onChange"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/all-post"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_30];
+      return [_hoisted_32];
     }),
     _: 1
     /* STABLE */
 
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_row, null, {
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_row, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.getPostOrder, function (post_order, index) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_a_col, {
@@ -708,7 +722,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           xs: 24
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_carousel, {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_carousel, {
               effect: "fade",
               dotsClass: "slick-dots",
               autoplay: ""
@@ -723,7 +737,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     alt: ""
                   }, null, 8
                   /* PROPS */
-                  , _hoisted_34)]);
+                  , _hoisted_36)]);
                 }), 128
                 /* KEYED_FRAGMENT */
                 ))];
@@ -733,7 +747,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
             }, 1024
             /* DYNAMIC_SLOTS */
-            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [post_order.favouriteable == false ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", {
+            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [post_order.favouriteable == false ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", {
               key: 0,
               "class": "fa-solid fa-heart",
               onClick: function onClick($event) {
@@ -741,7 +755,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               }
             }, null, 8
             /* PROPS */
-            , _hoisted_36)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", {
+            , _hoisted_38)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", {
               key: 1,
               "class": "fa-regular fa-heart",
               onClick: function onClick($event) {
@@ -749,7 +763,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               }
             }, null, 8
             /* PROPS */
-            , _hoisted_37))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+            , _hoisted_39))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
               to: {
                 path: "/postdetail/".concat(post_order.id)
               }
@@ -1226,7 +1240,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".banner_food[data-v-4b3287cc] {\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n}\n.banner_food .banner_food-container[data-v-4b3287cc] {\n  width: 70%;\n  margin: 0 auto;\n}\n.banner_food .banner_food-container .card_item[data-v-4b3287cc] {\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);\n  width: 90%;\n  max-height: 500px;\n  border-radius: 5px;\n  transition: 0.3s;\n  background: white;\n  margin: 10px 0;\n}\n.banner_food .banner_food-container .card_item img[data-v-4b3287cc] {\n  width: 100%;\n  height: 250px;\n  top: 0;\n  position: relative;\n}\n.banner_food .banner_food-container .card_item .card_heart[data-v-4b3287cc] {\n  width: 30px;\n  height: 30px;\n  background: #d54215;\n  position: absolute;\n  top: 15px;\n  left: 10px;\n  font-size: 14px;\n  color: white;\n  border-radius: 50%;\n}\n.banner_food .banner_food-container .card_item .card_heart i[data-v-4b3287cc] {\n  display: flex;\n  justify-content: center;\n  line-height: 30px;\n}\n.banner_food .banner_food-container .card_item .card_category[data-v-4b3287cc] {\n  font-size: 24px;\n  font-weight: 600;\n  margin: 0px 10px 0 10px;\n}\n.banner_food .banner_food-container .card_item .card_category[data-v-4b3287cc]:hover {\n  border-bottom: 1px solid #d54215;\n  transition: 0.5s;\n}\n.banner_food .banner_food-container .card_item .card_title[data-v-4b3287cc] {\n  font-size: 18px;\n  color: rgba(0, 0, 0, 0.65);\n  padding: 20px 0 10px 10px;\n  font-weight: bold;\n}\n.banner_food .banner_food-container .card_item .card-rating[data-v-4b3287cc] {\n  display: flex;\n  justify-content: space-between;\n}\n.banner_food .banner_food-container .card_item .card-rating .rating_side[data-v-4b3287cc] {\n  width: 100%;\n  height: 40px;\n  line-height: 40px;\n  display: flex;\n  padding: 0 15px;\n}\n.banner_food .banner_food-container .card_item .card-rating .rating_side .card_star[data-v-4b3287cc] {\n  padding: 0px 10px 0 10px;\n}\n.banner_food .banner_food-container .card_item .card-rating .rating_side .card_star i[data-v-4b3287cc] {\n  color: #d54215;\n  padding: 0px 5px 0 0;\n}\n.banner_food .banner_food-container .card_item .card-rating .rating_side h5[data-v-4b3287cc] {\n  line-height: 40px;\n}\n.banner_food .banner_food-container .card_item .card-rating .favourite_side[data-v-4b3287cc] {\n  width: 100%;\n  height: 40px;\n  line-height: 40px;\n  display: flex;\n  margin-top: 4px;\n}\n.banner_food .banner_food-container .card_item .card-rating .favourite_side .card_wishlist[data-v-4b3287cc] {\n  padding: 0px 10px 0 10px;\n}\n.banner_food .banner_food-container .card_item .card-rating .favourite_side .card_wishlist i[data-v-4b3287cc] {\n  color: #d54215;\n  padding: 0px 5px 0 0;\n}\n.banner_food .banner_food-container .card_item .card-rating .favourite_side h5[data-v-4b3287cc] {\n  line-height: 40px;\n}\n.banner_food .banner_food-container .card_item .member_side[data-v-4b3287cc] {\n  text-align: end;\n  padding: 10px 15px;\n}\n.banner_food .banner_food-container .card_item .member_side span[data-v-4b3287cc] {\n  margin-right: 10px;\n}\n.banner_food .banner_food-container .card_item .member_side img[data-v-4b3287cc] {\n  width: 30px;\n  height: 30px;\n  border-radius: 15px;\n}\n.banner_food .banner_food-container .card_item[data-v-4b3287cc]:hover {\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.1);\n  transition: 0.3s;\n}\n.banner_food .banner_food-container .container_showmore .show_more[data-v-4b3287cc] {\n  width: 100%;\n  margin-top: 20px;\n  height: 40px;\n  background: #f0f0f0;\n  color: #212529;\n  text-align: center;\n  line-height: 40px;\n  border-radius: 20px;\n}\n.banner_food .banner_food-container .container_showmore .show_more[data-v-4b3287cc]:hover {\n  cursor: pointer;\n  background: #d4d3d3;\n  transition: 0.5s;\n}\n.banner_food .newfood-container[data-v-4b3287cc] {\n  width: 70%;\n  margin: 0 auto;\n  margin-top: 20px;\n}\n.banner_food .newfood-container .newpost_cartd[data-v-4b3287cc] {\n  cursor: pointer;\n  height: 270px;\n  width: 100%;\n  background: none;\n  position: relative;\n}\n.banner_food .newfood-container .newpost_cartd img[data-v-4b3287cc] {\n  border-radius: 10px;\n}\n.banner_food .newfood-container .newpost_cartd span[data-v-4b3287cc] {\n  position: absolute;\n  bottom: 30px;\n  left: 30px;\n  color: white;\n  font-size: 20px;\n}\n.banner_food .newfood-container .newpost_cartd .card_heart[data-v-4b3287cc] {\n  width: 30px;\n  height: 30px;\n  background: #d54215;\n  position: absolute;\n  top: 20px;\n  left: 20px;\n  font-size: 14px;\n  color: white;\n  border-radius: 50%;\n}\n.banner_food .newfood-container .newpost_cartd .card_heart i[data-v-4b3287cc] {\n  display: flex;\n  justify-content: center;\n  line-height: 30px;\n}\n.banner_food .newfood-container .newpost_cartd:hover img[data-v-4b3287cc] {\n  opacity: 0.6;\n  filter: alpha(opacity=40);\n  transition: 0.5s;\n}\n.banner_food .newfood-container .newpost_cartd:hover span[data-v-4b3287cc] {\n  color: black;\n  top: 50%;\n  left: 20%;\n  transition: 0.5s;\n  font-size: 24px;\n  font-weight: bold;\n}\n.banner_food .newfood-container .hello[data-v-4b3287cc] {\n  width: 100%;\n  height: 270px;\n  padding: 10px 10px;\n}\n.banner_food .newfood-container .hello img[data-v-4b3287cc] {\n  width: 100%;\n  height: 100%;\n}\n.filter_container[data-v-4b3287cc] {\n  width: 100%;\n}\n.filter_container .filter_post[data-v-4b3287cc] {\n  width: 70%;\n  margin: 0 auto;\n  margin-top: 20px;\n  margin-bottom: 30px;\n}\n.filter_container .filter_post h5[data-v-4b3287cc] {\n  margin-bottom: 20px;\n}\n.filter_container .filter_post .filter_post-option[data-v-4b3287cc] {\n  width: 100%;\n  height: 40px;\n  display: flex;\n  justify-content: space-between;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item[data-v-4b3287cc] {\n  width: 130px;\n  height: 40px;\n  background: #f1e8e8;\n  border-radius: 20px;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item img[data-v-4b3287cc] {\n  width: 40px;\n  height: 40px;\n  border-radius: 20px;\n  padding: 3px;\n  margin-right: 5px;\n  float: left;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item h5[data-v-4b3287cc] {\n  font-size: 11px;\n  line-height: 40px;\n}\n.filter_container .filter_post .filter_post-option .active[data-v-4b3287cc] {\n  background: #f1734c;\n}\n.filter_container .filter_post .filter_post-option .active h5[data-v-4b3287cc] {\n  color: white;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item[data-v-4b3287cc]:hover {\n  background: #f1734c;\n  cursor: pointer;\n  transition: 0.5s;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item:hover h5[data-v-4b3287cc] {\n  color: white;\n}\n.filter_container .filter_post .filter_post-option .filter_post-more[data-v-4b3287cc] {\n  cursor: pointer;\n  text-align: center;\n  width: 130px;\n  height: 40px;\n  background: rgba(0, 0, 0, 0.2);\n  border-radius: 20px;\n}\n.filter_container .filter_post .filter_post-option .filter_post-more h5[data-v-4b3287cc] {\n  font-size: 13px;\n  font-weight: bold;\n  line-height: 40px;\n}\n@media (max-width: 520px) {\n.filter_container .filter_post[data-v-4b3287cc] {\n    width: 96%;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item[data-v-4b3287cc] {\n    width: 40px;\n    height: 40px;\n    border-radius: 20px;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item .filter_post-title[data-v-4b3287cc] {\n    display: none;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item img[data-v-4b3287cc] {\n    margin: 0;\n    padding: 6px;\n}\n.filter_container .filter_post .filter_post-option .filter_post-more[data-v-4b3287cc] {\n    width: 40px;\n    height: 40px;\n    border-radius: 20px;\n}\n.filter_container .filter_post .filter_post-option .filter_post-more .filter_post-title span[data-v-4b3287cc] {\n    display: none;\n}\n.banner_food .banner_food-container[data-v-4b3287cc] {\n    width: 90%;\n}\n.banner_food .banner_food-container .card_item[data-v-4b3287cc] {\n    width: 100%;\n}\n.banner_food .banner_food-container .card_item img[data-v-4b3287cc] {\n    height: 250px;\n}\n.banner_food .newfood-container[data-v-4b3287cc] {\n    width: 90%;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".banner_food[data-v-4b3287cc] {\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n}\n.banner_food .banner_food-container[data-v-4b3287cc] {\n  width: 70%;\n  margin: 0 auto;\n}\n.banner_food .banner_food-container .card_item[data-v-4b3287cc] {\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);\n  width: 90%;\n  max-height: 500px;\n  border-radius: 5px;\n  transition: 0.3s;\n  background: white;\n  margin: 10px 0;\n}\n.banner_food .banner_food-container .card_item img[data-v-4b3287cc] {\n  width: 100%;\n  height: 250px;\n  top: 0;\n  position: relative;\n}\n.banner_food .banner_food-container .card_item .card_heart[data-v-4b3287cc] {\n  width: 30px;\n  height: 30px;\n  background: #d54215;\n  position: absolute;\n  top: 15px;\n  left: 10px;\n  font-size: 14px;\n  color: white;\n  border-radius: 50%;\n}\n.banner_food .banner_food-container .card_item .card_heart i[data-v-4b3287cc] {\n  display: flex;\n  justify-content: center;\n  line-height: 30px;\n}\n.banner_food .banner_food-container .card_item .card_category[data-v-4b3287cc] {\n  font-size: 24px;\n  font-weight: 600;\n  margin: 0px 10px 0 10px;\n}\n.banner_food .banner_food-container .card_item .card_category[data-v-4b3287cc]:hover {\n  border-bottom: 1px solid #d54215;\n  transition: 0.5s;\n}\n.banner_food .banner_food-container .card_item .card_title[data-v-4b3287cc] {\n  font-size: 18px;\n  color: rgba(0, 0, 0, 0.65);\n  padding: 20px 0 10px 10px;\n  font-weight: bold;\n}\n.banner_food .banner_food-container .card_item .card-rating[data-v-4b3287cc] {\n  display: flex;\n  justify-content: space-between;\n}\n.banner_food .banner_food-container .card_item .card-rating .rating_side[data-v-4b3287cc] {\n  width: 100%;\n  height: 40px;\n  line-height: 40px;\n  display: flex;\n  padding: 0 15px;\n}\n.banner_food .banner_food-container .card_item .card-rating .rating_side .card_star[data-v-4b3287cc] {\n  padding: 0px 10px 0 10px;\n}\n.banner_food .banner_food-container .card_item .card-rating .rating_side .card_star i[data-v-4b3287cc] {\n  color: #d54215;\n  padding: 0px 5px 0 0;\n}\n.banner_food .banner_food-container .card_item .card-rating .rating_side h5[data-v-4b3287cc] {\n  line-height: 40px;\n}\n.banner_food .banner_food-container .card_item .card-rating .favourite_side[data-v-4b3287cc] {\n  width: 100%;\n  height: 40px;\n  line-height: 40px;\n  display: flex;\n  margin-top: 4px;\n}\n.banner_food .banner_food-container .card_item .card-rating .favourite_side .card_wishlist[data-v-4b3287cc] {\n  padding: 0px 10px 0 10px;\n}\n.banner_food .banner_food-container .card_item .card-rating .favourite_side .card_wishlist i[data-v-4b3287cc] {\n  color: #d54215;\n  padding: 0px 5px 0 0;\n}\n.banner_food .banner_food-container .card_item .card-rating .favourite_side h5[data-v-4b3287cc] {\n  line-height: 40px;\n}\n.banner_food .banner_food-container .card_item .card-rating .view_count[data-v-4b3287cc] {\n  width: 50px;\n  margin-right: 15px;\n  margin-top: 4px;\n  height: 40px;\n  line-height: 40px;\n  display: flex;\n}\n.banner_food .banner_food-container .card_item .card-rating .view_count i[data-v-4b3287cc] {\n  line-height: 40px;\n  margin-right: 5px;\n}\n.banner_food .banner_food-container .card_item .member_side[data-v-4b3287cc] {\n  text-align: end;\n  padding: 10px 15px;\n}\n.banner_food .banner_food-container .card_item .member_side span[data-v-4b3287cc] {\n  margin-right: 10px;\n}\n.banner_food .banner_food-container .card_item .member_side img[data-v-4b3287cc] {\n  width: 30px;\n  height: 30px;\n  border-radius: 15px;\n}\n.banner_food .banner_food-container .card_item[data-v-4b3287cc]:hover {\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.1);\n  transition: 0.3s;\n}\n.banner_food .banner_food-container .container_showmore .show_more[data-v-4b3287cc] {\n  width: 100%;\n  margin-top: 20px;\n  height: 40px;\n  background: #f0f0f0;\n  color: #212529;\n  text-align: center;\n  line-height: 40px;\n  border-radius: 20px;\n}\n.banner_food .banner_food-container .container_showmore .show_more[data-v-4b3287cc]:hover {\n  cursor: pointer;\n  background: #d4d3d3;\n  transition: 0.5s;\n}\n.banner_food .newfood-container[data-v-4b3287cc] {\n  width: 70%;\n  margin: 0 auto;\n  margin-top: 20px;\n}\n.banner_food .newfood-container .newpost_cartd[data-v-4b3287cc] {\n  cursor: pointer;\n  height: 270px;\n  width: 100%;\n  background: none;\n  position: relative;\n}\n.banner_food .newfood-container .newpost_cartd img[data-v-4b3287cc] {\n  border-radius: 10px;\n}\n.banner_food .newfood-container .newpost_cartd span[data-v-4b3287cc] {\n  position: absolute;\n  bottom: 30px;\n  left: 30px;\n  color: white;\n  font-size: 20px;\n}\n.banner_food .newfood-container .newpost_cartd .card_heart[data-v-4b3287cc] {\n  width: 30px;\n  height: 30px;\n  background: #d54215;\n  position: absolute;\n  top: 20px;\n  left: 20px;\n  font-size: 14px;\n  color: white;\n  border-radius: 50%;\n}\n.banner_food .newfood-container .newpost_cartd .card_heart i[data-v-4b3287cc] {\n  display: flex;\n  justify-content: center;\n  line-height: 30px;\n}\n.banner_food .newfood-container .newpost_cartd:hover img[data-v-4b3287cc] {\n  opacity: 0.6;\n  filter: alpha(opacity=40);\n  transition: 0.5s;\n}\n.banner_food .newfood-container .newpost_cartd:hover span[data-v-4b3287cc] {\n  color: black;\n  top: 50%;\n  left: 20%;\n  transition: 0.5s;\n  font-size: 24px;\n  font-weight: bold;\n}\n.banner_food .newfood-container .hello[data-v-4b3287cc] {\n  width: 100%;\n  height: 270px;\n  padding: 10px 10px;\n}\n.banner_food .newfood-container .hello img[data-v-4b3287cc] {\n  width: 100%;\n  height: 100%;\n}\n.filter_container[data-v-4b3287cc] {\n  width: 100%;\n}\n.filter_container .filter_post[data-v-4b3287cc] {\n  width: 70%;\n  margin: 0 auto;\n  margin-top: 20px;\n  margin-bottom: 30px;\n}\n.filter_container .filter_post h5[data-v-4b3287cc] {\n  margin-bottom: 20px;\n}\n.filter_container .filter_post .filter_post-option[data-v-4b3287cc] {\n  width: 100%;\n  height: 40px;\n  display: flex;\n  justify-content: space-between;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item[data-v-4b3287cc] {\n  width: 130px;\n  height: 40px;\n  background: #f1e8e8;\n  border-radius: 20px;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item img[data-v-4b3287cc] {\n  width: 40px;\n  height: 40px;\n  border-radius: 20px;\n  padding: 3px;\n  margin-right: 5px;\n  float: left;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item h5[data-v-4b3287cc] {\n  font-size: 11px;\n  line-height: 40px;\n}\n.filter_container .filter_post .filter_post-option .active[data-v-4b3287cc] {\n  background: #f1734c;\n}\n.filter_container .filter_post .filter_post-option .active h5[data-v-4b3287cc] {\n  color: white;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item[data-v-4b3287cc]:hover {\n  background: #f1734c;\n  cursor: pointer;\n  transition: 0.5s;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item:hover h5[data-v-4b3287cc] {\n  color: white;\n}\n.filter_container .filter_post .filter_post-option .filter_post-more[data-v-4b3287cc] {\n  cursor: pointer;\n  text-align: center;\n  width: 130px;\n  height: 40px;\n  background: rgba(0, 0, 0, 0.2);\n  border-radius: 20px;\n}\n.filter_container .filter_post .filter_post-option .filter_post-more h5[data-v-4b3287cc] {\n  font-size: 13px;\n  font-weight: bold;\n  line-height: 40px;\n}\n@media (max-width: 520px) {\n.filter_container .filter_post[data-v-4b3287cc] {\n    width: 96%;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item[data-v-4b3287cc] {\n    width: 40px;\n    height: 40px;\n    border-radius: 20px;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item .filter_post-title[data-v-4b3287cc] {\n    display: none;\n}\n.filter_container .filter_post .filter_post-option .filter_post-item img[data-v-4b3287cc] {\n    margin: 0;\n    padding: 6px;\n}\n.filter_container .filter_post .filter_post-option .filter_post-more[data-v-4b3287cc] {\n    width: 40px;\n    height: 40px;\n    border-radius: 20px;\n}\n.filter_container .filter_post .filter_post-option .filter_post-more .filter_post-title span[data-v-4b3287cc] {\n    display: none;\n}\n.banner_food .banner_food-container[data-v-4b3287cc] {\n    width: 90%;\n}\n.banner_food .banner_food-container .card_item[data-v-4b3287cc] {\n    width: 100%;\n}\n.banner_food .banner_food-container .card_item img[data-v-4b3287cc] {\n    height: 250px;\n}\n.banner_food .newfood-container[data-v-4b3287cc] {\n    width: 90%;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

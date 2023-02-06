@@ -1,6 +1,6 @@
 <template>
     <div class="review_list">
-        <h1>Review ({{totalReview}})</h1>
+        <h1>Đánh giá ({{totalReview}})</h1>
         <div class="rating_infomation">
             <div class="rating_avg">
 
