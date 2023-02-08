@@ -14,9 +14,9 @@ class CommentController extends ApiController
         return $this->commentRepository = $commentRepository;
     }
 
-    public function getByPostId($id)
+    public function getByPostId($id,Request $request)
     {
-        $result =  $this->commentRepository->getByPostId($id);
+        $result =  $this->commentRepository->getByPostId($id,$request);
         return $this->sendSuccess($result);
     }
 

@@ -13,7 +13,7 @@ interface CommentRepository extends RepositoryInterface
 {
     //
 
-    public function getByPostId($id);
+    public function getByPostId($id,$request);
 
     public function Comment($request,$id);
 

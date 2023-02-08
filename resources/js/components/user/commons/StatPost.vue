@@ -1,8 +1,8 @@
 <template>
-    <div class="stat_container">
-        <div class="bigbanner">
+    <div class="">
+        <!-- <div class="bigbanner">
       
-        </div>
+        </div> -->
     </div>
 </template>
 

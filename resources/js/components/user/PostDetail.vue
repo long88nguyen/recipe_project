@@ -23,6 +23,9 @@
                             </div>
                         </div>
                         <div class="post_list_wist">  <i class="fa-regular fa-heart"></i> <span>{{ getPostDetail.count_favourite }}</span></div>
+                        <div class="view_count">
+                                <i class="fa-regular fa-eye"></i> {{ getPostDetail.view_count }}
+                            </div>
                     </div>
                    <div class="post_detail-content">
                     <h5>
@@ -324,6 +327,10 @@ export default {
                }
                .post_list_wist{
                 margin-top:6px;
+               }
+               .view_count{
+                margin-top:6px;
+                margin-left:20px;
                }
             }
 

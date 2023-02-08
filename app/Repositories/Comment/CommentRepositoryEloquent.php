@@ -8,6 +8,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Comment\CommentRepository;
 use App\Validators\Comment\CommentValidator;
+use Carbon\Carbon;
 
 /**
  * Class CommentRepositoryEloquent.
@@ -36,8 +37,18 @@ class CommentRepositoryEloquent extends BaseRepository implements CommentReposit
         $this->pushCriteria(app(RequestCriteria::class));
     }
     
-    public function getByPostId($id){
-        $getCommentbyPost = $this->model->with('replies:id,parent_id,comment,member_id','member:id,avatar','replies.member:id,avatar')->orderBy('id','DESC')->where('post_id',$id)->whereNull('parent_id')->get();
+    public function getByPostId($id,$request){
+        $getCommentbyPost = $this->model
+        ->with('replies:id,parent_id,comment,member_id,created_at,updated_at','member:id,avatar,name','replies.member:id,avatar,name')
+        ->orderBy('id','DESC')
+        ->where('post_id',$id)->whereNull('parent_id')->paginate(5);
+        foreach($getCommentbyPost as $item)
+        {
+            $item->duration = strtotime(Carbon::now()->format("Y-m-d H:i:s")) - strtotime(Carbon::parse($item->created_at)->format("Y-m-d H:i:s")); 
+            foreach($item['replies'] as $value){
+                $value->duration = strtotime(Carbon::now()->format("Y-m-d H:i:s")) - strtotime(Carbon::parse($value->created_at)->format("Y-m-d H:i:s")); 
+            }
+        }
 
         return [
             'getCommentbyPost' => $getCommentbyPost
@@ -48,6 +59,8 @@ class CommentRepositoryEloquent extends BaseRepository implements CommentReposit
         $data['member_id'] = Auth::user()->member->id;
         $data['post_id'] = $id;
         $data['comment'] = $request->comment;
+        $data['created_at'] = Carbon::now();
+        $data['updated_at'] = Carbon::now();
         return $this->model->insert($data);
     }
 
@@ -57,6 +70,8 @@ class CommentRepositoryEloquent extends BaseRepository implements CommentReposit
         $data['post_id'] = $getComment->post_id;
         $data['parent_id'] = $id;
         $data['comment'] = $request->comment;
+        $data['created_at'] = Carbon::now();
+        $data['updated_at'] = Carbon::now();
         return $this->model->insert($data);
     }
 

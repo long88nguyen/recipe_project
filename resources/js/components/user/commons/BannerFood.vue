@@ -363,7 +363,7 @@ export default {
                 }
                 .view_count{
                     width: 50px;
-                    margin-right: 15px;
+                    margin-right: 20px;
                     margin-top: 4px;
                     height: 40px;
                     line-height: 40px;
