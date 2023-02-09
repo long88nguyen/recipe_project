@@ -40,6 +40,7 @@ export const AUTH = {
 
   export const COMMENT = {
     FECTH_LIST_COMMENT: "FECTH_LIST_COMMENT",
+    FECTH_LIST_REPORT: "FECTH_LIST_REPORT",
   }
 
   export const DASHBOOARD = {
