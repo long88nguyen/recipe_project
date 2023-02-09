@@ -9,6 +9,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Comment\CommentRepository;
 use App\Validators\Comment\CommentValidator;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class CommentRepositoryEloquent.
@@ -79,5 +80,20 @@ class CommentRepositoryEloquent extends BaseRepository implements CommentReposit
     {
         $this->model->find($id)->delete();
         $this->model->where('parent_id',$id)->delete();
+    }
+
+    public function reportComment($id){
+        $checkData = $this->model->find($id);
+        $checkData->report +=1;
+        return $checkData->save();
+    }
+
+    public function reportList(){
+        $dataReport = $this->model->select('id','comment','report')->where('report','>','0')->get();
+        $countReport = $this->model->where('report','>','0')->count();
+        return [
+            'dataReport' => $dataReport,
+            'countReport' => $countReport,
+        ];
     }
 }

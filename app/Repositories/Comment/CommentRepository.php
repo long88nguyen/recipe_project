@@ -21,4 +21,8 @@ interface CommentRepository extends RepositoryInterface
 
     public function DeleteComment($id);
 
+    public function reportComment($id);
+
+    public function reportList();
+
 }

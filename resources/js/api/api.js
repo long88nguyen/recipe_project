@@ -90,6 +90,8 @@ const COMMENT_LIST = '/api/comment/get-comment'
 const COMMENT_CREATE = '/api/comment/post'
 const COMMENT_REPLY = '/api/comment/reply'
 const DELETE_COMMENT = '/api/comment/delete'
+const REPORT_LIST = '/api/comment/report-list'
+const REPORT = '/api/comment/report'
 export default {
 
     //comment
@@ -97,6 +99,8 @@ export default {
     COMMENT_CREATE,
     COMMENT_REPLY,
     DELETE_COMMENT,
+    REPORT_LIST,
+    REPORT,
 
 
     //common

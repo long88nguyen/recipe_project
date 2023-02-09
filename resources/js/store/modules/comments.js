@@ -13,10 +13,12 @@ export const state = {
       totalRecord: 0,
       perPage: 0
     },
+    getReport:{},
 }
 
 export const getters = {
     getCommentByPost : state => state.getCommentByPost,
+    getReport : state => state.getReport,
     pagination: state => state.pagination,
 }
 
@@ -31,6 +33,12 @@ export const mutations = {
       state.pagination.currentPage = data.getCommentbyPost.current_page;
       state.pagination.totalRecord = data.getCommentbyPost.total;
       state.pagination.perPage = data.getCommentbyPost.per_page;
+    },
+
+    [types.COMMENT.FECTH_LIST_REPORT](state, data)
+    {
+      state.getReport = data;
+    
     },
 
     // [types.CHAT.FETCH_ROOM_SELECTED](state, data)
@@ -63,6 +71,29 @@ export const actions = {
     async createReply({ commit }, params) {
         await axios.post(api.COMMENT_REPLY + '/' + params.id, params);
     },
+
+    async report({ commit }, commentId) {
+      await axios.get(api.REPORT + '/' + commentId);
+  },
+
+
+  //   async getReport({ commit }, params) {
+  //     await axios.get(api.REPORT_LIST);
+  //     commit(
+  //       types.COMMENT.FECTH_LIST_REPORT,
+  //       response.data.data
+  //     );
+  //  },
+
+   async getReport({ commit }, payload) {
+    const response = await axios.get(
+      api.REPORT_LIST 
+    );
+    commit(
+      types.COMMENT.FECTH_LIST_REPORT,
+      response.data.data
+    );
+  },
 
     async deleteComment({ commit }, commentId) {
         await axios.delete(api.DELETE_COMMENT + '/' + commentId);

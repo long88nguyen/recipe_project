@@ -6,12 +6,16 @@
                 <img :src="userCommon.avatar" alt="" class="avatar_img">
             </div>
             
-            <input type="text" placeholder="Nhập bình luận ..." v-model="comment" @keyup.enter="StoreComment">
+            <input type="text" placeholder="Nhập bình luận ..." v-model="comment" @keyup.enter="StoreComment" @blur="reset()">
+           
             <!-- <div class="img_send">
                 <img src="../../../uploads/send.png" alt="" class="send_img" @click="StoreComment">
             </div> -->
             
         </div>
+        <div class="validate">{{ 
+                errMessage
+            }}</div>
 
         <template v-for="(comment,index) in getCommentByPost.data" :key="index">
             <div class="comment_content">
@@ -33,12 +37,14 @@
                 <!-- {{  comment.replies.length }} -->
                 <span  class="hide_show_text" v-if = "isShowReplies == false && comment.replies.length > 0" @click="showReplies(comment.id)">{{ comment.replies.length }} Phản hồi </span>
                 <span  class="hide_show_text" v-if = "isShowReplies && IdcommentShowReplies == comment.id" @click="hideReplies((comment.id))">Ẩn phản hồi</span>
-                <span class="reply_text" @click="showInputReply((comment.id))">Trả lời</span>
+                <span class="reply_text" @click="showInputReply((comment.id))">Phản hồi</span>
                 <span class="delele_text" @click="deleteComment(comment.id)" v-if="userCommon.id == comment.member.id || userCommon.user_member.is_admin == 1">Xóa</span>
+                <span class="report_text" @click="reportComment(comment.id)">Báo cáo</span>
                 <span class="duration_text" v-if = "comment.duration > 86400"> {{ Math.round(comment.duration/86400) }} ngày</span> 
                 <span class="duration_text" v-else-if = "comment.duration < 86400 && comment.duration > 3600"> {{ Math.round(comment.duration/3600) }} giờ</span> 
                 <span class="duration_text" v-else-if = "comment.duration < 3600 && comment.duration > 60"> {{ Math.round(comment.duration/60) }} phút</span> 
                 <span class="duration_text" v-else-if = "comment.duration < 60"> Vừa xong</span> 
+                
             </div>
             <div v-show="isShowReplies && IdcommentShowReplies == comment.id">
                 <template v-for="(replie,index) in comment.replies" :key="index">
@@ -57,10 +63,12 @@
                 </div>
                 <div class="comment_content_icon_reply">
                     <span class="delele_text" @click="deleteComment(replie.id)" v-if="userCommon.id == replie.member.id || userCommon.user_member.is_admin == 1">Xóa</span>
+                    <span class="report_text">Báo cáo</span>
                     <span class="duration_text" v-if = "replie.duration > 86400"> {{ Math.round(replie.duration/86400) }} ngày</span> 
                     <span class="duration_text" v-else-if = "replie.duration < 86400 && replie.duration > 3600"> {{ Math.round(replie.duration/3600) }} giờ</span> 
                     <span class="duration_text" v-else-if = "replie.duration < 3600 && replie.duration > 60"> {{ Math.round(replie.duration/60) }} phút</span> 
                     <span class="duration_text" v-else-if = "replie.duration < 60"> Vừa xong</span> 
+                   
             </div>
             </template> 
             </div>
@@ -72,13 +80,16 @@
                     <img :src="userCommon.avatar" alt="" class="avatar_img">
                 </div>
                 
-                <input type="text" placeholder="Nhập câu trả lời ..." v-model="commentReply" @keyup.enter="storeReply(comment.id)">
+                <input type="text" placeholder="Nhập câu trả lời ..." v-model="commentReply" @keyup.enter="storeReply(comment.id)" @blur="reset()">
                 <!-- <div class="img_send">
                     <img src="../../../uploads/send.png" alt="" class="send_img" @click="storeReply(comment.id)">
                 </div> -->
             </div>
-            </Transition>
             
+            </Transition>
+            <!-- <div class="validate_reply">{{ 
+                errMessageReply
+            }}</div> -->
         </div>
         </template>
        
@@ -90,6 +101,20 @@
         :page-size="Number(searchData.paginate.perPage)" 
         @change = "changePage"
         show-less-items />
+
+        <a-modal 
+               class="add-timesheet-modal"
+               v-model:visible="visible" title="Báo cáo bình luận" 
+               @ok="handleOk"
+               :footer = null
+               centered
+               >
+             <h5>Bạn có muốn báo cáo bình luận này không ?</h5>
+
+             <button class="btn btn-primary" @click="confirmReport">Xác nhận</button>
+             <button class="btn btn-danger" @click="handleOk" style="margin-left:10px">Hủy</button>
+               
+        </a-modal>
         
     </div>
 
@@ -100,7 +125,11 @@ import { mapGetters } from 'vuex'
 export default {
     data(){
         return {
+            visible:false,
+            commentId:null,
             comment:"",
+            errMessage:'',
+            errMessageReply:'',
             isReplyInput:false,
             commentId:null,
             commentReply:"",
@@ -135,6 +164,40 @@ export default {
     },
    
     methods:{
+        reset(){
+            this.errMessageReply = '',
+            this.errMessage = '';
+        },
+        validateReply(){
+            this.errMessageReply = '';
+            let isValid = true;
+            if(!this.commentReply)
+            {
+                this.errMessageReply = "Vui lòng nhập bình luận của bạn",
+                isValid = false;
+            }
+            if(this.commentReply.length > 255)
+            {
+                this.errMessageReply = "Bình luận của bạn quá dài (tối đa 255 ký tự)",
+                isValid = false;
+            }
+            return isValid;
+        },
+        validate(){
+            this.errMessage = '';
+            let isValid = true;
+            if(!this.comment)
+            {
+                this.errMessage = "Vui lòng nhập bình luận của bạn",
+                isValid = false;
+            }
+            if(this.comment.length > 255)
+            {
+                this.errMessage = "Bình luận của bạn quá dài (tối đa 255 ký tự)",
+                isValid = false;
+            }
+            return isValid;
+        },
         async dataComment(){
             await this.$store.dispatch('comments/listPostById',{
                 id:this.$route.params.id,
@@ -146,13 +209,31 @@ export default {
         },
 
         async StoreComment(){
-            await this.$store.dispatch('comments/createComment',{
+            if(this.validate())
+            {
+                await this.$store.dispatch('comments/createComment',{
                 id:this.$route.params.id,
                 comment:this.comment,
 
-            }).then(()=>{
+                }).then(()=>{
+                    this.dataComment();
+                    this.comment='';
+                    
+        
+                    
+                }).catch(()=>{
+                    this.$toast.error('Đã xảy ra lỗi!');
+                })
+            }
+          
+        },
+
+        async confirmReport(){
+            await this.$store.dispatch('comments/report',this.commentId).then(()=>{
                 this.dataComment();
-                this.comment='';
+                this.commentId=null;
+                this.$toast.success('Báo cáo bình luận thành công!');
+                this.visible = false;
                 
     
                 
@@ -161,8 +242,20 @@ export default {
             })
         },
 
+        reportComment(value){
+            this.commentId = value;
+            this.visible = true;
+        },
+
+        handleOk(){
+            this.commentId = null;
+            this.visible = false;
+        },
+
         async storeReply(value){
-            await this.$store.dispatch('comments/createReply',{
+            if(this.validateReply())
+            {
+                await this.$store.dispatch('comments/createReply',{
                 id:value,
                 comment:this.commentReply
 
@@ -176,6 +269,8 @@ export default {
             }).catch(()=>{
                 this.$toast.error('Đã xảy ra lỗi!');
             })
+            }
+           
         },
 
         async deleteComment(value)
@@ -210,7 +305,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .comment_list{
     padding: 30px;
     .comment_input{
@@ -343,6 +438,12 @@ export default {
                 font-size:12px;
                 margin-right: 10px;
             }
+            .report_text{
+                color:#65676B;
+                font-weight: bold;
+                font-size:12px;
+                margin-right: 10px;
+            }
             .duration_text{
                 color:#65676B;
                 font-size:12px;
@@ -378,6 +479,12 @@ export default {
                 font-size:12px;
                 margin-right: 10px;
             }
+            .report_text{
+                color:#65676B;
+                font-weight: bold;
+                font-size:12px;
+                margin-right: 10px;
+            }
             .duration_text{
                 color:#65676B;
                 font-size:12px;
@@ -400,6 +507,19 @@ export default {
         }
         
     }
+}
+
+.validate{
+    font-size: 13px;
+    margin-left: 50px;
+    color:red;
+
+}
+.validate_reply{
+    font-size: 13px;
+    margin-left: 85px;
+    color:red;
+
 }
 
 // .slide-fade-enter-active {

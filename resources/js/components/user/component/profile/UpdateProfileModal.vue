@@ -3,7 +3,8 @@
     <form @submit.prevent="updateProfile" enctype="multipart/form-data">
         <div class="form_group">
             <label for="">Tên người dùng</label>
-            <input type="text" class="form-control" v-model="memberDetail.name">
+            <input type="text" class="form-control" v-model="memberDetail.name" @blur="validate()">
+            <div class="validate">{{ errors.name }}</div>
         </div>
 
         <div class="form_group">
@@ -13,7 +14,8 @@
 
         <div class="form_group">
             <label for="">Số điện thoại</label>
-            <input type="text" class="form-control" v-model="memberDetail.phone">
+            <input type="text" class="form-control" v-model="memberDetail.phone" @blur="validate()">
+            <div class="validate">{{ errors.phone }}</div>
         </div>
         <div class="form-group">
             <label for="">Giới tính</label>
@@ -69,6 +71,10 @@ export default {
                 gender:"",
 
             },
+            errors:{
+                name:"",
+                phone:"",
+            },
             imagePreview: null,
             showPreview: false,
         }
@@ -83,6 +89,50 @@ export default {
         this.getEditMember();
     },
     methods:{
+        validate(){
+            this.errors = {
+                name:"",
+                phone:"",
+            }
+            let isValid = true
+            // console.log(this.memberDetail.name);
+            if(!this.memberDetail.name)
+            {
+                
+                this.errors.name = 'Vui lòng nhập tên người dùng';
+                isValid = false
+
+            }
+            if(!this.onlyLettersAndSpaces(this.memberDetail.name))
+            {
+                this.errors.name = 'Tên người dùng không hợp lệ';
+                isValid = false
+            }
+            if(this.memberDetail.name.length > 50)
+            {
+                this.errors.name = 'Tên người dùng đã nhập quá dài (tối đa 50 ký tự)';
+                isValid = false
+            }
+            if(!this.memberDetail.phone)
+            {
+                this.errors.phone = 'Vui lòng nhập số điện thoại';
+                isValid = false
+            }
+            if(this.memberDetail.phone.length != 10 )
+            {
+
+                this.errors.phone = 'Số điện thoai đã nhập không không lệ';
+                isValid = false
+            }
+            return isValid
+        },
+        onlyLettersAndSpaces(str) {
+            return /^[A-Za-z0-9\s]*$/.test(str);
+        },
+
+        onlyNumber(str) {
+            return /^[0-9]*$/.test(str);
+        },
         async getEditMember(){
             await this.$store.dispatch('members/getMemberDetail',this.$props.id);
         },
@@ -105,24 +155,27 @@ export default {
             }
         },
         async updateProfile(){
-
-            let formData = new FormData();
-            for(let key in this.forms)
+            if(this.validate())
             {
-                
-                let data = this.memberDetail[key] !== undefined ? this.memberDetail[key] : "";
-                formData.append(key, data);
-            }
-            formData.append('avatar', this.forms.avatar); 
+                let formData = new FormData();
+                for(let key in this.forms)
+                {
+                    
+                    let data = this.memberDetail[key] !== undefined ? this.memberDetail[key] : "";
+                    formData.append(key, data);
+                }
+                formData.append('avatar', this.forms.avatar); 
 
-            await this.$store.dispatch('members/updateMember',formData).then(() => {
-                this.$toast.success("Cập nhập thông tin thành công!");
-                this.$emit("ok");
-                this.$router.push({ path: "/profile" });
-                this.$store.dispatch('common/getUserCommon')
-            }).catch(() =>{
-                this.$toast.error('Đã xảy ra lỗi !');
-            })
+                await this.$store.dispatch('members/updateMember',formData).then(() => {
+                    this.$toast.success("Cập nhập thông tin thành công!");
+                    this.$emit("ok");
+                    this.$router.push({ path: "/profile" });
+                    this.$store.dispatch('common/getUserCommon')
+                }).catch(() =>{
+                    this.$toast.error('Đã xảy ra lỗi !');
+                })
+            }
+         
         } 
     }
 }
@@ -155,6 +208,11 @@ export default {
     }
     .form_group{
             margin:15px 0;
+        }
+        .validate{
+            color: red;
+            margin-top: 5px;
+            font-size: 13px;
         }
 }
 </style>

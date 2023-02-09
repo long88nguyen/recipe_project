@@ -151,6 +151,8 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::post('/post/{id}',[\App\Http\Controllers\Api\CommentController::class,'Comment']);
         Route::post('/reply/{id}',[\App\Http\Controllers\Api\CommentController::class,'Reply']);
         Route::delete('/delete/{id}',[\App\Http\Controllers\Api\CommentController::class,'DeleteComment']);
+        Route::get('/report/{id}',[\App\Http\Controllers\Api\CommentController::class,'reportComment']);
+        Route::get('/report-list',[\App\Http\Controllers\Api\CommentController::class,'reportList']);
         
 
     });
