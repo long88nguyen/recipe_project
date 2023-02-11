@@ -1027,7 +1027,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             id: _ctx.getPostDetail.id
           }, null, 8
           /* PROPS */
-          , ["id"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <template v-for=\"(post,index) in getYourPost\" :key=\"index\">\n                    <div class=\"post_suggest-list\">\n                        <img :src=\"post.post_image[0].image\" alt=\"\">\n                        \n                        <div class=\"post_suggest-content\">{{  post.title }}</div>\n                    </div>\n                    </template>  ")])];
+          , ["id"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <template v-for=\"(post,index) in getYourPost\" :key=\"index\">\r\n                    <div class=\"post_suggest-list\">\r\n                        <img :src=\"post.post_image[0].image\" alt=\"\">\r\n                        \r\n                        <div class=\"post_suggest-content\">{{  post.title }}</div>\r\n                    </div>\r\n                    </template>  ")])];
         }),
         _: 1
         /* STABLE */
@@ -1063,7 +1063,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "border-width": 1
       }, null, 8
       /* PROPS */
-      , ["rating", "onUpdate:rating"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"review_side\">\n                <label for=\"\">Nhận xét</label>\n                <textarea name=\"\" :rows = \"3\" id=\"\" v-model=\"review\"\n                class=\"form-control\"            \n                ></textarea>\n            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , ["rating", "onUpdate:rating"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"review_side\">\r\n                <label for=\"\">Nhận xét</label>\r\n                <textarea name=\"\" :rows = \"3\" id=\"\" v-model=\"review\"\r\n                class=\"form-control\"            \r\n                ></textarea>\r\n            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         "class": "btn btn-success text-center mt-3",
         onClick: _cache[6] || (_cache[6] = function () {
           return $options.submitRate && $options.submitRate.apply($options, arguments);
@@ -1237,7 +1237,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.comment]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"img_send\">\n                <img src=\"../../../uploads/send.png\" alt=\"\" class=\"send_img\" @click=\"StoreComment\">\n            </div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errMessage), 1
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.comment]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"img_send\">\r\n                <img src=\"../../../uploads/send.png\" alt=\"\" class=\"send_img\" @click=\"StoreComment\">\r\n            </div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errMessage), 1
   /* TEXT */
   ), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.getCommentByPost.data, function (comment, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -1354,7 +1354,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           })
         }, null, 40
         /* PROPS, HYDRATE_EVENTS */
-        , _hoisted_37), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.commentReply]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"img_send\">\n                    <img src=\"../../../uploads/send.png\" alt=\"\" class=\"send_img\" @click=\"storeReply(comment.id)\">\n                </div> ")], 512
+        , _hoisted_37), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.commentReply]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"img_send\">\r\n                    <img src=\"../../../uploads/send.png\" alt=\"\" class=\"send_img\" @click=\"storeReply(comment.id)\">\r\n                </div> ")], 512
         /* NEED_PATCH */
         ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.isReplyInput && $data.commentId == comment.id]])];
       }),
@@ -1363,7 +1363,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1024
     /* DYNAMIC_SLOTS */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"validate_reply\">{{ \n                errMessageReply\n            }}</div> ")]);
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"validate_reply\">{{ \r\n                errMessageReply\r\n            }}</div> ")]);
   }), 128
   /* KEYED_FRAGMENT */
   )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_a_pagination, {
@@ -1614,7 +1614,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "border-width": 1
       }, null, 8
       /* PROPS */
-      , ["rating", "onUpdate:rating"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"review_side\">\n                <label for=\"\">Nhận xét</label>\n                <textarea name=\"\" :rows = \"3\" id=\"\"\n                class=\"form-control\"  v-model =\"rateDetail.review\"          \n                ></textarea>\n            </div>\n             "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , ["rating", "onUpdate:rating"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"review_side\">\r\n                <label for=\"\">Nhận xét</label>\r\n                <textarea name=\"\" :rows = \"3\" id=\"\"\r\n                class=\"form-control\"  v-model =\"rateDetail.review\"          \r\n                ></textarea>\r\n            </div>\r\n             "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         "class": "btn btn-success text-center mt-3",
         onClick: _cache[1] || (_cache[1] = function ($event) {
           return $options.updateRate(_ctx.rateDetail.id);
@@ -1839,7 +1839,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PostDetail_vue_vue_type_template_id_c7f8280c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostDetail.vue?vue&type=template&id=c7f8280c */ "./resources/js/components/user/PostDetail.vue?vue&type=template&id=c7f8280c");
 /* harmony import */ var _PostDetail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostDetail.vue?vue&type=script&lang=js */ "./resources/js/components/user/PostDetail.vue?vue&type=script&lang=js");
 /* harmony import */ var _PostDetail_vue_vue_type_style_index_0_id_c7f8280c_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostDetail.vue?vue&type=style&index=0&id=c7f8280c&lang=scss */ "./resources/js/components/user/PostDetail.vue?vue&type=style&index=0&id=c7f8280c&lang=scss");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1847,7 +1847,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PostDetail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostDetail_vue_vue_type_template_id_c7f8280c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/PostDetail.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PostDetail_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostDetail_vue_vue_type_template_id_c7f8280c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/PostDetail.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1870,7 +1870,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CommentPanel_vue_vue_type_template_id_5c562120_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CommentPanel.vue?vue&type=template&id=5c562120&scoped=true */ "./resources/js/components/user/component/CommentPanel.vue?vue&type=template&id=5c562120&scoped=true");
 /* harmony import */ var _CommentPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CommentPanel.vue?vue&type=script&lang=js */ "./resources/js/components/user/component/CommentPanel.vue?vue&type=script&lang=js");
 /* harmony import */ var _CommentPanel_vue_vue_type_style_index_0_id_5c562120_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CommentPanel.vue?vue&type=style&index=0&id=5c562120&lang=scss&scoped=true */ "./resources/js/components/user/component/CommentPanel.vue?vue&type=style&index=0&id=5c562120&lang=scss&scoped=true");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1878,7 +1878,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_CommentPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CommentPanel_vue_vue_type_template_id_5c562120_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-5c562120"],['__file',"resources/js/components/user/component/CommentPanel.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_CommentPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CommentPanel_vue_vue_type_template_id_5c562120_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-5c562120"],['__file',"resources/js/components/user/component/CommentPanel.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1901,7 +1901,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ReviewPanel_vue_vue_type_template_id_66e19ba1_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReviewPanel.vue?vue&type=template&id=66e19ba1&scoped=true */ "./resources/js/components/user/component/ReviewPanel.vue?vue&type=template&id=66e19ba1&scoped=true");
 /* harmony import */ var _ReviewPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReviewPanel.vue?vue&type=script&lang=js */ "./resources/js/components/user/component/ReviewPanel.vue?vue&type=script&lang=js");
 /* harmony import */ var _ReviewPanel_vue_vue_type_style_index_0_id_66e19ba1_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReviewPanel.vue?vue&type=style&index=0&id=66e19ba1&lang=scss&scoped=true */ "./resources/js/components/user/component/ReviewPanel.vue?vue&type=style&index=0&id=66e19ba1&lang=scss&scoped=true");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1909,7 +1909,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_ReviewPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ReviewPanel_vue_vue_type_template_id_66e19ba1_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-66e19ba1"],['__file',"resources/js/components/user/component/ReviewPanel.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_ReviewPanel_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ReviewPanel_vue_vue_type_template_id_66e19ba1_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-66e19ba1"],['__file',"resources/js/components/user/component/ReviewPanel.vue"]])
 /* hot reload */
 if (false) {}
 

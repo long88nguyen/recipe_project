@@ -1032,7 +1032,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
         }, 1024
         /* DYNAMIC_SLOTS */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a-col :xxl=\"6\" :xl=\"6\" :lg=\"8\" :md=\"12\" :xs=\"24\">\n                <div \n                    class=\"card_item\">\n                        <img :src=\"post.post_image[0].image\" alt=\"\" class=\"card_img\">\n                        <div class=\"card_status confirm\" v-if=\"post.status == 2\">\n                            <span>Đã duyệt</span>\n                        </div>\n                        <div class=\"card_status pending\" v-if=\"post.status == 1\">\n                            <span>Đang chờ</span>\n                        </div>\n                        <div class=\"card_status reject\" v-if=\"post.status == 3\">\n                            <span>Từ chối</span>\n                        </div>\n                        <router-link\n                        :to=\"{\n                          path: `/postdetail/${post.id}`\n                        }\">\n                        <h5 class=\"card_title\">\n                           {{ post.title.substring(0,20) + \"...\"}}\n                        </h5>\n                        <h4 class=\"card_category\">\n                            {{ post.content.substring(0,20) + \"...\" }}\n                        </h4>\n                        </router-link> \n                        <div class=\"card-rating\">\n                            <div class=\"rating_side\">\n                                <div class=\"card_star\">\n                                    <i class=\"fa-solid fa-star\"></i>\n                                </div>\n                            \n                                <h5>{{ post.number_rating }}</h5>\n                            </div>\n                            <div class=\"favourite_side\">\n                                <div class=\"card_wishlist\">\n                                    <i class=\"fa-regular fa-heart\"></i>\n                                </div>\n                            \n                                <h5>{{ post.count_favourite }}</h5>\n                            </div>\n                        </div>\n                        <div class=\"card_action\">\n                            <router-link v-if=\"post.status == 1\"\n                                :to=\"{\n                                path: `/update-post/${post.id}`\n                                }\">\n                            <i class=\"fa-solid fa-pen-to-square blue\"></i>\n                            </router-link >\n\n                            <i class=\"fa-solid fa-trash red\" @click=\"openConfirm(post.id)\"></i>\n                        </div>\n                   </div>   \n        </a-col> ")], 64
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a-col :xxl=\"6\" :xl=\"6\" :lg=\"8\" :md=\"12\" :xs=\"24\">\r\n                <div \r\n                    class=\"card_item\">\r\n                        <img :src=\"post.post_image[0].image\" alt=\"\" class=\"card_img\">\r\n                        <div class=\"card_status confirm\" v-if=\"post.status == 2\">\r\n                            <span>Đã duyệt</span>\r\n                        </div>\r\n                        <div class=\"card_status pending\" v-if=\"post.status == 1\">\r\n                            <span>Đang chờ</span>\r\n                        </div>\r\n                        <div class=\"card_status reject\" v-if=\"post.status == 3\">\r\n                            <span>Từ chối</span>\r\n                        </div>\r\n                        <router-link\r\n                        :to=\"{\r\n                          path: `/postdetail/${post.id}`\r\n                        }\">\r\n                        <h5 class=\"card_title\">\r\n                           {{ post.title.substring(0,20) + \"...\"}}\r\n                        </h5>\r\n                        <h4 class=\"card_category\">\r\n                            {{ post.content.substring(0,20) + \"...\" }}\r\n                        </h4>\r\n                        </router-link> \r\n                        <div class=\"card-rating\">\r\n                            <div class=\"rating_side\">\r\n                                <div class=\"card_star\">\r\n                                    <i class=\"fa-solid fa-star\"></i>\r\n                                </div>\r\n                            \r\n                                <h5>{{ post.number_rating }}</h5>\r\n                            </div>\r\n                            <div class=\"favourite_side\">\r\n                                <div class=\"card_wishlist\">\r\n                                    <i class=\"fa-regular fa-heart\"></i>\r\n                                </div>\r\n                            \r\n                                <h5>{{ post.count_favourite }}</h5>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"card_action\">\r\n                            <router-link v-if=\"post.status == 1\"\r\n                                :to=\"{\r\n                                path: `/update-post/${post.id}`\r\n                                }\">\r\n                            <i class=\"fa-solid fa-pen-to-square blue\"></i>\r\n                            </router-link >\r\n\r\n                            <i class=\"fa-solid fa-trash red\" @click=\"openConfirm(post.id)\"></i>\r\n                        </div>\r\n                   </div>   \r\n        </a-col> ")], 64
         /* STABLE_FRAGMENT */
         );
       }), 128
@@ -1688,7 +1688,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Profile_vue_vue_type_template_id_3cba5490__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Profile.vue?vue&type=template&id=3cba5490 */ "./resources/js/components/user/Profile.vue?vue&type=template&id=3cba5490");
 /* harmony import */ var _Profile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Profile.vue?vue&type=script&lang=js */ "./resources/js/components/user/Profile.vue?vue&type=script&lang=js");
 /* harmony import */ var _Profile_vue_vue_type_style_index_0_id_3cba5490_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Profile.vue?vue&type=style&index=0&id=3cba5490&lang=scss */ "./resources/js/components/user/Profile.vue?vue&type=style&index=0&id=3cba5490&lang=scss");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1696,7 +1696,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Profile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Profile_vue_vue_type_template_id_3cba5490__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/Profile.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Profile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Profile_vue_vue_type_template_id_3cba5490__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/Profile.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1719,7 +1719,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PostFavourite_vue_vue_type_template_id_19054458_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostFavourite.vue?vue&type=template&id=19054458&scoped=true */ "./resources/js/components/user/component/profile/PostFavourite.vue?vue&type=template&id=19054458&scoped=true");
 /* harmony import */ var _PostFavourite_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostFavourite.vue?vue&type=script&lang=js */ "./resources/js/components/user/component/profile/PostFavourite.vue?vue&type=script&lang=js");
 /* harmony import */ var _PostFavourite_vue_vue_type_style_index_0_id_19054458_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostFavourite.vue?vue&type=style&index=0&id=19054458&lang=scss&scoped=true */ "./resources/js/components/user/component/profile/PostFavourite.vue?vue&type=style&index=0&id=19054458&lang=scss&scoped=true");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1727,7 +1727,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PostFavourite_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostFavourite_vue_vue_type_template_id_19054458_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-19054458"],['__file',"resources/js/components/user/component/profile/PostFavourite.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PostFavourite_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostFavourite_vue_vue_type_template_id_19054458_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-19054458"],['__file',"resources/js/components/user/component/profile/PostFavourite.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1750,7 +1750,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PostMine_vue_vue_type_template_id_49b7a574_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostMine.vue?vue&type=template&id=49b7a574&scoped=true */ "./resources/js/components/user/component/profile/PostMine.vue?vue&type=template&id=49b7a574&scoped=true");
 /* harmony import */ var _PostMine_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostMine.vue?vue&type=script&lang=js */ "./resources/js/components/user/component/profile/PostMine.vue?vue&type=script&lang=js");
 /* harmony import */ var _PostMine_vue_vue_type_style_index_0_id_49b7a574_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostMine.vue?vue&type=style&index=0&id=49b7a574&lang=scss&scoped=true */ "./resources/js/components/user/component/profile/PostMine.vue?vue&type=style&index=0&id=49b7a574&lang=scss&scoped=true");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1758,7 +1758,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PostMine_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostMine_vue_vue_type_template_id_49b7a574_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-49b7a574"],['__file',"resources/js/components/user/component/profile/PostMine.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_PostMine_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostMine_vue_vue_type_template_id_49b7a574_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-49b7a574"],['__file',"resources/js/components/user/component/profile/PostMine.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1782,7 +1782,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UpdateProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateProfile.vue?vue&type=script&lang=js */ "./resources/js/components/user/component/profile/UpdateProfile.vue?vue&type=script&lang=js");
 /* harmony import */ var _UpdateProfile_vue_vue_type_style_index_0_id_43f94ce2_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateProfile.vue?vue&type=style&index=0&id=43f94ce2&lang=scss&scoped=true */ "./resources/js/components/user/component/profile/UpdateProfile.vue?vue&type=style&index=0&id=43f94ce2&lang=scss&scoped=true");
 /* harmony import */ var _UpdateProfile_vue_vue_type_style_index_1_id_43f94ce2_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UpdateProfile.vue?vue&type=style&index=1&id=43f94ce2&lang=scss&scoped=true */ "./resources/js/components/user/component/profile/UpdateProfile.vue?vue&type=style&index=1&id=43f94ce2&lang=scss&scoped=true");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1791,7 +1791,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_4__["default"])(_UpdateProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UpdateProfile_vue_vue_type_template_id_43f94ce2_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-43f94ce2"],['__file',"resources/js/components/user/component/profile/UpdateProfile.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_4__["default"])(_UpdateProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UpdateProfile_vue_vue_type_template_id_43f94ce2_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-43f94ce2"],['__file',"resources/js/components/user/component/profile/UpdateProfile.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1814,7 +1814,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UpdateProfileModal_vue_vue_type_template_id_4f846be4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateProfileModal.vue?vue&type=template&id=4f846be4 */ "./resources/js/components/user/component/profile/UpdateProfileModal.vue?vue&type=template&id=4f846be4");
 /* harmony import */ var _UpdateProfileModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateProfileModal.vue?vue&type=script&lang=js */ "./resources/js/components/user/component/profile/UpdateProfileModal.vue?vue&type=script&lang=js");
 /* harmony import */ var _UpdateProfileModal_vue_vue_type_style_index_0_id_4f846be4_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateProfileModal.vue?vue&type=style&index=0&id=4f846be4&lang=scss */ "./resources/js/components/user/component/profile/UpdateProfileModal.vue?vue&type=style&index=0&id=4f846be4&lang=scss");
-/* harmony import */ var _home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1822,7 +1822,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_d_f1_longnv_Recipe_Project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_UpdateProfileModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UpdateProfileModal_vue_vue_type_template_id_4f846be4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/component/profile/UpdateProfileModal.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_recipe_project_recipe_project_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_UpdateProfileModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UpdateProfileModal_vue_vue_type_template_id_4f846be4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/user/component/profile/UpdateProfileModal.vue"]])
 /* hot reload */
 if (false) {}
 
