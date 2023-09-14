@@ -14,5 +14,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        // \App\Models\Favourite::factory(300)->create();
+        // \App\Models\Rate::factory(100)->create();
+        // \App\Models\Post::factory(20)->create();
+        // \App\Models\Ingredient::factory(100)->create();
+        // \App\Models\Category::factory(10)->create();
+        // \App\Models\Direction::factory(100)->create();
+        // \App\Models\PostImage::factory(100)->create();
+        //  \App\Models\Member::factory(10)->create();
+        //  \App\Models\Banner::factory(30)->create();
+         \App\Models\Comment::factory(10)->create();
+
+        // $this->call([
+        //     ChatRoomSeeder::class,
+        //     AdminPermissionSeeder::class
+        // ]);
     }
 }

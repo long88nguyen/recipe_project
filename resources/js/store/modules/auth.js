@@ -1,12 +1,13 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import * as types from "../mutation-types";
-// import api from "@/api/api";
-const api = "http://localhost:8087/api"
+import api from "../../api/api";
+// const api = "http://localhost:8000/api"
 
 export const state = {
-  token: Cookies.get("access_token"),
+  token: Cookies.get("access_token") ? Cookies.get("access_token") : '',
   account: [],
+  accountInfo:null,
   redirectPath: "",
   callback: null
 };
@@ -15,14 +16,16 @@ export const state = {
 export const getters = {
   token: state => state.token,
   account: state => state.account,
-  callback: state => state.callback
+  callback: state => state.callback,
+  accountInfo: state => state.accountInfo
 };
 
 // mutations
 export const mutations = {
   [types.AUTH.AUTH_LOGIN](state, account) {
     state.token = account.data.access_token;
-    let cookieOptions = { expires: account.data.expires_in / 86400 }
+    state.account = account.data
+    let cookieOptions = { expires: account.data.expires_in / 86400  }
     Cookies.set("access_token", account.data.access_token, cookieOptions);
   },
 
@@ -37,13 +40,14 @@ export const mutations = {
   [types.AUTH.AUTH_REFRESH_TOKEN](state, account) {
     state.token = account.data.token;
     Cookies.set("access_token", account.data.token, {
-      expires: account.data.expires_in
+      expires: account.data.expires_in  / 86400
 
     });
   },
 
-  [types.AUTH.FETCH_AUTH](state, account) {
-    state.account = account;
+  [types.AUTH.FETCH_AUTH](state, data) {
+    state.accountInfo = data;
+    // console.log(state.accountInfo);
   },
   [types.AUTH.SET_PATH](state, path) {
     state.redirectPath = path;
@@ -59,7 +63,7 @@ export const actions = {
   login({ commit }, accounts) {
     return new Promise((resolve, reject) => {
       axios
-        .post(api+"/login", accounts)
+        .post(api.LOGIN, accounts)
         .then(response => {
           commit(types.AUTH.AUTH_LOGIN, response);
           resolve(response);
@@ -72,6 +76,11 @@ export const actions = {
 
   logout({ commit }) {
     commit(types.AUTH.AUTH_LOGOUT, { status: 200 });
+  },
+
+  async register({ commit }, params) {
+    let url = api.REGISTER;
+    await axios.post(url, params);
   },
 
 //   refreshToken({ commit }) {
@@ -88,9 +97,13 @@ export const actions = {
 //     });
 //   },
 
-//   accountInfo({ commit }) {
-//     if (state.account.length === 0) {
-//       return new Promise((resolve, reject) => {
+   async getAccountInfo({ commit },payload) {
+    const response =  await axios.get(api.ACCOUNT);
+    commit(types.AUTH.FETCH_AUTH, response.data.data);
+  },
+//  async accountInfo({ commit }) {
+    
+//       await 
 //         axios
 //           .get(api.ACCOUNT)
 //           .then(response => {
@@ -100,8 +113,6 @@ export const actions = {
 //           .catch(error => {
 //             reject(error);
 //           });
-//       });
-//     }
 //   },
 
   // eslint-disable-next-line

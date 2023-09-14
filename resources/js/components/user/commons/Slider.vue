@@ -1,34 +1,59 @@
 <template>
+
     <div class="slider_container">
+
         <div class="slider_food">
           <a-carousel 
           effect="fade"
           dotsClass = "slick-dots"
           autoplay>
+          <template v-for="(image,index) in getBannerUser" :key="index">
             <div class="hello">
-              <img src="../../../uploads/images/banner2.jpg" alt="">
+              <img :src="image.image" alt="">
             </div>
-            <div class="hello"><img src="../../../uploads/images/banner3.jpg" alt=""></div>
-            <div class="hello"><img src="../../../uploads/images/banner4.jpg" alt=""></div>
-            <div class="hello"><img src="../../../uploads/images/banner5.jpg" alt=""></div>
+
+          </template>
+            
+            <!-- <div class="hello"><img src="../../../uploads/images/banner2.png" alt=""></div>
+            <div class="hello"><img src="../../../uploads/images/banner3.png" alt=""></div>
+            <div class="hello"><img src="../../../uploads/images/banner4.png" alt=""></div> -->
           </a-carousel>
          
             <div class="new-product">
               <a-row>
                 <a-col :xxl="12" :xl="12" :lg="12" :md="24" :xs="24">
                   <div class="slider_video">
-                    <video autoplay="" loop="" playsinline="" muted="" class="mntl-gif__video card__img universal-image__image"  aria-label="Allrecipes Top 10 Recipes of All Time"
-                      data-src="https://www.allrecipes.com/thmb/vcm8Ff7c96TR72MKiD1SHTPjnYw=/800x533/filters:gifv(webm)/top_10-a764d3b60a8e418092a46685861edf06.gif" 
-                      src="https://www.allrecipes.com/thmb/vcm8Ff7c96TR72MKiD1SHTPjnYw=/800x533/filters:gifv(webm)/top_10-a764d3b60a8e418092a46685861edf06.gif">
-                      </video>
+                    <img src="../../../uploads/images/banner.jpg" alt="">
+                    <router-link to="/all-post" class="btn-explorer">
+                      Khám phá ngay !!!
+                    </router-link>
+                    <div class="slogan_food">
+                      Cùng tạo ra những món ăn <sub>cho riêng bạn</sub>  <i class="fa-solid fa-bowl-food"></i>
+                    </div>
                   </div>
                 </a-col>
                 <a-col :xxl="12" :xl="12" :lg="12" :md="24" :xs="24">
                   <div class="slider_intro">
-                      <h1>Khám phá món ăn trên khắp thế giới</h1>
-                      
-                     
-                        <button>Xem ngay</button>
+                      <h1>Thịnh hành</h1>
+                      <div class="most_favourite">
+                        <template v-for = "(post,index) in getMostFavourite" :key="index">
+                          <div class="favourite_item">
+                            <img :src="post.post_image[0].image" alt="" class="rounded">
+                            <div class="favourite_content">
+                              <router-link 
+                                :to="{
+                                path: `/postdetail/${post.id}`
+                                }" >
+                              <h4 class="favourite_title">{{ post.title }}</h4>
+                              </router-link>
+                              <h6 v-if = "post.duration > 86400"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/86400) }} ngày trước</h6> 
+                              <h6 v-else-if = "post.duration < 86400 && post.duration > 3600"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/3600) }} giờ trước</h6> 
+                              <h6 v-else-if = "post.duration < 3600"><i class="fa-regular fa-clock"></i> {{ Math.round(post.duration/60) }} phút trước</h6> 
+                            </div>
+                          </div>
+                        </template> 
+                      </div>
+                  
                         
                   </div>
                   
@@ -42,6 +67,7 @@
 </template>
   
 <script>
+import { mapGetters } from 'vuex'
  export default {
     data() {
       return {
@@ -50,7 +76,21 @@
         isFavourite:false,
       }
     },
+   
+    created(){
+      this.getDataBanner();
+      // this.$store.dispatch('posts/getAllPost')
+    },
+    computed:{
+       ...mapGetters({
+        getMostFavourite : "posts/getMostFavourite",
+        getBannerUser:'banners/getBannerUser'
+       })
+    },
     methods: {
+      async getDataBanner(){
+        await this.$store.dispatch('banners/getBannersUser')
+      },
       onContext(ctx) {
         this.context = ctx
       },
@@ -61,20 +101,19 @@
 <style lang="scss" >
 
 .slider_container{
+   padding-top: 200px;
    width: 100%;
     .slider_food
     {
         width: 70%;
         margin:0 auto;
-        margin-top:200px ;
         .hello{
           text-align: center;
-          height: 200px;
+          height: 300px;
           line-height: 160px;
           background: #364d79;
           overflow: hidden;
           border-radius:5px;
-          position: relative;
           img{
             width: 100%;
             height: 100%;
@@ -97,14 +136,77 @@
           .slider_video{
             width: 100%;
             height: 100%;
-            video{
-            width: 90%;
-            height: 90%;
+            img{
+            width: 100%;
+            height: 100%;
+            position: relative;
             }
+            .btn-explorer{
+              position: absolute;
+              top: 60%;
+              right: 40%;
+              width: 150px;
+              height: 40px;
+              line-height: 40px;
+              text-align: center;
+              border: none;
+              border-radius: 20px;
+              background: #d54215;
+              color: white;
+              font-weight: bold;
+            }
+            .btn-explorer:hover{
+              color:black;
+              background: white;
+              transition:0.5s;
+            }
+            .slogan_food{
+              position: absolute;
+              top: 35%;
+              right: 20%;
+              font-family: 'Dancing Script';
+              font-size: 27px;
+              font-weight: bold;
+              padding: 10px;
+              color: white;
+              sub{
+                font-family: 'Dancing Script';
+              }
+            }
+            
           }
           .slider_intro
           {
-            position: absolute;
+            background: #f5f6ea;
+            padding: 20px;
+            width: 100%;
+                height: 100%;
+            .most_favourite{
+              font-family: Arial, Helvetica, sans-serif;
+              .favourite_item{
+                padding: 5px 0;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                img{
+                  width: 100px;
+                  height: 100px;
+                  border-radius: 50px;
+                }
+                .favourite_content{
+                  margin-left: 20px;
+                  h4{
+                    width: 100%;
+                  }
+                  .favourite_title:hover{
+                    border-bottom: 1px solid #d54215;
+                    transition: 0.5s;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
             h1{
               font-size: 24px;
               font-family: 'Roboto', sans-serif;
@@ -131,5 +233,20 @@
           }
        }     
     }
+}
+
+@media (max-width : 414px) {
+  .slider_container{
+    .slider_food{
+      width: 96%;
+      .new-product{
+        .slider_video{
+          .btn-explorer{
+            right: 31%;
+          }
+        }
+      }
+    }
+  }
 }
 </style>

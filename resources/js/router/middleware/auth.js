@@ -9,13 +9,15 @@ export default async function auth({
   const tokenStore = store.getters["auth/token"];
   const account = store.getters["auth/account"];
   const requiredAuth = to.matched.some(record => record.meta.requiresAuth);
+  
   if (requiredAuth) {
     if (!token && !tokenStore) {
       next({
         path: "/login"
       });
     } else if (token && tokenStore) {
-    //   await store.dispatch("auth/accountInfo");
+      await store.dispatch("common/getUserCommon");
+
     }
     next();
   } else {
@@ -28,3 +30,4 @@ export default async function auth({
   }
   next();
 }
+

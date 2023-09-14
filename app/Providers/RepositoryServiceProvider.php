@@ -17,6 +17,51 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Category\CategoryRepository::class,
             \App\Repositories\Category\CategoryRepositoryEloquent::class
         );
+
+        $this->app->bind(
+            \App\Repositories\Post\PostRepository::class,
+            \App\Repositories\Post\PostRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Rate\RateRepository::class,
+            \App\Repositories\Rate\RateRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Favourite\FavouriteRepository::class,
+            \App\Repositories\Favourite\FavouriteRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Ingredient\IngredientRepository::class,
+            \App\Repositories\Ingredient\IngredientRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Direction\DirectionRepository::class,
+            \App\Repositories\Direction\DirectionRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\PostImage\PostImageRepository::class,
+            \App\Repositories\PostImage\PostImageRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Comment\CommentRepository::class,
+            \App\Repositories\Comment\CommentRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Member\MemberRepository::class,
+            \App\Repositories\Member\MemberRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Banner\BannerRepository::class,
+            \App\Repositories\Banner\BannerRepositoryEloquent::class
+        );
     }
 
     /**

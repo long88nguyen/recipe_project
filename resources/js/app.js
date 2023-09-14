@@ -4,13 +4,9 @@ import Vue from 'vue'
 import { createApp } from "vue"
 import AppVue from "./AppVue.vue"
 import store from "./store";
-
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap"
-
+import Toaster from '@meforma/vue-toaster';
+import VueSocialSharing from 'vue-social-sharing'
+import "../css/app.css"
 import router from './router'
 
 import Antd from "ant-design-vue";
@@ -22,7 +18,13 @@ app.component('app-vue',AppVue)
 
 app.use(Antd)
 
+app.use(Toaster,{
+    position:"top",
+    duration:2000
+})
+
 app.use(store)
+app.use(VueSocialSharing)
 
 app.use(router)
 

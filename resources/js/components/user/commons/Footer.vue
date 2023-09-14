@@ -1,8 +1,8 @@
 <template>
   <div class="footer_side">
         <h1 class="footer-title">
-            <img src="../../../uploads/images/logo_foot.png" alt="">
-                Good food
+            <img src="../../../uploads/images/logofood.png" alt="">
+                World Recipes
         </h1>
         <ul class="footer-network">
             <i class="fa-brands fa-instagram"></i>
@@ -11,7 +11,7 @@
             <i class="fa-brands fa-google"></i>
             <i class="fa-brands fa-youtube"></i>
         </ul>
-        <h4>2022 &copy; by Long</h4>
+        <h4>2022 &copy; by Nguyen Van Long</h4>
   </div>
 </template>
 

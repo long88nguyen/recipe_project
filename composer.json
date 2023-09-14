@@ -6,13 +6,18 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "aws/aws-sdk-php": "^3.257",
+        "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
         "laravel/passport": "*",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "league/flysystem-aws-s3-v3": "*",
+        "myclabs/php-enum": "^1.8",
         "prettus/l5-repository": "^2.8",
+        "pusher/pusher-php-server": "^7.2",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
@@ -28,7 +33,11 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/FormatHelper.php", 
+            "app/Helpers/ImageHelper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -48,6 +57,10 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [ 
+            "chmod -R 777 storage", 
+            "php artisan passport:keys"
         ]
     },
     "extra": {
@@ -62,4 +75,5 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true
+   
 }

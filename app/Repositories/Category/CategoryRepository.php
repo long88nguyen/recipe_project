@@ -11,13 +11,16 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface CategoryRepository extends RepositoryInterface
 {
-    public function index();
+    public function getAll($request);
 
-    public function store($data);
+    public function store($request);
 
     public function show($id);
 
-    public function updateCategory($id,$data);
+    public function updateCategory($id,$requets);
 
     public function delete($id);
+
+    public function getPostByCategory($request);
+
 }

@@ -1,0 +1,175 @@
+<template>
+    <div class="post_detail_approve">
+        <div class="post_description">
+            <div class="post_layout post_by">
+                <div class="member_name"> 
+                    <i class="fa-regular fa-user"></i> {{ memberPost.name}}
+                </div>
+                <div class="created_at">
+                    <i class="fa-solid fa-clock"></i>  {{  showApprove.created_at }}
+                </div>
+            </div>
+            <div class="post_layout post_image">
+                <div class="image_item">
+                    <template v-for="(image,index) in showApprove.post_image" :key="index">
+                        <img :src="image.image" alt="">
+                    </template>
+                </div>
+               </div> 
+            <div class="post_layout post_title">
+                <label for="">Tiêu đề</label>
+                <input type="text" class="form-control" disabled :value="showApprove.title">
+            </div>
+            <div class="post_layout post_content">
+                <label for="">Mô tả</label>
+                <textarea name="" id="" cols="30" rows="5" class="form-control" disabled :value="showApprove.content" >
+                   
+
+                </textarea>
+            </div>
+            <div class="post_layout post_ingredient">
+                <label for="">Nguyên liệu</label>
+                <!-- {{ showApprove }} -->
+                <template v-for="(ingre,index) in showApprove.ingredients" :key="index">
+                    <input type="text" class="form-control input_direction" disabled  :value="'+ '+ingre.name">
+                </template>
+                
+            </div>
+            <div class="post_layout post_direction">
+                <label for="">Các bước thực hiện</label>
+                <br>
+                <template v-for="(direc,index) in showApprove.directions" :key="index">
+                    <span>Bước {{index+1}}</span>
+                    <textarea name="" id="" cols="30" rows="3"  class="form-control input_ingredient" :value = "direc.description" disabled></textarea>
+                </template>    
+            </div>
+            <div class="post_layout post_time">
+                <label for="">Thời gian thực hiện</label>
+                <input type="text" class="form-control" disabled :value="showApprove.time + ' Phút'">
+            </div>
+            <div class="post_layout post_validate">
+                <label for="">ghi chú</label>
+                <textarea name="" id="" cols="30" rows="3"  class="form-control input_ingredient" v-model="reason" @blur="validate()"></textarea>
+                <div class="validate">{{ messageErr }}</div>
+            </div>
+            <div class="btn_event" v-if = "(showApprove.status == 1)">
+                <button class="btn btn-primary" @click="Approve(2)">Duyệt</button>
+                <button class="btn btn-success" @click="Reject(3)">Tù chối</button>
+            </div>
+        </div>    
+    </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex';
+import axios from "axios";
+
+export default {
+    data(){
+        return{
+            status:null,
+            reason:'',
+            messageErr:'',
+        }
+    },
+    props:["id"],
+    computed:{
+        ...mapGetters({
+            showApprove:"posts/showApprove",
+            memberPost:"posts/getPostDetailMemberAdmin"
+        }),
+    },
+    created()
+    {
+        this.$store.dispatch('posts/getApprovePost',this.$props.id);    
+    },
+    methods:{
+        validate(){
+            this.messageErr = '';
+            let isValid = true;
+            if(this.status == 3 && this.reason == '')
+            {
+                this.messageErr = 'Ghi chú là bắt buộc khi từ chối đơn';
+                isValid = false;
+            }
+            return isValid;
+        },
+        async approvePost()
+        {
+            if(this.validate())
+            {
+                await this.$store.dispatch("posts/updateStatusPost",{
+                id:this.$props.id,
+                status : this.status,
+                reason : this.reason,
+                }).then(() => {
+                    this.$emit("ok");
+                    if(this.status == 2)
+                    {
+                        this.$toast.success("Duyệt bài viết thành công")
+                    }
+                    if(this.status == 3)
+                    {
+                        this.$toast.success("Từ chối bài viết thành công")
+                    }
+                    
+                }).catch(() =>{
+                    this.$toast.error("Đã xảy ra lỗi!");
+                });
+            }
+           
+        },
+        async Approve(status)
+        {
+            this.status = status;
+            this.approvePost();
+        },
+        async Reject(status)
+        {
+            this.status = status;
+            this.approvePost();
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.post_detail_approve{
+    .post_description{
+        padding:10px;
+        .post_layout{
+            margin: 15px 0px;
+        }
+        .post_image{
+            .image_item{
+                img{
+                width: 50%;
+                height: 200px;
+            }
+            }
+            
+        }
+        .input_ingredient{
+            margin:5px 0px;
+        }
+        .input_direction{
+            margin:5px 0px;
+        }
+        .btn_event{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .post_validate
+        {
+            .validate{
+                color:red;
+            }
+        }
+        
+    }
+}
+
+.ant-modal{
+    width:700px !important;
+}
+</style>

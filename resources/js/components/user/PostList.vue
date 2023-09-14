@@ -5,7 +5,7 @@
             <a-row>
                 <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item">
-                        <img src="../../uploads/images/meatfood1.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -31,7 +31,7 @@
                 </a-col>
                 <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item">
-                        <img src="../../uploads/images/eggfood1.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -56,7 +56,7 @@
                    </div>    
                 </a-col><a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item">
-                        <img src="../../uploads/images/eggfood2.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -81,7 +81,7 @@
                    </div>    
                 </a-col><a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item">
-                        <img src="../../uploads/images/eggfood.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -107,7 +107,7 @@
                 </a-col>
                 <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item">
-                        <img src="../../uploads/images/ckfood1.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -133,7 +133,7 @@
                 </a-col>
                 <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item">
-                        <img src="../../uploads/images/ckfood2.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -159,7 +159,7 @@
                 </a-col>
                 <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item">
-                        <img src="../../uploads/images/ckfood3.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -185,7 +185,7 @@
                 </a-col>
                 <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item" >
-                        <img src="../../uploads/images/meatfood.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -211,7 +211,7 @@
                 </a-col>
                 <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item" >
-                        <img src="../../uploads/images/fishfood1.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -237,7 +237,7 @@
                 </a-col>
                 <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item" >
-                        <img src="../../uploads/images/beeffood.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -263,7 +263,7 @@
                 </a-col>
                 <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item" >
-                        <img src="../../uploads/images/fishfood2.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -289,7 +289,7 @@
                 </a-col>
                 <a-col :xxl="6" :xl="6" :lg="6" :md="6" :xs="6">
                    <div class="card_item" >
-                        <img src="../../uploads/images/fishfood3.jpg" alt="" class="card_img">
+                        <img src="" alt="" class="card_img">
                         <div class="card_heart">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -318,7 +318,7 @@
         <a-row>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../uploads/images/ckfood1.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Món gà chiên</h2>
                         <p>Món ăn làm từ gà</p>
@@ -331,7 +331,7 @@
             </a-col>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../uploads/images/ckfood2.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Gà KFC</h2>
                         <p>Món gà ăn nhanh KFC</p>
@@ -344,7 +344,7 @@
             </a-col>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../uploads/images/ckfood3.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Món gà sốt</h2>
                         <p>Gà sốt vang thơm ngon</p>
@@ -357,7 +357,7 @@
             </a-col>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../uploads/images/eggfood.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Trứng chiên</h2>
                         <p>Món trứng chiên thơm ngon</p>
@@ -370,7 +370,7 @@
             </a-col>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../uploads/images/eggfood1.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Món trứng ốp la</h2>
                         <p>Món trứng ốp la </p>
@@ -383,7 +383,7 @@
             </a-col>
             <a-col :xxl="8" :xl="8" :lg="8">
                 <div class="hero-image">
-                    <img src="../../uploads/images/meatfood1.jpg" alt="">
+                    <img src="" alt="">
                     <div class="hero-text">
                         <h2 >Thịt bò sốt</h2>
                         <p>Món thịt bò sốt vang</p>
@@ -418,8 +418,7 @@ export default {
             height: 300px;
             border-radius:5px;
             transition: 0.3s;
-            background: white; 
-            margin: 10px 5px; 
+            background: white;
 
             img{
                 width: 100%;
